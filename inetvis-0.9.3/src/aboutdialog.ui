@@ -1,0 +1,97 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>AboutDialog</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>AboutDialog</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>526</width>
+            <height>335</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>About InetVis</string>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <widget class="QTextBrowser">
+            <property name="name">
+                <cstring>textBrowser1</cstring>
+            </property>
+            <property name="text">
+                <string>&lt;h2&gt;InetVis - &lt;b&gt;I&lt;/b&gt;nter&lt;b&gt;net&lt;/b&gt; &lt;b&gt;Vis&lt;/b&gt;ualization&lt;/h2&gt;
+&lt;p&gt;&lt;i&gt;Version&lt;/i&gt;: 0.9.3-qt3&lt;br&gt;&lt;small&gt;&lt;i&gt;Release date&lt;/i&gt;: 2007/11/08&lt;/small&gt;&lt;br&gt;&lt;/p&gt;
+&lt;h3&gt;About&lt;/h3&gt;
+&lt;p&gt;Computer Science Honours Project - 2005&lt;br&gt;
+Computer Science Masters Project - 2006/7&lt;/p&gt;
+&lt;p&gt;&lt;i&gt;Author&lt;/i&gt;: Jean-Pierre van Riel&lt;br&gt;
+&lt;i&gt;Supervisor&lt;/i&gt;: Barry Irwin&lt;br&gt;
+&lt;i&gt;Institute&lt;/i&gt;: Rhodes University, Grahamstown, 6140, Eastern Cape, South Africa&lt;br&gt;
+&lt;i&gt;website: &lt;/i&gt;&lt;u&gt;http://research.ict.ru.ac.za/G02V2468/&lt;/u&gt;&lt;br&gt;
+&lt;i&gt;email &lt;/i&gt;&lt;u&gt;jp.vanriel@gmail.com&lt;/u&gt;&lt;/p&gt;
+&lt;h3&gt;Aknowledgment&lt;/h3&gt;
+&lt;p&gt;Based on the "The Spinning Cube of Potential Doom", by Stephen Lau:&lt;br&gt;
+&lt;u&gt;www.nersc.gov/security/TheSpinningCube.html&lt;/u&gt;&lt;/p&gt;&lt;p&gt;Special thanks to Barry Irwin (project supervisor), and Shaun Bangay (Graphics honours course lecture of 2005). Their instruction and input has made this project possible.&lt;/p&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+&lt;hr&gt;
+&lt;h3&gt;GPL License, Version 2&lt;/h3&gt;
+
+  &lt;p&gt;InetVis - Internet Visuaisation for network traffic analysis.&lt;br&gt;
+  Copyright (C) 2005 - 2007, Jean-Pierre van Riel&lt;/p&gt;
+
+  &lt;p&gt;This program is free software; you can redistribute it and/or modify it
+  under the terms of the GNU General Public License as published by the Free
+  Software Foundation; either version 2 of the License, or (at your option)
+  any later version.&lt;/p&gt;
+
+  &lt;p&gt;This program is distributed in the hope that it will be useful, but
+  WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+  more details.&lt;/p&gt;
+
+  &lt;p&gt;You should have received a copy of the GNU General Public License along
+  with this program; if not, write to the Free Software Foundation, Inc., 51
+  Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.&lt;/p&gt;
+&lt;br&gt;
+  &lt;h3&gt;Software Dependancies and Licensing&lt;/h3&gt;
+
+  &lt;p&gt;InetVis makes use of Libpcap, Qt and OpenGL. The open source
+  version of Qt by Trolltech is licensed under the GPL, version 2 (as shown 
+  above). According to SGI, use of the OpenGL API requires no license. Libpcap 
+  is distributed under the BSD license.&lt;/p&gt;
+&lt;br&gt;
+
+&lt;h4&gt;LibPcap License&lt;/h4&gt;
+
+  &lt;p&gt;License: BSD&lt;/p&gt;
+
+  &lt;p&gt;Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions are
+  met:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Redistributions of source code must retain the above copyright notice,
+    this list of conditions and the following disclaimer.&lt;/li&gt;
+  &lt;li&gt;Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in the
+    documentation and/or other materials provided with the distribution.&lt;/li&gt;
+  &lt;li&gt;The names of the authors may not be used to endorse or promote products
+    derived from this software without specific prior written permission.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.&lt;/p&gt;</string>
+            </property>
+        </widget>
+    </vbox>
+</widget>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

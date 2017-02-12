@@ -1,0 +1,1715 @@
+<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
+<class>ControlPanel</class>
+<widget class="QMainWindow">
+    <property name="name">
+        <cstring>ControlPanel</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>630</width>
+            <height>339</height>
+        </rect>
+    </property>
+    <property name="sizePolicy">
+        <sizepolicy>
+            <hsizetype>3</hsizetype>
+            <vsizetype>0</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+    </property>
+    <property name="minimumSize">
+        <size>
+            <width>598</width>
+            <height>323</height>
+        </size>
+    </property>
+    <property name="maximumSize">
+        <size>
+            <width>32676</width>
+            <height>32676</height>
+        </size>
+    </property>
+    <property name="baseSize">
+        <size>
+            <width>0</width>
+            <height>0</height>
+        </size>
+    </property>
+    <property name="caption">
+        <string>InetVis Control Panel</string>
+    </property>
+    <property name="focusPolicy">
+        <enum>StrongFocus</enum>
+    </property>
+    <property name="dockWindowsMovable">
+        <bool>false</bool>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="resizeMode">
+            <enum>Minimum</enum>
+        </property>
+        <widget class="QGroupBox">
+            <property name="name">
+                <cstring>replayPositionGroupBox</cstring>
+            </property>
+            <property name="enabled">
+                <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>3</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="focusPolicy">
+                <enum>ClickFocus</enum>
+            </property>
+            <property name="title">
+                <string>Replay Position</string>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QDateTimeEdit">
+                    <property name="name">
+                        <cstring>replayDateTimeEdit</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>0</width>
+                            <height>21</height>
+                        </size>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Date and time - edit and apply with 'tick' button</string>
+                    </property>
+                </widget>
+                <widget class="QSpinBox">
+                    <property name="name">
+                        <cstring>millisecondsSpinBox</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>0</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>57</width>
+                            <height>21</height>
+                        </size>
+                    </property>
+                    <property name="maximumSize">
+                        <size>
+                            <width>32767</width>
+                            <height>32767</height>
+                        </size>
+                    </property>
+                    <property name="wrapping">
+                        <bool>true</bool>
+                    </property>
+                    <property name="buttonSymbols">
+                        <enum>UpDownArrows</enum>
+                    </property>
+                    <property name="maxValue">
+                        <number>999</number>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Milliseconds - edit and apply with 'tick' button</string>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>applyReplayPostionToolButton</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>TabFocus</enum>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>stock_calc-accept.png</iconset>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>'click' to apply replay position</string>
+                    </property>
+                </widget>
+                <widget class="Line">
+                    <property name="name">
+                        <cstring>line1_2_2</cstring>
+                    </property>
+                    <property name="frameShape">
+                        <enum>VLine</enum>
+                    </property>
+                    <property name="frameShadow">
+                        <enum>Sunken</enum>
+                    </property>
+                    <property name="orientation">
+                        <enum>Vertical</enum>
+                    </property>
+                </widget>
+                <widget class="QSlider">
+                    <property name="name">
+                        <cstring>replayPositionSlider</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>3</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>200</width>
+                            <height>15</height>
+                        </size>
+                    </property>
+                    <property name="maximumSize">
+                        <size>
+                            <width>32767</width>
+                            <height>15</height>
+                        </size>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>StrongFocus</enum>
+                    </property>
+                    <property name="minValue">
+                        <number>0</number>
+                    </property>
+                    <property name="maxValue">
+                        <number>199</number>
+                    </property>
+                    <property name="lineStep">
+                        <number>1</number>
+                    </property>
+                    <property name="value">
+                        <number>0</number>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Replay position seek bar - move and release to apply replay position</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QLayoutWidget">
+            <property name="name">
+                <cstring>layout12</cstring>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QGroupBox">
+                    <property name="name">
+                        <cstring>ReplaySpeedGroupBox</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>3</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>0</width>
+                            <height>0</height>
+                        </size>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>ClickFocus</enum>
+                    </property>
+                    <property name="title">
+                        <string>Replay Speed</string>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QToolButton">
+                            <property name="name">
+                                <cstring>playPauseToolButton</cstring>
+                            </property>
+                            <property name="enabled">
+                                <bool>true</bool>
+                            </property>
+                            <property name="minimumSize">
+                                <size>
+                                    <width>28</width>
+                                    <height>27</height>
+                                </size>
+                            </property>
+                            <property name="focusPolicy">
+                                <enum>StrongFocus</enum>
+                            </property>
+                            <property name="text">
+                                <string></string>
+                            </property>
+                            <property name="toggleButton">
+                                <bool>false</bool>
+                            </property>
+                            <property name="on">
+                                <bool>false</bool>
+                            </property>
+                            <property name="iconSet">
+                                <iconset>stock_media-play.png</iconset>
+                            </property>
+                            <property name="popupDelay">
+                                <number>600</number>
+                            </property>
+                            <property name="autoRaise">
+                                <bool>false</bool>
+                            </property>
+                            <property name="toolTip" stdset="0">
+                                <string>Play / pause</string>
+                            </property>
+                        </widget>
+                        <widget class="Line">
+                            <property name="name">
+                                <cstring>line1</cstring>
+                            </property>
+                            <property name="frameShape">
+                                <enum>VLine</enum>
+                            </property>
+                            <property name="frameShadow">
+                                <enum>Sunken</enum>
+                            </property>
+                            <property name="orientation">
+                                <enum>Vertical</enum>
+                            </property>
+                        </widget>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>timeScaleTextLabel</cstring>
+                            </property>
+                            <property name="focusPolicy">
+                                <enum>ClickFocus</enum>
+                            </property>
+                            <property name="text">
+                                <string>time scale</string>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit">
+                            <property name="name">
+                                <cstring>timeScaleLineEdit</cstring>
+                            </property>
+                            <property name="enabled">
+                                <bool>true</bool>
+                            </property>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>0</hsizetype>
+                                    <vsizetype>0</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                            <property name="minimumSize">
+                                <size>
+                                    <width>95</width>
+                                    <height>21</height>
+                                </size>
+                            </property>
+                            <property name="maximumSize">
+                                <size>
+                                    <width>32767</width>
+                                    <height>32767</height>
+                                </size>
+                            </property>
+                            <property name="text">
+                                <string></string>
+                            </property>
+                            <property name="toolTip" stdset="0">
+                                <string>Current playback speed factor - edit to input a value (clicking elsewhere applies the value)</string>
+                            </property>
+                            <property name="whatsThis" stdset="0">
+                                <string></string>
+                            </property>
+                        </widget>
+                        <widget class="QLabel">
+                            <property name="name">
+                                <cstring>timeScaleXTextLabel</cstring>
+                            </property>
+                            <property name="text">
+                                <string>x</string>
+                            </property>
+                        </widget>
+                        <widget class="QSlider">
+                            <property name="name">
+                                <cstring>timeScaleSlider</cstring>
+                            </property>
+                            <property name="enabled">
+                                <bool>true</bool>
+                            </property>
+                            <property name="sizePolicy">
+                                <sizepolicy>
+                                    <hsizetype>3</hsizetype>
+                                    <vsizetype>0</vsizetype>
+                                    <horstretch>0</horstretch>
+                                    <verstretch>0</verstretch>
+                                </sizepolicy>
+                            </property>
+                            <property name="minimumSize">
+                                <size>
+                                    <width>200</width>
+                                    <height>15</height>
+                                </size>
+                            </property>
+                            <property name="maximumSize">
+                                <size>
+                                    <width>32767</width>
+                                    <height>15</height>
+                                </size>
+                            </property>
+                            <property name="focusPolicy">
+                                <enum>StrongFocus</enum>
+                            </property>
+                            <property name="minValue">
+                                <number>1</number>
+                            </property>
+                            <property name="maxValue">
+                                <number>124</number>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="toolTip" stdset="0">
+                                <string>Replay speed seek bar - move and release to apply replay speed</string>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+                <widget class="QGroupBox">
+                    <property name="name">
+                        <cstring>recordGroupBox</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>0</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>ClickFocus</enum>
+                    </property>
+                    <property name="title">
+                        <string>Record</string>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string></string>
+                    </property>
+                    <hbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QToolButton">
+                            <property name="name">
+                                <cstring>recordToolButton</cstring>
+                            </property>
+                            <property name="enabled">
+                                <bool>true</bool>
+                            </property>
+                            <property name="focusPolicy">
+                                <enum>StrongFocus</enum>
+                            </property>
+                            <property name="text">
+                                <string></string>
+                            </property>
+                            <property name="toggleButton">
+                                <bool>true</bool>
+                            </property>
+                            <property name="iconSet">
+                                <iconset>stock_media-rec.png</iconset>
+                            </property>
+                            <property name="popupDelay">
+                                <number>600</number>
+                            </property>
+                            <property name="toolTip" stdset="0">
+                                <string>packet recording - toggle to record visaulized data back out to packet capture file (depress to stop)</string>
+                            </property>
+                        </widget>
+                        <widget class="QToolButton">
+                            <property name="name">
+                                <cstring>videoClipToolButton</cstring>
+                            </property>
+                            <property name="focusPolicy">
+                                <enum>StrongFocus</enum>
+                            </property>
+                            <property name="text">
+                                <string></string>
+                            </property>
+                            <property name="toggleButton">
+                                <bool>true</bool>
+                            </property>
+                            <property name="iconSet">
+                                <iconset>stock_insert-video-plugin.png</iconset>
+                            </property>
+                            <property name="popupDelay">
+                                <number>600</number>
+                            </property>
+                            <property name="toolTip" stdset="0">
+                                <string>Frame capture - toggle to copy rendered frames to image files (depress to stop)</string>
+                            </property>
+                        </widget>
+                        <widget class="QToolButton">
+                            <property name="name">
+                                <cstring>stillPicToolButton</cstring>
+                            </property>
+                            <property name="focusPolicy">
+                                <enum>StrongFocus</enum>
+                            </property>
+                            <property name="text">
+                                <string></string>
+                            </property>
+                            <property name="toggleButton">
+                                <bool>false</bool>
+                            </property>
+                            <property name="iconSet">
+                                <iconset>emblem-pictures.png</iconset>
+                            </property>
+                            <property name="popupDelay">
+                                <number>600</number>
+                            </property>
+                            <property name="toolTip" stdset="0">
+                                <string>Image snapshot - click once to take a single sanpshot of the current frame</string>
+                            </property>
+                        </widget>
+                    </hbox>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QGroupBox">
+            <property name="name">
+                <cstring>HistoricViewGroupBox</cstring>
+            </property>
+            <property name="enabled">
+                <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>3</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="focusPolicy">
+                <enum>ClickFocus</enum>
+            </property>
+            <property name="title">
+                <string>Historic View</string>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>timeWindowTextLabel</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>1</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>ClickFocus</enum>
+                    </property>
+                    <property name="text">
+                        <string>time window</string>
+                    </property>
+                </widget>
+                <widget class="QSpinBox">
+                    <property name="name">
+                        <cstring>timeWindowDaySpinBox</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>5</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>70</width>
+                            <height>21</height>
+                        </size>
+                    </property>
+                    <property name="maximumSize">
+                        <size>
+                            <width>32767</width>
+                            <height>32767</height>
+                        </size>
+                    </property>
+                    <property name="wrapping">
+                        <bool>false</bool>
+                    </property>
+                    <property name="maxValue">
+                        <number>1826</number>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>days - edit and apply with 'tick' button</string>
+                    </property>
+                </widget>
+                <widget class="QTimeEdit">
+                    <property name="name">
+                        <cstring>timeWindowTimeEdit</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>0</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="maxValue">
+                        <time>
+                            <hour>23</hour>
+                            <minute>59</minute>
+                            <second>59</second>
+                        </time>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>hours:minutes:seconds  - edit and apply with 'tick' button</string>
+                    </property>
+                </widget>
+                <widget class="QSpinBox">
+                    <property name="name">
+                        <cstring>timeWindowMillisecSpinBox</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>0</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>57</width>
+                            <height>21</height>
+                        </size>
+                    </property>
+                    <property name="maximumSize">
+                        <size>
+                            <width>32767</width>
+                            <height>32767</height>
+                        </size>
+                    </property>
+                    <property name="wrapping">
+                        <bool>true</bool>
+                    </property>
+                    <property name="maxValue">
+                        <number>999</number>
+                    </property>
+                    <property name="minValue">
+                        <number>0</number>
+                    </property>
+                    <property name="value">
+                        <number>0</number>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Milliseconds  - edit and apply with 'tick' button</string>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>ApplyTimeWindowToolButton</cstring>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>TabFocus</enum>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>stock_calc-accept.png</iconset>
+                    </property>
+                    <property name="textPosition">
+                        <enum>BelowIcon</enum>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>'click' to apply time window</string>
+                    </property>
+                </widget>
+                <widget class="Line">
+                    <property name="name">
+                        <cstring>line1_2</cstring>
+                    </property>
+                    <property name="frameShape">
+                        <enum>VLine</enum>
+                    </property>
+                    <property name="frameShadow">
+                        <enum>Sunken</enum>
+                    </property>
+                    <property name="orientation">
+                        <enum>Vertical</enum>
+                    </property>
+                </widget>
+                <widget class="QSlider">
+                    <property name="name">
+                        <cstring>timeWindowSlider</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>3</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>200</width>
+                            <height>15</height>
+                        </size>
+                    </property>
+                    <property name="maximumSize">
+                        <size>
+                            <width>32767</width>
+                            <height>15</height>
+                        </size>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>StrongFocus</enum>
+                    </property>
+                    <property name="minValue">
+                        <number>1</number>
+                    </property>
+                    <property name="maxValue">
+                        <number>183</number>
+                    </property>
+                    <property name="value">
+                        <number>161</number>
+                    </property>
+                    <property name="orientation">
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>Time window seek bar - move and apply with 'tick' button</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+        <widget class="QGroupBox">
+            <property name="name">
+                <cstring>FilterGroupBox</cstring>
+            </property>
+            <property name="sizePolicy">
+                <sizepolicy>
+                    <hsizetype>3</hsizetype>
+                    <vsizetype>0</vsizetype>
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                </sizepolicy>
+            </property>
+            <property name="focusPolicy">
+                <enum>ClickFocus</enum>
+            </property>
+            <property name="title">
+                <string>Filter</string>
+            </property>
+            <property name="toolTip" stdset="0">
+                <string></string>
+            </property>
+            <hbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QLabel">
+                    <property name="name">
+                        <cstring>filterExpressionTextLabel</cstring>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>1</hsizetype>
+                            <vsizetype>5</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>0</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>ClickFocus</enum>
+                    </property>
+                    <property name="text">
+                        <string>BPF expression</string>
+                    </property>
+                </widget>
+                <widget class="QLineEdit">
+                    <property name="name">
+                        <cstring>filterLineEdit</cstring>
+                    </property>
+                    <property name="enabled">
+                        <bool>true</bool>
+                    </property>
+                    <property name="sizePolicy">
+                        <sizepolicy>
+                            <hsizetype>7</hsizetype>
+                            <vsizetype>0</vsizetype>
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                        </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                        <size>
+                            <width>200</width>
+                            <height>21</height>
+                        </size>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>enter in a BPF filter expression, and click 'Apply' to set the filter</string>
+                    </property>
+                </widget>
+                <widget class="QToolButton">
+                    <property name="name">
+                        <cstring>applyFilterToolButton</cstring>
+                    </property>
+                    <property name="focusPolicy">
+                        <enum>TabFocus</enum>
+                    </property>
+                    <property name="text">
+                        <string></string>
+                    </property>
+                    <property name="iconSet">
+                        <iconset>stock_calc-accept.png</iconset>
+                    </property>
+                    <property name="popupDelay">
+                        <number>333</number>
+                    </property>
+                    <property name="textPosition">
+                        <enum>BelowIcon</enum>
+                    </property>
+                    <property name="toolTip" stdset="0">
+                        <string>'click' to apply filter expression - if expression invalid, it will not be applied</string>
+                    </property>
+                </widget>
+            </hbox>
+        </widget>
+    </vbox>
+</widget>
+<menubar>
+    <property name="name">
+        <cstring>MenuBar</cstring>
+    </property>
+    <property name="enabled">
+        <bool>true</bool>
+    </property>
+    <item text="&amp;File" name="fileMenu">
+        <action name="fileOpenAction"/>
+        <separator/>
+        <action name="fileExitAction"/>
+    </item>
+    <item text="&amp;Mode" name="Mode">
+        <action name="replayCaptureFileAction"/>
+        <action name="monitorLocalHostAction"/>
+        <separator/>
+    </item>
+    <item text="Re&amp;play" name="Replay">
+        <action name="playAction"/>
+        <action name="pauseAction"/>
+        <separator/>
+    </item>
+    <item text="&amp;Record" name="Record">
+        <action name="recordCapture_Current_Frame_to_FileAction"/>
+        <action name="recordCapture_Frames_to_FileAction"/>
+        <action name="recordDump_to_Pcap_FileAction"/>
+    </item>
+    <item text="&amp;View" name="View_2">
+        <action name="viewDisplayWindowAction"/>
+        <action name="viewPlotterSettingsAction"/>
+        <action name="viewReferenceFrameSettingsAction"/>
+    </item>
+    <item text="&amp;Help" name="helpMenu">
+        <action name="helpHelpAction"/>
+        <separator/>
+        <action name="helpAboutAction"/>
+    </item>
+</menubar>
+<toolbars>
+</toolbars>
+<actions>
+    <action>
+        <property name="name">
+            <cstring>fileNewAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset></iconset>
+        </property>
+        <property name="text">
+            <string>New</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;New</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+N</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fileOpenAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>fileopen</iconset>
+        </property>
+        <property name="text">
+            <string>Open</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Open...</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+O</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fileSaveAction</cstring>
+        </property>
+        <property name="iconSet">
+            <iconset>filesave</iconset>
+        </property>
+        <property name="text">
+            <string>Save</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Save</string>
+        </property>
+        <property name="accel">
+            <string>Ctrl+S</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fileSaveAsAction</cstring>
+        </property>
+        <property name="text">
+            <string>Save As</string>
+        </property>
+        <property name="menuText">
+            <string>Save &amp;As...</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>fileExitAction</cstring>
+        </property>
+        <property name="text">
+            <string>Exit</string>
+        </property>
+        <property name="menuText">
+            <string>E&amp;xit</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>helpContentsAction</cstring>
+        </property>
+        <property name="text">
+            <string>Contents</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Contents...</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>helpIndexAction</cstring>
+        </property>
+        <property name="text">
+            <string>Index</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Index...</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>helpAboutAction</cstring>
+        </property>
+        <property name="text">
+            <string>About</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;About</string>
+        </property>
+        <property name="accel">
+            <string></string>
+        </property>
+    </action>
+    <actiongroup>
+        <property name="name">
+            <cstring>replayActionGroup</cstring>
+        </property>
+        <property name="text">
+            <string>ReplayActionGroup</string>
+        </property>
+        <property name="exclusive">
+            <bool>false</bool>
+        </property>
+        <property name="usesDropDown">
+            <bool>false</bool>
+        </property>
+        <action>
+            <property name="name">
+                <cstring>playAction</cstring>
+            </property>
+            <property name="toggleAction">
+                <bool>false</bool>
+            </property>
+            <property name="enabled">
+                <bool>true</bool>
+            </property>
+            <property name="text">
+                <string>Play</string>
+            </property>
+            <property name="menuText">
+                <string>&amp;Play</string>
+            </property>
+            <property name="toolTip">
+                <string>Play</string>
+            </property>
+        </action>
+        <action>
+            <property name="name">
+                <cstring>pauseAction</cstring>
+            </property>
+            <property name="toggleAction">
+                <bool>false</bool>
+            </property>
+            <property name="on">
+                <bool>false</bool>
+            </property>
+            <property name="text">
+                <string>P&amp;ause</string>
+            </property>
+            <property name="menuText">
+                <string>P&amp;ause</string>
+            </property>
+            <property name="toolTip">
+                <string>Pause</string>
+            </property>
+        </action>
+    </actiongroup>
+    <actiongroup>
+        <property name="name">
+            <cstring>modeActionGroup</cstring>
+        </property>
+        <property name="text">
+            <string>Mode Action Group</string>
+        </property>
+        <property name="usesDropDown">
+            <bool>false</bool>
+        </property>
+        <action>
+            <property name="name">
+                <cstring>monitorLocalHostAction</cstring>
+            </property>
+            <property name="toggleAction">
+                <bool>true</bool>
+            </property>
+            <property name="on">
+                <bool>true</bool>
+            </property>
+            <property name="text">
+                <string>Monitor Local Host</string>
+            </property>
+            <property name="menuText">
+                <string>Monitor &amp;Local Host</string>
+            </property>
+            <property name="toolTip">
+                <string>Monitor local host</string>
+            </property>
+            <property name="statusTip">
+                <string>Monitor local host</string>
+            </property>
+        </action>
+        <action>
+            <property name="name">
+                <cstring>replayCaptureFileAction</cstring>
+            </property>
+            <property name="toggleAction">
+                <bool>true</bool>
+            </property>
+            <property name="text">
+                <string>Replay Capture File</string>
+            </property>
+            <property name="menuText">
+                <string>Replay Capture &amp;File</string>
+            </property>
+            <property name="toolTip">
+                <string>Replay capture file</string>
+            </property>
+            <property name="statusTip">
+                <string>Replay capture file</string>
+            </property>
+        </action>
+    </actiongroup>
+    <action>
+        <property name="name">
+            <cstring>viewDisplayWindowAction</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>false</bool>
+        </property>
+        <property name="on">
+            <bool>false</bool>
+        </property>
+        <property name="enabled">
+            <bool>true</bool>
+        </property>
+        <property name="text">
+            <string>&amp;Display Window</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Display Window</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>viewPlotterSettingsAction</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>false</bool>
+        </property>
+        <property name="on">
+            <bool>false</bool>
+        </property>
+        <property name="text">
+            <string>&amp;Plotter Settings</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Plotter Settings</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>replayAction</cstring>
+        </property>
+        <property name="text">
+            <string></string>
+        </property>
+        <property name="menuText">
+            <string></string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>replayReplay_RateAction</cstring>
+        </property>
+        <property name="text">
+            <string>&amp;Replay Rate</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Replay Rate</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>replayTime_WindowAction</cstring>
+        </property>
+        <property name="text">
+            <string>&amp;Time Window</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Time Window</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>replayReplay_Rate1_Millisecond_per_Second_0001xAction</cstring>
+        </property>
+        <property name="text">
+            <string>1 Millisecond per Second (0.001x)</string>
+        </property>
+        <property name="menuText">
+            <string>1 Millisecond per Second (0.001x)</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>replayReplay_RateNormal_Playback_Speed_1xAction</cstring>
+        </property>
+        <property name="text">
+            <string>Normal Playback Speed (1x)</string>
+        </property>
+        <property name="menuText">
+            <string>Normal Playback Speed (1x)</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>replayReplay_Rate1_Minute_per_Second_60xAction</cstring>
+        </property>
+        <property name="text">
+            <string>1 &amp;Minute per Second (60x)</string>
+        </property>
+        <property name="menuText">
+            <string>1 &amp;Minute per Second (60x)</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>replayReplay_Rate1_Hour_per_Second_3600xAction</cstring>
+        </property>
+        <property name="text">
+            <string>1 &amp;Hour per Second (3600x)</string>
+        </property>
+        <property name="menuText">
+            <string>1 &amp;Hour per Second (3600x)</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>replayReplay_Rate1_Day_per_Second_86000xAction</cstring>
+        </property>
+        <property name="text">
+            <string>1 &amp;Day per Second (86000x)</string>
+        </property>
+        <property name="menuText">
+            <string>1 &amp;Day per Second (86000x)</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>replayTime_Window1_SecondAction</cstring>
+        </property>
+        <property name="text">
+            <string>1 &amp;Second</string>
+        </property>
+        <property name="menuText">
+            <string>1 &amp;Second</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>replayTime_Window1_MinuteAction</cstring>
+        </property>
+        <property name="text">
+            <string>1 &amp;Minute</string>
+        </property>
+        <property name="menuText">
+            <string>1 &amp;Minute</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>replayTime_Window1_HourAction</cstring>
+        </property>
+        <property name="text">
+            <string>1 &amp;Hour</string>
+        </property>
+        <property name="menuText">
+            <string>1 &amp;Hour</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>replayTime_Window1_DayAction</cstring>
+        </property>
+        <property name="text">
+            <string>1 &amp;Day</string>
+        </property>
+        <property name="menuText">
+            <string>1 &amp;Day</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>replayTime_Window1_Week_7_DaysAction</cstring>
+        </property>
+        <property name="text">
+            <string>1 &amp;Week (7 Days)</string>
+        </property>
+        <property name="menuText">
+            <string>1 &amp;Week (7 Days)</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>replayTime_Window1_Month_31_DaysAction</cstring>
+        </property>
+        <property name="text">
+            <string>1 &amp;Month (31 Days)</string>
+        </property>
+        <property name="menuText">
+            <string>1 &amp;Month (31 Days)</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>replayTime_Window1_Year_365_DaysAction</cstring>
+        </property>
+        <property name="text">
+            <string>1 &amp;Year (365 Days)</string>
+        </property>
+        <property name="menuText">
+            <string>1 &amp;Year (365 Days)</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>viewReferenceFrameSettingsAction</cstring>
+        </property>
+        <property name="text">
+            <string>&amp;Reference Frame Settings</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Reference Frame Settings</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>recordCapture_Current_Frame_to_FileAction</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>false</bool>
+        </property>
+        <property name="text">
+            <string>Capture Current &amp;Frame to File</string>
+        </property>
+        <property name="menuText">
+            <string>Capture Current &amp;Frame to File</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>recordCapture_Frames_to_FileAction</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="text">
+            <string>&amp;Capture Frames to File</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Capture Frames to File</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>recordDump_to_Pcap_FileAction</cstring>
+        </property>
+        <property name="toggleAction">
+            <bool>true</bool>
+        </property>
+        <property name="text">
+            <string>&amp;Dump to Pcap File</string>
+        </property>
+        <property name="menuText">
+            <string>&amp;Dump to Pcap File</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>Action</cstring>
+        </property>
+        <property name="text">
+            <string>Action</string>
+        </property>
+    </action>
+    <action>
+        <property name="name">
+            <cstring>helpHelpAction</cstring>
+        </property>
+        <property name="text">
+            <string>Documentation</string>
+        </property>
+        <property name="menuText">
+            <string>Documentation</string>
+        </property>
+    </action>
+</actions>
+<connections>
+    <connection>
+        <sender>applyFilterToolButton</sender>
+        <signal>pressed()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>applyFilter()</slot>
+    </connection>
+    <connection>
+        <sender>applyReplayPostionToolButton</sender>
+        <signal>pressed()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>applyReplayPosition()</slot>
+    </connection>
+    <connection>
+        <sender>ApplyTimeWindowToolButton</sender>
+        <signal>pressed()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>applyTimeWindow()</slot>
+    </connection>
+    <connection>
+        <sender>fileExitAction</sender>
+        <signal>activated()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>close()</slot>
+    </connection>
+    <connection>
+        <sender>fileOpenAction</sender>
+        <signal>activated()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>fileOpen()</slot>
+    </connection>
+    <connection>
+        <sender>helpAboutAction</sender>
+        <signal>activated()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>helpAbout()</slot>
+    </connection>
+    <connection>
+        <sender>monitorLocalHostAction</sender>
+        <signal>activated()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>monitorLocalHostSelected()</slot>
+    </connection>
+    <connection>
+        <sender>pauseAction</sender>
+        <signal>activated()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>pauseMenuAction()</slot>
+    </connection>
+    <connection>
+        <sender>playAction</sender>
+        <signal>activated()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>playMenuAction()</slot>
+    </connection>
+    <connection>
+        <sender>playPauseToolButton</sender>
+        <signal>pressed()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>playPauseToolButtonClicked()</slot>
+    </connection>
+    <connection>
+        <sender>recordCapture_Current_Frame_to_FileAction</sender>
+        <signal>activated()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>takeSnapshot()</slot>
+    </connection>
+    <connection>
+        <sender>recordCapture_Frames_to_FileAction</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>captureFramesToFile(bool)</slot>
+    </connection>
+    <connection>
+        <sender>recordDump_to_Pcap_FileAction</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>record(bool)</slot>
+    </connection>
+    <connection>
+        <sender>recordToolButton</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>record(bool)</slot>
+    </connection>
+    <connection>
+        <sender>replayCaptureFileAction</sender>
+        <signal>activated()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>replayFileModeSelected()</slot>
+    </connection>
+    <connection>
+        <sender>replayDateTimeEdit</sender>
+        <signal>valueChanged(const QDateTime&amp;)</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>replayPositionDateTimeChanged()</slot>
+    </connection>
+    <connection>
+        <sender>replayPositionSlider</sender>
+        <signal>sliderReleased()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>replayPoistionSliderReleased()</slot>
+    </connection>
+    <connection>
+        <sender>replayPositionSlider</sender>
+        <signal>sliderMoved(int)</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>replayPositionSliderChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>replayReplay_RateNormal_Playback_Speed_1xAction</sender>
+        <signal>activated()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>setNormalReplaySpeed()</slot>
+    </connection>
+    <connection>
+        <sender>stillPicToolButton</sender>
+        <signal>clicked()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>takeSnapshot()</slot>
+    </connection>
+    <connection>
+        <sender>timeScaleLineEdit</sender>
+        <signal>lostFocus()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>timeScaleLineEditChanged()</slot>
+    </connection>
+    <connection>
+        <sender>timeScaleLineEdit</sender>
+        <signal>returnPressed()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>timeScaleLineEditChanged()</slot>
+    </connection>
+    <connection>
+        <sender>timeScaleSlider</sender>
+        <signal>sliderMoved(int)</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>timeScaleSliderChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>timeScaleSlider</sender>
+        <signal>sliderReleased()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>timeSliderScaleRealeased()</slot>
+    </connection>
+    <connection>
+        <sender>timeWindowDaySpinBox</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>timeWindowChange()</slot>
+    </connection>
+    <connection>
+        <sender>timeWindowMillisecSpinBox</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>timeWindowChange()</slot>
+    </connection>
+    <connection>
+        <sender>timeWindowSlider</sender>
+        <signal>valueChanged(int)</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>timeWindowSliderChanged(int)</slot>
+    </connection>
+    <connection>
+        <sender>timeWindowSlider</sender>
+        <signal>sliderReleased()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>timeWindowSliderReleased()</slot>
+    </connection>
+    <connection>
+        <sender>timeWindowTimeEdit</sender>
+        <signal>valueChanged(const QTime&amp;)</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>timeWindowChange()</slot>
+    </connection>
+    <connection>
+        <sender>videoClipToolButton</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>captureFramesToFile(bool)</slot>
+    </connection>
+    <connection>
+        <sender>viewDisplayWindowAction</sender>
+        <signal>activated()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>viewVisDisplayPanel()</slot>
+    </connection>
+    <connection>
+        <sender>viewPlotterSettingsAction</sender>
+        <signal>activated()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>viewPlotterSettings()</slot>
+    </connection>
+    <connection>
+        <sender>viewReferenceFrameSettingsAction</sender>
+        <signal>activated()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>viewReferenceFrameSettings()</slot>
+    </connection>
+    <connection>
+        <sender>helpHelpAction</sender>
+        <signal>activated()</signal>
+        <receiver>ControlPanel</receiver>
+        <slot>helpDoc()</slot>
+    </connection>
+</connections>
+<tabstops>
+    <tabstop>replayPositionGroupBox</tabstop>
+    <tabstop>replayDateTimeEdit</tabstop>
+    <tabstop>millisecondsSpinBox</tabstop>
+    <tabstop>applyReplayPostionToolButton</tabstop>
+    <tabstop>replayPositionSlider</tabstop>
+    <tabstop>ReplaySpeedGroupBox</tabstop>
+    <tabstop>playPauseToolButton</tabstop>
+    <tabstop>timeScaleTextLabel</tabstop>
+    <tabstop>timeScaleLineEdit</tabstop>
+    <tabstop>timeScaleSlider</tabstop>
+    <tabstop>recordGroupBox</tabstop>
+    <tabstop>recordToolButton</tabstop>
+    <tabstop>videoClipToolButton</tabstop>
+    <tabstop>stillPicToolButton</tabstop>
+    <tabstop>HistoricViewGroupBox</tabstop>
+    <tabstop>timeWindowTextLabel</tabstop>
+    <tabstop>timeWindowDaySpinBox</tabstop>
+    <tabstop>timeWindowTimeEdit</tabstop>
+    <tabstop>timeWindowMillisecSpinBox</tabstop>
+    <tabstop>ApplyTimeWindowToolButton</tabstop>
+    <tabstop>timeWindowSlider</tabstop>
+    <tabstop>FilterGroupBox</tabstop>
+    <tabstop>filterExpressionTextLabel</tabstop>
+    <tabstop>filterLineEdit</tabstop>
+    <tabstop>applyFilterToolButton</tabstop>
+</tabstops>
+<includes>
+    <include location="local" impldecl="in declaration">qdatetime.h</include>
+    <include location="local" impldecl="in declaration">qstatusbar.h</include>
+    <include location="local" impldecl="in declaration">qvalidator.h</include>
+    <include location="local" impldecl="in declaration">qfiledialog.h</include>
+    <include location="local" impldecl="in declaration">qerrormessage.h</include>
+    <include location="local" impldecl="in declaration">aboutdialog.h</include>
+    <include location="local" impldecl="in declaration">helpdocumentationdialog.h</include>
+    <include location="local" impldecl="in implementation">logui.h</include>
+    <include location="local" impldecl="in implementation">controlpanel.ui.h</include>
+</includes>
+<variables>
+    <variable access="private">double startTime;</variable>
+    <variable access="private">bool timeWinSetByUser;</variable>
+    <variable access="private">bool replayPosSetByUser;</variable>
+    <variable access="private">float timeScale;</variable>
+    <variable access="private">QIconSet *playIcon;</variable>
+    <variable access="private">QIconSet *pauseIcon;</variable>
+    <variable access="private">QLabel *packetEventsLabel;</variable>
+    <variable access="private">QDoubleValidator *timeScaleValidator;</variable>
+    <variable access="private">double timeSpan;</variable>
+    <variable access="private">bool replayPosSetBySlider;</variable>
+    <variable access="private">bool timeWindowSetBySlider;</variable>
+    <variable access="private">bool replayPositionSliderChangeStarted;</variable>
+    <variable access="private">bool recordToPcapFileSetByUser;</variable>
+    <variable access="private">bool captureFramesSetByUser;</variable>
+    <variable access="private">QErrorMessage *qErrMsg;</variable>
+    <variable access="private">AboutDialog *aboutDialog;</variable>
+    <variable access="private">HelpDocumentationDialog *helpDialog;</variable>
+    <variable access="private">QString loguiFileName;</variable>
+</variables>
+<signals>
+    <signal>play()</signal>
+    <signal>pause()</signal>
+    <signal>showVisDisplayPanel()</signal>
+    <signal>togglePlayPause()</signal>
+    <signal>setReplayRate(double rate)</signal>
+    <signal>setReplayPosition(const QDateTime newRepPos)</signal>
+    <signal>setTimeWindow(double seconds)</signal>
+    <signal>selectReplayFile(const QString file)</signal>
+    <signal>setFilter(const QString filterExpr)</signal>
+    <signal>setHomeNetwork(int a, int b, int c, int d, int slash)</signal>
+    <signal>showHomeNetworkDialog()</signal>
+    <signal>selectNetworkInterface(const QString)</signal>
+    <signal>showPlotterSettings()</signal>
+    <signal>showReferenceFrameSettings()</signal>
+    <signal>captureFrames(bool)</signal>
+    <signal>captureSingleFrame()</signal>
+    <signal>recordToFile(bool)</signal>
+</signals>
+<slots>
+    <slot>timeSliderScaleRealeased()</slot>
+    <slot>fileOpen()</slot>
+    <slot>playPauseToolButtonClicked()</slot>
+    <slot>pauseMenuAction()</slot>
+    <slot>playMenuAction()</slot>
+    <slot>replayFileModeSelected()</slot>
+    <slot>monitorLocalHostSelected()</slot>
+    <slot>viewVisDisplayPanel()</slot>
+    <slot>playing()</slot>
+    <slot>paused()</slot>
+    <slot>timeScaleLineEditChanged()</slot>
+    <slot>statusBarMessage( QString message )</slot>
+    <slot>updateReplayRate( double value )</slot>
+    <slot>timeScaleSliderChanged( int value )</slot>
+    <slot>setNormalReplaySpeed()</slot>
+    <slot>updateReplayTimeDisplay( const QDateTime &amp; repPos, const QDateTime &amp; timeWinEnd )</slot>
+    <slot>updateReplayTimeSliderPosition( const QDateTime &amp; repPos )</slot>
+    <slot>replayPositionDateTimeChanged()</slot>
+    <slot>replayPositionSliderChanged( int val )</slot>
+    <slot>replayPoistionSliderReleased()</slot>
+    <slot>applyReplayPosition()</slot>
+    <slot>setTimeRange( const QDateTime start, const QDateTime end )</slot>
+    <slot>updateTimeWindowDisplay( double seconds )</slot>
+    <slot>timeWindowChange()</slot>
+    <slot>updateTimeWindowSlider( double sec )</slot>
+    <slot>timeWindowSliderChanged( int val )</slot>
+    <slot>applyTimeWindow()</slot>
+    <slot>timeWindowSliderReleased()</slot>
+    <slot>applyFilter()</slot>
+    <slot>viewPlotterSettings()</slot>
+    <slot>viewReferenceFrameSettings()</slot>
+    <slot>captureFramesToFile( bool activate )</slot>
+    <slot>takeSnapshot()</slot>
+    <slot>record( bool buttonOn )</slot>
+    <slot>setRecordButton( bool buttonOn )</slot>
+    <slot>reportErrorMessage( QString errMsg )</slot>
+    <slot>showOnTop()</slot>
+    <slot>helpDoc()</slot>
+    <slot>helpAbout()</slot>
+</slots>
+<functions>
+    <function access="private" specifier="non virtual">init()</function>
+    <function access="private" specifier="non virtual">destroy()</function>
+    <function access="private" specifier="non virtual" returnType="QString">strGetRepPos()</function>
+</functions>
+<pixmapinproject/>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>
