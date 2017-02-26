@@ -424,9 +424,13 @@ void Plotter::plot(PacketEvent &pe)
 
          switch (pe.headers.transportType)
          {  case T_ICMP: //ICMP
-               struct ICMP_Header *icmp;
-               icmp = (struct ICMP_Header*)(pe.headers.pt_transportHeader);
-               //plot to ICMP plane
+               
+	       // TODO: Commented out these two lines as they were not used.
+              // Not deleting since they may be useful in future.
+	       //struct ICMP_Header *icmp;
+               //icmp = (struct ICMP_Header*)(pe.headers.pt_transportHeader);
+               
+	       //plot to ICMP plane
                pe.point.coord[1] = -20.0;
 
                #ifdef DEBUG_PLOTTER
