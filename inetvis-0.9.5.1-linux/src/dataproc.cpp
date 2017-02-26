@@ -265,9 +265,10 @@ void DataProcessor::DataExtractor::monitorLocalHost()
    if (pcapRet >= 0)
    {  //packets processed no more to be done for now
       //update the capture end time and buffer position
-      PacketEvent *pe;
-      pe = &dataProcessor->packetEventBuffer.front();
-
+      
+      //Commented out the two below lines, getting value, assigning, but never using.
+      //PacketEvent *pe;
+      //pe = &dataProcessor->packetEventBuffer.front();
       #ifdef DEBUG_DATA_RENDER
          cerr << "DEBUG: Succefully returning from monitoring interface, with no further packets to process for the moment\n";
       #endif
@@ -2705,13 +2706,15 @@ void DataProcessor::getBufferStatus()
 {
 
    struct timeval timeLength; //in sec and millisec
-   int nPacketEvents;
-   int bufferMemSize;
+   // Commented out below two as were assigned below but never used.
+   //int nPacketEvents;
+   //int bufferMemSize;
 
    TimeUtil::subTimevals(timeLength, timeWindowEnd, bufferPosition);
       //timeLenght = bufferposition - timeWindowEnd
-   nPacketEvents = packetEventBuffer.size();
-   bufferMemSize = sizeof(packetEventBuffer);
+   // Commented out below two lines as they are assigned but never used.
+   //nPacketEvents = packetEventBuffer.size();
+   //bufferMemSize = sizeof(packetEventBuffer);
 
    #ifdef DEBUG_DATA_PROCESSOR
       cerr << "DEBUG: packet event buffer length (time) = "
