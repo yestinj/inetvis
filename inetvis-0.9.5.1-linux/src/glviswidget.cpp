@@ -1304,12 +1304,11 @@ void GLVisWidget::setPointSize(int size)
       //bug resolve - if point bulge enabled, changes to point size in static
       //render mode does not relect since the display list is not updated - so
       //bug occurs in paused mode. Need to trigger regeneration of point list.
-   if (dataProcessor->getState() != PLAYING);
-   {  dataProcessor->generatePointDispList();
+   // TODO: Commented this out, added line without trailing ;, investigate..
+   //if (dataProcessor->getState() != PLAYING);
+   if (dataProcessor->getState() != PLAYING) {
+      dataProcessor->generatePointDispList();
    }
-
-
-
 }
 
 
