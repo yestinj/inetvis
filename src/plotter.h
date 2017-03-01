@@ -70,8 +70,8 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
    //defines a cubic region of 100.0 x 100.0 x 100.0
    //the plotting and axes should be scaled to filt into this drawing field
    //this value would idealy corrospond to AXIS_LENGTH in glviswidget.h
-#define MAX_U_INT32_VAL 4294967295
-#define MAX_U_INT16_VAL 65535
+#define MAX_U_INT32_VAL 4294967295u
+#define MAX_U_INT16_VAL 65535u
 #define DEFAULT_LOG_RANGE_BASE 100.0
 //define background colour codes
 #ifndef BLACK_BACKGROUND

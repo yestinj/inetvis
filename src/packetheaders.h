@@ -2,8 +2,8 @@
 
 InetVis - Internet Visualisation
 
-version: 0.9.3
-release date: 2007/11/08
+version: 0.9.5
+release date: 2007/11/21
 
 Computer Science Honours Project - 2005
 Computer Science Masters Project - 2006/7
@@ -76,19 +76,27 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 */
 
+#include <stdio.h>
 
 #include <iostream>
 #include <qstring.h>
 #include <graphicelement.h>
 //#include <plotter.h>
 
-//to use ntohs for windows
-//#include <Winsock2.h>
-//for linux
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
 
+//platform specific headers
+
+#ifdef LINUX
+	#include <sys/socket.h>
+	#include <netinet/in.h>
+	#include <arpa/inet.h>
+#endif
+
+#ifdef WIN
+	#include <Winsock2.h>
+#endif
+
+	
 using namespace std;
 
 

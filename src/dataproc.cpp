@@ -1,5 +1,4 @@
 #include <dataproc.h>
-#include <glviswidget.h>
 #include <iostream>
 #include <stdio.h>
 
@@ -266,9 +265,10 @@ void DataProcessor::DataExtractor::monitorLocalHost()
    if (pcapRet >= 0)
    {  //packets processed no more to be done for now
       //update the capture end time and buffer position
-      PacketEvent *pe;
-      pe = &dataProcessor->packetEventBuffer.front();
-
+      
+      //Commented out the two below lines, getting value, assigning, but never using.
+      //PacketEvent *pe;
+      //pe = &dataProcessor->packetEventBuffer.front();
       #ifdef DEBUG_DATA_RENDER
          cerr << "DEBUG: Succefully returning from monitoring interface, with no further packets to process for the moment\n";
       #endif
@@ -409,7 +409,7 @@ void DataProcessor::DataExtractor::reportError(const QString &errMsg,
    QString errorMessage;
    errorMessage.append("ERROR: ");
    errorMessage.append(errMsg);
-   if (function != NULL)
+   if (!function.isNull() && !function.isEmpty())
    {  errorMessage.append("\n - in function: ");
       errorMessage.append(function);
    }
@@ -424,9 +424,9 @@ void DataProcessor::DataExtractor::reportError(const QString &errMsg,
    errorMessage.append("\n");
 
    #ifdef OUTPUT_ERRORS_STD_OUT
-      cerr << errorMessage;
+      cerr << errorMessage.toStdString();
    #elif DEBUG_DATA_EXTRACTOR
-      cerr << errorMessage;
+      cerr << errorMessage.toStdString();
    #endif
 
    #ifdef OUTPUT_ERRORS_GUI
@@ -1136,7 +1136,7 @@ QString DataProcessor::DataExtractor::getReplayFileName()
 }
 
 
-bool DataProcessor::DataExtractor::openInterface(const QString interface)
+bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
 {
    #ifdef DEBUG_DATA_EXTRACTOR
       cerr << "DEBUG: live interface open --------------------------------------------------------\n";
@@ -1146,11 +1146,11 @@ bool DataProcessor::DataExtractor::openInterface(const QString interface)
    if (dataProcessor->getState() == PLAYING)
       dataProcessor->pause();
 
-   if (interface.isEmpty()) //use existing string value for local interface
+   if (netInterface.isEmpty()) //use existing string value for local interface
    {  return openDefaultInterface();
    }
    else //set to new value
-   {  strLocalInterface = interface;
+   {  strLocalInterface = netInterface;
    }
 
    if (liveCaptureInstance != NULL)
@@ -1607,7 +1607,7 @@ bool DataProcessor::DataExtractor::applyFilter()
       return false;
    }
 
-   if (bpfFilterExpr == NULL)
+   if (bpfFilterExpr.isNull())
    {  reportError("filter expression NULL, assumed empty expression",
             "DataExtractor::setFilter");
       bpfFilterExpr = "";
@@ -2260,10 +2260,10 @@ void DataProcessor::selectReplayFile(const QString file)
 }
 
 
-void DataProcessor::selectNetworkInterface(const QString interface)
+void DataProcessor::selectNetworkInterface(const QString netInterface)
 {
    if (replayMode != MONITOR_LOCAL)
-   {  if(dataExtractor.openInterface(interface))
+   {  if(dataExtractor.openInterface(netInterface))
       {  //try guess home network
          guessHomeNetwork();
          unsigned int a, m; //address, mask
@@ -2298,6 +2298,7 @@ void DataProcessor::setFilter(const QString filterExpression)
       //now update the display list if in static render mode
       if (replayState != PLAYING)
          generatePointDispList();
+
 
       //emit updateGLVisWidget();
       //glVisWidget->update();
@@ -2705,13 +2706,15 @@ void DataProcessor::getBufferStatus()
 {
 
    struct timeval timeLength; //in sec and millisec
-   int nPacketEvents;
-   int bufferMemSize;
+   // Commented out below two as were assigned below but never used.
+   //int nPacketEvents;
+   //int bufferMemSize;
 
    TimeUtil::subTimevals(timeLength, timeWindowEnd, bufferPosition);
       //timeLenght = bufferposition - timeWindowEnd
-   nPacketEvents = packetEventBuffer.size();
-   bufferMemSize = sizeof(packetEventBuffer);
+   // Commented out below two lines as they are assigned but never used.
+   //nPacketEvents = packetEventBuffer.size();
+   //bufferMemSize = sizeof(packetEventBuffer);
 
    #ifdef DEBUG_DATA_PROCESSOR
       cerr << "DEBUG: packet event buffer length (time) = "
@@ -3532,16 +3535,16 @@ void DataProcessor::reportError(const QString &errMsg, const QString &function)
    QString errorMessage;
    errorMessage.append("ERROR: ");
    errorMessage.append(errMsg);
-   if (function != NULL)
+   if (function.isNull())
    {  errorMessage.append("\n - in function: ");
       errorMessage.append(function);
    }
    errorMessage.append("\n");
 
    #ifdef OUTPUT_ERRORS_STD_OUT
-      cerr << errorMessage;
+      cerr << errorMessage.toStdString();
    #elif DEBUG_DATA_PROCESSOR
-      cerr << errorMessage;
+      cerr << errorMessage.toStdString();
    #endif
 
    //ensure timer is reset so that error is displayed for 1 seconds
