@@ -4,7 +4,7 @@ Source repository for the Internet Visualizer (inetvis) tool.
 
 This project is based off of the original work by JP van Riel and Barry Irwin of Rhodes University. Their original work can be found here: www.cs.ru.ac.za/research/g02v2468/inetvis.html
 
-# Guide to Running InetVis
+# Running InetVis
 
 At this time InetVis only works under 32-bit flavours of Ubuntu and requires a few older libraries to be installed for correct operation.
 
@@ -31,8 +31,27 @@ To run InetVis either download the latest binary from the Releases page, or clon
 
 `./inetvis`
 
-If you would like to monitor your own host for network events, instead of replayming capture files, please ensure you use `sudo`:
+If you would like to monitor your own host for network events, instead of replaying capture files, please ensure that you use `sudo`:
 
 `sudo ./inetvis`
 
 Have fun! :-)
+
+# Building InetVis
+
+Building InetVis is relatively straight forward but comes with the same caveats as running it. Currently only 32-bit flavours of Linux, Ubuntu, are supported.
+
+Before getting started please follow all of the instructions in **Running InetVis** to ensure that you have all of the relevant dependencies installed.
+
+Once your system is up and running do the following to build InetVis:
+
+1. `cd src`
+2. `qmake`
+3. `make`
+
+This should result in a new `inetvis` binary being generated within the source directory.
+
+
+# Notes
+
+This software will make use of Semantic Versioning 2.0.0 (http://semver.org/) once reaching the v1.0.0 release phase. 
