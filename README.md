@@ -43,6 +43,8 @@ Building InetVis is relatively straight forward but comes with the same caveats 
 
 Before getting started please follow all of the instructions in **Running InetVis** to ensure that you have all of the relevant dependencies installed.
 
+Next you either need to set the environment variable `QT_SELECT=qt4`, wherever you prefe, or you need to run the `qmake` command below with the `-qt=qt4` option. This ensures that the project is built using Qt4, and not Qt5 which will likely be the default. 
+
 Once your system is up and running do the following to build InetVis:
 
 1. `cd src`
