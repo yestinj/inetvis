@@ -22,8 +22,7 @@ SOURCES	+= graphicelement.cpp \
 	packetevent.cpp \
 	logui.cpp
 
-#The following line was changed from FORMS to FORMS3 by qt3to4
-FORMS3	= controlpanel.ui \
+FORMS = controlpanel.ui \
 	visdisplay.ui \
 	plottersettingsdialog.ui \
 	referenceframesettingsdialog.ui \
@@ -90,5 +89,5 @@ DEFINES  += QT3_SUPPORT_WARNINGS
 #The following line was inserted by qt3to4
 QT +=  opengl
 #The following line was inserted by qt3to4
-CONFIG += uic3
+#CONFIG += uic3
 
