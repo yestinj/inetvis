@@ -35,6 +35,7 @@ copyright holder.<br>
 
 //Platform directives
 
+#include <QtGui>
 #include <QApplication>
 #include <QWidget>
 #include <qgl.h>
@@ -85,125 +86,125 @@ int main(int argc, char **argv)
    //dp.setGLVisWidgetLink(vdw);
 
    //connect signals and slots for control panel
-   vd.connect(vdw, SIGNAL(showControlPanel()), &cp, SLOT(showOnTop()));
-   cp.connect(&dp, SIGNAL(updateReplayTimeDisplay(const QDateTime &,
+   QObject::connect(vdw, SIGNAL(showControlPanel()), &cp, SLOT(showOnTop()));
+   QObject::connect(&dp, SIGNAL(updateReplayTimeDisplay(const QDateTime &,
          const QDateTime &)), &cp, SLOT(updateReplayTimeDisplay(
          const QDateTime &, const QDateTime &)));
-   cp.connect(&dp, SIGNAL(playing()), &cp, SLOT(playing()));
-   cp.connect(&dp, SIGNAL(paused()), &cp, SLOT(paused()));
-   cp.connect(&dp, SIGNAL(setStatusBarMessage(QString)), &cp,
+   QObject::connect(&dp, SIGNAL(playing()), &cp, SLOT(playing()));
+   QObject::connect(&dp, SIGNAL(paused()), &cp, SLOT(paused()));
+   QObject::connect(&dp, SIGNAL(setStatusBarMessage(QString)), &cp,
          SLOT(statusBarMessage(QString)));
-   cp.connect(&dp, SIGNAL(updateReplayRateDisplay(double)), &cp,
+   QObject::connect(&dp, SIGNAL(updateReplayRateDisplay(double)), &cp,
          SLOT(updateReplayRate(double)));
-   cp.connect(&dp, SIGNAL(updateTimeWindowDisplay(double)),
+   QObject::connect(&dp, SIGNAL(updateTimeWindowDisplay(double)),
          &cp, SLOT(updateTimeWindowDisplay(double)));
-   cp.connect(&dp, SIGNAL(setTimeRange(const QDateTime, const QDateTime)),
+   QObject::connect(&dp, SIGNAL(setTimeRange(const QDateTime, const QDateTime)),
          &cp, SLOT(setTimeRange(const QDateTime, const QDateTime)));
-   cp.connect(&dp, SIGNAL(setRecordButton(bool)),
+   QObject::connect(&dp, SIGNAL(setRecordButton(bool)),
          &cp, SLOT(setRecordButton(bool)));
-   cp.connect(&dp, SIGNAL(sendErrMsg(QString)), &cp, SLOT(reportErrorMessage(QString)));
+   QObject::connect(&dp, SIGNAL(sendErrMsg(QString)), &cp, SLOT(reportErrorMessage(QString)));
 
    //connect signals and slots for visualization display window
    //and the visualization display widget
-   vd.connect(&cp, SIGNAL(showVisDisplayPanel()), &vd, SLOT(show()));
-   vd.connect(&dp, SIGNAL(updateGLVisWidget()), &vd, SLOT(updateGLVisWidget()));
-   vdw->connect(&rfs, SIGNAL(setPerspectiveProjection()), vdw,
+   QObject::connect(&cp, SIGNAL(showVisDisplayPanel()), &vd, SLOT(show()));
+   QObject::connect(&dp, SIGNAL(updateGLVisWidget()), &vd, SLOT(updateGLVisWidget()));
+   QObject::connect(&rfs, SIGNAL(setPerspectiveProjection()), vdw,
          SLOT(setPerspectiveProjection()));
-   vdw->connect(&rfs, SIGNAL(setOrthographicProjection()), vdw,
+   QObject::connect(&rfs, SIGNAL(setOrthographicProjection()), vdw,
          SLOT(setOrthographicProjection()));
-   vdw->connect(&rfs, SIGNAL(setReferenceFrame(bool, bool, bool, bool, bool)),
+   QObject::connect(&rfs, SIGNAL(setReferenceFrame(bool, bool, bool, bool, bool)),
          vdw, SLOT(setReferenceFrame(bool, bool, bool, bool, bool)));
-   vdw->connect(&rfs,
+   QObject::connect(&rfs,
          SIGNAL(setGridLines(bool, bool, bool, bool, bool, bool, bool, float)),
          vdw,
          SLOT(setGridLines(bool, bool, bool, bool, bool, bool, bool, float)));
-   vdw->connect(&rfs, SIGNAL(setPartitions(int, int, int)), vdw,
+   QObject::connect(&rfs, SIGNAL(setPartitions(int, int, int)), vdw,
          SLOT(setPartitions(int, int, int)));
-   vdw->connect(&ps, SIGNAL(changePointSize(int)), vdw,
+   QObject::connect(&ps, SIGNAL(changePointSize(int)), vdw,
          SLOT(setPointSize(int)));
-   vdw->connect(&cp, SIGNAL(captureFrames(bool)), vdw,
+   QObject::connect(&cp, SIGNAL(captureFrames(bool)), vdw,
          SLOT(captureFrames(bool)));
-   vdw->connect(&cp, SIGNAL(captureSingleFrame()), vdw,
+   QObject::connect(&cp, SIGNAL(captureSingleFrame()), vdw,
          SLOT(captureCurrentFrame()));
-   vdw->connect(&dp, SIGNAL(setXAxisLabels(const QString, const QString)), vdw,
+   QObject::connect(&dp, SIGNAL(setXAxisLabels(const QString, const QString)), vdw,
          SLOT(setXAxisLabels(const QString, const QString)));
-   vdw->connect(&dp, SIGNAL(setYAxisLabels(const QString, const QString)), vdw,
+   QObject::connect(&dp, SIGNAL(setYAxisLabels(const QString, const QString)), vdw,
          SLOT(setYAxisLabels(const QString, const QString)));
-   vdw->connect(&dp, SIGNAL(setZAxisLabels(const QString, const QString)), vdw,
+   QObject::connect(&dp, SIGNAL(setZAxisLabels(const QString, const QString)), vdw,
          SLOT(setZAxisLabels(const QString, const QString)));
-   vdw->connect(&rfs, SIGNAL(displayAxisLabels(bool)), vdw,
+   QObject::connect(&rfs, SIGNAL(displayAxisLabels(bool)), vdw,
          SLOT(displayAxisLabels(bool)));
-   vdw->connect(&rfs, SIGNAL(displayDateTime(bool)), vdw,
+   QObject::connect(&rfs, SIGNAL(displayDateTime(bool)), vdw,
          SLOT(displayDateTime(bool)));
-   vdw->connect(&rfs, SIGNAL(displayFramerate(bool)), vdw,
+   QObject::connect(&rfs, SIGNAL(displayFramerate(bool)), vdw,
          SLOT(displayFramerate(bool)));
-   vdw->connect(&dp, SIGNAL(setDateTimeReference(QDateTime*)), vdw,
+   QObject::connect(&dp, SIGNAL(setDateTimeReference(QDateTime*)), vdw,
          SLOT(setDateTimeReference(QDateTime*)));
-   vdw->connect(&ps, SIGNAL(setTransparentDecay(bool)), vdw,
+   QObject::connect(&ps, SIGNAL(setTransparentDecay(bool)), vdw,
          SLOT(enableTransDecay(bool)));
-   vdw->connect(&ps, SIGNAL(setPointSmoothing(bool)), vdw,
+   QObject::connect(&ps, SIGNAL(setPointSmoothing(bool)), vdw,
          SLOT(enablePointSmoothing(bool)));
-   vdw->connect(&ps, SIGNAL(setBackgroundColour(int)), vdw,
+   QObject::connect(&ps, SIGNAL(setBackgroundColour(int)), vdw,
          SLOT(setBackgroundCol(int)));
 
    //connect signals and slots for the plotting settings dialog
-   ps.connect(&cp, SIGNAL(showPlotterSettings()), &ps, SLOT(show()));
-   ps.connect(vdw, SIGNAL(showPlotterSettings()), &ps, SLOT(show()));
-   ps.connect(&dp, SIGNAL(updateHomeNetworkDisplay(int, int, int, int, int,
+   QObject::connect(&cp, SIGNAL(showPlotterSettings()), &ps, SLOT(show()));
+   QObject::connect(vdw, SIGNAL(showPlotterSettings()), &ps, SLOT(show()));
+   QObject::connect(&dp, SIGNAL(updateHomeNetworkDisplay(int, int, int, int, int,
          QString)), &ps, SLOT(updateHomeNetworkAddress(int, int, int, int,
          int, QString)));
-   ps.connect(&dp, SIGNAL(updateSourceNetworkDisplay(int, int, int, int, int,
+   QObject::connect(&dp, SIGNAL(updateSourceNetworkDisplay(int, int, int, int, int,
          QString)), &ps, SLOT(updateInternetNetworkRange(int, int, int, int,
          int, QString)));
-   ps.connect(&dp, SIGNAL(updatePortRangeDisplay(int, int)), &ps,
+   QObject::connect(&dp, SIGNAL(updatePortRangeDisplay(int, int)), &ps,
          SLOT(updatePortRange(int, int)));
 
    //connect siganls and slots for the reference frame dialog
-   rfs.connect(&cp, SIGNAL(showReferenceFrameSettings()), &rfs, SLOT(show()));
-   rfs.connect(vdw, SIGNAL(showReferenceFrameSettings()), &rfs, SLOT(show()));
+   QObject::connect(&cp, SIGNAL(showReferenceFrameSettings()), &rfs, SLOT(show()));
+   QObject::connect(vdw, SIGNAL(showReferenceFrameSettings()), &rfs, SLOT(show()));
 
    //connect signals and slots for data processor
    //dp.connect(&cp, SIGNAL(selectMode(int)), &dp, SLOT(setMode(int)));
    //from control panel
-   dp.connect(&cp, SIGNAL(play()), &dp, SLOT(play()));
-   dp.connect(&cp, SIGNAL(pause()), &dp, SLOT(pause()));
-   dp.connect(&cp, SIGNAL(togglePlayPause()), &dp, SLOT(togglePlayPause()));
-   dp.connect(&cp, SIGNAL(setReplayRate(double)), &dp,
+   QObject::connect(&cp, SIGNAL(play()), &dp, SLOT(play()));
+   QObject::connect(&cp, SIGNAL(pause()), &dp, SLOT(pause()));
+   QObject::connect(&cp, SIGNAL(togglePlayPause()), &dp, SLOT(togglePlayPause()));
+   QObject::connect(&cp, SIGNAL(setReplayRate(double)), &dp,
          SLOT(setReplayRate(double)));
-   dp.connect(&cp, SIGNAL(setReplayPosition(const QDateTime)), &dp,
+   QObject::connect(&cp, SIGNAL(setReplayPosition(const QDateTime)), &dp,
          SLOT(setReplayPosition(const QDateTime)));
-   dp.connect(&cp, SIGNAL(setTimeWindow(double)), &dp,
+   QObject::connect(&cp, SIGNAL(setTimeWindow(double)), &dp,
          SLOT(setTimeWindow(double)));
-   dp.connect(&cp, SIGNAL(selectReplayFile(const QString)), &dp,
+   QObject::connect(&cp, SIGNAL(selectReplayFile(const QString)), &dp,
          SLOT(selectReplayFile(const QString)));
-   dp.connect(&cp, SIGNAL(setFilter(const QString)), &dp,
+   QObject::connect(&cp, SIGNAL(setFilter(const QString)), &dp,
          SLOT(setFilter(const QString)));
-   dp.connect(&cp, SIGNAL(setHomeNetwork(int, int, int, int, int)), &dp,
+   QObject::connect(&cp, SIGNAL(setHomeNetwork(int, int, int, int, int)), &dp,
          SLOT(setHomeNetwork(int, int, int, int, int)));
-   dp.connect(&cp, SIGNAL(selectNetworkInterface(const QString)), &dp,
+   QObject::connect(&cp, SIGNAL(selectNetworkInterface(const QString)), &dp,
          SLOT(selectNetworkInterface(const QString)));
-   dp.connect(&cp, SIGNAL(recordToFile(bool)), &dp, SLOT(record(bool)));
+   QObject::connect(&cp, SIGNAL(recordToFile(bool)), &dp, SLOT(record(bool)));
    //from plotter settings
    //dp.connect(&ps, SIGNAL(), &dp, SLOT());
-   dp.connect(&ps, SIGNAL(setHomeNetwork(int, int, int, int, int)),
+   QObject::connect(&ps, SIGNAL(setHomeNetwork(int, int, int, int, int)),
          &dp, SLOT(setHomeNetwork(int, int, int, int, int)));
-   dp.connect(&ps, SIGNAL(setSourceNetwork(int, int, int, int, int)),
+   QObject::connect(&ps, SIGNAL(setSourceNetwork(int, int, int, int, int)),
          &dp, SLOT(setSourceNetwork(int, int, int, int, int)));
-   dp.connect(&ps, SIGNAL(setColourScheme(int)), &dp,
+   QObject::connect(&ps, SIGNAL(setColourScheme(int)), &dp,
          SLOT(setColourScheme(int)));
-   dp.connect(&ps, SIGNAL(setPortRange(int, int, int, int)), &dp,
+   QObject::connect(&ps, SIGNAL(setPortRange(int, int, int, int)), &dp,
          SLOT(setPortRange(int, int, int, int)));
-   dp.connect(&ps, SIGNAL(guessHomeNetwork()), &dp, SLOT(guessHomeNetwork()));
-   dp.connect(&ps, SIGNAL(setTransparentDecay(bool)), &dp,
+   QObject::connect(&ps, SIGNAL(guessHomeNetwork()), &dp, SLOT(guessHomeNetwork()));
+   QObject::connect(&ps, SIGNAL(setTransparentDecay(bool)), &dp,
          SLOT(setTransparentDecay(bool)));
-   dp.connect(&ps, SIGNAL(setPointBulge(bool)), &dp,
+   QObject::connect(&ps, SIGNAL(setPointBulge(bool)), &dp,
          SLOT(enablePointBulge(bool)));
-   dp.connect(&ps, SIGNAL(setBackgroundColour(int)), &dp,
+   QObject::connect(&ps, SIGNAL(setBackgroundColour(int)), &dp,
          SLOT(changeBackgroundColour(int)));
 
    //connect slot for reciving quit signal
-   app.connect(&app, SIGNAL(lastWindowClosed()), &luiq, SLOT(close()));
-   app.connect(&app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()));
+   QObject::connect(&app, SIGNAL(lastWindowClosed()), &luiq, SLOT(close()));
+   QObject::connect(&app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()));
 
    dp.init();
 
