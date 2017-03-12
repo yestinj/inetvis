@@ -35,7 +35,8 @@ copyright holder.<br>
 
 //Platform directives
 
-#include <qapplication.h>
+#include <QApplication>
+#include <QWidget>
 #include <qgl.h>
 #include "logui.h"
 #include "ui_controlpanel.h"
@@ -68,10 +69,15 @@ int main(int argc, char **argv)
    LogUIQuit luiq; //small helper object to ensure UI logging closes gracefully
 
    //declare GUI forms/windows
-   Ui_ControlPanel cp; //control panel
-   Ui_VisDisplay vd; //visaulization window
-   Ui_PlotterSettingsDialog ps; //to set plotting features
-   Ui_ReferenceFrameSettingsDialog rfs; //to set reference frame features
+   Ui::ControlPanel cp; //control panel
+   Ui::VisDisplay vd; //visaulization window
+   Ui::PlotterSettingsDialog ps; //to set plotting features
+   Ui::ReferenceFrameSettingsDialog rfs; //to set reference frame features
+
+   // New attempt at setting up main display windows.
+   QWidget w;   
+   cp.setupUi(&w);
+   vd.setupUi(&w);  
 
    //setup object reference links
    GLVisWidget *vdw = vd.getPtrToVisPane();
@@ -201,10 +207,11 @@ int main(int argc, char **argv)
 
    dp.init();
 
-   vd.show(); //show display first so that control panel begins on top
-   cp.show();
-
-//*/
+   // qt 4 requires linking uis to widget object, then calling show on the widget
+   // not sure if this works with two, but trying it..
+   //vd.show(); //show display first so that control panel begins on top
+   //cp.show();
+   w.show();
 
    return app.exec();
 
