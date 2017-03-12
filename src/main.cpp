@@ -55,7 +55,7 @@ class ControlPanelWidget : public QMainWindow, public Ui::ControlPanel {
       ControlPanelWidget(QMainWindow *parent = 0) : QMainWindow(parent) {
       setupUi(this);
    }
-}
+};
 
 
 class VisDisplayWidget : public QWidget, public Ui::VisDisplay {
@@ -64,9 +64,9 @@ class VisDisplayWidget : public QWidget, public Ui::VisDisplay {
 
    public:
       VisDisplayWidget(QWidget *parent = 0) : QWidget(parent) {
-      setupUi(this)
+      setupUi(this);
    }
-}
+};
 
 
 class PlotterSettingsDialogWidget : public QDialog, public Ui::PlotterSettingsDialog {
@@ -75,9 +75,9 @@ class PlotterSettingsDialogWidget : public QDialog, public Ui::PlotterSettingsDi
 
    public:
       PlotterSettingsDialogWidget(QDialog *parent = 0) : QDialog(parent) {
-      setupUi(this)
+      setupUi(this);
    }
-}
+};
 
 
 class ReferenceFrameSettingsDialogWidget : public QDialog, public Ui::ReferenceFrameSettingsDialog {
@@ -86,9 +86,9 @@ class ReferenceFrameSettingsDialogWidget : public QDialog, public Ui::ReferenceF
 
    public:
       ReferenceFrameSettingsDialogWidget(QDialog *parent = 0) : QDialog(parent) {
-      setupUi(this)
+      setupUi(this);
    }
-}
+};
 
 
 int main(int argc, char **argv) {
