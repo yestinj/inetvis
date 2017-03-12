@@ -44,8 +44,8 @@ IMAGES	= images/emblem-pictures.png \
 ## CUSTOM SETTINGS ----------------------------------------
 
 ## Build Mode
-CONFIG   += debug warn_on
-#CONFIG	  += debug
+#CONFIG   += debug warn_on
+CONFIG	  += debug
 #CONFIG   += release
 ### uncomment one or the other above
 
@@ -84,10 +84,13 @@ win32 {
 
 QT += qt3support
 
-DEFINES  += QT3_SUPPORT_WARNINGS
+#DEFINES  += QT3_SUPPORT_WARNINGS
 
 #The following line was inserted by qt3to4
 QT +=  opengl
 #The following line was inserted by qt3to4
 #CONFIG += uic3
+
+# Turn off C++ warnings while building
+CONFIG += warn_off
 
