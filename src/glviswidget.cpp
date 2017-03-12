@@ -358,9 +358,8 @@ void GLVisWidget::paintGL()
          captureSingleFrameToFile = false;
          captureFrameToFile = false;
          //create filename
-         sprintf(&frameFileName[frameDirCharIndex], QString('/' +
-               currentTime->toString("/yyyyMMdd-hhmmsszzz") + "_snap%02d.ppm"),
-               snapshotCount);
+         QString fname_part = "/" + currentTime->toString("/yyyyMMdd-hhmmsszzz") + "_snap%02d.ppm";
+         sprintf(&frameFileName[frameDirCharIndex], fname_part.toAscii(), snapshotCount);
          //check if filename exists - in case of multiple snapshots at same
          //position in file
          if (QFile::exists(frameFileName))
@@ -379,8 +378,8 @@ void GLVisWidget::paintGL()
       else
       {  //capturing multiple frames to files
          recFrameCount++;
-         sprintf(&frameFileName[frameDirCharIndex], QString("/frame%09d - "
-            + currentTime->toString("yyyyMMdd-hhmmsszzz") + ".ppm"), recFrameCount);
+	 QString fname_part = "/frame%09d - " + currentTime->toString("yyyyMMdd-hhmmsszzz") + ".ppm";
+         sprintf(&frameFileName[frameDirCharIndex], fname_part.toAscii(), recFrameCount);
                //here we cater for framecount of up to 9 digits
       }
 
