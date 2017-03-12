@@ -68,10 +68,10 @@ int main(int argc, char **argv)
    LogUIQuit luiq; //small helper object to ensure UI logging closes gracefully
 
    //declare GUI forms/windows
-   ControlPanel cp; //control panel
-   VisDisplay vd; //visaulization window
-   PlotterSettingsDialog ps; //to set plotting features
-   ReferenceFrameSettingsDialog rfs; //to set reference frame features
+   Ui_ControlPanel cp; //control panel
+   Ui_VisDisplay vd; //visaulization window
+   Ui_PlotterSettingsDialog ps; //to set plotting features
+   Ui_ReferenceFrameSettingsDialog rfs; //to set reference frame features
 
    //setup object reference links
    GLVisWidget *vdw = vd.getPtrToVisPane();
