@@ -1353,8 +1353,8 @@
     <include location="local">qvalidator.h</include>
     <include location="local">q3filedialog.h</include>
     <include location="local">qerrormessage.h</include>
-    <include location="local">aboutdialog.h</include>
-    <include location="local">helpdocumentationdialog.h</include>
+    <include location="local">ui_aboutdialog.h</include>
+    <include location="local">ui_helpdocumentationdialog.h</include>
   </includes>
   <connections>
     <connection>

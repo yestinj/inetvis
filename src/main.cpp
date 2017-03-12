@@ -38,10 +38,10 @@ copyright holder.<br>
 #include <qapplication.h>
 #include <qgl.h>
 #include "logui.h"
-#include "controlpanel.h"
-#include "visdisplay.h"
-#include "plottersettingsdialog.h"
-#include "referenceframesettingsdialog.h"
+#include "ui_controlpanel.h"
+#include "ui_visdisplay.h"
+#include "ui_plottersettingsdialog.h"
+#include "ui_referenceframesettingsdialog.h"
 #include "dataproc.h"
 
 int main(int argc, char **argv)
