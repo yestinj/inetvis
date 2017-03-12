@@ -827,9 +827,6 @@
       <addaction name="helpMenu"/>
     </widget>
     <action name="fileNewAction">
-      <property name="name">
-        <cstring>fileNewAction</cstring>
-      </property>
       <property name="icon">
         <iconset/>
       </property>
@@ -844,9 +841,6 @@
       </property>
     </action>
     <action name="fileOpenAction">
-      <property name="name">
-        <cstring>fileOpenAction</cstring>
-      </property>
       <property name="icon">
         <iconset>fileopen</iconset>
       </property>
@@ -861,9 +855,6 @@
       </property>
     </action>
     <action name="fileSaveAction">
-      <property name="name">
-        <cstring>fileSaveAction</cstring>
-      </property>
       <property name="icon">
         <iconset>filesave</iconset>
       </property>
@@ -878,9 +869,6 @@
       </property>
     </action>
     <action name="fileSaveAsAction">
-      <property name="name">
-        <cstring>fileSaveAsAction</cstring>
-      </property>
       <property name="iconText">
         <string>Save As</string>
       </property>
@@ -892,9 +880,6 @@
       </property>
     </action>
     <action name="fileExitAction">
-      <property name="name">
-        <cstring>fileExitAction</cstring>
-      </property>
       <property name="iconText">
         <string>Exit</string>
       </property>
@@ -906,9 +891,6 @@
       </property>
     </action>
     <action name="helpContentsAction">
-      <property name="name">
-        <cstring>helpContentsAction</cstring>
-      </property>
       <property name="iconText">
         <string>Contents</string>
       </property>
@@ -920,9 +902,6 @@
       </property>
     </action>
     <action name="helpIndexAction">
-      <property name="name">
-        <cstring>helpIndexAction</cstring>
-      </property>
       <property name="iconText">
         <string>Index</string>
       </property>
@@ -934,9 +913,6 @@
       </property>
     </action>
     <action name="helpAboutAction">
-      <property name="name">
-        <cstring>helpAboutAction</cstring>
-      </property>
       <property name="iconText">
         <string>About</string>
       </property>
@@ -948,9 +924,6 @@
       </property>
     </action>
     <action name="viewDisplayWindowAction">
-      <property name="name">
-        <cstring>viewDisplayWindowAction</cstring>
-      </property>
       <property name="checkable">
         <bool>false</bool>
       </property>
@@ -968,9 +941,6 @@
       </property>
     </action>
     <action name="viewPlotterSettingsAction">
-      <property name="name">
-        <cstring>viewPlotterSettingsAction</cstring>
-      </property>
       <property name="checkable">
         <bool>false</bool>
       </property>
@@ -985,9 +955,6 @@
       </property>
     </action>
     <action name="replayAction">
-      <property name="name">
-        <cstring>replayAction</cstring>
-      </property>
       <property name="iconText">
         <string/>
       </property>
@@ -996,9 +963,6 @@
       </property>
     </action>
     <action name="replayReplay_RateAction">
-      <property name="name">
-        <cstring>replayReplay_RateAction</cstring>
-      </property>
       <property name="iconText">
         <string>&amp;Replay Rate</string>
       </property>
@@ -1007,9 +971,6 @@
       </property>
     </action>
     <action name="replayTime_WindowAction">
-      <property name="name">
-        <cstring>replayTime_WindowAction</cstring>
-      </property>
       <property name="iconText">
         <string>&amp;Time Window</string>
       </property>
@@ -1018,9 +979,6 @@
       </property>
     </action>
     <action name="replayReplay_Rate1_Millisecond_per_Second_0001xAction">
-      <property name="name">
-        <cstring>replayReplay_Rate1_Millisecond_per_Second_0001xAction</cstring>
-      </property>
       <property name="iconText">
         <string>1 Millisecond per Second (0.001x)</string>
       </property>
@@ -1029,9 +987,6 @@
       </property>
     </action>
     <action name="replayReplay_RateNormal_Playback_Speed_1xAction">
-      <property name="name">
-        <cstring>replayReplay_RateNormal_Playback_Speed_1xAction</cstring>
-      </property>
       <property name="iconText">
         <string>Normal Playback Speed (1x)</string>
       </property>
@@ -1040,9 +995,6 @@
       </property>
     </action>
     <action name="replayReplay_Rate1_Minute_per_Second_60xAction">
-      <property name="name">
-        <cstring>replayReplay_Rate1_Minute_per_Second_60xAction</cstring>
-      </property>
       <property name="iconText">
         <string>1 &amp;Minute per Second (60x)</string>
       </property>
@@ -1051,9 +1003,6 @@
       </property>
     </action>
     <action name="replayReplay_Rate1_Hour_per_Second_3600xAction">
-      <property name="name">
-        <cstring>replayReplay_Rate1_Hour_per_Second_3600xAction</cstring>
-      </property>
       <property name="iconText">
         <string>1 &amp;Hour per Second (3600x)</string>
       </property>
@@ -1062,9 +1011,6 @@
       </property>
     </action>
     <action name="replayReplay_Rate1_Day_per_Second_86000xAction">
-      <property name="name">
-        <cstring>replayReplay_Rate1_Day_per_Second_86000xAction</cstring>
-      </property>
       <property name="iconText">
         <string>1 &amp;Day per Second (86000x)</string>
       </property>
@@ -1073,9 +1019,6 @@
       </property>
     </action>
     <action name="replayTime_Window1_SecondAction">
-      <property name="name">
-        <cstring>replayTime_Window1_SecondAction</cstring>
-      </property>
       <property name="iconText">
         <string>1 &amp;Second</string>
       </property>
@@ -1084,9 +1027,6 @@
       </property>
     </action>
     <action name="replayTime_Window1_MinuteAction">
-      <property name="name">
-        <cstring>replayTime_Window1_MinuteAction</cstring>
-      </property>
       <property name="iconText">
         <string>1 &amp;Minute</string>
       </property>
@@ -1095,9 +1035,6 @@
       </property>
     </action>
     <action name="replayTime_Window1_HourAction">
-      <property name="name">
-        <cstring>replayTime_Window1_HourAction</cstring>
-      </property>
       <property name="iconText">
         <string>1 &amp;Hour</string>
       </property>
@@ -1106,9 +1043,6 @@
       </property>
     </action>
     <action name="replayTime_Window1_DayAction">
-      <property name="name">
-        <cstring>replayTime_Window1_DayAction</cstring>
-      </property>
       <property name="iconText">
         <string>1 &amp;Day</string>
       </property>
@@ -1117,9 +1051,6 @@
       </property>
     </action>
     <action name="replayTime_Window1_Week_7_DaysAction">
-      <property name="name">
-        <cstring>replayTime_Window1_Week_7_DaysAction</cstring>
-      </property>
       <property name="iconText">
         <string>1 &amp;Week (7 Days)</string>
       </property>
@@ -1128,9 +1059,6 @@
       </property>
     </action>
     <action name="replayTime_Window1_Month_31_DaysAction">
-      <property name="name">
-        <cstring>replayTime_Window1_Month_31_DaysAction</cstring>
-      </property>
       <property name="iconText">
         <string>1 &amp;Month (31 Days)</string>
       </property>
@@ -1139,9 +1067,6 @@
       </property>
     </action>
     <action name="replayTime_Window1_Year_365_DaysAction">
-      <property name="name">
-        <cstring>replayTime_Window1_Year_365_DaysAction</cstring>
-      </property>
       <property name="iconText">
         <string>1 &amp;Year (365 Days)</string>
       </property>
@@ -1150,9 +1075,6 @@
       </property>
     </action>
     <action name="viewReferenceFrameSettingsAction">
-      <property name="name">
-        <cstring>viewReferenceFrameSettingsAction</cstring>
-      </property>
       <property name="iconText">
         <string>&amp;Reference Frame Settings</string>
       </property>
@@ -1161,9 +1083,6 @@
       </property>
     </action>
     <action name="recordCapture_Current_Frame_to_FileAction">
-      <property name="name">
-        <cstring>recordCapture_Current_Frame_to_FileAction</cstring>
-      </property>
       <property name="checkable">
         <bool>false</bool>
       </property>
@@ -1175,9 +1094,6 @@
       </property>
     </action>
     <action name="recordCapture_Frames_to_FileAction">
-      <property name="name">
-        <cstring>recordCapture_Frames_to_FileAction</cstring>
-      </property>
       <property name="checkable">
         <bool>true</bool>
       </property>
@@ -1189,9 +1105,6 @@
       </property>
     </action>
     <action name="recordDump_to_Pcap_FileAction">
-      <property name="name">
-        <cstring>recordDump_to_Pcap_FileAction</cstring>
-      </property>
       <property name="checkable">
         <bool>true</bool>
       </property>
@@ -1203,17 +1116,11 @@
       </property>
     </action>
     <action name="Action">
-      <property name="name">
-        <cstring>Action</cstring>
-      </property>
       <property name="iconText">
         <string>Action</string>
       </property>
     </action>
     <action name="helpHelpAction">
-      <property name="name">
-        <cstring>helpHelpAction</cstring>
-      </property>
       <property name="iconText">
         <string>Documentation</string>
       </property>
@@ -1223,9 +1130,6 @@
     </action>
     <actiongroup name="replayActionGroup">
       <action name="playAction">
-        <property name="name">
-          <cstring>playAction</cstring>
-        </property>
         <property name="checkable">
           <bool>false</bool>
         </property>
@@ -1243,9 +1147,6 @@
         </property>
       </action>
       <action name="pauseAction">
-        <property name="name">
-          <cstring>pauseAction</cstring>
-        </property>
         <property name="checkable">
           <bool>false</bool>
         </property>
@@ -1262,18 +1163,12 @@
           <string>Pause</string>
         </property>
       </action>
-      <property name="name">
-        <cstring>replayActionGroup</cstring>
-      </property>
       <property name="exclusive">
         <bool>false</bool>
       </property>
     </actiongroup>
     <actiongroup name="modeActionGroup">
       <action name="monitorLocalHostAction">
-        <property name="name">
-          <cstring>monitorLocalHostAction</cstring>
-        </property>
         <property name="checkable">
           <bool>true</bool>
         </property>
@@ -1294,9 +1189,6 @@
         </property>
       </action>
       <action name="replayCaptureFileAction">
-        <property name="name">
-          <cstring>replayCaptureFileAction</cstring>
-        </property>
         <property name="checkable">
           <bool>true</bool>
         </property>
@@ -1313,9 +1205,6 @@
           <string>Replay capture file</string>
         </property>
       </action>
-      <property name="name">
-        <cstring>modeActionGroup</cstring>
-      </property>
     </actiongroup>
   </widget>
   <layoutdefault spacing="6" margin="11"/>
