@@ -45,9 +45,9 @@ IMAGES	= images/emblem-pictures.png \
 ## CUSTOM SETTINGS ----------------------------------------
 
 ## Build Mode
-#CONFIG   += debug warn_on
+CONFIG   += debug warn_on
 #CONFIG	  += debug
-CONFIG   += release
+#CONFIG   += release
 ### uncomment one or the other above
 
 ## Linking
@@ -85,7 +85,7 @@ win32 {
 
 QT += qt3support
 
-#DEFINES  += QT3_SUPPORT_WARNINGS
+DEFINES  += QT3_SUPPORT_WARNINGS
 
 #The following line was inserted by qt3to4
 QT +=  opengl
