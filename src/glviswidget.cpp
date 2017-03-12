@@ -1524,7 +1524,7 @@ void GLVisWidget::calculateFPS()
 
 void GLVisWidget::showEvent()
 {
-   setActiveWindow();
+   activateWindow();
 
 }
 
