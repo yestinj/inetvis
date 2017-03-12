@@ -1424,7 +1424,7 @@ void GLVisWidget::captureFrames(bool on)
       {  frameCaptureDir = QString(DEFAULT_FRAMES_DIR);
       }
       //init frameFileName reference
-      strcpy(frameFileName, frameCaptureDir);
+      strcpy(frameFileName, frameCaptureDir.toAscii());
       frameDirCharIndex = frameCaptureDir.length();
       //set capture frames flag
       captureFrameToFile = true;
@@ -1496,7 +1496,7 @@ void GLVisWidget::captureCurrentFrame()
       {  frameCaptureDir = QString(DEFAULT_SNAPSHOTS_DIR);
       }
       //init frameFileName reference
-      strcpy(frameFileName, frameCaptureDir);
+      strcpy(frameFileName, frameCaptureDir.toAscii());
       frameDirCharIndex = frameCaptureDir.length();
       //set flags
       captureSingleFrameToFile = true;
