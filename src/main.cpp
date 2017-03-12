@@ -66,6 +66,11 @@ class VisDisplayWidget : public QWidget, public Ui::VisDisplay {
       VisDisplayWidget(QWidget *parent = 0) : QWidget(parent) {
       setupUi(this);
    }
+
+   //TODO: This is a mock to allow building to procedure, requires actual logic.
+   GLVisWidget* getPtrToVisPane() {
+      return displayWidget;
+   }
 };
 
 
