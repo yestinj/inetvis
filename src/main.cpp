@@ -75,8 +75,8 @@ int main(int argc, char **argv)
    Ui::ReferenceFrameSettingsDialog rfs; //to set reference frame features
 
    // New attempt at setting up main display windows.
-   QWidget w;   
-   cp.setupUi(&w);
+   QMainWindow w;   
+   cp.setupUi(qobject_cast<QMainWindow *>(&w));
    vd.setupUi(&w);  
 
    //setup object reference links
