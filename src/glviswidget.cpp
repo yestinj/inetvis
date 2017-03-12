@@ -76,7 +76,7 @@ GLVisWidget::GLVisWidget(QWidget *parent) : QGLWidget(parent)
    fpsSampleRate = DEFAULT_FPS_SAMPLE_RATE; //number of milliseconds to wait
       //before calculating average framerate
    //setup timer
-   fpsTimer = new QTimer(this, "fps timer"); //timer to sample frames rendered
+   fpsTimer = new QTimer(this); //timer to sample frames rendered
    connect(fpsTimer, SIGNAL(timeout()), this, SLOT(calculateFPS()));
    snapshotCount = 0;
 
