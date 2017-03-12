@@ -4,7 +4,7 @@
   <comment></comment>
   <exportmacro></exportmacro>
   <class>ControlPanel</class>
-  <widget class="Q3MainWindow" name="ControlPanel">
+  <widget class="QMainWindow" name="ControlPanel">
     <property name="geometry">
       <rect>
         <x>0</x>
@@ -45,16 +45,13 @@
     <property name="focusPolicy">
       <enum>Qt::StrongFocus</enum>
     </property>
-    <property name="dockWindowsMovable">
-      <bool>false</bool>
-    </property>
     <widget class="QWidget">
       <layout class="QVBoxLayout">
         <property name="sizeConstraint">
           <enum>Minimum</enum>
         </property>
         <item>
-          <widget class="Q3GroupBox" name="replayPositionGroupBox">
+          <widget class="QGroupBox" name="replayPositionGroupBox">
             <property name="enabled">
               <bool>true</bool>
             </property>
@@ -74,7 +71,7 @@
             </property>
             <layout class="QHBoxLayout">
               <item>
-                <widget class="Q3DateTimeEdit" name="replayDateTimeEdit">
+                <widget class="QDateTimeEdit" name="replayDateTimeEdit">
                   <property name="enabled">
                     <bool>true</bool>
                   </property>
@@ -211,7 +208,7 @@
         <item>
           <layout class="QHBoxLayout">
             <item>
-              <widget class="Q3GroupBox" name="ReplaySpeedGroupBox">
+              <widget class="QGroupBox" name="ReplaySpeedGroupBox">
                 <property name="enabled">
                   <bool>true</bool>
                 </property>
@@ -385,7 +382,7 @@
               </widget>
             </item>
             <item>
-              <widget class="Q3GroupBox" name="recordGroupBox">
+              <widget class="QGroupBox" name="recordGroupBox">
                 <property name="sizePolicy">
                   <sizepolicy>
                     <hsizetype>0</hsizetype>
@@ -470,7 +467,7 @@
           </layout>
         </item>
         <item>
-          <widget class="Q3GroupBox" name="HistoricViewGroupBox">
+          <widget class="QGroupBox" name="HistoricViewGroupBox">
             <property name="enabled">
               <bool>true</bool>
             </property>
@@ -544,7 +541,7 @@
                 </widget>
               </item>
               <item>
-                <widget class="Q3TimeEdit" name="timeWindowTimeEdit">
+                <widget class="QTimeEdit" name="timeWindowTimeEdit">
                   <property name="sizePolicy">
                     <sizepolicy>
                       <hsizetype>0</hsizetype>
@@ -553,7 +550,7 @@
                       <verstretch>0</verstretch>
                     </sizepolicy>
                   </property>
-                  <property name="maxValue">
+                  <property name="maximumTime">
                     <time>
                       <hour>23</hour>
                       <minute>59</minute>
@@ -676,7 +673,7 @@
           </widget>
         </item>
         <item>
-          <widget class="Q3GroupBox" name="FilterGroupBox">
+          <widget class="QGroupBox" name="FilterGroupBox">
             <property name="sizePolicy">
               <sizepolicy>
                 <hsizetype>3</hsizetype>
@@ -1240,7 +1237,7 @@
     <include location="local">qdatetime.h</include>
     <include location="local">qstatusbar.h</include>
     <include location="local">qvalidator.h</include>
-    <include location="local">q3filedialog.h</include>
+    <include location="local">qfiledialog.h</include>
     <include location="local">qerrormessage.h</include>
     <include location="local">ui_aboutdialog.h</include>
     <include location="local">ui_helpdocumentationdialog.h</include>
