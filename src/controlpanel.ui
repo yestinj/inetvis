@@ -50,7 +50,7 @@
     </property>
     <widget class="QWidget">
       <layout class="QVBoxLayout">
-        <property name="resizeMode">
+        <property name="sizeConstraint">
           <enum>Minimum</enum>
         </property>
         <item>
