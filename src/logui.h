@@ -39,12 +39,12 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
  */
 
-#include <qobject.h>
-#include <qstring.h>
-#include <qdatetime.h>
-#include <qdir.h>
-#include <qfile.h>
-#include <q3textstream.h>
+#include <QObject>
+#include <QString>
+#include <QDateTime>
+#include <QDir>
+#include <QFile>
+#include <QTextStream>
 
 
 class LogUI
@@ -56,7 +56,7 @@ class LogUI
       static bool enabled;
       static QString logFileName;
       static QFile logFile;  //object to manage log file - file handle
-      static Q3TextStream logStream;  //stream to write into log file
+      static QTextStream logStream;  //stream to write into log file
       
       //functions
       static bool openFile();

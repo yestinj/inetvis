@@ -7,7 +7,7 @@ using namespace std;
 bool LogUI::enabled = false; //by default
 QString LogUI::logFileName;
 QFile LogUI::logFile;
-Q3TextStream LogUI::logStream;      
+QTextStream LogUI::logStream;      
 
 
 bool LogUI::isEnabled()
@@ -56,6 +56,10 @@ bool LogUI::openFile()
    if (logFile.open(QIODevice::WriteOnly))
    {  
       //connect logstream to file
+      // TODO: Consider using:
+      // QTextStream logStream(&logFile);
+      // logStream.setCodec("UTF-8");
+      //
       logStream.setDevice(&logFile);
 
       //write opening tag to file
@@ -74,6 +78,7 @@ void LogUI::closeFile()
 {
    //write closing tag to file - this will indicate successful closure
    logEvent("UI log file closed");
+   // TODO: I think this is now deprecated.. see how to compensate
    logStream.unsetDevice();
    logFile.close();
 
