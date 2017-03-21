@@ -48,7 +48,7 @@
     <widget class="QWidget">
       <layout class="QVBoxLayout">
         <property name="sizeConstraint">
-          <enum>Minimum</enum>
+          <enum>SetMinimumSize</enum>
         </property>
         <item>
           <widget class="QGroupBox" name="replayPositionGroupBox">
