@@ -1140,12 +1140,6 @@
                   <verstretch>0</verstretch>
                 </sizepolicy>
               </property>
-              <property name="lineWidth">
-                <number>1</number>
-              </property>
-              <property name="margin">
-                <number>1</number>
-              </property>
               <property name="title">
                 <string>Points</string>
               </property>
