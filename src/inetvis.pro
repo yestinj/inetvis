@@ -29,17 +29,19 @@ FORMS = controlpanel.ui \
 	aboutdialog.ui \
 	helpdocumentationdialog.ui
 
-IMAGES	= images/emblem-pictures.png \
-	images/fileopen \
-	images/filesave \
-	images/stock_insert-video-plugin.png \
-	images/stock_media-fwd.png \
-	images/stock_media-pause.png \
-	images/stock_media-play.png \
-	images/stock_media-rec.png \
-	images/stock_media-rew.png \
-	images/stock_calc-accept.png
-	
+# Replaced by RESOURCES. Leaving around for now..
+#IMAGES	= images/emblem-pictures.png \	
+#	images/fileopen \
+#	images/filesave \
+#	images/stock_insert-video-plugin.png \
+#	images/stock_media-fwd.png \
+#	images/stock_media-pause.png \
+#	images/stock_media-play.png \
+#	images/stock_media-rec.png \
+#	images/stock_media-rew.png \
+#	images/stock_calc-accept.png
+
+RESOURCES += icons.qrc	
 
 ## CUSTOM SETTINGS ----------------------------------------
 

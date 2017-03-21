@@ -137,7 +137,9 @@
                     <string/>
                   </property>
                   <property name="icon">
-                    <iconset>stock_calc-accept.png</iconset>
+        	    <iconset resource="icons.qrc">
+	  	        <normaloff>:/icons/stock_calc-accept.png</normaloff>:/icons/stock_calc-accept.png
+        	    </iconset>
                   </property>
                   <property name="toolTip" stdset="0">
                     <string>'click' to apply replay position</string>
@@ -257,7 +259,9 @@
                         <bool>false</bool>
                       </property>
                       <property name="icon">
-                        <iconset>stock_media-play.png</iconset>
+        	        <iconset resource="icons.qrc">
+	  	          <normaloff>:/icons/stock_media-play.png</normaloff>:/icons/stock_media-play.png
+        	        </iconset>
                       </property>
                       <property name="autoRaise">
                         <bool>false</bool>
@@ -416,8 +420,10 @@
                         <bool>true</bool>
                       </property>
                       <property name="icon">
-                        <iconset>stock_media-rec.png</iconset>
-                      </property>
+        	        <iconset resource="icons.qrc">
+	  	          <normaloff>:/icons/stock_media-rec.png</normaloff>:/icons/stock_media-rec.png
+        	        </iconset>
+		      </property>
                       <property name="toolTip" stdset="0">
                         <string>packet recording - toggle to record visaulized data back out to packet capture file (depress to stop)</string>
                       </property>
@@ -435,7 +441,9 @@
                         <bool>true</bool>
                       </property>
                       <property name="icon">
-                        <iconset>stock_insert-video-plugin.png</iconset>
+        	        <iconset resource="icons.qrc">
+	  	          <normaloff>:/icons/stock_insert-plugin.png</normaloff>:/icons/stock_insert-plugin.png
+        	        </iconset>
                       </property>
                       <property name="toolTip" stdset="0">
                         <string>Frame capture - toggle to copy rendered frames to image files (depress to stop)</string>
@@ -454,7 +462,9 @@
                         <bool>false</bool>
                       </property>
                       <property name="icon">
-                        <iconset>emblem-pictures.png</iconset>
+        	        <iconset resource="icons.qrc">
+	  	          <normaloff>:/icons/emblem-pictures.png</normaloff>:/icons/emblem-pictures.png
+        	        </iconset>
                       </property>
                       <property name="toolTip" stdset="0">
                         <string>Image snapshot - click once to take a single sanpshot of the current frame</string>
@@ -610,7 +620,9 @@
                     <string/>
                   </property>
                   <property name="icon">
-                    <iconset>stock_calc-accept.png</iconset>
+        	    <iconset resource="icons.qrc">
+	  	      <normaloff>:/icons/stock_calc-accept.png</normaloff>:/icons/stock_calc-accept.png
+        	    </iconset>
                   </property>
                   <property name="toolTip" stdset="0">
                     <string>'click' to apply time window</string>
@@ -752,7 +764,9 @@
                     <string/>
                   </property>
                   <property name="icon">
-                    <iconset>stock_calc-accept.png</iconset>
+        	    <iconset resource="icons.qrc">
+	  	      <normaloff>:/icons/stock_calc-accept.png</normaloff>:/icons/stock_calc-accept.png
+        	    </iconset>
                   </property>
                   <property name="toolTip" stdset="0">
                     <string>'click' to apply filter expression - if expression invalid, it will not be applied</string>
@@ -839,7 +853,9 @@
     </action>
     <action name="fileOpenAction">
       <property name="icon">
-        <iconset>fileopen</iconset>
+        <iconset resource="icons.qrc">
+	  <normaloff>:/icons/fileopen.png</normaloff>:/icons/fileopen.png
+        </iconset>
       </property>
       <property name="iconText">
         <string>Open</string>
@@ -852,8 +868,10 @@
       </property>
     </action>
     <action name="fileSaveAction">
-      <property name="icon">
-        <iconset>filesave</iconset>
+      <property name="icon"> 
+        <iconset resource="icons.qrc">
+	  <normaloff>:/icons/filesave.png</normaloff>:/icons/filesave.png
+        </iconset>
       </property>
       <property name="iconText">
         <string>Save</string>
@@ -1448,4 +1466,7 @@
       <slot>helpDoc()</slot>
     </connection>
   </connections>
+  <resources>
+    <include location="icons.qrc"/>
+  </resources>
 </ui>
