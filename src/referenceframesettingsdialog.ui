@@ -30,7 +30,7 @@
           <item>
             <layout class="QVBoxLayout">
               <item>
-                <widget class="Q3ButtonGroup" name="projectionModeButtonGroup">
+                <widget class="QGroupBox" name="projectionModeButtonGroup">
                   <property name="title">
                     <string>Projection Mode</string>
                   </property>
@@ -68,7 +68,7 @@
                 </widget>
               </item>
               <item>
-                <widget class="Q3ButtonGroup" name="axesButtonGroup">
+                <widget class="QGroupBox" name="axesButtonGroup">
                   <property name="sizePolicy">
                     <sizepolicy>
                       <hsizetype>1</hsizetype>
@@ -243,7 +243,7 @@
             </layout>
           </item>
           <item>
-            <widget class="Q3ButtonGroup" name="GridButtonGroup">
+            <widget class="QGroupBox" name="GridButtonGroup">
               <property name="sizePolicy">
                 <sizepolicy>
                   <hsizetype>1</hsizetype>
@@ -497,7 +497,7 @@
         </layout>
       </item>
       <item>
-        <widget class="Q3GroupBox" name="partitionsGroupBox">
+        <widget class="QGroupBox" name="partitionsGroupBox">
           <property name="sizePolicy">
             <sizepolicy>
               <hsizetype>1</hsizetype>
@@ -721,7 +721,7 @@
         </widget>
       </item>
       <item>
-        <widget class="Q3GroupBox" name="textLabelsGroupBox">
+        <widget class="QGroupBox" name="textLabelsGroupBox">
           <property name="sizePolicy">
             <sizepolicy>
               <hsizetype>1</hsizetype>
