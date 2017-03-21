@@ -49,7 +49,7 @@ bool LogUI::openFile()
    //set log file name according to the starting timestamp
    QString startTime = QDateTime::currentDateTime().toString("yyyyMMdd-hhmmss");
    logFileName = QString("ui-" + startTime + ".log");
-   logFile.setName("logui/" + logFileName);
+   logFile.setFileName("logui/" + logFileName);
    
    //open log file - note we do not need to append to pre-existing logs, since 
    //we open one log file per user session and never append to it again
@@ -78,8 +78,8 @@ void LogUI::closeFile()
 {
    //write closing tag to file - this will indicate successful closure
    logEvent("UI log file closed");
-   // TODO: I think this is now deprecated.. see how to compensate
-   logStream.unsetDevice();
+   // TODO:Unset no longer exists. Not sure what replaces it, if anything. 
+   //logStream.unsetDevice();
    logFile.close();
 
 }
