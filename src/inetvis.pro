@@ -82,7 +82,7 @@ win32 {
 
 ## qt3 support settings -------------------------------------
 
-QT += qt3support
+#QT += qt3support
 
 #DEFINES  += QT3_SUPPORT_WARNINGS
 
