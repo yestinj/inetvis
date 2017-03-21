@@ -826,7 +826,8 @@ void GLVisWidget::mouseMoveEvent(QMouseEvent *ev)
    mouseox = x;
    mouseoy = y;
 
-   switch (ev->state())
+   // TODO: Confirm this does what is expected. Mouse click errors begin looking here.
+   switch (ev->button())
    {
       //depending on mouse acction, update dynamic transformation variables
 
@@ -891,7 +892,7 @@ void GLVisWidget::keyPressEvent(QKeyEvent *ev)
          checkControlBounds();
          break;
       case Qt::Key_Left:
-         if (ev->state() & Qt::ControlModifier)
+         if (ev->modifiers() & Qt::ControlModifier)
          {  offsetx -= 0.5;
             checkControlBounds();
          }
@@ -899,7 +900,7 @@ void GLVisWidget::keyPressEvent(QKeyEvent *ev)
             rotx += 1.0;
          break;
       case Qt::Key_Right:
-         if (ev->state() & Qt::ControlModifier)
+         if (ev->modifiers() & Qt::ControlModifier)
          {  offsetx += 0.5;
             checkControlBounds();
          }
@@ -907,11 +908,11 @@ void GLVisWidget::keyPressEvent(QKeyEvent *ev)
             rotx -= 1.0;
          break;
       case Qt::Key_Up:
-         if (ev->state() & Qt::ControlModifier)
+         if (ev->modifiers() & Qt::ControlModifier)
          {  offsety += 0.5;
             checkControlBounds();
          }
-         else if (ev->state() & Qt::AltModifier)
+         else if (ev->modifiers() & Qt::AltModifier)
          {  offsetz -= 0.5;
             checkControlBounds();
          }
@@ -919,11 +920,11 @@ void GLVisWidget::keyPressEvent(QKeyEvent *ev)
             roty += 1.0;
          break;
       case Qt::Key_Down:
-         if (ev->state() & Qt::ControlModifier)
+         if (ev->modifiers() & Qt::ControlModifier)
          {  offsety -= 0.5;
             checkControlBounds();
          }
-         else if (ev->state() & Qt::AltModifier)
+         else if (ev->modifiers() & Qt::AltModifier)
          {  offsetz += 0.5;
             checkControlBounds();
          }
@@ -939,7 +940,7 @@ void GLVisWidget::keyReleaseEvent(QKeyEvent *ev)
 {
    switch (ev->key())
    {  case Qt::Key_F: //toggle full screen
-         if (ev->state() & Qt::ControlModifier) //ctrl F
+         if (ev->modifiers() & Qt::ControlModifier) //ctrl F
          {  setFrontView();
          }
          else // just F
@@ -950,17 +951,17 @@ void GLVisWidget::keyReleaseEvent(QKeyEvent *ev)
          }
          break;
       case Qt::Key_L:
-         if (ev->state() & Qt::ControlModifier) //ctrl L
+         if (ev->modifiers() & Qt::ControlModifier) //ctrl L
          {  setLeftView();
          }
          break;
       case Qt::Key_T:
-         if (ev->state() & Qt::ControlModifier) //ctrl T
+         if (ev->modifiers() & Qt::ControlModifier) //ctrl T
          {  setTopView();
          }
          break;
       case Qt::Key_B:
-         if (ev->state() & Qt::ControlModifier) //ctrl B
+         if (ev->modifiers() & Qt::ControlModifier) //ctrl B
          {  setBottomView();
          }
          break;
@@ -981,14 +982,14 @@ void GLVisWidget::keyReleaseEvent(QKeyEvent *ev)
          emit showPlotterSettings();
          break;
       case Qt::Key_R: //toggle control panel
-         if (ev->state() & Qt::ControlModifier) //ctrl R
+         if (ev->modifiers() & Qt::ControlModifier) //ctrl R
          {  setRightView();
          }
          else
             emit showReferenceFrameSettings();
          break;
       case Qt::Key_H:
-         if (ev->state() & Qt::ControlModifier) //ctrl H
+         if (ev->modifiers() & Qt::ControlModifier) //ctrl H
          {  if (hideHomeRange)
             {  hideHomeRangeLabels(false);
                strX0 = homeRange0;
