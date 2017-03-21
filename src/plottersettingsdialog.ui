@@ -1012,12 +1012,6 @@
                   <verstretch>0</verstretch>
                 </sizepolicy>
               </property>
-              <property name="lineWidth">
-                <number>1</number>
-              </property>
-              <property name="margin">
-                <number>1</number>
-              </property>
               <property name="title">
                 <string>Colour Mapping</string>
               </property>
@@ -1068,7 +1062,7 @@
                 <item>
                   <layout class="QHBoxLayout">
                     <item>
-                      <widget class="QButtonGroup" name="backgroundButtonGroup">
+                      <widget class="QGroupBox" name="backgroundButtonGroup">
                         <property name="title">
                           <string>Background</string>
                         </property>
