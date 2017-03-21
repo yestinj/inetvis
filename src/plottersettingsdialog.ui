@@ -388,7 +388,9 @@
                             <string/>
                           </property>
                           <property name="icon">
-                            <iconset>stock_calc-accept.png</iconset>
+			    <iconset resource="icons.qrc">
+			      <normaloff>:/icons/stock_calc-accept.png</normaloff>:/icons/stock_calc-accept.png
+			    </iconset>
                           </property>
                           <property name="toolTip" stdset="0">
                             <string>Apply destination network range to plot</string>
@@ -790,7 +792,9 @@
                             <string/>
                           </property>
                           <property name="icon">
-                            <iconset>stock_calc-accept.png</iconset>
+			    <iconset resource="icons.qrc">
+			      <normaloff>:/icons/stock_calc-accept.png</normaloff>:/icons/stock_calc-accept.png
+			    </iconset>
                           </property>
                           <property name="toolTip" stdset="0">
                             <string>Apply source internet network range to plot</string>
@@ -1011,7 +1015,9 @@
                         <string/>
                       </property>
                       <property name="icon">
-                        <iconset>stock_calc-accept.png</iconset>
+		        <iconset resource="icons.qrc">
+			  <normaloff>:/icons/stock_calc-accept.png</normaloff>:/icons/stock_calc-accept.png
+			</iconset>
                       </property>
                       <property name="toolTip" stdset="0">
                         <string>Apply port range to plot</string>
@@ -1329,4 +1335,7 @@
       <slot>backgroundColourChange()</slot>
     </connection>
   </connections>
+  <resources>
+    <include location="icons.qrc"/>
+  </resources>
 </ui>

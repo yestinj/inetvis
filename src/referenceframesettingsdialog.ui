@@ -226,7 +226,9 @@
                               <string/>
                             </property>
                             <property name="icon">
-                              <iconset>stock_calc-accept.png</iconset>
+ 			      <iconset resource="icons.qrc">
+				<normaloff>:/icons/stock_calc-accept.png</normaloff>:/icons/stock_calc-accept.png
+			      </iconset>
                             </property>
                             <property name="toolTip" stdset="0">
                               <string>Apply refrence frame choices</string>
@@ -478,7 +480,9 @@
                           <string/>
                         </property>
                         <property name="icon">
-                          <iconset>stock_calc-accept.png</iconset>
+ 			  <iconset resource="icons.qrc">
+			    <normaloff>:/icons/stock_calc-accept.png</normaloff>:/icons/stock_calc-accept.png
+			  </iconset>
                         </property>
                         <property name="toolTip" stdset="0">
                           <string>Apply gird choices</string>
@@ -702,7 +706,9 @@
                       <string/>
                     </property>
                     <property name="icon">
-                      <iconset>stock_calc-accept.png</iconset>
+ 		      <iconset resource="icons.qrc">
+		        <normaloff>:/icons/stock_calc-accept.png</normaloff>:/icons/stock_calc-accept.png
+		      </iconset>
                     </property>
                     <property name="toolTip" stdset="0">
                       <string>Apply number of paritions to each axis</string>
@@ -847,4 +853,7 @@
       <slot>projectionModeChanged()</slot>
     </connection>
   </connections>
+  <resources>
+    <include location="icons.qrc"/>
+  </resources>
 </ui>
