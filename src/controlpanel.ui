@@ -1466,6 +1466,44 @@
       <slot>helpDoc()</slot>
     </connection>
   </connections>
+  <slots>
+    <slot>applyFilter()</slot>
+    <slot>applyReplayPosition()</slot>
+    <slot>applyTimeWindow()</slot>
+    <slot>fileOpen()</slot>
+    <slot>helpAbout()</slot>
+    <slot>monitorLocalHostSelected()</slot>
+    <slot>pauseMenuAction()</slot>
+    <slot>playMenuAction()</slot>
+    <slot>playPauseToolButtonClicked()</slot>
+    <slot>takeSnapshot()</slot>
+    <slot>captureFramesToFile(bool)</slot>
+    <slot>record(bool)</slot>
+    <slot>replayFileModeSelected()</slot>
+    <slot>replayPoistionSliderReleased()</slot>
+    <slot>replayPositionSliderChanged(int)</slot>
+    <slot>setNormalReplaySpeed()</slot>
+    <slot>timeScaleLineEditChanged()</slot>
+    <slot>timeScaleSliderChanged(int)</slot>
+    <slot>timeSliderScaleRealeased()</slot>
+    <slot>timeWindowChange()</slot>
+    <slot>timeWindowSliderChanged(int)</slot>
+    <slot>timeWindowSliderReleased()</slot>
+    <slot>viewVisDisplayPanel()</slot>
+    <slot>viewPlotterSettings()</slot>
+    <slot>viewReferenceFrameSettings()</slot>
+    <slot>helpDoc()</slot>
+    <slot>showOnTop()</slot>
+    <slot>updateReplayTimeDisplay(const QDateTime, const QDateTime)</slot>
+    <slot>playing()</slot>
+    <slot>paused()</slot>
+    <slot>statusBarMessage(QString)</slot>
+    <slot>updateReplayRate(double)</slot>
+    <slot>updateTimeWindowDisplay(double)</slot>
+    <slot>setTimeRange(const QDateTime, const QDateTime)</slot>
+    <slot>setRecordButton(bool)</slot>
+    <slot>reportErrorMessage(QString)</slot>
+  </slots>
   <resources>
     <include location="icons.qrc"/>
   </resources>
