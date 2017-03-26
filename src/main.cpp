@@ -39,61 +39,13 @@ copyright holder.<br>
 #include <QApplication>
 #include <QWidget>
 #include <qgl.h>
+#include <QMainWindow>
 #include "logui.h"
 #include "ui_controlpanel.h"
 #include "ui_visdisplay.h"
 #include "ui_plottersettingsdialog.h"
 #include "ui_referenceframesettingsdialog.h"
 #include "dataproc.h"
-
-
-class ControlPanelWidget : public QMainWindow, public Ui::ControlPanel {
-
-   Q_OBJECT
-
-   public:
-      ControlPanelWidget(QMainWindow *parent = 0) : QMainWindow(parent) {
-      setupUi(this);
-   }
-};
-
-
-class VisDisplayWidget : public QWidget, public Ui::VisDisplay {
-
-   Q_OBJECT
-
-   public:
-      VisDisplayWidget(QWidget *parent = 0) : QWidget(parent) {
-      setupUi(this);
-   }
-
-   //TODO: This is a mock to allow building to procedure, requires actual logic.
-   GLVisWidget* getPtrToVisPane() {
-      return displayWidget;
-   }
-};
-
-
-class PlotterSettingsDialogWidget : public QDialog, public Ui::PlotterSettingsDialog {
-
-   Q_OBJECT
-
-   public:
-      PlotterSettingsDialogWidget(QDialog *parent = 0) : QDialog(parent) {
-      setupUi(this);
-   }
-};
-
-
-class ReferenceFrameSettingsDialogWidget : public QDialog, public Ui::ReferenceFrameSettingsDialog {
-
-   Q_OBJECT
-
-   public:
-      ReferenceFrameSettingsDialogWidget(QDialog *parent = 0) : QDialog(parent) {
-      setupUi(this);
-   }
-};
 
 
 int main(int argc, char **argv) {
@@ -108,8 +60,6 @@ int main(int argc, char **argv) {
       return -1;
    }
 
-//*
-
    //uncomment the two lines below to diable user interface logging
    //if(!LogUI::enable())  // facilitates logging user interaction
    //   qWarning("Unable to open file for user interface logging - feature left disabled.");
@@ -119,13 +69,27 @@ int main(int argc, char **argv) {
    LogUIQuit luiq; //small helper object to ensure UI logging closes gracefully
 
    //declare GUI forms/windows
-   ControlPanelWidget cp; //control panel
-   VisDisplayWidget vd; //visaulization window
-   PlotterSettingsDialogWidget ps; //to set plotting features
-   ReferenceFrameSettingsDialogWidget rfs; //to set reference frame features
+   QMainWindow cp;
+   Ui::ControlPanel uicp;
+   uicp.setupUi(&cp);
+
+   QWidget vd;
+   Ui::VisDisplay uivd; //visaulization window
+   //uivd.init() 
+   uivd.setupUi(&vd);
+
+   GLVisWidget* vdw = uivd.displayWidget;
+   vd.setFocusProxy(vdw);
+
+   QDialog ps;
+   Ui::PlotterSettingsDialog uips; //to set plotting features
+   uips.setupUi(&ps);
+
+   QDialog rfs;
+   Ui::ReferenceFrameSettingsDialog uirfs; //to set reference frame features
+   uirfs.setupUi(&rfs);
 
    //setup object reference links
-   GLVisWidget *vdw = vd.getPtrToVisPane();
    vdw->setDataProcLink(dp.getDataProcessorPtr());
    //dp.setGLVisWidgetLink(vdw);
 
@@ -252,8 +216,6 @@ int main(int argc, char **argv) {
 
    dp.init();
 
-   // qt 4 requires linking uis to widget object, then calling show on the widget
-   // not sure if this works with two, but trying it..
    vd.show(); //show display first so that control panel begins on top
    cp.show();
 
