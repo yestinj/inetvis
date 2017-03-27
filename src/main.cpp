@@ -41,7 +41,8 @@ copyright holder.<br>
 #include <qgl.h>
 #include <QMainWindow>
 #include "logui.h"
-#include "ui_controlpanel.h"
+//#include "ui_controlpanel.h"
+#include "controlpanelwidget.h"
 #include "ui_visdisplay.h"
 #include "ui_plottersettingsdialog.h"
 #include "ui_referenceframesettingsdialog.h"
@@ -69,9 +70,11 @@ int main(int argc, char **argv) {
    LogUIQuit luiq; //small helper object to ensure UI logging closes gracefully
 
    //declare GUI forms/windows
-   QMainWindow cp;
-   Ui::ControlPanel uicp;
-   uicp.setupUi(&cp);
+   //QMainWindow cp;
+   //Ui::ControlPanel uicp;
+   //uicp.setupUi(&cp);
+    ControlPanelWidget cp;
+
 
    QWidget vd;
    Ui::VisDisplay uivd; //visaulization window
