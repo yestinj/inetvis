@@ -1,3 +1,5 @@
+#ifndef LOGUI_H
+#define LOGUI_H
 /*******************************************************************************
 
 InetVis - Internet Visualisation
@@ -86,3 +88,4 @@ class LogUIQuit : public QObject
       void close();
 
 };
+#endif // LOGUI_H
