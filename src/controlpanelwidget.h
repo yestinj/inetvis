@@ -2,14 +2,27 @@
 #define CONTROLPANELWIDGET_H
 #include "ui_controlpanel.h"
 #include <QMainWindow>
+#include <QDateTime>
+#include <QStatusBar>
+#include <QValidator>
+#include <QFileDialog>
+#include <QErrorMessage>
+#include <QDoubleValidator>
+#include "ui_aboutdialog.h"
+#include "ui_helpdocumentationdialog.h"
+#include "logui.h"
 
 class ControlPanelWidget : public QMainWindow, public Ui::ControlPanel {
     Q_OBJECT
 
     public:
         ControlPanelWidget(QMainWindow *parent = 0);
+        ~ControlPanelWidget();
+        void updateReplayTimeSliderPosition(const QDateTime);
+        void replayPositionDateTimeChanged();
+        void updateTimeWindowSlider(double);
 
-    private slots:
+    public slots:
         void applyFilter();
         void applyReplayPostion();
         void applyTimeWindow();
@@ -37,7 +50,7 @@ class ControlPanelWidget : public QMainWindow, public Ui::ControlPanel {
         void viewReferenceFrameSettings();
         void helpDoc();
         void showOnTop();
-        void updateReplayTimeDisplay();
+        void updateReplayTimeDisplay(const QDateTime, const QDateTime);
         void playing();
         void paused();
         void statusBarMessage(QString);
@@ -47,7 +60,46 @@ class ControlPanelWidget : public QMainWindow, public Ui::ControlPanel {
         void setRecordButton(bool);
         void reportErrorMessage(QString);
 
+   signals:
+        void play();
+        void pause();
+        void showVisDisplayPanel();
+        void togglePlayPause();
+        void setReplayRate(double rate);
+        void setReplayPosition(const QDateTime newRepPos);
+        void setTimeWindow(double seconds);
+        void selectReplayFile(const QString file);
+        void setFilter(const QString filterExpr);
+        void setHomeNetwork(int a, int b, int c, int d, int slash);
+        void showHomeNetworkDialog();
+        void selectNetworkInterface(const QString);
+        void showPlotterSettings();
+        void showReferenceFrameSettings();
+        void captureFrames(bool);
+        void captureSingleFrame();
+        void recordToFile(bool);
 
+    private:
+        double startTime;
+        bool timeWinSetByUser;
+        bool replayPosSetByUser;
+        float timeScale;
+        QIcon *playIcon;
+        QIcon *pauseIcon;
+        QLabel *packetEventsLabel;
+        QDoubleValidator *timeScaleValidator;
+        double timeSpan;
+        bool replayPosSetBySlider;
+        bool timeWindowSetBySlider;
+        bool replayPositionSliderChangeStarted;
+        bool recordToPcapFileSetByUser;
+        bool captureFramesSetByUser;
+        QErrorMessage *qErrMsg;
+        Ui::AboutDialog *aboutDialog;
+        Ui::HelpDocumentationDialog *helpDialog;
+        QString loguiFileName;
+        void init();
+        void destroy();
+        void strGetRepPos();
 };
-
 #endif // CONTROLPANELWIDGET_H
