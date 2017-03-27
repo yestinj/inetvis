@@ -559,7 +559,7 @@ bool DataProcessor::DataExtractor::lookupNetwork()
       ret = pcap_lookupnet(device->name, &netAddress , &netMask,
             pcapErrorBuffer);
 */
-      ret = pcap_lookupnet(strLocalInterface.ascii(), &netAddress , &netMask,
+      ret = pcap_lookupnet(strLocalInterface.toAscii(), &netAddress , &netMask,
             pcapErrorBuffer);
       //resolve byte order issue
       netAddress = (bpf_u_int32)ntohl(netAddress);
@@ -595,7 +595,7 @@ bool DataProcessor::DataExtractor::lookupNetwork()
       //file is currently open, reopen it to scan addresses, using seperate
       //file read
       pcap_t *tempCaptureInstance;
-      tempCaptureInstance = pcap_open_offline(strReplayFileReference,
+      tempCaptureInstance = pcap_open_offline(strReplayFileReference.toAscii().data(),
             pcapErrorBuffer);
 
       if (tempCaptureInstance == NULL)
@@ -857,7 +857,7 @@ bool DataProcessor::DataExtractor::openCaptureFile(const QString file)
          cerr << "DEBUG: opening capture file to scan for start and end timestamps\n";
    #endif
 
-   fileCaptureInstance = pcap_open_offline(strReplayFileReference, pcapErrorBuffer);
+   fileCaptureInstance = pcap_open_offline(strReplayFileReference.toAscii().data(), pcapErrorBuffer);
 
    if (fileCaptureInstance == NULL)
    {  //capture file not successfully set
@@ -1020,7 +1020,7 @@ bool DataProcessor::DataExtractor::openCaptureFile(const QString file)
       cerr << "DEBUG: reopeing file and initialising for file replay\n";
    #endif
 
-   fileCaptureInstance = pcap_open_offline(strReplayFileReference, pcapErrorBuffer);
+   fileCaptureInstance = pcap_open_offline(strReplayFileReference.toAscii().data(), pcapErrorBuffer);
       //reopen to start from beggining again
    //check for error
    if (fileCaptureInstance == NULL)
@@ -1087,7 +1087,7 @@ bool DataProcessor::DataExtractor::reopenCaptureFile()
    if (fileCaptureInstance == NULL)
    {  //reopen the file, reapply the filter and seek to the current replay
       //position, refilling the buffer
-      fileCaptureInstance = pcap_open_offline(strReplayFileReference,
+      fileCaptureInstance = pcap_open_offline(strReplayFileReference.toAscii().data(),
             pcapErrorBuffer);
       //check for error
       if (fileCaptureInstance == NULL)
@@ -1185,7 +1185,7 @@ bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
       //dataProcessor->glVisWidget->update();
    }
 
-   liveCaptureInstance = pcap_open_live(strLocalInterface, packetCaptureLength,
+   liveCaptureInstance = pcap_open_live(strLocalInterface.toAscii().data(), packetCaptureLength,
          promiscuousMode, readTimeout, pcapErrorBuffer);
    if (liveCaptureInstance == NULL)
    {  reportError("error opening network device " + strLocalInterface +
@@ -1307,10 +1307,10 @@ bool DataProcessor::DataExtractor::openDumpFile(const QString file)
    //open dump file, according to replay mode
    if (dataProcessor->replayMode == REPLAY_FILE)
       dumpFileDescriptor = pcap_dump_open(fileCaptureInstance,
-            strRecordFileReference);
+            strRecordFileReference.toAscii().data());
    else if (dataProcessor->replayMode == MONITOR_LOCAL)
       dumpFileDescriptor = pcap_dump_open(liveCaptureInstance,
-            strRecordFileReference);
+            strRecordFileReference.toAscii().data());
 
    //check that dump file opened correctly
    if (dumpFileDescriptor == NULL)
@@ -1598,7 +1598,7 @@ bool DataProcessor::DataExtractor::applyFilter()
 
    //check that the string will be within bounds of the string buffer
    if ((implicit_bpf_FilterExpr.length() + bpfFilterExpr.length()) < MAX_EXPR_LENGTH)
-   {  strcpy(filterExpr, (implicit_bpf_FilterExpr + bpfFilterExpr));
+   {  strcpy(filterExpr, (implicit_bpf_FilterExpr + bpfFilterExpr).toAscii().data());
          //QString will cast to const char*
    }
    else
@@ -1631,7 +1631,7 @@ bool DataProcessor::DataExtractor::applyFilter()
 
    int ver = 0; //to compare if version is recent enough
    int verPos = 0; //index in string where version number begins
-   verPos = pcapVer.findRev(' '); //version at end of string
+   verPos = pcapVer.lastIndexOf(' '); //version at end of string
    pcapVer.remove(0,verPos); //remove text before version number
    pcapVer.remove('.'); //remove dots
    ver = pcapVer.toInt();
@@ -1822,7 +1822,7 @@ DataProcessor::DataProcessor()
    recordToFile = false;
 
    //ensure default application dirs are present, or else create them
-   strAppDir = QDir::currentDirPath();
+   strAppDir = QDir::currentPath();
    if(!checkDefaultDirs())
    {  reportError("Unable to create default application directory",
                "DataProcessor()");
@@ -2663,8 +2663,8 @@ void DataProcessor::setUpdateRate(int timesPerSecond)
       updateTimeIncrimental(updateRate);
 
       //check to see if timer is running, and if it is, change it
-      if (processTimer->isActive())
-      {  processTimer->changeInterval(updateRate);
+      if (processTimer->isActive()) {
+          processTimer->setInterval(updateRate);
       }
 
       transDecayFrac = TimeUtil::timevalToDouble(updateTimeInc)
@@ -2762,7 +2762,7 @@ QString DataProcessor::getReplayFileName()
    replayFile.setFile(dataExtractor.getReplayFileName());
    QString replayFileName = replayFile.fileName();
    //remove extention from name
-   int indexLastDot = replayFileName.findRev('.');
+   int indexLastDot = replayFileName.lastIndexOf('.');
    if (indexLastDot != -1) //there was an extension
    {  replayFileName = replayFileName.remove(indexLastDot,
          replayFileName.length() - indexLastDot);
