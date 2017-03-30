@@ -124,7 +124,7 @@ void ControlPanelWidget::fileOpen() {
 
     if (!fileName.isNull()) {
         //file selected
-       replayCaptureFileAction->setOn(true);
+       replayCaptureFileAction->setChecked(true);
        //notfiy data processor
        emit selectReplayFile(fileName);
        //update UI Log
@@ -145,7 +145,7 @@ void ControlPanelWidget::fileOpen() {
           LogUI::logEvent("[CP] capture file failed to open: \"" + fileName + "\"");
         }
 
-       replayCaptureFileAction->setOn(false);
+       replayCaptureFileAction->setChecked(false);
        //disable editing the replay position
        replayPositionGroupBox->setEnabled(false);
        ReplaySpeedGroupBox->setEnabled(false);
@@ -215,7 +215,7 @@ void ControlPanelWidget::captureFramesToFile(bool activate) {
        //update gui and sync menu with button
        if (activate)
        {  captureFramesSetByUser = false;
-          recordCapture_Frames_to_FileAction->setOn(true);
+          recordCapture_Frames_to_FileAction->setChecked(true);
           videoClipToolButton->setOn(true);
 
           //update UI log
@@ -227,8 +227,8 @@ void ControlPanelWidget::captureFramesToFile(bool activate) {
        }
        else
        {  captureFramesSetByUser = false;
-          recordCapture_Frames_to_FileAction->setOn(false);
-          videoClipToolButton->setOn(false);
+          recordCapture_Frames_to_FileAction->setChecked(false);
+          videoClipToolButton->setChecked(false);
 
           //update UI log
           if(LogUI::isEnabled())
@@ -248,7 +248,7 @@ void ControlPanelWidget::record(bool buttonOn) {
        //record slot
        if (buttonOn)
        {  recordToPcapFileSetByUser = false;
-          recordDump_to_Pcap_FileAction->setOn(true);
+          recordDump_to_Pcap_FileAction->setChecked(true);
           recordToolButton->setOn(true);
           recordToPcapFileSetByUser = true;
 
@@ -259,7 +259,7 @@ void ControlPanelWidget::record(bool buttonOn) {
        }
        else
        {  recordToPcapFileSetByUser = false;
-          recordDump_to_Pcap_FileAction->setOn(false);
+          recordDump_to_Pcap_FileAction->setChecked(false);
           recordToolButton->setOn(false);
           recordToPcapFileSetByUser = true;
 
@@ -645,7 +645,7 @@ void ControlPanelWidget::setTimeRange(const QDateTime start, const QDateTime end
 void ControlPanelWidget::setRecordButton(bool buttonOn) {
     recordToPcapFileSetByUser = false;
     recordToolButton->setOn(buttonOn);
-    recordDump_to_Pcap_FileAction->setOn(true);
+    recordDump_to_Pcap_FileAction->setChecked(true);
     recordToPcapFileSetByUser = true;
 
 }
