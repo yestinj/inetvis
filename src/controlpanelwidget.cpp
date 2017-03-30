@@ -47,7 +47,7 @@ void ControlPanelWidget::init() {
 
    //init about dialog
    aboutDialog = new AboutDialogWidget((QWidget*)this);
-   helpDialog = new Ui::HelpDocumentationDialog((QWidget*)this);
+   helpDialog = new HelpDocumentationDialogWidget((QWidget*)this);
    //aboutDialog->setShown(false);
    //helpDialog->setShown(false);
 

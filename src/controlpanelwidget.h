@@ -9,7 +9,7 @@
 #include <QErrorMessage>
 #include <QDoubleValidator>
 #include "aboutdialogwidget.h"
-#include "ui_helpdocumentationdialog.h"
+#include "helpdocumentationdialogwidget.h"
 #include "logui.h"
 
 class ControlPanelWidget : public QMainWindow, public Ui::ControlPanel {
@@ -96,7 +96,7 @@ class ControlPanelWidget : public QMainWindow, public Ui::ControlPanel {
         bool captureFramesSetByUser;
         QErrorMessage *qErrMsg;
         AboutDialogWidget *aboutDialog;
-        Ui::HelpDocumentationDialog *helpDialog;
+        HelpDocumentationDialogWidget *helpDialog;
         QString loguiFileName;
         void init();
         void destroy();
