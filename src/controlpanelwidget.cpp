@@ -523,8 +523,7 @@ void ControlPanelWidget::showOnTop() {
     show();
     showNormal();
     raise();
-    setActiveWindow();
-
+    activateWindow();
 }
 
 void ControlPanelWidget::updateReplayTimeSliderPosition(const QDateTime &repPos) {
