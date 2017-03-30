@@ -116,9 +116,12 @@ void ControlPanelWidget::applyTimeWindow() {
 }
 
 void ControlPanelWidget::fileOpen() {
-    QString fileName = Q3FileDialog::getOpenFileName("",
-          "Capture Files (*.cap *.dump)", this, "Open Replay File",
-          "Select a replay file for playback");
+    // TODO: Confirm this works, removed the name/caption since it didn't fit in new signature.
+    QString fileName = QFileDialog::getOpenFileName(this,
+                                                    "Select a replay file for playback",
+                                                    "",
+                                                    "Capture Files (*.cap *.dump)");
+
     if (!fileName.isNull()) {
         //file selected
        replayCaptureFileAction->setOn(true);

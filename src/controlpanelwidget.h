@@ -100,6 +100,6 @@ class ControlPanelWidget : public QMainWindow, public Ui::ControlPanel {
         QString loguiFileName;
         void init();
         void destroy();
-        void strGetRepPos();
+        QString strGetRepPos();
 };
 #endif // CONTROLPANELWIDGET_H
