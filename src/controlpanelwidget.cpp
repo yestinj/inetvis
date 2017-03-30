@@ -216,7 +216,7 @@ void ControlPanelWidget::captureFramesToFile(bool activate) {
        if (activate)
        {  captureFramesSetByUser = false;
           recordCapture_Frames_to_FileAction->setChecked(true);
-          videoClipToolButton->setOn(true);
+          videoClipToolButton->setChecked(true);
 
           //update UI log
           if(LogUI::isEnabled())
@@ -249,7 +249,7 @@ void ControlPanelWidget::record(bool buttonOn) {
        if (buttonOn)
        {  recordToPcapFileSetByUser = false;
           recordDump_to_Pcap_FileAction->setChecked(true);
-          recordToolButton->setOn(true);
+          recordToolButton->setChecked(true);
           recordToPcapFileSetByUser = true;
 
           //update UI log
@@ -260,7 +260,7 @@ void ControlPanelWidget::record(bool buttonOn) {
        else
        {  recordToPcapFileSetByUser = false;
           recordDump_to_Pcap_FileAction->setChecked(false);
-          recordToolButton->setOn(false);
+          recordToolButton->setChecked(false);
           recordToPcapFileSetByUser = true;
 
           //update UI log
@@ -644,7 +644,7 @@ void ControlPanelWidget::setTimeRange(const QDateTime start, const QDateTime end
 
 void ControlPanelWidget::setRecordButton(bool buttonOn) {
     recordToPcapFileSetByUser = false;
-    recordToolButton->setOn(buttonOn);
+    recordToolButton->setChecked(buttonOn);
     recordDump_to_Pcap_FileAction->setChecked(true);
     recordToPcapFileSetByUser = true;
 
