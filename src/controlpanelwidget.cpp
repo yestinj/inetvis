@@ -77,7 +77,7 @@ void ControlPanelWidget::applyFilter() {
     emit setFilter(filterLineEdit->text());
 }
 
-void ControlPanelWidget::applyReplayPostion() {
+void ControlPanelWidget::applyReplayPosition() {
     QDateTime repPos = replayDateTimeEdit->dateTime();
     //msec is assumed to be 0
     repPos.setTime(repPos.time().addMSecs(millisecondsSpinBox->text().toInt()));

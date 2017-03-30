@@ -24,7 +24,7 @@ class ControlPanelWidget : public QMainWindow, public Ui::ControlPanel {
 
     public slots:
         void applyFilter();
-        void applyReplayPostion();
+        void applyReplayPosition();
         void applyTimeWindow();
         void fileOpen();
         void helpAbout();
