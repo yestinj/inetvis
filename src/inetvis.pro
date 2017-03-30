@@ -11,7 +11,8 @@ HEADERS	+= dataproc.h \
 	plotter.h \
 	packetevent.h \
 	logui.h \
-    controlpanelwidget.h
+    controlpanelwidget.h \
+    aboutdialogwidget.h
 
 SOURCES	+= graphicelement.cpp \
 	packetheaders.cpp \
@@ -22,7 +23,8 @@ SOURCES	+= graphicelement.cpp \
 	dataproc.cpp \
 	packetevent.cpp \
 	logui.cpp \
-    controlpanelwidget.cpp
+    controlpanelwidget.cpp \
+    aboutdialogwidget.cpp
 
 FORMS = controlpanel.ui \
 	visdisplay.ui \

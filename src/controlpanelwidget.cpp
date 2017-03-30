@@ -39,15 +39,15 @@ void ControlPanelWidget::init() {
    timeScaleLineEdit->setValidator(timeScaleValidator);
 
    //setup toggle actions (for menu)
-   recordCapture_Frames_to_FileAction->setToggleAction(true);
+   recordCapture_Frames_to_FileAction->setCheckable(true);
 
    //init GUI controls - disable some options
    replayPositionGroupBox->setEnabled(false);
    recordToolButton->setEnabled(false);
 
    //init about dialog
-   aboutDialog = new AboutDialog((QWidget*)this);
-   helpDialog = new HelpDocumentationDialog((QWidget*)this);
+   aboutDialog = new AboutDialogWidget((QWidget*)this);
+   helpDialog = new Ui::HelpDocumentationDialog((QWidget*)this);
    //aboutDialog->setShown(false);
    //helpDialog->setShown(false);
 

@@ -8,7 +8,7 @@
 #include <QFileDialog>
 #include <QErrorMessage>
 #include <QDoubleValidator>
-#include "ui_aboutdialog.h"
+#include "aboutdialogwidget.h"
 #include "ui_helpdocumentationdialog.h"
 #include "logui.h"
 
@@ -95,7 +95,7 @@ class ControlPanelWidget : public QMainWindow, public Ui::ControlPanel {
         bool recordToPcapFileSetByUser;
         bool captureFramesSetByUser;
         QErrorMessage *qErrMsg;
-        Ui::AboutDialog *aboutDialog;
+        AboutDialogWidget *aboutDialog;
         Ui::HelpDocumentationDialog *helpDialog;
         QString loguiFileName;
         void init();
