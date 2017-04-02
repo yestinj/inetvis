@@ -72,17 +72,17 @@ void PlotterSettingsDialogWidget::updateHomeNetworkAddress(int a, int b, int c,
     destinationRangeLineEdit->setText(range);
 }
 
-void PlotterSettingsDialogWidget::updateHomeNetworkAddress(int a, int b, int c,
-                                                           int d, int slashMask, QString range) {
-    //update slash dot line edit
-    homeNetALineEdit->setText(QString::number(a));
-    homeNetBLineEdit->setText(QString::number(b));
-    homeNetCLineEdit->setText(QString::number(c));
-    homeNetDLineEdit->setText(QString::number(d));
-    homeNetSlashNumLineEdit->setText(QString::number(slashMask));
+void PlotterSettingsDialogWidget::updateInternetNetworkRange(int a, int b, int c,
+      int d, int slashMask, QString range) {
+   //update slash dot line edit
+   internetALineEdit->setText(QString::number(a));
+   internetBLineEdit->setText(QString::number(b));
+   internetCLineEdit->setText(QString::number(c));
+   internetDLineEdit->setText(QString::number(d));
+   internetSlashNumLineEdit->setText(QString::number(slashMask));
 
-    //update range
-    destinationRangeLineEdit->setText(range);
+   //update range
+   sourceRangeLineEdit->setText(range);
 }
 
 void PlotterSettingsDialogWidget::applyHomeNetSettings() {
