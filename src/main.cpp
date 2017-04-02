@@ -75,7 +75,7 @@ int main(int argc, char **argv) {
     ControlPanelWidget cp;
     VisDisplayWidget vd; //visaulization window
 
-    GLVisWidget* vdw = uivd.displayWidget;
+    GLVisWidget* vdw = vd.displayWidget;
     vd.setFocusProxy(vdw);
 
     PlotterSettingsDialogWidget ps; //to set plotting features
