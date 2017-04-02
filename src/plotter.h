@@ -50,7 +50,8 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 */
 
-
+#ifndef PLOTTER_H
+#define PLOTTER_H
 
 #include <iostream>
 #include <math.h>
@@ -248,3 +249,4 @@ private:
       static void HSVtoRGB(float rgb[3], const float hsv[3]);
 
 };
+#endif PLOTTER_H

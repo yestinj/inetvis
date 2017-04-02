@@ -76,6 +76,9 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 */
 
+#ifndef PACKETHEADERS_H
+#define PACKETHEADERS_H
+
 #include <stdio.h>
 
 #include <iostream>
@@ -391,3 +394,4 @@ class PacketHeaders
 
 };
 
+#endif PACKETHEADERS_H

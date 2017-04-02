@@ -40,6 +40,9 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
  */
 
+#ifndef PACKETEVENT_H
+#define PACKETEVENT_H
+
 #include <iostream>
 #include <stdio.h>
 #include <cstring>
@@ -82,3 +85,4 @@ class PacketEvent
       ~PacketEvent();
 
 };
+#endif PACKETEVENT_H
