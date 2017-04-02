@@ -18,7 +18,7 @@ class ControlPanelWidget : public QMainWindow, public Ui::ControlPanel {
     public:
         ControlPanelWidget(QMainWindow *parent = 0);
         ~ControlPanelWidget();
-        void updateReplayTimeSliderPosition(const QDateTime);
+        void updateReplayTimeSliderPosition(const QDateTime&);
         void replayPositionDateTimeChanged();
         void updateTimeWindowSlider(double);
 
