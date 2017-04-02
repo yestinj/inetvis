@@ -45,6 +45,7 @@ copyright holder.<br>
 #include "ui_visdisplay.h"
 #include "plottersettingsdialogwidget.h"
 #include "dataproc.h"
+#include "referenceframesettingsdialogwidget.h"
 
 
 int main(int argc, char **argv) {
