@@ -42,7 +42,7 @@ copyright holder.<br>
 #include <QMainWindow>
 #include "logui.h"
 #include "controlpanelwidget.h"
-#include "ui_visdisplay.h"
+#include "visdisplaywidget.h"
 #include "plottersettingsdialogwidget.h"
 #include "dataproc.h"
 #include "referenceframesettingsdialogwidget.h"
@@ -73,11 +73,7 @@ int main(int argc, char **argv) {
     //Ui::ControlPanel uicp;
     //uicp.setupUi(&cp);
     ControlPanelWidget cp;
-
-    QWidget vd;
-    Ui::VisDisplay uivd; //visaulization window
-    //uivd.init()
-    uivd.setupUi(&vd);
+    VisDisplayWidget vd; //visaulization window
 
     GLVisWidget* vdw = uivd.displayWidget;
     vd.setFocusProxy(vdw);
