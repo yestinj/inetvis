@@ -1,5 +1,5 @@
 #include "aboutdialogwidget.h"
 
-AboutDialogWidget::AboutDialogWidget(QWidget *parent) : QWidget(parent) {
+AboutDialogWidget::AboutDialogWidget(QWidget *parent) : QDialog(parent) {
     setupUi(this);
 }

@@ -5,7 +5,7 @@
 #include <QDialog>
 #include "ui_aboutdialog.h"
 
-class AboutDialogWidget : public QDialog, public Ui::ControlPanel {
+class AboutDialogWidget : public QDialog, public Ui::AboutDialog {
     Q_OBJECT
 
     public:
