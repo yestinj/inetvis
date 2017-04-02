@@ -18,7 +18,7 @@
     </property>
     <layout class="QVBoxLayout">
       <item>
-        <widget class="Q3TextBrowser" name="textBrowser1">
+        <widget class="QTextBrowser" name="textBrowser1">
           <property name="text">
             <string>&lt;h2&gt;InetVis - &lt;b&gt;I&lt;/b&gt;nter&lt;b&gt;net&lt;/b&gt; &lt;b&gt;Vis&lt;/b&gt;ualization&lt;/h2&gt;
 &lt;p&gt;&lt;i&gt;Version&lt;/i&gt;: 0.9.5-qt4&lt;br&gt;&lt;small&gt;&lt;i&gt;Release date&lt;/i&gt;: 2007/11/21&lt;/small&gt;&lt;br&gt;&lt;/p&gt;
