@@ -8,10 +8,10 @@ PlotterSettingsDialogWidget::PlotterSettingsDialogWidget(QWidget *parent) :
 void PlotterSettingsDialogWidget::init() {
 
     //setup validators for input
-    addressValidator = new QIntValidator(0, 255, this, "address range validator");
-    slashNumValidator = new QIntValidator(0, 31, this, "slash notation number validator");
-    portNumValidator = new QIntValidator(0, 65535, this, "port number validator");
-    logPlotNumValidator = new QIntValidator(2, 100000, this, "port number validator");
+    addressValidator = new QIntValidator(0, 255, this);
+    slashNumValidator = new QIntValidator(0, 31, this);
+    portNumValidator = new QIntValidator(0, 65535, this);
+    logPlotNumValidator = new QIntValidator(2, 100000, this);
 
     //apply validaters for home net range settings
     homeNetALineEdit->setValidator(addressValidator);
