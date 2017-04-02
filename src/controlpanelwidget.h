@@ -50,7 +50,7 @@ class ControlPanelWidget : public QMainWindow, public Ui::ControlPanel {
         void viewReferenceFrameSettings();
         void helpDoc();
         void showOnTop();
-        void updateReplayTimeDisplay(const QDateTime, const QDateTime);
+        void updateReplayTimeDisplay(const QDateTime&, const QDateTime&);
         void playing();
         void paused();
         void statusBarMessage(QString);
