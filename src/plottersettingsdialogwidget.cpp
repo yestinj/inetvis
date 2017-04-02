@@ -295,7 +295,7 @@ void PlotterSettingsDialogWidget::backgroundColourChange() {
 #define WHITE_BACKGROUND 1
 #endif
 
-    if (whiteRadioButton->isOn())
+    if (whiteRadioButton->isChecked())
     {  emit setBackgroundColour(WHITE_BACKGROUND);
 
         //update UI Log
