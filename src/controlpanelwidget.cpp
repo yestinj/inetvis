@@ -661,4 +661,4 @@ void ControlPanelWidget::reportErrorMessage(QString errMsg) {
 QString ControlPanelWidget::strGetRepPos() {
    return replayDateTimeEdit->dateTime().toString("yyyy/MM/dd-hh:mm:ss")
          + QString(".%1").arg((millisecondsSpinBox->value()));
-
+}
