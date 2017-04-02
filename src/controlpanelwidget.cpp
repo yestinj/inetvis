@@ -31,8 +31,8 @@ void ControlPanelWidget::init() {
    recordToPcapFileSetByUser = true;
 
    //init icons for custom playPauseToolButton control
-   playIcon = new QIcon(qPixmapFromMimeSource("stock_media-play.png"));
-   pauseIcon = new QIcon(qPixmapFromMimeSource("stock_media-pause.png"));
+   playIcon = new QIcon(":/icons/images/stock_media-play.png");
+   pauseIcon = new QIcon(":/icons/images/stock_media-pause.png");
 
    //setup validators for input
    timeScaleValidator = new QDoubleValidator(this);
