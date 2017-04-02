@@ -650,7 +650,7 @@ void ControlPanelWidget::setRecordButton(bool buttonOn) {
 }
 
 void ControlPanelWidget::reportErrorMessage(QString errMsg) {
-    qErrMsg->message(errMsg);
+    qErrMsg->showMessage(errMsg);
 
    //update UI log
    if(LogUI::isEnabled())
