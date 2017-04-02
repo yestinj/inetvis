@@ -19,7 +19,6 @@ class ControlPanelWidget : public QMainWindow, public Ui::ControlPanel {
         ControlPanelWidget(QMainWindow *parent = 0);
         ~ControlPanelWidget();
         void updateReplayTimeSliderPosition(const QDateTime&);
-        void replayPositionDateTimeChanged();
         void updateTimeWindowSlider(double);
 
     public slots:
@@ -59,6 +58,7 @@ class ControlPanelWidget : public QMainWindow, public Ui::ControlPanel {
         void setTimeRange(const QDateTime, const QDateTime);
         void setRecordButton(bool);
         void reportErrorMessage(QString);
+        void replayPositionDateTimeChanged();
 
    signals:
         void play();

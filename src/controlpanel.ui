@@ -1353,7 +1353,7 @@
     </connection>
     <connection>
       <sender>replayDateTimeEdit</sender>
-      <signal>valueChanged(QDateTime)</signal>
+      <signal>dateTimeChanged(QDateTime)</signal>
       <receiver>ControlPanel</receiver>
       <slot>replayPositionDateTimeChanged()</slot>
     </connection>
@@ -1361,7 +1361,7 @@
       <sender>replayPositionSlider</sender>
       <signal>sliderReleased()</signal>
       <receiver>ControlPanel</receiver>
-      <slot>replayPoistionSliderReleased()</slot>
+      <slot>replayPositionSliderReleased()</slot>
     </connection>
     <connection>
       <sender>replayPositionSlider</sender>
@@ -1480,7 +1480,7 @@
     <slot>captureFramesToFile(bool)</slot>
     <slot>record(bool)</slot>
     <slot>replayFileModeSelected()</slot>
-    <slot>replayPoistionSliderReleased()</slot>
+    <slot>replayPositionSliderReleased()</slot>
     <slot>replayPositionSliderChanged(int)</slot>
     <slot>setNormalReplaySpeed()</slot>
     <slot>timeScaleLineEditChanged()</slot>
