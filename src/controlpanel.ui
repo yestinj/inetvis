@@ -1431,7 +1431,7 @@
     </connection>
     <connection>
       <sender>timeWindowTimeEdit</sender>
-      <signal>valueChanged(QTime)</signal>
+      <signal>timeChanged(QTime)</signal>
       <receiver>ControlPanel</receiver>
       <slot>timeWindowChange()</slot>
     </connection>
