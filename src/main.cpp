@@ -44,7 +44,6 @@ copyright holder.<br>
 #include "controlpanelwidget.h"
 #include "ui_visdisplay.h"
 #include "plottersettingsdialogwidget.h"
-#include "ui_referenceframesettingsdialog.h"
 #include "dataproc.h"
 
 
@@ -83,10 +82,7 @@ int main(int argc, char **argv) {
     vd.setFocusProxy(vdw);
 
     PlotterSettingsDialogWidget ps; //to set plotting features
-
-    QDialog rfs;
-    Ui::ReferenceFrameSettingsDialog uirfs; //to set reference frame features
-    uirfs.setupUi(&rfs);
+    ReferenceFrameSettingsDialogWidget rfs; //to set reference frame features
 
     //setup object reference links
     vdw->setDataProcLink(dp.getDataProcessorPtr());
