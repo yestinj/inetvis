@@ -35,20 +35,20 @@ void PlotterSettingsDialogWidget::init() {
     logPlotLineEdit->setValidator(logPlotNumValidator);
 
     //colour scheme choices
-    colourMappingSchemeComboBox->insertItem(STR_COL_MAP_DST_PORT,
-                                            COL_MAP_DST_PORT);
-    colourMappingSchemeComboBox->insertItem(STR_COL_LOG_MAP_DST_PORT,
-                                            COL_LOG_MAP_DST_PORT);
-    colourMappingSchemeComboBox->insertItem(STR_COL_MAP_SRC_PORT,
-                                            COL_MAP_SRC_PORT);
-    colourMappingSchemeComboBox->insertItem(STR_COL_MAP_SRC_ADR,
-                                            COL_MAP_SRC_ADR);
-    colourMappingSchemeComboBox->insertItem(STR_COL_MAP_PROTO,
-                                            COL_MAP_PROTO);
-    colourMappingSchemeComboBox->insertItem(STR_COL_MAP_PKT_SIZE,
-                                            COL_MAP_PKT_SIZE);
-    colourMappingSchemeComboBox->insertItem(STR_COL_LOG_MAP_PKT_SIZE,
-                                            COL_LOG_MAP_PKT_SIZE);
+    colourMappingSchemeComboBox->insertItem(COL_MAP_DST_PORT,
+                                            STR_COL_MAP_DST_PORT);
+    colourMappingSchemeComboBox->insertItem(COL_LOG_MAP_DST_PORT,
+                                            STR_COL_LOG_MAP_DST_PORT);
+    colourMappingSchemeComboBox->insertItem(COL_MAP_SRC_PORT,
+                                            STR_COL_MAP_SRC_PORT);
+    colourMappingSchemeComboBox->insertItem(COL_MAP_SRC_ADR,
+                                            STR_COL_MAP_SRC_ADR);
+    colourMappingSchemeComboBox->insertItem(COL_MAP_PROTO,
+                                            STR_COL_MAP_PROTO);
+    colourMappingSchemeComboBox->insertItem(COL_MAP_PKT_SIZE,
+                                            STR_COL_MAP_PKT_SIZE);
+    colourMappingSchemeComboBox->insertItem(COL_LOG_MAP_PKT_SIZE,
+                                            STR_COL_LOG_MAP_PKT_SIZE);
     //Note these options should corrospond to those in the Plotter class
 }
 
