@@ -584,8 +584,8 @@ void ControlPanelWidget::paused() {
     playPauseToolButton->setIcon(*playIcon);
 }
 
-void ControlPanelWidget::statusBarMessage(QString) {
-    statusBar()->message(message);
+void ControlPanelWidget::statusBarMessage(QString message) {
+    statusBar()->showMessage(message);
 }
 
 void ControlPanelWidget::updateReplayRate(double value) {
