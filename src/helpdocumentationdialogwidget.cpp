@@ -1,5 +1,5 @@
 #include "helpdocumentationdialogwidget.h"
 
-HelpDocumentationDialogWidget::HelpDocumentationDialogWidget(QWidget *parent) : QWidget(parent) {
+HelpDocumentationDialogWidget::HelpDocumentationDialogWidget(QWidget *parent) : QDialog(parent) {
     setupUi(this);
 }
