@@ -576,12 +576,12 @@ void ControlPanelWidget::updateReplayTimeDisplay(const QDateTime &repPos, const 
 
 void ControlPanelWidget::playing() {
     //update button icon to show next appropriate action
-    playPauseToolButton->setIconSet(*pauseIcon);
+    playPauseToolButton->setIcon(*pauseIcon);
 }
 
 void ControlPanelWidget::paused() {
     //update button icon to show next appropriate action
-    playPauseToolButton->setIconSet(*playIcon);
+    playPauseToolButton->setIcon(*playIcon);
 }
 
 void ControlPanelWidget::statusBarMessage(QString) {
