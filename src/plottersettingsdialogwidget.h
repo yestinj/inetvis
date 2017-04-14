@@ -11,6 +11,7 @@ class PlotterSettingsDialogWidget : public QDialog, public Ui::PlotterSettingsDi
     Q_OBJECT
 public:
     PlotterSettingsDialogWidget(QWidget *parent = 0);
+    ~PlotterSettingsDialogWidget();
 
 signals:
     void setHomeNetwork(int, int, int, int, int);

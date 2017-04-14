@@ -3,6 +3,13 @@
 PlotterSettingsDialogWidget::PlotterSettingsDialogWidget(QWidget *parent) :
     QDialog(parent) {
     setupUi(this);
+    // TODO: This may be done implicitly, check..
+    init();
+}
+
+PlotterSettingsDialogWidget::~PlotterSettingsDialogWidget() {
+    // TODO: Confirm this
+    destroy();
 }
 
 void PlotterSettingsDialogWidget::init() {
