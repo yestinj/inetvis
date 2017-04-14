@@ -653,9 +653,9 @@ void ControlPanelWidget::reportErrorMessage(QString errMsg) {
     qErrMsg->showMessage(errMsg);
 
    //update UI log
-   if(LogUI::isEnabled())
+   if(LogUI::isEnabled()) {
       LogUI::logEvent("[E] error message: {" + errMsg + "}");
-
+    }
 }
 
 QString ControlPanelWidget::strGetRepPos() {
