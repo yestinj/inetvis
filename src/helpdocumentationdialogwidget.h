@@ -4,16 +4,13 @@
 #include <QWidget>
 #include <QDialog>
 #include "ui_helpdocumentationdialog.h"
+#include <QDir>
 
 class HelpDocumentationDialogWidget : public QDialog, public Ui::HelpDocumentationDialog {
     Q_OBJECT
 public:
     HelpDocumentationDialogWidget(QWidget *parent = 0);
-
-signals:
-
-public slots:
-
+private:
+    void init();
 };
-
 #endif // HELPDOCUMENTATIONDIALOGWIDGET_H
