@@ -4,4 +4,4 @@ src/.ui/
 src/Makefile
 src/inetvis
 src/inetvis.pro.user
-
+.moc/
