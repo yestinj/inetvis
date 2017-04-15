@@ -77,6 +77,9 @@
          <property name="toolTip">
           <string>Date and time - edit and apply with 'tick' button</string>
          </property>
+         <property name="displayFormat">
+          <string>yyyy/MM/dd HH:mm:ss</string>
+         </property>
         </widget>
        </item>
        <item>
@@ -537,6 +540,9 @@
            <minute>59</minute>
            <second>59</second>
           </time>
+         </property>
+         <property name="displayFormat">
+          <string>HH:mm:ss</string>
          </property>
         </widget>
        </item>
