@@ -46,8 +46,8 @@ RESOURCES += icons.qrc
 ## CUSTOM SETTINGS ----------------------------------------
 
 ## Build Mode
-#CONFIG   += debug warn_on
-CONFIG	  += debug
+CONFIG   += debug warn_on
+#CONFIG	  += debug
 #CONFIG   += release
 ### uncomment one or the other above
 
@@ -62,7 +62,6 @@ QMAKE_LFLAGS_RELEASE = -m32
 QMAKE_CFLAGS_RELEASE = -O3 -march=pentium4 -m32 -mfpmath=sse -mmmx -msse -msse2 -mno-sse3 -momit-leaf-frame-pointer -maccumulate-outgoing-args
 QMAKE_CXXFLAGS_RELEASE = $$QMAKE_CFLAGS_RELEASE
 
-#DEFINES  += QT3_SUPPORT_WARNINGS
 QT +=  opengl
 
 ## end of CUSTOM SETTINGS ---------------------------------
