@@ -45,8 +45,7 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 enum grapElemTypes {GE_UNDEFINED, GE_POINT, GE_LINE, GE_CUBE};
 
 
-class GraphicElement
-{
+class GraphicElement {
 public:
 
     int type;
@@ -57,8 +56,7 @@ public:
 };
 
 
-class Point : public GraphicElement
-{
+class Point : public GraphicElement {
 public:
 
     float coord[3]; //xyz
@@ -71,8 +69,7 @@ public:
 };
 
 
-class Line : public GraphicElement
-{
+class Line : public GraphicElement {
 public:
 
     float coord1[3]; //xyz
@@ -82,8 +79,7 @@ public:
 };
 
 
-class Cube : public GraphicElement
-{
+class Cube : public GraphicElement {
 public:
 
     float coord[3]; //xyz
@@ -92,4 +88,4 @@ public:
 
 };
 
-#endif GRAPHICELEMENT_H
+#endif // GRAPHICELEMENT_H

@@ -85,4 +85,4 @@ public:
     ~PacketEvent();
 
 };
-#endif PACKETEVENT_H
+#endif // PACKETEVENT_H

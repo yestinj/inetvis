@@ -249,4 +249,4 @@ private:
     static void HSVtoRGB(float rgb[3], const float hsv[3]);
 
 };
-#endif PLOTTER_H
+#endif // PLOTTER_H

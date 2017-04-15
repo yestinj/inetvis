@@ -394,4 +394,4 @@ public:
 
 };
 
-#endif PACKETHEADERS_H
+#endif // PACKETHEADERS_H
