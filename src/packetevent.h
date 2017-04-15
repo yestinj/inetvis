@@ -66,23 +66,23 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 class PacketEvent
 {
 
-   public:
+public:
 
-      //packet data
-      unsigned char rawPacket[CAPTURE_LENGTH + 1];
-         //to store the actual packet data in a raw string format
-      unsigned int captureLength; //length of capture in bytes
-      unsigned int packetLength; //length of packet off wire
-      struct OSI_Packet headers; //collection of packet header pointers
-      struct timeval timeStamp; //time of observation of packet
+    //packet data
+    unsigned char rawPacket[CAPTURE_LENGTH + 1];
+    //to store the actual packet data in a raw string format
+    unsigned int captureLength; //length of capture in bytes
+    unsigned int packetLength; //length of packet off wire
+    struct OSI_Packet headers; //collection of packet header pointers
+    struct timeval timeStamp; //time of observation of packet
 
-      //visual metephor respresenting the packet
-      Point point;
-      GraphicElement *graphicElement; //to point to data for the visual
+    //visual metephor respresenting the packet
+    Point point;
+    GraphicElement *graphicElement; //to point to data for the visual
 
-      PacketEvent();
-      PacketEvent(const pcap_pkthdr *pcapHeader, const unsigned char* snapshot);
-      ~PacketEvent();
+    PacketEvent();
+    PacketEvent(const pcap_pkthdr *pcapHeader, const unsigned char* snapshot);
+    ~PacketEvent();
 
 };
 #endif PACKETEVENT_H

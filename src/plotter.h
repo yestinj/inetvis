@@ -45,7 +45,7 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 2007-11-08: change colour scheme and mapping to be based on protocols instead of 
    global scheme effecting all protocols - this has ramifications for the UI and
-   the background colour scheme selection. It also has ramifications for the 
+   the background colour scheme selection. It also has ramifications for the
    DataProcessor class and setColourScheme function
 
 */
@@ -68,22 +68,22 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 // DEFINITIONS ----------------------------------------------------------------
 
 #define DEFAULT_DRAWING_FIELD_SIZE 100.0
-   //defines a cubic region of 100.0 x 100.0 x 100.0
-   //the plotting and axes should be scaled to filt into this drawing field
-   //this value would idealy corrospond to AXIS_LENGTH in glviswidget.h
+//defines a cubic region of 100.0 x 100.0 x 100.0
+//the plotting and axes should be scaled to filt into this drawing field
+//this value would idealy corrospond to AXIS_LENGTH in glviswidget.h
 #define MAX_U_INT32_VAL 4294967295u
 #define MAX_U_INT16_VAL 65535u
 #define DEFAULT_LOG_RANGE_BASE 100.0
 //define background colour codes
 #ifndef BLACK_BACKGROUND
-   #define BLACK_BACKGROUND 0
+#define BLACK_BACKGROUND 0
 #endif
 #ifndef WHITE_BACKGROUND
-   #define WHITE_BACKGROUND 1
+#define WHITE_BACKGROUND 1
 #endif
 
 enum yPlotScheme { Y_PLOT_LINEAR_DST_PORT, Y_PLOT_LOGARITHMIC_DST_PORT };
-   //options to plot spacially along z axis by desitnation port
+//options to plot spacially along z axis by desitnation port
 
 //x and y are linearly plotted according to destination and source address
 //respectivly
@@ -117,8 +117,8 @@ enum colSchemes { COL_MAP_DST_PORT, COL_LOG_MAP_DST_PORT,
 
 enum colSchemesIP { COL_IP_SRC_ADR, COL_IP_DST_ADR, COL_IP_PROTO, COL_IP_SIZE,
                     COL_IP_TTL };
-   //note choice of IP colour scheme should overwrite other colour schemes
-   //protocol specific colour schemes can be set indepenantly of others
+//note choice of IP colour scheme should overwrite other colour schemes
+//protocol specific colour schemes can be set indepenantly of others
 
 enum colSchemesICMP { COL_ICMP_PROTO, COL_ICMP_TYPE, COL_ICMP_TYPE_CODE };
 
@@ -140,113 +140,113 @@ enum colMapFunct { COL_MAP_RAINBOW, COL_MAP_LOG_RAINBOW, COL_MAP_HEATMAP,
 
 class Plotter
 {
-   public:
+public:
 
-      //grpahical plotting members to hold values
-      static float drawingFieldSize;
-      //spatial ranges
-      static unsigned int xRange[2];
-      static unsigned int yRange[2];
-      static unsigned int zRange[2];
-      //colour ranges
-      static unsigned int colRange[2];
-      static unsigned int ipColRange[2];
-      static unsigned int icmpColRange[2];
-      static unsigned int tcpColRange[2];
-      static unsigned int udpColRange[2];
-      //range lengths to hold precomputed values
-      static unsigned int xRangeLength;
-      static unsigned int yRangeLength;
-      static unsigned int zRangeLength;
-      static unsigned int colRangeLength;
-      static unsigned int ipColRangeLength;
-      static unsigned int icmpColRangeLength;
-      static unsigned int tcpColRangeLength;
-      static unsigned int udpColRangeLength;
-      //log predetermined values
-      static float yLogRangeBase; //log range and base for plotting to y
-      static float yLogRangeBaseDiv; //the value of log(yLogBaseRange)
-      static float colLogRangeBase; //log range and base for mapping colour
-      static float colLogRangeBaseDiv; //the value of log(colLogRangeBase)
+    //grpahical plotting members to hold values
+    static float drawingFieldSize;
+    //spatial ranges
+    static unsigned int xRange[2];
+    static unsigned int yRange[2];
+    static unsigned int zRange[2];
+    //colour ranges
+    static unsigned int colRange[2];
+    static unsigned int ipColRange[2];
+    static unsigned int icmpColRange[2];
+    static unsigned int tcpColRange[2];
+    static unsigned int udpColRange[2];
+    //range lengths to hold precomputed values
+    static unsigned int xRangeLength;
+    static unsigned int yRangeLength;
+    static unsigned int zRangeLength;
+    static unsigned int colRangeLength;
+    static unsigned int ipColRangeLength;
+    static unsigned int icmpColRangeLength;
+    static unsigned int tcpColRangeLength;
+    static unsigned int udpColRangeLength;
+    //log predetermined values
+    static float yLogRangeBase; //log range and base for plotting to y
+    static float yLogRangeBaseDiv; //the value of log(yLogBaseRange)
+    static float colLogRangeBase; //log range and base for mapping colour
+    static float colLogRangeBaseDiv; //the value of log(colLogRangeBase)
 
-      //plotting/mapping scheme variables to specifify plotting modes
-      //other objects may use these values as a refrence for plotting choices
-      static int yPlotScheme; //hold currnet plotting scheme, either linear
-            //or logarithmic
-      //x and y directions have linear plots
-      static int colMapScheme; //hold current generic colour scheme, by:
-            //dst port, src port, address, protocol, packet size, time, etc
-      //protocol specific colour schemes
-      static int ipColMapScheme;
-      static int icmpColMapScheme;
-      static int tcpColMapScheme; 
-      static int udpColMapScheme; 
-      static int backgroundCol; //the background colour, either black or white
-      static bool transDecay;
-            //to specify wether transparent decay is on or off
+    //plotting/mapping scheme variables to specifify plotting modes
+    //other objects may use these values as a refrence for plotting choices
+    static int yPlotScheme; //hold currnet plotting scheme, either linear
+    //or logarithmic
+    //x and y directions have linear plots
+    static int colMapScheme; //hold current generic colour scheme, by:
+    //dst port, src port, address, protocol, packet size, time, etc
+    //protocol specific colour schemes
+    static int ipColMapScheme;
+    static int icmpColMapScheme;
+    static int tcpColMapScheme;
+    static int udpColMapScheme;
+    static int backgroundCol; //the background colour, either black or white
+    static bool transDecay;
+    //to specify wether transparent decay is on or off
 
-      //the start of an axis should always be greater than the end
-      static void setRanges(unsigned int xStart, unsigned int xEnd,
-            unsigned int yStart, unsigned int yEnd,
-            unsigned int zStart, unsigned int zEnd,
-            unsigned int colStart, unsigned int colEnd,
-            float drawFieldSize);
-         //once off function to set all range values
-      //spatial ranges
-      static void setXRange(unsigned int  xStart, unsigned int  xEnd);
-      static void setYRange(unsigned int yStart, unsigned int  yEnd);
-      static void setZRange(unsigned int  zStart, unsigned int zEnd);
-      //colour ranges
-      static void setColRange(unsigned int colStart, unsigned int colEnd);
-      static void setIpColRange(unsigned int start, unsigned int end);
-      static void setIcmpColRange(unsigned int start, unsigned int end);
-      static void setTcpColRange(unsigned int start, unsigned int end);
-      static void setUdpColRange(unsigned int start, unsigned int end);
-      //log base
-      static void setYLogRangeBase(float rangeBase);
-         //specific log base range function parameter for y plot
-      static void setColLogRangeBase(float rangeBase);
-         //specific log base range function parameter for colour plot
+    //the start of an axis should always be greater than the end
+    static void setRanges(unsigned int xStart, unsigned int xEnd,
+                          unsigned int yStart, unsigned int yEnd,
+                          unsigned int zStart, unsigned int zEnd,
+                          unsigned int colStart, unsigned int colEnd,
+                          float drawFieldSize);
+    //once off function to set all range values
+    //spatial ranges
+    static void setXRange(unsigned int  xStart, unsigned int  xEnd);
+    static void setYRange(unsigned int yStart, unsigned int  yEnd);
+    static void setZRange(unsigned int  zStart, unsigned int zEnd);
+    //colour ranges
+    static void setColRange(unsigned int colStart, unsigned int colEnd);
+    static void setIpColRange(unsigned int start, unsigned int end);
+    static void setIcmpColRange(unsigned int start, unsigned int end);
+    static void setTcpColRange(unsigned int start, unsigned int end);
+    static void setUdpColRange(unsigned int start, unsigned int end);
+    //log base
+    static void setYLogRangeBase(float rangeBase);
+    //specific log base range function parameter for y plot
+    static void setColLogRangeBase(float rangeBase);
+    //specific log base range function parameter for colour plot
 
-      static float linearMap(unsigned int  val, const unsigned int range[2]);
-         //generic function to calculate a fraction along a range
-         //returns the fraction between [0.0, 1.0] along axis between range[0]
-         //and range[1]. values outside of [0.0, 1.0] indicate plottings beyond
-         //the range which the caller can test for. Double precision is used.
-      static float linearXMap(unsigned int xVal);
-      static float linearYMap(unsigned int yVal);
-      static float linearZMap(unsigned int zVal);
-         //direction specific map functions to take advantage of precomputed
-         //range values improving performance of many itterations
+    static float linearMap(unsigned int  val, const unsigned int range[2]);
+    //generic function to calculate a fraction along a range
+    //returns the fraction between [0.0, 1.0] along axis between range[0]
+    //and range[1]. values outside of [0.0, 1.0] indicate plottings beyond
+    //the range which the caller can test for. Double precision is used.
+    static float linearXMap(unsigned int xVal);
+    static float linearYMap(unsigned int yVal);
+    static float linearZMap(unsigned int zVal);
+    //direction specific map functions to take advantage of precomputed
+    //range values improving performance of many itterations
 
-      static float logarithmicMap(unsigned int  val, const unsigned int range[2],
-            float logFactorBase=10.0);
-         //plots by the following function:
-         //    f(x)=log10(1+Lf*(x-x0)/(x1-x0))/log10(Lf)
-         //where x is the port in the viewing range of x0 to x1, and Lf is the
-         //logaritmic factor that x values are effectivly linearly mapped to
-      static float logarithmicYMap(unsigned int  yVal);
-         //uses precomputed values to improve performance
+    static float logarithmicMap(unsigned int  val, const unsigned int range[2],
+    float logFactorBase=10.0);
+    //plots by the following function:
+    //    f(x)=log10(1+Lf*(x-x0)/(x1-x0))/log10(Lf)
+    //where x is the port in the viewing range of x0 to x1, and Lf is the
+    //logaritmic factor that x values are effectivly linearly mapped to
+    static float logarithmicYMap(unsigned int  yVal);
+    //uses precomputed values to improve performance
 
-      static void rainbowColourMap(float colour[3], unsigned int val,
-            const unsigned int range[2]);
-         //returns the fraction between [0.0, 1.0] along axis between range[0]
-         //and range[1]. linearly maps the ranbow spectrum from red to violet
-         //through to rgb colours, returned using the colour[3] parameter
-      static void rainbowColourMap(float colour[3], unsigned int val);
-         //performs colour map calculation using precomputed values
-      static void logRainbowColMap(float colour[3], unsigned int val);
-         //similar to rainbowColourMap, but performs log transform on input
-         //values and uses precomputed values to improve performance
+    static void rainbowColourMap(float colour[3], unsigned int val,
+    const unsigned int range[2]);
+    //returns the fraction between [0.0, 1.0] along axis between range[0]
+    //and range[1]. linearly maps the ranbow spectrum from red to violet
+    //through to rgb colours, returned using the colour[3] parameter
+    static void rainbowColourMap(float colour[3], unsigned int val);
+    //performs colour map calculation using precomputed values
+    static void logRainbowColMap(float colour[3], unsigned int val);
+    //similar to rainbowColourMap, but performs log transform on input
+    //values and uses precomputed values to improve performance
 
-      static void plot(PacketEvent &pe);
-         //used to plot packet events to thier point coordinates and colour
-         //and assumes the caller has set appropriate range values to take
-         //advantage of precomputed performance gain over many itterations
+    static void plot(PacketEvent &pe);
+    //used to plot packet events to thier point coordinates and colour
+    //and assumes the caller has set appropriate range values to take
+    //advantage of precomputed performance gain over many itterations
 
 private:
 
-      static void HSVtoRGB(float rgb[3], const float hsv[3]);
+    static void HSVtoRGB(float rgb[3], const float hsv[3]);
 
 };
 #endif PLOTTER_H

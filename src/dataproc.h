@@ -49,7 +49,7 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 /* revision history
 
 2007-11-08: 
-   * added implicit filter to drop fragmented packets. PacketHeaders can parse 
+   * added implicit filter to drop fragmented packets. PacketHeaders can parse
      packets with IP options, but not frag packets.
 
 */
@@ -70,7 +70,7 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #include <GL/gl.h>
 #include <timeutil.h>
 #include <plotter.h>
-   //packetevent.h and in turn, packetheaders.h are linked via plotter
+//packetevent.h and in turn, packetheaders.h are linked via plotter
 
 
 // DEGBUG DIRECTIVES ----------------------------------------------------------
@@ -95,16 +95,16 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 // DEFINITIONS ----------------------------------------------------------------
 
 #define _BSD_SOURCE 1
-   //to avoid libpcap compatibility problems on some linux systems
+//to avoid libpcap compatibility problems on some linux systems
 
 #define IMPLICIT_BPF_FILTER_EXP "(ip[6:2] & 0x3fff = 0 and (icmp or tcp or udp))"
-   //only support certain protcols and non-fraged IP packets. 0x2fff checks that
-   //the more fragment bit is zero and that the fragement offset is zero
+//only support certain protcols and non-fraged IP packets. 0x2fff checks that
+//the more fragment bit is zero and that the fragement offset is zero
 #define OPTIMISE_BPF_FILTER 1
 #define DONT_OPTIMISE_BPF_FILTER 0
 
 #define CAPTURE_LENGTH 68
-   //should be enough to cover ethernet IP - TCP, UDP or ICMP packets
+//should be enough to cover ethernet IP - TCP, UDP or ICMP packets
 #define MAX_CAPTURE_LENGTH 65535
 
 #define PROMISC_MODE 1
@@ -128,58 +128,58 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #ifndef DEFAULT_REPLAY_SUBDIR
 #  define DEFAULT_REPLAY_SUBDIR "replayed"
 #endif
-   //the qt QDir and QFile classes accomodate cross platform filesystems using
-   //'/' directory unix convention and make approprite changes '\' for windows
-   //transparently
+//the qt QDir and QFile classes accomodate cross platform filesystems using
+//'/' directory unix convention and make approprite changes '\' for windows
+//transparently
 #define DEFAULT_DUMP_FILE_NAME "dump.cap"
 
 #define UPDATE_TIMER_ID 1
 #define DEFAULT_UPDATE_RATE 25
-   //every 40 msec
+//every 40 msec
 #define MAX_UPDATE_RATE 200
-   //5msec
+//5msec
 #define MIN_UPDATE_RATE 1
-   //200msec
+//200msec
 
 #define DEFAULT_REPLAY_RATE 1.0
 #define MAX_REPLAY_RATE 86400.0
-   //1 day in a second
+//1 day in a second
 #define MIN_REPLAY_RATE 0.001
-   //time factor, 1 millisec in a sec
+//time factor, 1 millisec in a sec
 
 #define EARLIEST_REPLAY_POSITION 0
-   //sec value for timeval tv.sec Jan 1970, 2am
+//sec value for timeval tv.sec Jan 1970, 2am
 
 #define DEFAULT_TIME_WINDOW 86400
-   //1 day
+//1 day
 #define MAX_TIME_WINDOW 157766400.0
-   //5 years
+//5 years
 #define MIN_TIME_WINDOW 0.04
-   // 1/25 of a second - anything lower should be parctically unoticible for
-   //instant events
+// 1/25 of a second - anything lower should be parctically unoticible for
+//instant events
 
 #define DEFAULT_BUFFER_UNDERUN_PROTECTION 1.0
 #define MIN_BUFFER_UNDERUN_PROTECTION 0.0
 #define MAX_BUFFER_UNDERUN_PROTECTION 10.0
-   //number of seconds to buffer ahead - not really needed unless the
-   //application were converted to a threaded application where the
-   //data processor and extraction ran on a seperate thread to the
-   //visualization and gui
+//number of seconds to buffer ahead - not really needed unless the
+//application were converted to a threaded application where the
+//data processor and extraction ran on a seperate thread to the
+//visualization and gui
 
 #define MAX_INT 2147483647
-   //size of integer field
-   //2^(32-1)-1 = 2147483646 seconds = about 68 years (else overflow problem
-   //with int)
+//size of integer field
+//2^(32-1)-1 = 2147483646 seconds = about 68 years (else overflow problem
+//with int)
 
 #define DEFAULT_CHAR_FIELD_SIZE 256
-   //size of char buffers for c string storage
+//size of char buffers for c string storage
 
 #define NEW_POINT_BULGE_USEC 500000
-   //this value is the number of microseconds the new points should bulge for
+//this value is the number of microseconds the new points should bulge for
 
 
 enum replayModes {NOT_READY, MONITOR_LOCAL, MONITOR_REMOTE, REPLAY_FILE};
-         //NOT_READY indicates that the mode is not yet set
+//NOT_READY indicates that the mode is not yet set
 
 //enum replayState {PAUSED, PLAYING, LIVE, REPLAY_AT_END};
 enum replayState {PAUSED, PLAYING, REPLAY_AT_END};
@@ -194,16 +194,16 @@ class GLVisWidget;
 
 class DataProcessor : public QObject
 {
-   Q_OBJECT //macro for use of signals and slots
+    Q_OBJECT //macro for use of signals and slots
 
 
-   private:
+private:
 
-      //DataExtractor subclass -------------------------------------------------
+    //DataExtractor subclass -------------------------------------------------
 
-      class DataExtractor
-      {
-         /* Internal class to impliment non blocking input into buffer by
+    class DataExtractor
+    {
+        /* Internal class to impliment non blocking input into buffer by
           * extracting data using the libpcap library
           * - may in future be revised to operate as a seperate thread
           *   therefore control functions are required to protect data members
@@ -212,293 +212,293 @@ class DataProcessor : public QObject
           *
           */
 
-         private:
+    private:
 
-            DataProcessor *dataProcessor;
-            //need a static pointer for pcap callback function
-            static DataProcessor *statDataProcessor;
+        DataProcessor *dataProcessor;
+        //need a static pointer for pcap callback function
+        static DataProcessor *statDataProcessor;
 
-            //data source references
-            QString strReplayFileReference;
-            QString strRecordFileReference;
-            QString strLocalInterface;
-            QString strServerAddress;
+        //data source references
+        QString strReplayFileReference;
+        QString strRecordFileReference;
+        QString strLocalInterface;
+        QString strServerAddress;
 
-            //settings
-            int packetCaptureLength; //number of starting bytes to capture for
-                  //packet packet event buffer
-            int promiscuousMode; //1 = promisc mode, 0 = non-promisc mode
-            int readTimeout; //in millisec
+        //settings
+        int packetCaptureLength; //number of starting bytes to capture for
+        //packet packet event buffer
+        int promiscuousMode; //1 = promisc mode, 0 = non-promisc mode
+        int readTimeout; //in millisec
 
-            //libpcap components
-            int pcapRet; //to hold return values from pcap
-            int dataLinkType;
-            char pcapErrorBuffer[PCAP_ERRBUF_SIZE];
-            pcap_if_t *allDevices;
-            pcap_if_t *device;
-            //capture instances
-            pcap_t *fileCaptureInstance;
-            pcap_t *liveCaptureInstance;
-            pcap_dumper_t *dumpFileDescriptor;
-            int recMode;
+        //libpcap components
+        int pcapRet; //to hold return values from pcap
+        int dataLinkType;
+        char pcapErrorBuffer[PCAP_ERRBUF_SIZE];
+        pcap_if_t *allDevices;
+        pcap_if_t *device;
+        //capture instances
+        pcap_t *fileCaptureInstance;
+        pcap_t *liveCaptureInstance;
+        pcap_dumper_t *dumpFileDescriptor;
+        int recMode;
 
-            //filter
-            QString implicit_bpf_FilterExpr;
-            QString bpfFilterExpr;
-            struct bpf_program bpfFilterProg;
+        //filter
+        QString implicit_bpf_FilterExpr;
+        QString bpfFilterExpr;
+        struct bpf_program bpfFilterProg;
 
-            //network info
-            bpf_u_int32 netAddress; //IP network address
-            bpf_u_int32 netMask; //IP subnet mask
+        //network info
+        bpf_u_int32 netAddress; //IP network address
+        bpf_u_int32 netMask; //IP subnet mask
 
-            //processing methodes, designed to run in a loop
-            void readCaptureFile();
-            void monitorLocalHost();
-            void monitorRemoteServer();
+        //processing methodes, designed to run in a loop
+        void readCaptureFile();
+        void monitorLocalHost();
+        void monitorRemoteServer();
 
-            //loopback function called by pcap
-            static void processPacket(u_char *args,
-                  const struct pcap_pkthdr *header, const u_char *snapshot);
+        //loopback function called by pcap
+        static void processPacket(u_char *args,
+                                  const struct pcap_pkthdr *header, const u_char *snapshot);
 
-            //error reporting
-            bool checkPcapErrorBuffer(); //returns true if thier is an error
-                  //present
-            void resetPcapErrorBuffer(); //resets error buffer to null string
-            QString copyPcapError(); //returns a copy of the pcap error
-            void reportError(const QString &errMsg,
-                  const QString &function = NULL);
+        //error reporting
+        bool checkPcapErrorBuffer(); //returns true if thier is an error
+        //present
+        void resetPcapErrorBuffer(); //resets error buffer to null string
+        QString copyPcapError(); //returns a copy of the pcap error
+        void reportError(const QString &errMsg,
+                         const QString &function = NULL);
 
-         public:
+    public:
 
-            //char pcapErrorBuffer[PCAP_ERRBUF_SIZE]; //store pcap error message
-            //made private in case of threaded access
+        //char pcapErrorBuffer[PCAP_ERRBUF_SIZE]; //store pcap error message
+        //made private in case of threaded access
 
-            DataExtractor();
-            ~DataExtractor();
+        DataExtractor();
+        ~DataExtractor();
 
-            void setDataProcLink(DataProcessor *ptr);
+        void setDataProcLink(DataProcessor *ptr);
 
-            void run(); //method to run process loop
-                  //- if extended to a thread, this method is called for thread
-                  //  execution and should be defined as virtual
+        void run(); //method to run process loop
+        //- if extended to a thread, this method is called for thread
+        //  execution and should be defined as virtual
 
-            bool findAllDevices(QStringList& strLstAllDevs); //creates an itterator to network devices
-            bool setDataLinkType(); //identifies and sets the dataLinkType
-            bool lookupNetwork(); //sets up network address and mask
-            void setHomeNetwork(const unsigned int netAdr,
-                  const unsigned int mask);
-            void getHomeNetwork(unsigned int &netAdr, unsigned int &mask);
-               //returns currently set netwrok address and mask as ints
+        bool findAllDevices(QStringList& strLstAllDevs); //creates an itterator to network devices
+        bool setDataLinkType(); //identifies and sets the dataLinkType
+        bool lookupNetwork(); //sets up network address and mask
+        void setHomeNetwork(const unsigned int netAdr,
+                            const unsigned int mask);
+        void getHomeNetwork(unsigned int &netAdr, unsigned int &mask);
+        //returns currently set netwrok address and mask as ints
 
-            //functions return true if succesful, else false
-            //bool getAllInterfaces(QStringList &strList);
-            bool openCaptureFile(const QString file = "");
-            bool reopenCaptureFile(); //used when
-               //the replay position or tiint a, int b, int c, int d, int slashMaskmewindow is changed such that
-               //backtracking in the file is required
-            QString getReplayFileName();
-            bool openInterface(const QString netInterface = "");
-            bool openDefaultInterface(); //set to default capture interface
-            bool connectServer(const QString server = "");
-            bool openDumpFile(const QString file = "");
-            void recordToDumpFile(bool record); //record packets to file
-            void closeDumpFile();
-            bool setImplicitFilter(const QString impFilter);
-            bool setFilterExpr(const QString filter);
-            bool applyFilter();
-            QString getImplicitFilter();
-               //return values through parameters
+        //functions return true if succesful, else false
+        //bool getAllInterfaces(QStringList &strList);
+        bool openCaptureFile(const QString file = "");
+        bool reopenCaptureFile(); //used when
+        //the replay position or tiint a, int b, int c, int d, int slashMaskmewindow is changed such that
+        //backtracking in the file is required
+        QString getReplayFileName();
+        bool openInterface(const QString netInterface = "");
+        bool openDefaultInterface(); //set to default capture interface
+        bool connectServer(const QString server = "");
+        bool openDumpFile(const QString file = "");
+        void recordToDumpFile(bool record); //record packets to file
+        void closeDumpFile();
+        bool setImplicitFilter(const QString impFilter);
+        bool setFilterExpr(const QString filter);
+        bool applyFilter();
+        QString getImplicitFilter();
+        //return values through parameters
 
-      };
-
-
-   //DataProcessor members and operations --------------------------------------
-
-      //private internal members -----------------------------------------------
-
-      //object states - enumerators defined previously
-      int replayMode; //current mode: NULL_MODE, MONITOR_LOCAL, MONITOR_REMOTE,
-            //REPLAY_FILE,
-      int replayState; //current state: NOT_READY, PLAYING, PAUSED
-      //transparent decay varaibles
-      bool transDecay; //turn on fading effect as events become older
-      bool transDecayNextRender; //notify to decrement transparency on next
-         //render - not all renders are triggered by updates
-      double transDecayFrac; //amount to decriment opacity
-      //point bulge variables
-      bool newPointBulge;
-      //record state
-      bool recordToFile;
-
-      //Timming factors
-      double timeFactor; //rate of playback as a time factor
-      int updateRate; //rate in msec which data processor updates time values
-            //no point in higher accuracy, since Timer operates at msec
-            //resolution
-
-      //relative time values - not to be interpreted as conventional timevals
-      struct timeval timeWindow; //time window in sec and millisec
-      struct timeval bufferAhead; //time in sec and millisec - realtive time
-
-      //absolute time values - time elapsed since 02:00:00 Jan 01 1970
-      struct timeval currentTime; //current time updated by a resolution
-            //determined by updateRate
-      struct timeval replayPosition; //current refrence position of play back,
-            //in absolute terms reference to Jan 01 1970, and updated at rate of
-            //time factor - indicates time at begging of replay buffer
-      struct timeval timeWindowEnd; //depends on timeWindow and end time
-      struct timeval updateTimeInc; //to store update time step in microsec
-            // - relative time - replay file mode
-      struct timeval timeLapse; //to store time lapsed in microsec
-            // - relative time - live mode
-      struct timeval bufferPosition; //buffer position ahead of replay position
-            //by bufferAhead
-      struct timeval captureStartTime; //time indicating the beging of a capture
-            //changes when a replay file is loaded or live monitor initiated
-      struct timeval captureEndTime; //time indicating the end of a capture,
-            //which will be the last capture timestamp in a capture file, or the
-            //current time (less buffer underun protection) if it is a live
-            //capture
-      struct timeval lastRecordTime; //the time that the last packet was
-            //recorded at
-      struct timeval bulgeTime; //the relative amount of time to bulge points for
-      struct timeval stopBulgeTime; //the time to stop bulging a new point (with
-            //respect to the replay position and replay rate
-
-      //Strings to hold implicit filter settings
-      QString dstNetFilter;
-      QString srcNetFilter;
-      QString portFilter;
-
-      //Qt QDateTime objects for updating gui display
-      QDateTime qdt_replayPosition; //qt equivelent of replayPosition
-      QDateTime qdt_twEnd; //qt equivelent of timeWindowEnd
-
-      //Sting list of interface names
-      QStringList strAllLocalInterfaces;
-
-      QTimer *processTimer;
-      QTimer *statusTimer; //update rate for reporting status messages
-
-      DataExtractor dataExtractor; //consituent component to fetch packet data
-            //place in packet event buffer
-      //GLVisWidget *glVisWidget;
-
-      //display list identifier - fost the case of static view to store the
-      //points in a diplay list if playback is not running
-      GLuint staticSatterplotList;
-
-      //private internal operations --------------------------------------------
-
-      void updateTimeIncrimental(int tmLapse); //function to set the
-         //incrimental period in replay time between updates according to update
-         //rate and replay rate (timeFactor)
-      void updateTimevals(); //updates timeWindowEndTime, bufferEndTime and
-         //bufferLength
-      void updateTimeRange();
-      bool updateImplicitFilter();
-      bool checkDefaultDirs();
+    };
 
 
-   public:
+    //DataProcessor members and operations --------------------------------------
 
-      std::deque <PacketEvent> packetEventBuffer; //buffer with public access
-         //for direct reference and improved access
-         //- this will work fine provided only single thread access is required,
-         //  otherwise it should be declared private with thread-safe access
-         //  functions
-         //- newly processed data is pushed on the front of the deque whilst
-         //  the back can be checked to remove expired data
+    //private internal members -----------------------------------------------
 
-      //environment
-      QString strAppDir; //application startup directory
+    //object states - enumerators defined previously
+    int replayMode; //current mode: NULL_MODE, MONITOR_LOCAL, MONITOR_REMOTE,
+    //REPLAY_FILE,
+    int replayState; //current state: NOT_READY, PLAYING, PAUSED
+    //transparent decay varaibles
+    bool transDecay; //turn on fading effect as events become older
+    bool transDecayNextRender; //notify to decrement transparency on next
+    //render - not all renders are triggered by updates
+    double transDecayFrac; //amount to decriment opacity
+    //point bulge variables
+    bool newPointBulge;
+    //record state
+    bool recordToFile;
 
-      DataProcessor();
-      ~DataProcessor();
-      void init();
-      //void addPacketEvent(const PacketEvent &pe);
-      DataProcessor *getDataProcessorPtr();
-         //get a pointer to the data processor
-      //void setGLVisWidgetLink(GLVisWidget* ptr);
+    //Timming factors
+    double timeFactor; //rate of playback as a time factor
+    int updateRate; //rate in msec which data processor updates time values
+    //no point in higher accuracy, since Timer operates at msec
+    //resolution
 
-      //error reporting
-      void reportError(const QString &errMsg, const QString &function = NULL);
+    //relative time values - not to be interpreted as conventional timevals
+    struct timeval timeWindow; //time window in sec and millisec
+    struct timeval bufferAhead; //time in sec and millisec - realtive time
 
-   public slots:
+    //absolute time values - time elapsed since 02:00:00 Jan 01 1970
+    struct timeval currentTime; //current time updated by a resolution
+    //determined by updateRate
+    struct timeval replayPosition; //current refrence position of play back,
+    //in absolute terms reference to Jan 01 1970, and updated at rate of
+    //time factor - indicates time at begging of replay buffer
+    struct timeval timeWindowEnd; //depends on timeWindow and end time
+    struct timeval updateTimeInc; //to store update time step in microsec
+    // - relative time - replay file mode
+    struct timeval timeLapse; //to store time lapsed in microsec
+    // - relative time - live mode
+    struct timeval bufferPosition; //buffer position ahead of replay position
+    //by bufferAhead
+    struct timeval captureStartTime; //time indicating the beging of a capture
+    //changes when a replay file is loaded or live monitor initiated
+    struct timeval captureEndTime; //time indicating the end of a capture,
+    //which will be the last capture timestamp in a capture file, or the
+    //current time (less buffer underun protection) if it is a live
+    //capture
+    struct timeval lastRecordTime; //the time that the last packet was
+    //recorded at
+    struct timeval bulgeTime; //the relative amount of time to bulge points for
+    struct timeval stopBulgeTime; //the time to stop bulging a new point (with
+    //respect to the replay position and replay rate
 
-      //signals recived from gui control panel - set playback options
-      void setMode(int mode);
-      void selectReplayFile(const QString file);
-      void selectNetworkInterface(const QString netInterface);
-      void selectRemoteServer(const QString server);
-      void setFilter(const QString filterExpression);
-      void setReplayPosition(const struct timeval newReplayPos);
-      void setReplayPosition(const QDateTime newReplayPos);
-      void play();
-      void pause();
-      void togglePlayPause();
-      void record(bool rec);
-      void setReplayRate(double rate); //dependant on sufficient update rate
-      void setTimeWindow(double seconds);
-      void setBufferAhead(double seconds);
-      void setUpdateRate(int timesPerSecond);
-      void enablePointBulge(bool on);
+    //Strings to hold implicit filter settings
+    QString dstNetFilter;
+    QString srcNetFilter;
+    QString portFilter;
 
-      //report functions
-      void getBufferStatus(); //report the size of the buffer in terms of the
-         //number of elements, its size in bytes, and its length in time
-      int getMode();
-      int getState();
-      QDateTime *getReplayPosition();
-      QDateTime *getTimeWindowEnd();
-      QString getReplayFileName();
-      void getListLocalInterfaces(QStringList *interfaces);
+    //Qt QDateTime objects for updating gui display
+    QDateTime qdt_replayPosition; //qt equivelent of replayPosition
+    QDateTime qdt_twEnd; //qt equivelent of timeWindowEnd
 
-      //set network ranges
-      void reportHomeNetwork(); //to update gui display
-      void setHomeNetwork(int a, int b, int c, int d, int slashMask);
-      void setHomeNetwork(unsigned int netAdr, unsigned int netMask);
-      void guessHomeNetwork();
-      void setSourceNetwork(int a, int b, int c, int d, int slashMask);
-      void setPortRange(int start, int end,
-            int plotType=Y_PLOT_LINEAR_DST_PORT,
-            int logRangeBase=DEFAULT_LOG_RANGE_BASE);
+    //Sting list of interface names
+    QStringList strAllLocalInterfaces;
 
-      //plotting and rendering
-      void setColourScheme(int scheme);
-      void setTransparentDecay(bool on = true);
-      void changeBackgroundColour(int colCode);
-      void rePlot();
-      void update(); //called by updateTimer to update various timming values
-      void updateStatus(); //called by statusTimer
-      void generatePointDispList(); //to generate the static scatteplot list
-      void renderData(); //called by VisDisplay
-         //when playing/live, dynamic change of points
-         //else when paused, a static display list improves performance
-      void renderDataDynamic(); 
+    QTimer *processTimer;
+    QTimer *statusTimer; //update rate for reporting status messages
 
-   signals:
+    DataExtractor dataExtractor; //consituent component to fetch packet data
+    //place in packet event buffer
+    //GLVisWidget *glVisWidget;
 
-      void playing();
-      void paused();
-      void updateGLVisWidget();
-      void setStatusBarMessage(QString message);
-      void updateReplayTimeDisplay(const QDateTime &repPos,
-                                   const QDateTime &timeWinEnd);
-      void updateReplayRateDisplay(double rate);
-      void updateTimeWindowDisplay(double timeWin);
-      void setTimeRange(const QDateTime start, const QDateTime end);
-      void updateHomeNetworkDisplay(int a, int b, int c, int d, int slashMask,
-            QString range);
-      void updateSourceNetworkDisplay(int a, int b, int c, int d, int slashMask,
-            QString range);
-      void updatePortRangeDisplay(int start, int end);
-      void errorFound(const QString errMsg);
-      void setXAxisLabels(const QString x0, const QString x1);
-      void setYAxisLabels(const QString y0, const QString y1);
-      void setZAxisLabels(const QString z0, const QString z1);
-      void setDateTimeReference(QDateTime* dt);
-      void setRecordButton(bool buttonOn);
-      void sendErrMsg(QString errMsg);
+    //display list identifier - fost the case of static view to store the
+    //points in a diplay list if playback is not running
+    GLuint staticSatterplotList;
+
+    //private internal operations --------------------------------------------
+
+    void updateTimeIncrimental(int tmLapse); //function to set the
+    //incrimental period in replay time between updates according to update
+    //rate and replay rate (timeFactor)
+    void updateTimevals(); //updates timeWindowEndTime, bufferEndTime and
+    //bufferLength
+    void updateTimeRange();
+    bool updateImplicitFilter();
+    bool checkDefaultDirs();
+
+
+public:
+
+    std::deque <PacketEvent> packetEventBuffer; //buffer with public access
+    //for direct reference and improved access
+    //- this will work fine provided only single thread access is required,
+    //  otherwise it should be declared private with thread-safe access
+    //  functions
+    //- newly processed data is pushed on the front of the deque whilst
+    //  the back can be checked to remove expired data
+
+    //environment
+    QString strAppDir; //application startup directory
+
+    DataProcessor();
+    ~DataProcessor();
+    void init();
+    //void addPacketEvent(const PacketEvent &pe);
+    DataProcessor *getDataProcessorPtr();
+    //get a pointer to the data processor
+    //void setGLVisWidgetLink(GLVisWidget* ptr);
+
+    //error reporting
+    void reportError(const QString &errMsg, const QString &function = NULL);
+
+public slots:
+
+    //signals recived from gui control panel - set playback options
+    void setMode(int mode);
+    void selectReplayFile(const QString file);
+    void selectNetworkInterface(const QString netInterface);
+    void selectRemoteServer(const QString server);
+    void setFilter(const QString filterExpression);
+    void setReplayPosition(const struct timeval newReplayPos);
+    void setReplayPosition(const QDateTime newReplayPos);
+    void play();
+    void pause();
+    void togglePlayPause();
+    void record(bool rec);
+    void setReplayRate(double rate); //dependant on sufficient update rate
+    void setTimeWindow(double seconds);
+    void setBufferAhead(double seconds);
+    void setUpdateRate(int timesPerSecond);
+    void enablePointBulge(bool on);
+
+    //report functions
+    void getBufferStatus(); //report the size of the buffer in terms of the
+    //number of elements, its size in bytes, and its length in time
+    int getMode();
+    int getState();
+    QDateTime *getReplayPosition();
+    QDateTime *getTimeWindowEnd();
+    QString getReplayFileName();
+    void getListLocalInterfaces(QStringList *interfaces);
+
+    //set network ranges
+    void reportHomeNetwork(); //to update gui display
+    void setHomeNetwork(int a, int b, int c, int d, int slashMask);
+    void setHomeNetwork(unsigned int netAdr, unsigned int netMask);
+    void guessHomeNetwork();
+    void setSourceNetwork(int a, int b, int c, int d, int slashMask);
+    void setPortRange(int start, int end,
+                      int plotType=Y_PLOT_LINEAR_DST_PORT,
+                      int logRangeBase=DEFAULT_LOG_RANGE_BASE);
+
+    //plotting and rendering
+    void setColourScheme(int scheme);
+    void setTransparentDecay(bool on = true);
+    void changeBackgroundColour(int colCode);
+    void rePlot();
+    void update(); //called by updateTimer to update various timming values
+    void updateStatus(); //called by statusTimer
+    void generatePointDispList(); //to generate the static scatteplot list
+    void renderData(); //called by VisDisplay
+    //when playing/live, dynamic change of points
+    //else when paused, a static display list improves performance
+    void renderDataDynamic();
+
+signals:
+
+    void playing();
+    void paused();
+    void updateGLVisWidget();
+    void setStatusBarMessage(QString message);
+    void updateReplayTimeDisplay(const QDateTime &repPos,
+                                 const QDateTime &timeWinEnd);
+    void updateReplayRateDisplay(double rate);
+    void updateTimeWindowDisplay(double timeWin);
+    void setTimeRange(const QDateTime start, const QDateTime end);
+    void updateHomeNetworkDisplay(int a, int b, int c, int d, int slashMask,
+                                  QString range);
+    void updateSourceNetworkDisplay(int a, int b, int c, int d, int slashMask,
+                                    QString range);
+    void updatePortRangeDisplay(int start, int end);
+    void errorFound(const QString errMsg);
+    void setXAxisLabels(const QString x0, const QString x1);
+    void setYAxisLabels(const QString y0, const QString y1);
+    void setZAxisLabels(const QString z0, const QString z1);
+    void setDateTimeReference(QDateTime* dt);
+    void setRecordButton(bool buttonOn);
+    void sendErrMsg(QString errMsg);
 
 };

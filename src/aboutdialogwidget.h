@@ -8,7 +8,7 @@
 class AboutDialogWidget : public QDialog, public Ui::AboutDialog {
     Q_OBJECT
 
-    public:
-        AboutDialogWidget(QWidget *parent = 0);
+public:
+    AboutDialogWidget(QWidget *parent = 0);
 };
 #endif // ABOUTDIALOGWIDGET_H
