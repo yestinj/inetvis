@@ -60,7 +60,6 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #include <qdir.h>
 #include <qdatetime.h>
 #include <qtimer.h>
-//Added by qt3to4:
 #include <QWheelEvent>
 #include <QMouseEvent>
 #include <QKeyEvent>
