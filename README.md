@@ -9,6 +9,9 @@ This project is based off of the original work by JP van Riel and Barry Irwin of
 This project was originally written in Qt3 and compiled to 32-bit code, it has since been ported to native Qt4,
 and been set to compile a 64-bit binary.
 
+The instructions below have all been tested on the current version of Ubuntu, 17.04 64-bit.
+
+
 # Building InetVis
 
 In order to build InetVis in your own VM please consider the following guidelines:
