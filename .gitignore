@@ -5,3 +5,4 @@ src/Makefile
 src/inetvis
 src/inetvis.pro.user
 .moc/
+qrc_icons.cpp
