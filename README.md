@@ -52,6 +52,13 @@ If you would like to monitor your own host for network events, instead of replay
 
 Have fun! :-)
 
+# Development
+
+Development is currently done using a combination of Atom, vim, and Qt Creator.
+
+QT Creator allows for simple editing of source code, as well as graphical form editing, and can be
+installed in Debian flavours of Linux by installing the `qtcreator` package.
+
 # Versioning
 
 This software will make use of Semantic Versioning 2.0.0 (http://semver.org/) once reaching the v1.0.0 release phase.
