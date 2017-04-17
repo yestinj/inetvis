@@ -10,7 +10,13 @@ HEADERS	+= dataproc.h \
 	glviswidget.h \
 	plotter.h \
 	packetevent.h \
-	logui.h
+	logui.h \
+        controlpanelwidget.h \
+        aboutdialogwidget.h \
+        helpdocumentationdialogwidget.h \
+        plottersettingsdialogwidget.h \
+        referenceframesettingsdialogwidget.h \
+        visdisplaywidget.h
 
 SOURCES	+= graphicelement.cpp \
 	packetheaders.cpp \
@@ -20,27 +26,22 @@ SOURCES	+= graphicelement.cpp \
 	glviswidget.cpp \
 	dataproc.cpp \
 	packetevent.cpp \
-	logui.cpp
+	logui.cpp \
+        controlpanelwidget.cpp \
+        aboutdialogwidget.cpp \
+        helpdocumentationdialogwidget.cpp \
+        plottersettingsdialogwidget.cpp \
+        referenceframesettingsdialogwidget.cpp \
+        visdisplaywidget.cpp
 
-#The following line was changed from FORMS to FORMS3 by qt3to4
-FORMS3	= controlpanel.ui \
+FORMS = controlpanel.ui \
 	visdisplay.ui \
 	plottersettingsdialog.ui \
 	referenceframesettingsdialog.ui \
 	aboutdialog.ui \
 	helpdocumentationdialog.ui
 
-IMAGES	= images/emblem-pictures.png \
-	images/fileopen \
-	images/filesave \
-	images/stock_insert-video-plugin.png \
-	images/stock_media-fwd.png \
-	images/stock_media-pause.png \
-	images/stock_media-play.png \
-	images/stock_media-rec.png \
-	images/stock_media-rew.png \
-	images/stock_calc-accept.png
-	
+RESOURCES += icons.qrc	
 
 ## CUSTOM SETTINGS ----------------------------------------
 
@@ -50,19 +51,23 @@ IMAGES	= images/emblem-pictures.png \
 CONFIG   += release
 ### uncomment one or the other above
 
+# Turn off C++ warnings while building
+CONFIG += warn_off
+
 ## Linking
 CONFIG   += create_prl link_prl static
-QMAKE_LFLAGS_RELEASE = -m32
+#QMAKE_LFLAGS_RELEASE = -m32
 
 ## Optimization flags
-QMAKE_CFLAGS_RELEASE = -O3 -march=pentium4 -m32 -mfpmath=sse -mmmx -msse -msse2 -mno-sse3 -momit-leaf-frame-pointer -maccumulate-outgoing-args
+QMAKE_CFLAGS_RELEASE = -O3 -march=native -mfpmath=sse -mmmx -msse -msse2 -mno-sse3 -momit-leaf-frame-pointer -maccumulate-outgoing-args
 QMAKE_CXXFLAGS_RELEASE = $$QMAKE_CFLAGS_RELEASE
+
+QT +=  opengl
 
 ## end of CUSTOM SETTINGS ---------------------------------
 
 
 ## platform specific settings -----------------------------
-
 unix {
 
 	DEFINES += LINUX
@@ -79,16 +84,4 @@ win32 {
 	DEFINES += WIN
 	INCLUDEPATH += include\win\winpcap4
 }
-
-
-## qt3 support settings -------------------------------------
-
-QT += qt3support
-
-#DEFINES  += QT3_SUPPORT_WARNINGS
-
-#The following line was inserted by qt3to4
-QT +=  opengl
-#The following line was inserted by qt3to4
-CONFIG += uic3
-
+## end platform specific settings
