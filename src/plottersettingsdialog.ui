@@ -1,1332 +1,1373 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ui version="4.0" stdsetdef="1">
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>PlotterSettingsDialog</class>
-  <widget class="QDialog" name="PlotterSettingsDialog">
-    <property name="geometry">
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>522</width>
-        <height>432</height>
-      </rect>
-    </property>
-    <property name="sizePolicy">
-      <sizepolicy>
-        <hsizetype>1</hsizetype>
-        <vsizetype>1</vsizetype>
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
+<ui version="4.0">
+ <class>PlotterSettingsDialog</class>
+ <widget class="QDialog" name="PlotterSettingsDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>548</width>
+    <height>473</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>Plotter Settings</string>
+  </property>
+  <layout class="QVBoxLayout">
+   <item>
+    <widget class="QGroupBox" name="PlottingGroupBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
       </sizepolicy>
-    </property>
-    <property name="windowTitle">
-      <string>Plotter Settings</string>
-    </property>
-    <layout class="QVBoxLayout">
+     </property>
+     <property name="title">
+      <string>Plotting Ranges and Functions</string>
+     </property>
+     <layout class="QVBoxLayout">
+      <property name="spacing">
+       <number>1</number>
+      </property>
+      <property name="leftMargin">
+       <number>9</number>
+      </property>
+      <property name="topMargin">
+       <number>9</number>
+      </property>
+      <property name="rightMargin">
+       <number>9</number>
+      </property>
+      <property name="bottomMargin">
+       <number>9</number>
+      </property>
       <item>
-        <widget class="Q3GroupBox" name="PlottingGroupBox">
-          <property name="sizePolicy">
-            <sizepolicy>
-              <hsizetype>3</hsizetype>
-              <vsizetype>0</vsizetype>
+       <widget class="QGroupBox" name="DestinationGroupBox">
+        <property name="title">
+         <string>Destination Home Network Range (Blue x-Axis)</string>
+        </property>
+        <layout class="QVBoxLayout">
+         <item>
+          <layout class="QHBoxLayout">
+           <item>
+            <widget class="QLineEdit" name="homeNetALineEdit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>42</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>42</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Enter destination network address in 'slash dot notation' and tick to apply</string>
+             </property>
+             <property name="inputMask">
+              <string/>
+             </property>
+             <property name="text">
+              <string>0</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="textLabel6">
+             <property name="minimumSize">
+              <size>
+               <width>5</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>5</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>Enter destination network address in 'slash dot notation' and tick to apply</string>
+             </property>
+             <property name="text">
+              <string>.</string>
+             </property>
+             <property name="wordWrap">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="homeNetBLineEdit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>42</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>42</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Enter destination network address in 'slash dot notation' and tick to apply</string>
+             </property>
+             <property name="inputMask">
+              <string/>
+             </property>
+             <property name="text">
+              <string>0</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="textLabel7">
+             <property name="minimumSize">
+              <size>
+               <width>5</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>5</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>Enter destination network address in 'slash dot notation' and tick to apply</string>
+             </property>
+             <property name="text">
+              <string>.</string>
+             </property>
+             <property name="wordWrap">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="homeNetCLineEdit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>42</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>42</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Enter destination network address in 'slash dot notation' and tick to apply</string>
+             </property>
+             <property name="inputMask">
+              <string/>
+             </property>
+             <property name="text">
+              <string>0</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="textLabel9">
+             <property name="minimumSize">
+              <size>
+               <width>5</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>5</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>Enter destination network address in 'slash dot notation' and tick to apply</string>
+             </property>
+             <property name="text">
+              <string>.</string>
+             </property>
+             <property name="wordWrap">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="homeNetDLineEdit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>42</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>42</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Enter destination network address in 'slash dot notation' and tick to apply</string>
+             </property>
+             <property name="inputMask">
+              <string/>
+             </property>
+             <property name="text">
+              <string>0</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="textLabel8">
+             <property name="minimumSize">
+              <size>
+               <width>5</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>5</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>Enter destination network address in 'slash dot notation' and tick to apply</string>
+             </property>
+             <property name="text">
+              <string>/</string>
+             </property>
+             <property name="wordWrap">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="homeNetSlashNumLineEdit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>33</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>33</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Enter destination network address in 'slash dot notation' and tick to apply (a '/0' indicates the full range)</string>
+             </property>
+             <property name="inputMask">
+              <string/>
+             </property>
+             <property name="text">
+              <string>0</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="guessPushButton">
+             <property name="toolTip">
+              <string>Guess the home network range based on the packet capture file (for replay), or quary the default interface (for live monitoring)</string>
+             </property>
+             <property name="text">
+              <string>Guess </string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="spacer6">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Expanding</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>10</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QToolButton" name="homeNetApplyToolButton">
+             <property name="focusPolicy">
+              <enum>Qt::TabFocus</enum>
+             </property>
+             <property name="toolTip">
+              <string>Apply destination network range to plot</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset resource="icons.qrc">
+               <normaloff>:/icons/images/stock_calc-accept.png</normaloff>:/icons/images/stock_calc-accept.png</iconset>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout">
+           <item>
+            <widget class="QLineEdit" name="destinationRangeLineEdit">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>445</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>destination address range: start - end (mask)</string>
+             </property>
+             <property name="text">
+              <string>0.0.0.0 - 255.255.255.255 (0.0.0.0)</string>
+             </property>
+             <property name="frame">
+              <bool>false</bool>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="spacer5_2">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Expanding</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="SourceButtonGroup">
+        <property name="title">
+         <string>Source Ineternet Network Range (Red z-Axis)</string>
+        </property>
+        <layout class="QVBoxLayout">
+         <item>
+          <layout class="QHBoxLayout">
+           <item>
+            <widget class="QLineEdit" name="internetALineEdit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>42</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>42</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Enter source internet network in 'slash dot notation' and tick to apply</string>
+             </property>
+             <property name="inputMask">
+              <string/>
+             </property>
+             <property name="text">
+              <string>0</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="textLabel6_2">
+             <property name="minimumSize">
+              <size>
+               <width>5</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>5</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>Enter source internet network in 'slash dot notation' and tick to apply</string>
+             </property>
+             <property name="text">
+              <string>.</string>
+             </property>
+             <property name="wordWrap">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="internetBLineEdit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>42</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>42</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Enter source internet network in 'slash dot notation' and tick to apply</string>
+             </property>
+             <property name="inputMask">
+              <string/>
+             </property>
+             <property name="text">
+              <string>0</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="textLabel7_2">
+             <property name="minimumSize">
+              <size>
+               <width>5</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>5</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>Enter source internet network in 'slash dot notation' and tick to apply</string>
+             </property>
+             <property name="text">
+              <string>.</string>
+             </property>
+             <property name="wordWrap">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="internetCLineEdit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>42</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>42</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Enter source internet network in 'slash dot notation' and tick to apply</string>
+             </property>
+             <property name="inputMask">
+              <string/>
+             </property>
+             <property name="text">
+              <string>0</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="textLabel9_2">
+             <property name="minimumSize">
+              <size>
+               <width>5</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>5</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>Enter source internet network in 'slash dot notation' and tick to apply</string>
+             </property>
+             <property name="text">
+              <string>.</string>
+             </property>
+             <property name="wordWrap">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="internetDLineEdit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>42</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>42</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Enter source internet network in 'slash dot notation' and tick to apply</string>
+             </property>
+             <property name="inputMask">
+              <string/>
+             </property>
+             <property name="text">
+              <string>0</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="textLabel8_2">
+             <property name="minimumSize">
+              <size>
+               <width>5</width>
+               <height>25</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>5</width>
+               <height>23</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>12</pointsize>
+              </font>
+             </property>
+             <property name="toolTip">
+              <string>Enter source internet network in 'slash dot notation' and tick to apply</string>
+             </property>
+             <property name="text">
+              <string>/</string>
+             </property>
+             <property name="wordWrap">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="internetSlashNumLineEdit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>33</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>33</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Enter source internet network in 'slash dot notation' and tick to apply (a '/0' indicates the full range)</string>
+             </property>
+             <property name="inputMask">
+              <string/>
+             </property>
+             <property name="text">
+              <string>0</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="fullRangePushButton">
+             <property name="toolTip">
+              <string>View the entire internet as incomming source traffic</string>
+             </property>
+             <property name="text">
+              <string>Full Range</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="spacer6_3">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Expanding</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>10</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QToolButton" name="internetApplyToolButton">
+             <property name="focusPolicy">
+              <enum>Qt::TabFocus</enum>
+             </property>
+             <property name="toolTip">
+              <string>Apply source internet network range to plot</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>:/icons/images/stock_calc-accept.png</normaloff>:/icons/images/stock_calc-accept.png</iconset>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout">
+           <item>
+            <widget class="QLineEdit" name="sourceRangeLineEdit">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>445</width>
+               <height>21</height>
+              </size>
+             </property>
+             <property name="toolTip">
+              <string>Source address range: start - end (mask)</string>
+             </property>
+             <property name="text">
+              <string>0.0.0.0 - 255.255.255.255 (0.0.0.0)</string>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="spacer5">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Expanding</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="portRangeButtonGroup">
+        <property name="title">
+         <string>Port Range (Green y-Axis)</string>
+        </property>
+        <layout class="QHBoxLayout">
+         <item>
+          <widget class="QLineEdit" name="startPortLineEdit">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>21</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>80</width>
+             <height>21</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Begining of port range (min 0)</string>
+           </property>
+           <property name="text">
+            <string>0</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="textLabel8_2_2">
+           <property name="minimumSize">
+            <size>
+             <width>5</width>
+             <height>25</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>5</width>
+             <height>23</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="toolTip">
+            <string/>
+           </property>
+           <property name="text">
+            <string>-</string>
+           </property>
+           <property name="wordWrap">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="endPortLineEdit">
+           <property name="minimumSize">
+            <size>
+             <width>80</width>
+             <height>21</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>80</width>
+             <height>21</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>End of port range (max 65535)</string>
+           </property>
+           <property name="text">
+            <string>65535</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="linearPlotRadioButton">
+           <property name="toolTip">
+            <string>Linearly plot events with respect to the green port y-axis</string>
+           </property>
+           <property name="text">
+            <string>linear plot</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="logarythmicPlotRadioButton">
+           <property name="toolTip">
+            <string>Logarithmically  plot events with respect to the green port y-axis</string>
+           </property>
+           <property name="text">
+            <string>log plot</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="logPlotLineEdit">
+           <property name="minimumSize">
+            <size>
+             <width>50</width>
+             <height>21</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>21</height>
+            </size>
+           </property>
+           <property name="toolTip">
+            <string>Logarithmic transform factor - the higher the value, the greater the space expansion of the lower ports and contraction of the higher ports</string>
+           </property>
+           <property name="text">
+            <string>100</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="spacer10">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Expanding</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QToolButton" name="portApplyToolButton">
+           <property name="focusPolicy">
+            <enum>Qt::TabFocus</enum>
+           </property>
+           <property name="toolTip">
+            <string>Apply port range to plot</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset>
+             <normaloff>:/icons/images/stock_calc-accept.png</normaloff>:/icons/images/stock_calc-accept.png</iconset>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout">
+     <item>
+      <widget class="QGroupBox" name="colourMappingGroupBox">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="title">
+        <string>Colour Mapping</string>
+       </property>
+       <layout class="QVBoxLayout">
+        <item>
+         <layout class="QHBoxLayout">
+          <item>
+           <widget class="QLabel" name="textLabel5">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
-            </sizepolicy>
-          </property>
-          <property name="lineWidth">
-            <number>1</number>
-          </property>
-          <property name="margin">
-            <number>1</number>
-          </property>
-          <property name="midLineWidth">
-            <number>1</number>
-          </property>
-          <property name="title">
-            <string>Plotting Ranges and Functions</string>
-          </property>
-          <layout class="QVBoxLayout">
-            <property name="margin">
-              <number>9</number>
+             </sizepolicy>
             </property>
-            <property name="spacing">
-              <number>1</number>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
             </property>
-            <item>
-              <widget class="Q3GroupBox" name="DestinationGroupBox">
-                <property name="lineWidth">
-                  <number>1</number>
-                </property>
-                <property name="margin">
-                  <number>1</number>
-                </property>
-                <property name="title">
-                  <string>Destination Home Network Range (Blue x-Axis)</string>
-                </property>
-                <layout class="QVBoxLayout">
-                  <item>
-                    <layout class="QHBoxLayout">
-                      <item>
-                        <widget class="QLineEdit" name="homeNetALineEdit">
-                          <property name="sizePolicy">
-                            <sizepolicy>
-                              <hsizetype>0</hsizetype>
-                              <vsizetype>0</vsizetype>
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                            </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                            <size>
-                              <width>42</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="maximumSize">
-                            <size>
-                              <width>42</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="text">
-                            <string>0</string>
-                          </property>
-                          <property name="inputMask">
-                            <string/>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Enter destination network address in 'slash dot notation' and tick to apply</string>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLabel" name="textLabel6">
-                          <property name="minimumSize">
-                            <size>
-                              <width>5</width>
-                              <height>25</height>
-                            </size>
-                          </property>
-                          <property name="maximumSize">
-                            <size>
-                              <width>5</width>
-                              <height>23</height>
-                            </size>
-                          </property>
-                          <property name="font">
-                            <font>
-                              <pointsize>12</pointsize>
-                            </font>
-                          </property>
-                          <property name="text">
-                            <string>.</string>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Enter destination network address in 'slash dot notation' and tick to apply</string>
-                          </property>
-                          <property name="wordWrap">
-                            <bool>false</bool>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLineEdit" name="homeNetBLineEdit">
-                          <property name="sizePolicy">
-                            <sizepolicy>
-                              <hsizetype>0</hsizetype>
-                              <vsizetype>0</vsizetype>
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                            </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                            <size>
-                              <width>42</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="maximumSize">
-                            <size>
-                              <width>42</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="text">
-                            <string>0</string>
-                          </property>
-                          <property name="inputMask">
-                            <string/>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Enter destination network address in 'slash dot notation' and tick to apply</string>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLabel" name="textLabel7">
-                          <property name="minimumSize">
-                            <size>
-                              <width>5</width>
-                              <height>25</height>
-                            </size>
-                          </property>
-                          <property name="maximumSize">
-                            <size>
-                              <width>5</width>
-                              <height>23</height>
-                            </size>
-                          </property>
-                          <property name="font">
-                            <font>
-                              <pointsize>12</pointsize>
-                            </font>
-                          </property>
-                          <property name="text">
-                            <string>.</string>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Enter destination network address in 'slash dot notation' and tick to apply</string>
-                          </property>
-                          <property name="wordWrap">
-                            <bool>false</bool>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLineEdit" name="homeNetCLineEdit">
-                          <property name="sizePolicy">
-                            <sizepolicy>
-                              <hsizetype>0</hsizetype>
-                              <vsizetype>0</vsizetype>
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                            </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                            <size>
-                              <width>42</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="maximumSize">
-                            <size>
-                              <width>42</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="text">
-                            <string>0</string>
-                          </property>
-                          <property name="inputMask">
-                            <string/>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Enter destination network address in 'slash dot notation' and tick to apply</string>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLabel" name="textLabel9">
-                          <property name="minimumSize">
-                            <size>
-                              <width>5</width>
-                              <height>25</height>
-                            </size>
-                          </property>
-                          <property name="maximumSize">
-                            <size>
-                              <width>5</width>
-                              <height>23</height>
-                            </size>
-                          </property>
-                          <property name="font">
-                            <font>
-                              <pointsize>12</pointsize>
-                            </font>
-                          </property>
-                          <property name="text">
-                            <string>.</string>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Enter destination network address in 'slash dot notation' and tick to apply</string>
-                          </property>
-                          <property name="wordWrap">
-                            <bool>false</bool>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLineEdit" name="homeNetDLineEdit">
-                          <property name="sizePolicy">
-                            <sizepolicy>
-                              <hsizetype>0</hsizetype>
-                              <vsizetype>0</vsizetype>
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                            </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                            <size>
-                              <width>42</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="maximumSize">
-                            <size>
-                              <width>42</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="text">
-                            <string>0</string>
-                          </property>
-                          <property name="inputMask">
-                            <string/>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Enter destination network address in 'slash dot notation' and tick to apply</string>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLabel" name="textLabel8">
-                          <property name="minimumSize">
-                            <size>
-                              <width>5</width>
-                              <height>25</height>
-                            </size>
-                          </property>
-                          <property name="maximumSize">
-                            <size>
-                              <width>5</width>
-                              <height>23</height>
-                            </size>
-                          </property>
-                          <property name="font">
-                            <font>
-                              <pointsize>12</pointsize>
-                            </font>
-                          </property>
-                          <property name="text">
-                            <string>/</string>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Enter destination network address in 'slash dot notation' and tick to apply</string>
-                          </property>
-                          <property name="wordWrap">
-                            <bool>false</bool>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLineEdit" name="homeNetSlashNumLineEdit">
-                          <property name="sizePolicy">
-                            <sizepolicy>
-                              <hsizetype>0</hsizetype>
-                              <vsizetype>0</vsizetype>
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                            </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                            <size>
-                              <width>33</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="maximumSize">
-                            <size>
-                              <width>33</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="text">
-                            <string>0</string>
-                          </property>
-                          <property name="inputMask">
-                            <string/>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Enter destination network address in 'slash dot notation' and tick to apply (a '/0' indicates the full range)</string>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QPushButton" name="guessPushButton">
-                          <property name="text">
-                            <string>Guess </string>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Guess the home network range based on the packet capture file (for replay), or quary the default interface (for live monitoring)</string>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <spacer name="spacer6">
-                          <property name="sizeHint">
-                            <size>
-                              <width>10</width>
-                              <height>20</height>
-                            </size>
-                          </property>
-                          <property name="sizeType">
-                            <enum>QSizePolicy::Expanding</enum>
-                          </property>
-                          <property name="orientation">
-                            <enum>Qt::Horizontal</enum>
-                          </property>
-                        </spacer>
-                      </item>
-                      <item>
-                        <widget class="QToolButton" name="homeNetApplyToolButton">
-                          <property name="focusPolicy">
-                            <enum>Qt::TabFocus</enum>
-                          </property>
-                          <property name="text">
-                            <string/>
-                          </property>
-                          <property name="icon">
-                            <iconset>stock_calc-accept.png</iconset>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Apply destination network range to plot</string>
-                          </property>
-                        </widget>
-                      </item>
-                    </layout>
-                  </item>
-                  <item>
-                    <layout class="QHBoxLayout">
-                      <item>
-                        <widget class="QLineEdit" name="destinationRangeLineEdit">
-                          <property name="enabled">
-                            <bool>true</bool>
-                          </property>
-                          <property name="sizePolicy">
-                            <sizepolicy>
-                              <hsizetype>1</hsizetype>
-                              <vsizetype>5</vsizetype>
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                            </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                            <size>
-                              <width>445</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="text">
-                            <string>0.0.0.0 - 255.255.255.255 (0.0.0.0)</string>
-                          </property>
-                          <property name="frame">
-                            <bool>false</bool>
-                          </property>
-                          <property name="readOnly">
-                            <bool>true</bool>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>destination address range: start - end (mask)</string>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <spacer name="spacer5_2">
-                          <property name="sizeHint">
-                            <size>
-                              <width>20</width>
-                              <height>20</height>
-                            </size>
-                          </property>
-                          <property name="sizeType">
-                            <enum>QSizePolicy::Expanding</enum>
-                          </property>
-                          <property name="orientation">
-                            <enum>Qt::Horizontal</enum>
-                          </property>
-                        </spacer>
-                      </item>
-                    </layout>
-                  </item>
-                </layout>
-              </widget>
-            </item>
-            <item>
-              <widget class="Q3ButtonGroup" name="SourceButtonGroup">
-                <property name="enabled">
-                  <bool>true</bool>
-                </property>
-                <property name="lineWidth">
-                  <number>1</number>
-                </property>
-                <property name="margin">
-                  <number>-2</number>
-                </property>
-                <property name="title">
-                  <string>Source Ineternet Network Range (Red z-Axis)</string>
-                </property>
-                <layout class="QVBoxLayout">
-                  <item>
-                    <layout class="QHBoxLayout">
-                      <item>
-                        <widget class="QLineEdit" name="internetALineEdit">
-                          <property name="sizePolicy">
-                            <sizepolicy>
-                              <hsizetype>0</hsizetype>
-                              <vsizetype>0</vsizetype>
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                            </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                            <size>
-                              <width>42</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="maximumSize">
-                            <size>
-                              <width>42</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="text">
-                            <string>0</string>
-                          </property>
-                          <property name="inputMask">
-                            <string/>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Enter source internet network in 'slash dot notation' and tick to apply</string>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLabel" name="textLabel6_2">
-                          <property name="minimumSize">
-                            <size>
-                              <width>5</width>
-                              <height>25</height>
-                            </size>
-                          </property>
-                          <property name="maximumSize">
-                            <size>
-                              <width>5</width>
-                              <height>23</height>
-                            </size>
-                          </property>
-                          <property name="font">
-                            <font>
-                              <pointsize>12</pointsize>
-                            </font>
-                          </property>
-                          <property name="text">
-                            <string>.</string>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Enter source internet network in 'slash dot notation' and tick to apply</string>
-                          </property>
-                          <property name="wordWrap">
-                            <bool>false</bool>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLineEdit" name="internetBLineEdit">
-                          <property name="sizePolicy">
-                            <sizepolicy>
-                              <hsizetype>0</hsizetype>
-                              <vsizetype>0</vsizetype>
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                            </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                            <size>
-                              <width>42</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="maximumSize">
-                            <size>
-                              <width>42</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="text">
-                            <string>0</string>
-                          </property>
-                          <property name="inputMask">
-                            <string/>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Enter source internet network in 'slash dot notation' and tick to apply</string>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLabel" name="textLabel7_2">
-                          <property name="minimumSize">
-                            <size>
-                              <width>5</width>
-                              <height>25</height>
-                            </size>
-                          </property>
-                          <property name="maximumSize">
-                            <size>
-                              <width>5</width>
-                              <height>23</height>
-                            </size>
-                          </property>
-                          <property name="font">
-                            <font>
-                              <pointsize>12</pointsize>
-                            </font>
-                          </property>
-                          <property name="text">
-                            <string>.</string>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Enter source internet network in 'slash dot notation' and tick to apply</string>
-                          </property>
-                          <property name="wordWrap">
-                            <bool>false</bool>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLineEdit" name="internetCLineEdit">
-                          <property name="sizePolicy">
-                            <sizepolicy>
-                              <hsizetype>0</hsizetype>
-                              <vsizetype>0</vsizetype>
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                            </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                            <size>
-                              <width>42</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="maximumSize">
-                            <size>
-                              <width>42</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="text">
-                            <string>0</string>
-                          </property>
-                          <property name="inputMask">
-                            <string/>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Enter source internet network in 'slash dot notation' and tick to apply</string>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLabel" name="textLabel9_2">
-                          <property name="minimumSize">
-                            <size>
-                              <width>5</width>
-                              <height>25</height>
-                            </size>
-                          </property>
-                          <property name="maximumSize">
-                            <size>
-                              <width>5</width>
-                              <height>23</height>
-                            </size>
-                          </property>
-                          <property name="font">
-                            <font>
-                              <pointsize>12</pointsize>
-                            </font>
-                          </property>
-                          <property name="text">
-                            <string>.</string>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Enter source internet network in 'slash dot notation' and tick to apply</string>
-                          </property>
-                          <property name="wordWrap">
-                            <bool>false</bool>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLineEdit" name="internetDLineEdit">
-                          <property name="sizePolicy">
-                            <sizepolicy>
-                              <hsizetype>0</hsizetype>
-                              <vsizetype>0</vsizetype>
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                            </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                            <size>
-                              <width>42</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="maximumSize">
-                            <size>
-                              <width>42</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="text">
-                            <string>0</string>
-                          </property>
-                          <property name="inputMask">
-                            <string/>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Enter source internet network in 'slash dot notation' and tick to apply</string>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLabel" name="textLabel8_2">
-                          <property name="minimumSize">
-                            <size>
-                              <width>5</width>
-                              <height>25</height>
-                            </size>
-                          </property>
-                          <property name="maximumSize">
-                            <size>
-                              <width>5</width>
-                              <height>23</height>
-                            </size>
-                          </property>
-                          <property name="font">
-                            <font>
-                              <pointsize>12</pointsize>
-                            </font>
-                          </property>
-                          <property name="text">
-                            <string>/</string>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Enter source internet network in 'slash dot notation' and tick to apply</string>
-                          </property>
-                          <property name="wordWrap">
-                            <bool>false</bool>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QLineEdit" name="internetSlashNumLineEdit">
-                          <property name="sizePolicy">
-                            <sizepolicy>
-                              <hsizetype>0</hsizetype>
-                              <vsizetype>0</vsizetype>
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                            </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                            <size>
-                              <width>33</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="maximumSize">
-                            <size>
-                              <width>33</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="text">
-                            <string>0</string>
-                          </property>
-                          <property name="inputMask">
-                            <string/>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Enter source internet network in 'slash dot notation' and tick to apply (a '/0' indicates the full range)</string>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <widget class="QPushButton" name="fullRangePushButton">
-                          <property name="text">
-                            <string>Full Range</string>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>View the entire internet as incomming source traffic</string>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <spacer name="spacer6_3">
-                          <property name="sizeHint">
-                            <size>
-                              <width>10</width>
-                              <height>20</height>
-                            </size>
-                          </property>
-                          <property name="sizeType">
-                            <enum>QSizePolicy::Expanding</enum>
-                          </property>
-                          <property name="orientation">
-                            <enum>Qt::Horizontal</enum>
-                          </property>
-                        </spacer>
-                      </item>
-                      <item>
-                        <widget class="QToolButton" name="internetApplyToolButton">
-                          <property name="focusPolicy">
-                            <enum>Qt::TabFocus</enum>
-                          </property>
-                          <property name="text">
-                            <string/>
-                          </property>
-                          <property name="icon">
-                            <iconset>stock_calc-accept.png</iconset>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Apply source internet network range to plot</string>
-                          </property>
-                        </widget>
-                      </item>
-                    </layout>
-                  </item>
-                  <item>
-                    <layout class="QHBoxLayout">
-                      <item>
-                        <widget class="QLineEdit" name="sourceRangeLineEdit">
-                          <property name="enabled">
-                            <bool>true</bool>
-                          </property>
-                          <property name="sizePolicy">
-                            <sizepolicy>
-                              <hsizetype>1</hsizetype>
-                              <vsizetype>5</vsizetype>
-                              <horstretch>0</horstretch>
-                              <verstretch>0</verstretch>
-                            </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                            <size>
-                              <width>445</width>
-                              <height>21</height>
-                            </size>
-                          </property>
-                          <property name="text">
-                            <string>0.0.0.0 - 255.255.255.255 (0.0.0.0)</string>
-                          </property>
-                          <property name="readOnly">
-                            <bool>true</bool>
-                          </property>
-                          <property name="toolTip" stdset="0">
-                            <string>Source address range: start - end (mask)</string>
-                          </property>
-                        </widget>
-                      </item>
-                      <item>
-                        <spacer name="spacer5">
-                          <property name="sizeHint">
-                            <size>
-                              <width>20</width>
-                              <height>20</height>
-                            </size>
-                          </property>
-                          <property name="sizeType">
-                            <enum>QSizePolicy::Expanding</enum>
-                          </property>
-                          <property name="orientation">
-                            <enum>Qt::Horizontal</enum>
-                          </property>
-                        </spacer>
-                      </item>
-                    </layout>
-                  </item>
-                </layout>
-              </widget>
-            </item>
-            <item>
-              <widget class="Q3ButtonGroup" name="portRangeButtonGroup">
-                <property name="enabled">
-                  <bool>true</bool>
-                </property>
-                <property name="lineWidth">
-                  <number>1</number>
-                </property>
-                <property name="margin">
-                  <number>1</number>
-                </property>
-                <property name="title">
-                  <string>Port Range (Green y-Axis)</string>
-                </property>
-                <layout class="QHBoxLayout">
-                  <item>
-                    <widget class="QLineEdit" name="startPortLineEdit">
-                      <property name="minimumSize">
-                        <size>
-                          <width>80</width>
-                          <height>21</height>
-                        </size>
-                      </property>
-                      <property name="maximumSize">
-                        <size>
-                          <width>80</width>
-                          <height>21</height>
-                        </size>
-                      </property>
-                      <property name="text">
-                        <string>0</string>
-                      </property>
-                      <property name="toolTip" stdset="0">
-                        <string>Begining of port range (min 0)</string>
-                      </property>
-                    </widget>
-                  </item>
-                  <item>
-                    <widget class="QLabel" name="textLabel8_2_2">
-                      <property name="minimumSize">
-                        <size>
-                          <width>5</width>
-                          <height>25</height>
-                        </size>
-                      </property>
-                      <property name="maximumSize">
-                        <size>
-                          <width>5</width>
-                          <height>23</height>
-                        </size>
-                      </property>
-                      <property name="font">
-                        <font>
-                          <pointsize>12</pointsize>
-                        </font>
-                      </property>
-                      <property name="text">
-                        <string>-</string>
-                      </property>
-                      <property name="toolTip" stdset="0">
-                        <string/>
-                      </property>
-                      <property name="wordWrap">
-                        <bool>false</bool>
-                      </property>
-                    </widget>
-                  </item>
-                  <item>
-                    <widget class="QLineEdit" name="endPortLineEdit">
-                      <property name="minimumSize">
-                        <size>
-                          <width>80</width>
-                          <height>21</height>
-                        </size>
-                      </property>
-                      <property name="maximumSize">
-                        <size>
-                          <width>80</width>
-                          <height>21</height>
-                        </size>
-                      </property>
-                      <property name="text">
-                        <string>65535</string>
-                      </property>
-                      <property name="toolTip" stdset="0">
-                        <string>End of port range (max 65535)</string>
-                      </property>
-                    </widget>
-                  </item>
-                  <item>
-                    <widget class="QRadioButton" name="linearPlotRadioButton">
-                      <property name="text">
-                        <string>linear plot</string>
-                      </property>
-                      <property name="checked">
-                        <bool>true</bool>
-                      </property>
-                      <property name="toolTip" stdset="0">
-                        <string>Linearly plot events with respect to the green port y-axis</string>
-                      </property>
-                    </widget>
-                  </item>
-                  <item>
-                    <widget class="QRadioButton" name="logarythmicPlotRadioButton">
-                      <property name="text">
-                        <string>log plot</string>
-                      </property>
-                      <property name="toolTip" stdset="0">
-                        <string>Logarithmically  plot events with respect to the green port y-axis</string>
-                      </property>
-                    </widget>
-                  </item>
-                  <item>
-                    <widget class="QLineEdit" name="logPlotLineEdit">
-                      <property name="minimumSize">
-                        <size>
-                          <width>50</width>
-                          <height>21</height>
-                        </size>
-                      </property>
-                      <property name="maximumSize">
-                        <size>
-                          <width>50</width>
-                          <height>21</height>
-                        </size>
-                      </property>
-                      <property name="text">
-                        <string>100</string>
-                      </property>
-                      <property name="toolTip" stdset="0">
-                        <string>Logarithmic transform factor - the higher the value, the greater the space expansion of the lower ports and contraction of the higher ports</string>
-                      </property>
-                    </widget>
-                  </item>
-                  <item>
-                    <spacer name="spacer10">
-                      <property name="sizeHint">
-                        <size>
-                          <width>20</width>
-                          <height>20</height>
-                        </size>
-                      </property>
-                      <property name="sizeType">
-                        <enum>QSizePolicy::Expanding</enum>
-                      </property>
-                      <property name="orientation">
-                        <enum>Qt::Horizontal</enum>
-                      </property>
-                    </spacer>
-                  </item>
-                  <item>
-                    <widget class="QToolButton" name="portApplyToolButton">
-                      <property name="focusPolicy">
-                        <enum>Qt::TabFocus</enum>
-                      </property>
-                      <property name="text">
-                        <string/>
-                      </property>
-                      <property name="icon">
-                        <iconset>stock_calc-accept.png</iconset>
-                      </property>
-                      <property name="toolTip" stdset="0">
-                        <string>Apply port range to plot</string>
-                      </property>
-                    </widget>
-                  </item>
-                </layout>
-              </widget>
-            </item>
-          </layout>
-        </widget>
-      </item>
-      <item>
-        <layout class="QHBoxLayout">
-          <item>
-            <widget class="Q3GroupBox" name="colourMappingGroupBox">
-              <property name="enabled">
-                <bool>true</bool>
-              </property>
-              <property name="sizePolicy">
-                <sizepolicy>
-                  <hsizetype>3</hsizetype>
-                  <vsizetype>0</vsizetype>
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                </sizepolicy>
-              </property>
-              <property name="lineWidth">
-                <number>1</number>
-              </property>
-              <property name="margin">
-                <number>1</number>
-              </property>
-              <property name="title">
-                <string>Colour Mapping</string>
-              </property>
-              <layout class="QVBoxLayout">
-                <item>
-                  <layout class="QHBoxLayout">
-                    <item>
-                      <widget class="QLabel" name="textLabel5">
-                        <property name="sizePolicy">
-                          <sizepolicy>
-                            <hsizetype>1</hsizetype>
-                            <vsizetype>5</vsizetype>
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                          </sizepolicy>
-                        </property>
-                        <property name="focusPolicy">
-                          <enum>Qt::NoFocus</enum>
-                        </property>
-                        <property name="text">
-                          <string>scheme</string>
-                        </property>
-                        <property name="wordWrap">
-                          <bool>false</bool>
-                        </property>
-                      </widget>
-                    </item>
-                    <item>
-                      <widget class="QComboBox" name="colourMappingSchemeComboBox">
-                        <property name="enabled">
-                          <bool>true</bool>
-                        </property>
-                        <property name="sizePolicy">
-                          <sizepolicy>
-                            <hsizetype>3</hsizetype>
-                            <vsizetype>0</vsizetype>
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                          </sizepolicy>
-                        </property>
-                        <property name="toolTip" stdset="0">
-                          <string>Select a colouring scheme for events</string>
-                        </property>
-                      </widget>
-                    </item>
-                  </layout>
-                </item>
-                <item>
-                  <layout class="QHBoxLayout">
-                    <item>
-                      <widget class="Q3ButtonGroup" name="backgroundButtonGroup">
-                        <property name="title">
-                          <string>Background</string>
-                        </property>
-                        <layout class="QHBoxLayout">
-                          <item>
-                            <widget class="QRadioButton" name="whiteRadioButton">
-                              <property name="text">
-                                <string>white</string>
-                              </property>
-                              <property name="checked">
-                                <bool>false</bool>
-                              </property>
-                              <property name="toolTip" stdset="0">
-                                <string>Make the background white</string>
-                              </property>
-                            </widget>
-                          </item>
-                          <item>
-                            <widget class="QRadioButton" name="blackRadioButton">
-                              <property name="text">
-                                <string>black</string>
-                              </property>
-                              <property name="checked">
-                                <bool>true</bool>
-                              </property>
-                              <property name="toolTip" stdset="0">
-                                <string>Make the background black</string>
-                              </property>
-                            </widget>
-                          </item>
-                        </layout>
-                      </widget>
-                    </item>
-                    <item>
-                      <spacer name="spacer7">
-                        <property name="sizeHint">
-                          <size>
-                            <width>10</width>
-                            <height>20</height>
-                          </size>
-                        </property>
-                        <property name="sizeType">
-                          <enum>QSizePolicy::Expanding</enum>
-                        </property>
-                        <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                        </property>
-                      </spacer>
-                    </item>
-                    <item>
-                      <widget class="QCheckBox" name="transparentDecayCheckBox">
-                        <property name="text">
-                          <string>transparent decay</string>
-                        </property>
-                        <property name="toolTip" stdset="0">
-                          <string>Enable transparent aging of events with respect to the time window - the older, the more transparent</string>
-                        </property>
-                      </widget>
-                    </item>
-                  </layout>
-                </item>
-              </layout>
-            </widget>
+            <property name="text">
+             <string>scheme</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
           </item>
           <item>
-            <widget class="Q3GroupBox" name="pointSizeGroupBox">
-              <property name="enabled">
-                <bool>true</bool>
-              </property>
-              <property name="sizePolicy">
-                <sizepolicy>
-                  <hsizetype>0</hsizetype>
-                  <vsizetype>5</vsizetype>
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                </sizepolicy>
-              </property>
-              <property name="lineWidth">
-                <number>1</number>
-              </property>
-              <property name="margin">
-                <number>1</number>
-              </property>
-              <property name="title">
-                <string>Points</string>
-              </property>
-              <layout class="QVBoxLayout">
-                <item>
-                  <layout class="QHBoxLayout">
-                    <item>
-                      <widget class="QLabel" name="textLabel1">
-                        <property name="text">
-                          <string>size</string>
-                        </property>
-                        <property name="wordWrap">
-                          <bool>false</bool>
-                        </property>
-                      </widget>
-                    </item>
-                    <item>
-                      <spacer name="spacer34">
-                        <property name="sizeHint">
-                          <size>
-                            <width>20</width>
-                            <height>20</height>
-                          </size>
-                        </property>
-                        <property name="sizeType">
-                          <enum>QSizePolicy::Expanding</enum>
-                        </property>
-                        <property name="orientation">
-                          <enum>Qt::Horizontal</enum>
-                        </property>
-                      </spacer>
-                    </item>
-                    <item>
-                      <widget class="QSpinBox" name="pointSizeSpinBox">
-                        <property name="maximum">
-                          <number>5</number>
-                        </property>
-                        <property name="minimum">
-                          <number>1</number>
-                        </property>
-                        <property name="value">
-                          <number>2</number>
-                        </property>
-                        <property name="toolTip" stdset="0">
-                          <string>Set the size of the points</string>
-                        </property>
-                      </widget>
-                    </item>
-                  </layout>
-                </item>
-                <item>
-                  <widget class="QCheckBox" name="smoothCheckBox">
-                    <property name="text">
-                      <string>smooth</string>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                      <string>Smooth and antialias points (make points rounded)</string>
-                    </property>
-                  </widget>
-                </item>
-                <item>
-                  <widget class="QCheckBox" name="pointBulgeCheckBox">
-                    <property name="text">
-                      <string>bulge</string>
-                    </property>
-                    <property name="toolTip" stdset="0">
-                      <string>Highlight newly added events by bulging thier points for a fraction of a second</string>
-                    </property>
-                  </widget>
-                </item>
-              </layout>
-            </widget>
+           <widget class="QComboBox" name="colourMappingSchemeComboBox">
+            <property name="enabled">
+             <bool>true</bool>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>Select a colouring scheme for events</string>
+            </property>
+           </widget>
           </item>
-        </layout>
-      </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout">
+          <item>
+           <widget class="QGroupBox" name="backgroundButtonGroup">
+            <property name="title">
+             <string>Background</string>
+            </property>
+            <layout class="QHBoxLayout">
+             <item>
+              <widget class="QRadioButton" name="whiteRadioButton">
+               <property name="toolTip">
+                <string>Make the background white</string>
+               </property>
+               <property name="text">
+                <string>white</string>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="blackRadioButton">
+               <property name="toolTip">
+                <string>Make the background black</string>
+               </property>
+               <property name="text">
+                <string>black</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <spacer name="spacer7">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>10</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="transparentDecayCheckBox">
+            <property name="toolTip">
+             <string>Enable transparent aging of events with respect to the time window - the older, the more transparent</string>
+            </property>
+            <property name="text">
+             <string>transparent decay</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="pointSizeGroupBox">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="title">
+        <string>Points</string>
+       </property>
+       <layout class="QVBoxLayout">
+        <item>
+         <layout class="QHBoxLayout">
+          <item>
+           <widget class="QLabel" name="textLabel1">
+            <property name="text">
+             <string>size</string>
+            </property>
+            <property name="wordWrap">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="spacer34">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeType">
+             <enum>QSizePolicy::Expanding</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="pointSizeSpinBox">
+            <property name="toolTip">
+             <string>Set the size of the points</string>
+            </property>
+            <property name="minimum">
+             <number>1</number>
+            </property>
+            <property name="maximum">
+             <number>5</number>
+            </property>
+            <property name="value">
+             <number>2</number>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="smoothCheckBox">
+          <property name="toolTip">
+           <string>Smooth and antialias points (make points rounded)</string>
+          </property>
+          <property name="text">
+           <string>smooth</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="pointBulgeCheckBox">
+          <property name="toolTip">
+           <string>Highlight newly added events by bulging thier points for a fraction of a second</string>
+          </property>
+          <property name="text">
+           <string>bulge</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </item>
     </layout>
-  </widget>
-  <layoutdefault spacing="6" margin="11"/>
-  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
-  <includes>
-    <include location="local">qvalidator.h</include>
-  </includes>
-  <connections>
-    <connection>
-      <sender>internetApplyToolButton</sender>
-      <signal>pressed()</signal>
-      <receiver>PlotterSettingsDialog</receiver>
-      <slot>applyInternetRangeSettings()</slot>
-    </connection>
-    <connection>
-      <sender>portApplyToolButton</sender>
-      <signal>pressed()</signal>
-      <receiver>PlotterSettingsDialog</receiver>
-      <slot>applyPortRange()</slot>
-    </connection>
-    <connection>
-      <sender>pointSizeSpinBox</sender>
-      <signal>valueChanged(int)</signal>
-      <receiver>PlotterSettingsDialog</receiver>
-      <slot>pointSizeChanged()</slot>
-    </connection>
-    <connection>
-      <sender>colourMappingSchemeComboBox</sender>
-      <signal>activated(int)</signal>
-      <receiver>PlotterSettingsDialog</receiver>
-      <slot>setColScheme(int)</slot>
-    </connection>
-    <connection>
-      <sender>fullRangePushButton</sender>
-      <signal>pressed()</signal>
-      <receiver>PlotterSettingsDialog</receiver>
-      <slot>setFullSrcNetRange()</slot>
-    </connection>
-    <connection>
-      <sender>guessPushButton</sender>
-      <signal>pressed()</signal>
-      <receiver>PlotterSettingsDialog</receiver>
-      <slot>guessHomeNetworkPressed()</slot>
-    </connection>
-    <connection>
-      <sender>transparentDecayCheckBox</sender>
-      <signal>stateChanged(int)</signal>
-      <receiver>PlotterSettingsDialog</receiver>
-      <slot>transDecaySelected()</slot>
-    </connection>
-    <connection>
-      <sender>homeNetApplyToolButton</sender>
-      <signal>pressed()</signal>
-      <receiver>PlotterSettingsDialog</receiver>
-      <slot>applyHomeNetSettings()</slot>
-    </connection>
-    <connection>
-      <sender>smoothCheckBox</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>PlotterSettingsDialog</receiver>
-      <slot>smoothingEnabled(bool)</slot>
-    </connection>
-    <connection>
-      <sender>pointBulgeCheckBox</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>PlotterSettingsDialog</receiver>
-      <slot>enablePointBulge(bool)</slot>
-    </connection>
-    <connection>
-      <sender>whiteRadioButton</sender>
-      <signal>toggled(bool)</signal>
-      <receiver>PlotterSettingsDialog</receiver>
-      <slot>backgroundColourChange()</slot>
-    </connection>
-  </connections>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <includes>
+  <include location="local">qvalidator.h</include>
+ </includes>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>internetApplyToolButton</sender>
+   <signal>pressed()</signal>
+   <receiver>PlotterSettingsDialog</receiver>
+   <slot>applyInternetRangeSettings()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>portApplyToolButton</sender>
+   <signal>pressed()</signal>
+   <receiver>PlotterSettingsDialog</receiver>
+   <slot>applyPortRange()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pointSizeSpinBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>PlotterSettingsDialog</receiver>
+   <slot>pointSizeChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>colourMappingSchemeComboBox</sender>
+   <signal>activated(int)</signal>
+   <receiver>PlotterSettingsDialog</receiver>
+   <slot>setColScheme(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fullRangePushButton</sender>
+   <signal>pressed()</signal>
+   <receiver>PlotterSettingsDialog</receiver>
+   <slot>setFullSrcNetRange()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>guessPushButton</sender>
+   <signal>pressed()</signal>
+   <receiver>PlotterSettingsDialog</receiver>
+   <slot>guessHomeNetworkPressed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>transparentDecayCheckBox</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>PlotterSettingsDialog</receiver>
+   <slot>transDecaySelected()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>homeNetApplyToolButton</sender>
+   <signal>pressed()</signal>
+   <receiver>PlotterSettingsDialog</receiver>
+   <slot>applyHomeNetSettings()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>smoothCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PlotterSettingsDialog</receiver>
+   <slot>smoothingEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pointBulgeCheckBox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PlotterSettingsDialog</receiver>
+   <slot>enablePointBulge(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>whiteRadioButton</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>PlotterSettingsDialog</receiver>
+   <slot>backgroundColourChange()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

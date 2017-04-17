@@ -18,7 +18,7 @@
     </property>
     <layout class="QVBoxLayout">
       <item>
-        <widget class="Q3TextBrowser" name="helpTextBrowser">
+        <widget class="QTextBrowser" name="helpTextBrowser">
           <property name="text">
             <string/>
           </property>
