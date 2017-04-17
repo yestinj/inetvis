@@ -56,10 +56,10 @@ CONFIG += warn_off
 
 ## Linking
 CONFIG   += create_prl link_prl static
-QMAKE_LFLAGS_RELEASE = -m32
+#QMAKE_LFLAGS_RELEASE = -m32
 
 ## Optimization flags
-QMAKE_CFLAGS_RELEASE = -O3 -march=pentium4 -m32 -mfpmath=sse -mmmx -msse -msse2 -mno-sse3 -momit-leaf-frame-pointer -maccumulate-outgoing-args
+QMAKE_CFLAGS_RELEASE = -O3 -march=pentium4 -mfpmath=sse -mmmx -msse -msse2 -mno-sse3 -momit-leaf-frame-pointer -maccumulate-outgoing-args
 QMAKE_CXXFLAGS_RELEASE = $$QMAKE_CFLAGS_RELEASE
 
 QT +=  opengl
