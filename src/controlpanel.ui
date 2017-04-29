@@ -40,10 +40,6 @@
   <property name="windowTitle">
    <string>InetVis Control Panel</string>
   </property>
-  <property name="windowIcon">
-   <iconset resource="icons.qrc">
-    <normaloff>:/icons/images/icon.gif</normaloff>:/icons/images/icon.gif</iconset>
-  </property>
   <widget class="QWidget" name="widget">
    <layout class="QVBoxLayout">
     <property name="sizeConstraint">

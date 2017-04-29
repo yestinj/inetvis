@@ -25,10 +25,6 @@
   <property name="windowTitle">
    <string>InetVis Display</string>
   </property>
-  <property name="windowIcon">
-   <iconset resource="icons.qrc">
-    <normaloff>:/icons/images/icon.gif</normaloff>:/icons/images/icon.gif</iconset>
-  </property>
   <layout class="QVBoxLayout">
    <property name="leftMargin">
     <number>0</number>
@@ -63,8 +59,6 @@
  <includes>
   <include location="local">../glviswidget.h</include>
  </includes>
- <resources>
-  <include location="icons.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
