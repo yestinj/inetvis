@@ -749,7 +749,7 @@
      <x>0</x>
      <y>0</y>
      <width>630</width>
-     <height>25</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="fileMenu">
@@ -810,8 +810,7 @@
   <action name="fileNewAction">
    <property name="icon">
     <iconset>
-     <normaloff/>
-    </iconset>
+     <normaloff>.</normaloff>.</iconset>
    </property>
    <property name="text">
     <string>&amp;New</string>
@@ -1284,7 +1283,7 @@
   </connection>
   <connection>
    <sender>fileExitAction</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>ControlPanel</receiver>
    <slot>close()</slot>
    <hints>
@@ -1300,7 +1299,7 @@
   </connection>
   <connection>
    <sender>fileOpenAction</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>ControlPanel</receiver>
    <slot>fileOpen()</slot>
    <hints>
@@ -1316,7 +1315,7 @@
   </connection>
   <connection>
    <sender>helpAboutAction</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>ControlPanel</receiver>
    <slot>helpAbout()</slot>
    <hints>
@@ -1332,7 +1331,7 @@
   </connection>
   <connection>
    <sender>monitorLocalHostAction</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>ControlPanel</receiver>
    <slot>monitorLocalHostSelected()</slot>
    <hints>
@@ -1348,7 +1347,7 @@
   </connection>
   <connection>
    <sender>pauseAction</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>ControlPanel</receiver>
    <slot>pauseMenuAction()</slot>
    <hints>
@@ -1364,7 +1363,7 @@
   </connection>
   <connection>
    <sender>playAction</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>ControlPanel</receiver>
    <slot>playMenuAction()</slot>
    <hints>
@@ -1396,7 +1395,7 @@
   </connection>
   <connection>
    <sender>recordCapture_Current_Frame_to_FileAction</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>ControlPanel</receiver>
    <slot>takeSnapshot()</slot>
    <hints>
@@ -1460,7 +1459,7 @@
   </connection>
   <connection>
    <sender>replayCaptureFileAction</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>ControlPanel</receiver>
    <slot>replayFileModeSelected()</slot>
    <hints>
@@ -1524,7 +1523,7 @@
   </connection>
   <connection>
    <sender>replayReplay_RateNormal_Playback_Speed_1xAction</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>ControlPanel</receiver>
    <slot>setNormalReplaySpeed()</slot>
    <hints>
@@ -1716,7 +1715,7 @@
   </connection>
   <connection>
    <sender>viewDisplayWindowAction</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>ControlPanel</receiver>
    <slot>viewVisDisplayPanel()</slot>
    <hints>
@@ -1732,7 +1731,7 @@
   </connection>
   <connection>
    <sender>viewPlotterSettingsAction</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>ControlPanel</receiver>
    <slot>viewPlotterSettings()</slot>
    <hints>
@@ -1748,7 +1747,7 @@
   </connection>
   <connection>
    <sender>viewReferenceFrameSettingsAction</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>ControlPanel</receiver>
    <slot>viewReferenceFrameSettings()</slot>
    <hints>
@@ -1764,7 +1763,7 @@
   </connection>
   <connection>
    <sender>helpHelpAction</sender>
-   <signal>activated()</signal>
+   <signal>triggered()</signal>
    <receiver>ControlPanel</receiver>
    <slot>helpDoc()</slot>
    <hints>
