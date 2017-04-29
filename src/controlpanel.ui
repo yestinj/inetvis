@@ -1555,7 +1555,7 @@
   </connection>
   <connection>
    <sender>timeScaleLineEdit</sender>
-   <signal>lostFocus()</signal>
+   <signal>editingFinished()</signal>
    <receiver>ControlPanel</receiver>
    <slot>timeScaleLineEditChanged()</slot>
    <hints>
