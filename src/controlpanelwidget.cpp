@@ -5,12 +5,10 @@
 
 ControlPanelWidget::ControlPanelWidget(QMainWindow *parent) : QMainWindow(parent) {
     setupUi(this);
-    // TODO: I think this would be called here.. need to confirm.
     init();
 }
 
 ControlPanelWidget::~ControlPanelWidget() {
-    // TODO: Ensure this is correct.
     destroy();
 }
 
@@ -48,8 +46,6 @@ void ControlPanelWidget::init() {
     //init about dialog
     aboutDialog = new AboutDialogWidget((QWidget*)this);
     helpDialog = new HelpDocumentationDialogWidget((QWidget*)this);
-    //aboutDialog->setShown(false);
-    //helpDialog->setShown(false);
 
     //init error message dialog
     qErrMsg = new QErrorMessage((QWidget*)this);
