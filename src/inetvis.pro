@@ -46,9 +46,9 @@ RESOURCES += icons.qrc
 ## CUSTOM SETTINGS ----------------------------------------
 
 ## Build Mode
-#CONFIG   += debug warn_on
+CONFIG   += debug warn_on
 #CONFIG	  += debug
-CONFIG   += release
+#CONFIG   += release
 ### uncomment one or the other above
 
 # Turn off C++ warnings while building
