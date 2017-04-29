@@ -205,8 +205,8 @@ int main(int argc, char **argv) {
 
     dp.init();
 
-    vd.show(); //show display first so that control panel begins on top
     cp.show();
+    vd.show(); //show display first so that control panel begins on top
 
     return app.exec();
 }
