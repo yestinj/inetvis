@@ -559,7 +559,7 @@ bool DataProcessor::DataExtractor::lookupNetwork()
       ret = pcap_lookupnet(device->name, &netAddress , &netMask,
             pcapErrorBuffer);
 */
-        ret = pcap_lookupnet(strLocalInterface.toAscii(), &netAddress , &netMask,
+        ret = pcap_lookupnet(strLocalInterface.toLatin1(), &netAddress , &netMask,
                              pcapErrorBuffer);
         //resolve byte order issue
         netAddress = (bpf_u_int32)ntohl(netAddress);
@@ -595,7 +595,7 @@ bool DataProcessor::DataExtractor::lookupNetwork()
         //file is currently open, reopen it to scan addresses, using seperate
         //file read
         pcap_t *tempCaptureInstance;
-        tempCaptureInstance = pcap_open_offline(strReplayFileReference.toAscii().data(),
+        tempCaptureInstance = pcap_open_offline(strReplayFileReference.toLatin1().data(),
                                                 pcapErrorBuffer);
 
         if (tempCaptureInstance == NULL)
@@ -857,7 +857,7 @@ bool DataProcessor::DataExtractor::openCaptureFile(const QString file)
     cerr << "DEBUG: opening capture file to scan for start and end timestamps\n";
 #endif
 
-    fileCaptureInstance = pcap_open_offline(strReplayFileReference.toAscii().data(), pcapErrorBuffer);
+    fileCaptureInstance = pcap_open_offline(strReplayFileReference.toLatin1().data(), pcapErrorBuffer);
 
     if (fileCaptureInstance == NULL)
     {  //capture file not successfully set
@@ -1020,7 +1020,7 @@ bool DataProcessor::DataExtractor::openCaptureFile(const QString file)
     cerr << "DEBUG: reopeing file and initialising for file replay\n";
 #endif
 
-    fileCaptureInstance = pcap_open_offline(strReplayFileReference.toAscii().data(), pcapErrorBuffer);
+    fileCaptureInstance = pcap_open_offline(strReplayFileReference.toLatin1().data(), pcapErrorBuffer);
     //reopen to start from beggining again
     //check for error
     if (fileCaptureInstance == NULL)
@@ -1087,7 +1087,7 @@ bool DataProcessor::DataExtractor::reopenCaptureFile()
     if (fileCaptureInstance == NULL)
     {  //reopen the file, reapply the filter and seek to the current replay
         //position, refilling the buffer
-        fileCaptureInstance = pcap_open_offline(strReplayFileReference.toAscii().data(),
+        fileCaptureInstance = pcap_open_offline(strReplayFileReference.toLatin1().data(),
                                                 pcapErrorBuffer);
         //check for error
         if (fileCaptureInstance == NULL)
@@ -1185,7 +1185,7 @@ bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
         //dataProcessor->glVisWidget->update();
     }
 
-    liveCaptureInstance = pcap_open_live(strLocalInterface.toAscii().data(), packetCaptureLength,
+    liveCaptureInstance = pcap_open_live(strLocalInterface.toLatin1().data(), packetCaptureLength,
                                          promiscuousMode, readTimeout, pcapErrorBuffer);
     if (liveCaptureInstance == NULL)
     {  reportError("error opening network device " + strLocalInterface +
@@ -1307,14 +1307,14 @@ bool DataProcessor::DataExtractor::openDumpFile(const QString file)
     //open dump file, according to replay mode
     if (dataProcessor->replayMode == REPLAY_FILE)
         dumpFileDescriptor = pcap_dump_open(fileCaptureInstance,
-                                            strRecordFileReference.toAscii().data());
+                                            strRecordFileReference.toLatin1().data());
     else if (dataProcessor->replayMode == MONITOR_LOCAL)
         dumpFileDescriptor = pcap_dump_open(liveCaptureInstance,
-                                            strRecordFileReference.toAscii().data());
+                                            strRecordFileReference.toLatin1().data());
 
     //check that dump file opened correctly
-    if (dumpFileDescriptor == NULL)
-    {  reportError("failed to open dump file: \""
+    if (dumpFileDescriptor == NULL) {
+        reportError("failed to open dump file: \""
                    + strRecordFileReference + "\"",
                    "libpcap::pcap_dump_open()");
         return false;
@@ -1597,8 +1597,8 @@ bool DataProcessor::DataExtractor::applyFilter()
     char filterExpr[MAX_EXPR_LENGTH];
 
     //check that the string will be within bounds of the string buffer
-    if ((implicit_bpf_FilterExpr.length() + bpfFilterExpr.length()) < MAX_EXPR_LENGTH)
-    {  strcpy(filterExpr, (implicit_bpf_FilterExpr + bpfFilterExpr).toAscii().data());
+    if ((implicit_bpf_FilterExpr.length() + bpfFilterExpr.length()) < MAX_EXPR_LENGTH) {
+        strcpy(filterExpr, (implicit_bpf_FilterExpr + bpfFilterExpr).toLatin1().data());
         //QString will cast to const char*
     }
     else
