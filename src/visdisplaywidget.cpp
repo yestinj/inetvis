@@ -1,16 +1,10 @@
 #include "visdisplaywidget.h"
+#include <QThread>
 
 VisDisplayWidget::VisDisplayWidget(QWidget *parent) :
     QWidget(parent) {
     setupUi(this);
-    // TODO: Check if this is needed
-    init();
-}
-
-void VisDisplayWidget::init() {
-    //init widget flags
     setFocusProxy(displayWidget);
-    //displayWidget can get keyboard events
 }
 
 void VisDisplayWidget::updateGLVisWidget() {
@@ -19,4 +13,12 @@ void VisDisplayWidget::updateGLVisWidget() {
 
 GLVisWidget* VisDisplayWidget::getPtrToVisPane() {
     return displayWidget;
+}
+
+void VisDisplayWidget::showEvent(QShowEvent *ev) {
+    QWidget::showEvent(ev);
+    // This is a hack more than anything. Delay so that control panel
+    // won't overlap the vis display widget
+    QThread::sleep(1);
+    emit window_loaded();
 }

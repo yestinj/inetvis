@@ -205,8 +205,9 @@ int main(int argc, char **argv) {
 
     dp.init();
 
-    cp.show();
-    vd.show(); //show display first so that control panel begins on top
+    // Only show the control panel once the main display widget is on screen.
+    QObject::connect(&vd, SIGNAL(window_loaded()), &cp, SLOT(show()), Qt::ConnectionType(Qt::QueuedConnection | Qt::UniqueConnection));
+    vd.show();
 
     return app.exec();
 }
