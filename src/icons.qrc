@@ -18,5 +18,6 @@
         <file>images/stock_media-rew.png</file>
         <file>images/stock_media-rec.png</file>
         <file>images/undo.png</file>
+	<file>images/icon.gif</file>
 </qresource>
 </RCC>
