@@ -237,35 +237,39 @@ void ControlPanelWidget::captureFramesToFile(bool activate) {
 }
 
 void ControlPanelWidget::record(bool buttonOn) {
-    if (recordToPcapFileSetByUser)
-    {  emit recordToFile(buttonOn);
+
+    if (recordToPcapFileSetByUser) {
+        emit recordToFile(buttonOn);
+
         //update gui and sync menu with button
         //recordToPcapFileSetByUser is a hack to avoid retriggering the
-        //record slot
-        if (buttonOn)
-        {  recordToPcapFileSetByUser = false;
+        //record slotf
+        if (buttonOn) {
+            recordToPcapFileSetByUser = false;
             recordDump_to_Pcap_FileAction->setChecked(true);
             recordToolButton->setChecked(true);
             recordToPcapFileSetByUser = true;
 
             //update UI log
-            if(LogUI::isEnabled())
+            if(LogUI::isEnabled()) {
                 LogUI::logEvent("[CP] packet recording started at replay time: "
                                 + strGetRepPos());
+            }
         }
-        else
-        {  recordToPcapFileSetByUser = false;
+        else {
+
+            recordToPcapFileSetByUser = false;
             recordDump_to_Pcap_FileAction->setChecked(false);
             recordToolButton->setChecked(false);
             recordToPcapFileSetByUser = true;
 
             //update UI log
-            if(LogUI::isEnabled())
+            if(LogUI::isEnabled()) {
                 LogUI::logEvent("[CP] packet recording stoped at replay time: "
                                 + strGetRepPos());
+            }
         }
     }
-
 }
 
 void ControlPanelWidget::replayFileModeSelected() {
