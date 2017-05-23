@@ -192,17 +192,12 @@ class GLVisWidget;
 
 //CLASS DEFINITIONS ------------------------------------------------------------
 
-class DataProcessor : public QObject
-{
+class DataProcessor : public QObject {
     Q_OBJECT //macro for use of signals and slots
 
-
 private:
-
     //DataExtractor subclass -------------------------------------------------
-
-    class DataExtractor
-    {
+    class DataExtractor {
         /* Internal class to impliment non blocking input into buffer by
           * extracting data using the libpcap library
           * - may in future be revised to operate as a seperate thread
