@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=inetvis
+Comment=Internet Visualiser
+Exec=inetvis
+Icon=/usr/share/icons/hicolor/48x48/apps/inetvis.png
+Terminal=false
+Categories=GNOME;Application;
+StartupNotify=true
