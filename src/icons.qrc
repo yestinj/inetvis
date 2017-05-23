@@ -1,7 +1,7 @@
-<RCC version="1.0">
+<RCC>
     <qresource prefix="/icons">
         <file>images/editcopy.png</file>
-        <file>images/editcut.png</file>    
+        <file>images/editcut.png</file>
         <file>images/editpaste.png</file>
         <file>images/emblem-pictures.png</file>
         <file>images/filenew.png</file>
@@ -18,6 +18,5 @@
         <file>images/stock_media-rew.png</file>
         <file>images/stock_media-rec.png</file>
         <file>images/undo.png</file>
-	<file>images/icon.gif</file>
-</qresource>
+    </qresource>
 </RCC>
