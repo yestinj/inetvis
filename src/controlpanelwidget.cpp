@@ -132,6 +132,11 @@ void ControlPanelWidget::fileOpen() {
         replayPositionGroupBox->setEnabled(true);
         ReplaySpeedGroupBox->setEnabled(true);
         recordToolButton->setEnabled(true);
+
+        // if recording of live captures is disabled, turn this menu item back on now.
+        if (DISABLE_RECORDING_LIVE_CAPTURE) {
+            recordDump_to_Pcap_FileAction->setEnabled(true);
+        }
     }
     else {
         //canceled
@@ -156,7 +161,15 @@ void ControlPanelWidget::monitorLocalHostSelected() {
     //disable editing the replay position and time scale
     replayPositionGroupBox->setEnabled(false);
     ReplaySpeedGroupBox->setEnabled(false);
-    recordToolButton->setEnabled(true);
+
+    // Don't enable the record button if this flag is set.
+    if (!DISABLE_RECORDING_LIVE_CAPTURE) {
+        recordToolButton->setEnabled(true);
+    } else {
+        recordToolButton->setEnabled(false);
+        recordDump_to_Pcap_FileAction->setDisabled(true);
+    }
+
     //TODO: In future may create temp file so that seeking back is possible
     //while monitoring live
 
@@ -225,7 +238,6 @@ void ControlPanelWidget::captureFramesToFile(bool activate) {
         {  captureFramesSetByUser = false;
             recordCapture_Frames_to_FileAction->setChecked(false);
             videoClipToolButton->setChecked(false);
-
             //update UI log
             if(LogUI::isEnabled())
                 LogUI::logEvent("[CP] frame capture stoped at replay time: "

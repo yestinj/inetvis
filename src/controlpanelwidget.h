@@ -12,6 +12,8 @@
 #include "helpdocumentationdialogwidget.h"
 #include "logui.h"
 
+#define DISABLE_RECORDING_LIVE_CAPTURE true
+
 class ControlPanelWidget : public QMainWindow, public Ui::ControlPanel {
     Q_OBJECT
 
