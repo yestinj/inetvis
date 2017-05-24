@@ -1,72 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ui version="4.0" stdsetdef="1">
-  <author></author>
-  <comment></comment>
-  <exportmacro></exportmacro>
-  <class>VisDisplay</class>
-  <widget class="QWidget" name="VisDisplay">
-    <property name="geometry">
-      <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>704</width>
-        <height>576</height>
-      </rect>
-    </property>
-    <property name="minimumSize">
+<ui version="4.0">
+ <class>VisDisplay</class>
+ <widget class="QWidget" name="VisDisplay">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>704</width>
+    <height>576</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>InetVis Display</string>
+  </property>
+  <layout class="QVBoxLayout">
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="GLVisWidget" name="displayWidget" native="true">
+     <property name="minimumSize">
       <size>
-        <width>0</width>
-        <height>0</height>
+       <width>704</width>
+       <height>576</height>
       </size>
-    </property>
-    <property name="baseSize">
-      <size>
-        <width>0</width>
-        <height>0</height>
-      </size>
-    </property>
-    <property name="windowTitle">
-      <string>InetVis Display</string>
-    </property>
-    <layout class="QVBoxLayout">
-      <property name="margin">
-        <number>0</number>
-      </property>
-      <item>
-        <widget class="GLVisWidget" name="displayWidget">
-          <property name="minimumSize">
-            <size>
-              <width>320</width>
-              <height>240</height>
-            </size>
-          </property>
-        </widget>
-      </item>
-    </layout>
-  </widget>
-  <layoutdefault spacing="6" margin="11"/>
-  <customwidgets>
-    <customwidget>
-      <class>GLVisWidget</class>
-      <extends>QWidget</extends>
-      <sizehint>
-        <width>-1</width>
-        <height>-1</height>
-      </sizehint>
-      <container>0</container>
-      <sizepolicy>
-        <hordata>5</hordata>
-        <verdata>5</verdata>
-      </sizepolicy>
-      <pixmap>image0</pixmap>
-    </customwidget>
-  </customwidgets>
-  <images>
-    <image name="image0">
-      <data format="XBM.GZ" length="79">789c534e494dcbcc4b554829cdcdad8c2fcf4c29c95030e0524611cd48cd4ccf28010a1797249664262b2467241641a592324b8aa363156c15aab914146aadb90067111b1f</data>
-    </image>
-  </images>
-  <includes>
-    <include location="local">../glviswidget.h</include>
-  </includes>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>GLVisWidget</class>
+  </customwidget>
+ </customwidgets>
+ <includes>
+  <include location="local">../glviswidget.h</include>
+ </includes>
+ <resources/>
+ <connections/>
 </ui>

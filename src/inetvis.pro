@@ -46,9 +46,9 @@ RESOURCES += icons.qrc
 ## CUSTOM SETTINGS ----------------------------------------
 
 ## Build Mode
-#CONFIG   += debug warn_on
+CONFIG   += debug warn_on
 #CONFIG	  += debug
-CONFIG   += release
+#CONFIG   += release
 ### uncomment one or the other above
 
 # Turn off C++ warnings while building
@@ -56,7 +56,6 @@ CONFIG += warn_off
 
 ## Linking
 CONFIG   += create_prl link_prl static
-#QMAKE_LFLAGS_RELEASE = -m32
 
 ## Optimization flags
 QMAKE_CFLAGS_RELEASE = -O3 -march=native -mfpmath=sse -mmmx -msse -msse2 -mno-sse3 -momit-leaf-frame-pointer -maccumulate-outgoing-args

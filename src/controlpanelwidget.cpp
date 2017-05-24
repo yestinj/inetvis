@@ -5,12 +5,10 @@
 
 ControlPanelWidget::ControlPanelWidget(QMainWindow *parent) : QMainWindow(parent) {
     setupUi(this);
-    // TODO: I think this would be called here.. need to confirm.
     init();
 }
 
 ControlPanelWidget::~ControlPanelWidget() {
-    // TODO: Ensure this is correct.
     destroy();
 }
 
@@ -48,8 +46,6 @@ void ControlPanelWidget::init() {
     //init about dialog
     aboutDialog = new AboutDialogWidget((QWidget*)this);
     helpDialog = new HelpDocumentationDialogWidget((QWidget*)this);
-    //aboutDialog->setShown(false);
-    //helpDialog->setShown(false);
 
     //init error message dialog
     qErrMsg = new QErrorMessage((QWidget*)this);
@@ -136,6 +132,11 @@ void ControlPanelWidget::fileOpen() {
         replayPositionGroupBox->setEnabled(true);
         ReplaySpeedGroupBox->setEnabled(true);
         recordToolButton->setEnabled(true);
+
+        // if recording of live captures is disabled, turn this menu item back on now.
+        if (DISABLE_RECORDING_LIVE_CAPTURE) {
+            recordDump_to_Pcap_FileAction->setEnabled(true);
+        }
     }
     else {
         //canceled
@@ -160,7 +161,15 @@ void ControlPanelWidget::monitorLocalHostSelected() {
     //disable editing the replay position and time scale
     replayPositionGroupBox->setEnabled(false);
     ReplaySpeedGroupBox->setEnabled(false);
-    recordToolButton->setEnabled(true);
+
+    // Don't enable the record button if this flag is set.
+    if (!DISABLE_RECORDING_LIVE_CAPTURE) {
+        recordToolButton->setEnabled(true);
+    } else {
+        recordToolButton->setEnabled(false);
+        recordDump_to_Pcap_FileAction->setDisabled(true);
+    }
+
     //TODO: In future may create temp file so that seeking back is possible
     //while monitoring live
 
@@ -229,7 +238,6 @@ void ControlPanelWidget::captureFramesToFile(bool activate) {
         {  captureFramesSetByUser = false;
             recordCapture_Frames_to_FileAction->setChecked(false);
             videoClipToolButton->setChecked(false);
-
             //update UI log
             if(LogUI::isEnabled())
                 LogUI::logEvent("[CP] frame capture stoped at replay time: "
@@ -241,35 +249,39 @@ void ControlPanelWidget::captureFramesToFile(bool activate) {
 }
 
 void ControlPanelWidget::record(bool buttonOn) {
-    if (recordToPcapFileSetByUser)
-    {  emit recordToFile(buttonOn);
+
+    if (recordToPcapFileSetByUser) {
+        emit recordToFile(buttonOn);
+
         //update gui and sync menu with button
         //recordToPcapFileSetByUser is a hack to avoid retriggering the
-        //record slot
-        if (buttonOn)
-        {  recordToPcapFileSetByUser = false;
+        //record slotf
+        if (buttonOn) {
+            recordToPcapFileSetByUser = false;
             recordDump_to_Pcap_FileAction->setChecked(true);
             recordToolButton->setChecked(true);
             recordToPcapFileSetByUser = true;
 
             //update UI log
-            if(LogUI::isEnabled())
+            if(LogUI::isEnabled()) {
                 LogUI::logEvent("[CP] packet recording started at replay time: "
                                 + strGetRepPos());
+            }
         }
-        else
-        {  recordToPcapFileSetByUser = false;
+        else {
+
+            recordToPcapFileSetByUser = false;
             recordDump_to_Pcap_FileAction->setChecked(false);
             recordToolButton->setChecked(false);
             recordToPcapFileSetByUser = true;
 
             //update UI log
-            if(LogUI::isEnabled())
+            if(LogUI::isEnabled()) {
                 LogUI::logEvent("[CP] packet recording stoped at replay time: "
                                 + strGetRepPos());
+            }
         }
     }
-
 }
 
 void ControlPanelWidget::replayFileModeSelected() {

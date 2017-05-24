@@ -10,6 +10,12 @@ class VisDisplayWidget : public QWidget, public Ui::VisDisplay {
 public:
     VisDisplayWidget(QWidget *parent = 0);
 
+protected:
+    void showEvent(QShowEvent *ev);
+
+signals:
+    void window_loaded();
+
 public slots:
     void updateGLVisWidget();
 

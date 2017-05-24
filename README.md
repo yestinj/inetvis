@@ -6,11 +6,52 @@ This project is based off of the original work by JP van Riel and Barry Irwin of
 
 # Notes
 
-This project was originally written in Qt3 and compiled to 32-bit code, it has since been ported to native Qt4,
-and been set to compile a 64-bit binary.
+This project was originally written in Qt3 and compiled to 32-bit code, it has since been ported to Qt5,
+and been updated to compile a 64-bit binary.
 
 The instructions below have all been tested on the current version of Ubuntu, 17.04 64-bit.
 
+# Installing InetVis (from release archive)
+
+A compiled version of InetVis is available under the releases section of https://github.com/yestinj/inetvis.
+
+In order to install and run the software please do the following:
+
+1. Download the latest release archive from the releases page.
+2. Extract the archive which will be called something like `inetvis-2.0.0.tgz`
+3. Change into the extracted directory, something like `inetvis-2.0.0`
+4. Run the `install_inetvis.sh` shell script to install the software.
+  1. This script will: install the software to `/opt/inetvis-<version>`
+  2. Create a symlink directory `/opt/inetvis` for convenience
+  3. Copy across the relevant files to the new directory under `/opt`.
+  4. Place an icon file in `/usr/share/icons/hicolor/48x48/apps/`
+  5. Place a `desktop` file in `/usr/share/applications`, allowing inetvis to be found in the menu on Ubuntu systems.
+  6. Create a symlink at `/usr/local/bin/inetvis` pointing to the main binary.
+  7. Set the `cap_net_raw`, and `cap_net_admin=eip` capabilities on the inetvis binary allowing for monitoring packets on local host without running as root.
+5. If the script completes successfully inetvis should now be in your path, and also be in the menu system of your distribution.
+
+# Running InetVis
+
+To run InetVis do the following:
+
+1. Download the latest InetVis release archive from the releases page.
+  * Alternatively clone the repository, and follow the build procedure above
+2. Install the requirements (if necessary):
+  * `sudo apt-get install build-essential g++ libc6 libstdc++6 libc6-dev make libpcap-dev libgl1-mesa-dev libqt4-dev libqt4-dev qt4-dev-tools`
+  * Note: These are also the build requirements, installing them may not be necessary for simply running the application.
+
+If you installed InetVis as per the instructions, you should simply be able
+to run the `inetvis` command from your command line or menu system.
+
+If you have built the binary yourself, please run it using manually using `./inetvis` from the src directory.
+
+You will need to run your built binary as root should you wish to monitor local host.
+
+Have fun! :-)
+
+# Uninstalling InetVis
+
+A convenience script is included in the release archive, namely `uninstall_inetvis.sh`, which can be used to completely remove inetvis from your system at any time.
 
 # Building InetVis
 
@@ -38,30 +79,13 @@ Finally, build the `inetvis` binary:
 
 This should result in a new `inetvis` binary being generated within the source directory.
 
-# Running InetVis
-
-To run InetVis do the following:
-
-1. Download the latest InetVis binary from the releases page.
-  * Alternatively clone the repository and run the `inetvis` binary in the root directory.
-  * Or simply use the binary generated from the build process, in `src/`
-2. Install the requirements (if necessary):
-  * `sudo apt-get install build-essential g++ libc6 libstdc++6 libc6-dev make libpcap-dev libgl1-mesa-dev libqt4-dev libqt4-dev qt4-dev-tools`
-  * Note: These are also the build requirements, installing them may not be necessary for simply running.
-
-Next, locate the binary you downloaded/built and run it as follows: `./inetvis`
-
-If you would like to monitor your own host for network events, instead of replaying capture files, please ensure that you run as root, i.e. `sudo ./inetvis`
-
-Have fun! :-)
-
 # Development
 
-Development is currently done using a combination of Atom, vim, and Qt Creator.
+Development is currently done using Qt Creator.
 
 QT Creator allows for simple editing of source code, as well as graphical form editing, and can be
 installed in Debian flavours of Linux by installing the `qtcreator` package.
 
 # Versioning
 
-This software will make use of Semantic Versioning 2.0.0 (http://semver.org/) once reaching the v1.0.0 release phase.
+This software uses Semantic Versioning 2.0.0 (http://semver.org/) as of release v2.0.0.

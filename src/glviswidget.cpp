@@ -356,7 +356,7 @@ void GLVisWidget::paintGL()
             captureFrameToFile = false;
             //create filename
             QString fname_part = "/" + currentTime->toString("/yyyyMMdd-hhmmsszzz") + "_snap%02d.ppm";
-            sprintf(&frameFileName[frameDirCharIndex], fname_part.toAscii(), snapshotCount);
+            sprintf(&frameFileName[frameDirCharIndex], fname_part.toLatin1(), snapshotCount);
             //check if filename exists - in case of multiple snapshots at same
             //position in file
             if (QFile::exists(frameFileName))
@@ -376,7 +376,7 @@ void GLVisWidget::paintGL()
         {  //capturing multiple frames to files
             recFrameCount++;
             QString fname_part = "/frame%09d - " + currentTime->toString("yyyyMMdd-hhmmsszzz") + ".ppm";
-            sprintf(&frameFileName[frameDirCharIndex], fname_part.toAscii(), recFrameCount);
+            sprintf(&frameFileName[frameDirCharIndex], fname_part.toLatin1(), recFrameCount);
             //here we cater for framecount of up to 9 digits
         }
 
@@ -1382,7 +1382,7 @@ void GLVisWidget::captureFrames(bool on) {
         {  frameCaptureDir = QString(DEFAULT_FRAMES_DIR);
         }
         //init frameFileName reference
-        strcpy(frameFileName, frameCaptureDir.toAscii());
+        strcpy(frameFileName, frameCaptureDir.toLatin1());
         frameDirCharIndex = frameCaptureDir.length();
         //set capture frames flag
         captureFrameToFile = true;
@@ -1451,7 +1451,7 @@ void GLVisWidget::captureCurrentFrame() {
         {  frameCaptureDir = QString(DEFAULT_SNAPSHOTS_DIR);
         }
         //init frameFileName reference
-        strcpy(frameFileName, frameCaptureDir.toAscii());
+        strcpy(frameFileName, frameCaptureDir.toLatin1());
         frameDirCharIndex = frameCaptureDir.length();
         //set flags
         captureSingleFrameToFile = true;

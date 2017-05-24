@@ -183,7 +183,7 @@ void DataProcessor::DataExtractor::readCaptureFile()
                 TimeUtil::timevalToQDateTime(capEndTm,
                                              dataProcessor->captureEndTime);
                 cerr << "DEBUG: replay file end reached at: "
-                     << capEndTm.toString()<< '\n';
+                     << capEndTm.toString().toLatin1().data() << '\n';
 #endif
 
                 //close file
@@ -226,8 +226,7 @@ void DataProcessor::DataExtractor::readCaptureFile()
 }
 
 
-void DataProcessor::DataExtractor::monitorLocalHost()
-{
+void DataProcessor::DataExtractor::monitorLocalHost() {
 
     /* TODO: This method may lend itself to a threaded implimentation given the
    following warning in the pcap man file:
@@ -243,8 +242,8 @@ void DataProcessor::DataExtractor::monitorLocalHost()
 #ifdef DEBUG_DATA_EXTRACTOR
     //this method should not be called if a live apture interface has not been
     //opened
-    if (liveCaptureInstance == NULL)
-    {  //capture instacnce invalid
+    if (liveCaptureInstance == NULL) {
+        //capture instacnce invalid
         reportError(("capture instance is null, unable to monitor on local interface"
                      + strLocalInterface), "DataExtractor::monitorLocalHost()");
         dataProcessor->pause();
@@ -262,52 +261,44 @@ void DataProcessor::DataExtractor::monitorLocalHost()
     //should be set to non blocking mode, so pcap_dispatch will return if there
     //are no packets to be read
 
-    if (pcapRet >= 0)
-    {  //packets processed no more to be done for now
+    if (pcapRet >= 0) {
+        //packets processed no more to be done for now
         //update the capture end time and buffer position
 
-        //Commented out the two below lines, getting value, assigning, but never using.
-        //PacketEvent *pe;
-        //pe = &dataProcessor->packetEventBuffer.front();
+        PacketEvent *pe;
+        pe = &dataProcessor->packetEventBuffer.front();
 #ifdef DEBUG_DATA_RENDER
         cerr << "DEBUG: Succefully returning from monitoring interface, with no further packets to process for the moment\n";
 #endif
-
         return;
-
     }
 
-    if (pcapRet == -2)
-    {
+    if (pcapRet == -2) {
 #ifdef DEBUG_DATA_RENDER
         cerr << "DEBUG: monitoring was interupted by pcap_breakloop() call before any packets could be processed\n";
 #endif
-
         return;
     }
 
-    if (pcapRet == -1)
-    {  strcpy(pcapErrorBuffer, pcap_geterr(liveCaptureInstance)); //copy error into
+    if (pcapRet == -1) {
+        strcpy(pcapErrorBuffer, pcap_geterr(liveCaptureInstance)); //copy error into
         //error buffer
         reportError(("error monitoring off interface " + strLocalInterface),
                     "libpacp::pcap_dispatch()");
         return;
     }
-
 }
 
 
-void DataProcessor::DataExtractor::monitorRemoteServer()
-{
+void DataProcessor::DataExtractor::monitorRemoteServer() {
     //TODO: open a socket and recieve data updates from a server capturing
     //packets
-
 }
 
 
 void DataProcessor::DataExtractor::processPacket(u_char *args,
-                                                 const struct pcap_pkthdr *header, const u_char *snapshot)
-{
+                                                 const struct pcap_pkthdr *header, const u_char *snapshot) {
+
     //this method is static to allow access to libpacp and be used as a
     //pcap_handler callback function. statDataProcessor needs to be correctly
     //assigned before using this function
@@ -323,9 +314,9 @@ void DataProcessor::DataExtractor::processPacket(u_char *args,
     Plotter::plot(statDataProcessor->packetEventBuffer.front());
 
     //packet recording
-    if (statDataProcessor->recordToFile)
-    {  //record while within time window start
-        if (TimeUtil::timevalGreaterThan(header->ts,
+    if (statDataProcessor->recordToFile) {
+        //record while within time window start
+            if (TimeUtil::timevalGreaterThan(header->ts,
                                          statDataProcessor->timeWindowEnd))
         {  //check to ensure value not previously recorded
             if (TimeUtil::timevalGreaterThan(header->ts,
@@ -340,7 +331,7 @@ void DataProcessor::DataExtractor::processPacket(u_char *args,
                 QDateTime timeStamp;
                 TimeUtil::timevalToQDateTime(timeStamp, header->ts);
                 cerr << "DEBUG: write packet to file with timestamp = "
-                     << timeStamp.toString("yyyy/MM/dd - hh:mm:ss:zzz") << '\n';
+                     << timeStamp.toString("yyyy/MM/dd - hh:mm:ss:zzz").toLatin1().data() << '\n';
 #endif
 
             }
@@ -559,7 +550,7 @@ bool DataProcessor::DataExtractor::lookupNetwork()
       ret = pcap_lookupnet(device->name, &netAddress , &netMask,
             pcapErrorBuffer);
 */
-        ret = pcap_lookupnet(strLocalInterface.toAscii(), &netAddress , &netMask,
+        ret = pcap_lookupnet(strLocalInterface.toLatin1(), &netAddress , &netMask,
                              pcapErrorBuffer);
         //resolve byte order issue
         netAddress = (bpf_u_int32)ntohl(netAddress);
@@ -595,7 +586,7 @@ bool DataProcessor::DataExtractor::lookupNetwork()
         //file is currently open, reopen it to scan addresses, using seperate
         //file read
         pcap_t *tempCaptureInstance;
-        tempCaptureInstance = pcap_open_offline(strReplayFileReference.toAscii().data(),
+        tempCaptureInstance = pcap_open_offline(strReplayFileReference.toLatin1().data(),
                                                 pcapErrorBuffer);
 
         if (tempCaptureInstance == NULL)
@@ -770,8 +761,8 @@ void DataProcessor::DataExtractor::setHomeNetwork(unsigned int netAdr,
 
 #ifdef DEBUG_DATA_EXTRACTOR
     cerr << "DEBUG: network address set to: "
-         << PacketHeaders::ipAdrToDecDotStr(netAdr) << ", mask set to: "
-         << PacketHeaders::ipAdrToDecDotStr(mask) << endl;
+         << PacketHeaders::ipAdrToDecDotStr(netAdr).toLatin1().data() << ", mask set to: "
+         << PacketHeaders::ipAdrToDecDotStr(mask).toLatin1().data() << endl;
 #endif
 
     dataProcessor->reportHomeNetwork();
@@ -857,7 +848,7 @@ bool DataProcessor::DataExtractor::openCaptureFile(const QString file)
     cerr << "DEBUG: opening capture file to scan for start and end timestamps\n";
 #endif
 
-    fileCaptureInstance = pcap_open_offline(strReplayFileReference.toAscii().data(), pcapErrorBuffer);
+    fileCaptureInstance = pcap_open_offline(strReplayFileReference.toLatin1().data(), pcapErrorBuffer);
 
     if (fileCaptureInstance == NULL)
     {  //capture file not successfully set
@@ -1002,25 +993,25 @@ bool DataProcessor::DataExtractor::openCaptureFile(const QString file)
     cerr << "   Timestamp of first packet = "
          << dataProcessor->captureStartTime.tv_sec << " sec, "
          << dataProcessor->captureStartTime.tv_usec << " usec - "
-         << capSrtTm.date().toString() << ", "
-         << capSrtTm.time().toString() << ":"
+         << capSrtTm.date().toString().toLatin1().data() << ", "
+         << capSrtTm.time().toString().toLatin1().data() << ":"
          << capSrtTm.time().msec() << endl;
     cerr << "   Timestamp of last packet = "
          << dataProcessor->captureEndTime.tv_sec << " sec, "
          << dataProcessor->captureEndTime.tv_usec << " usec - "
-         << capEndTm.date().toString() << ", "
-         << capEndTm.time().toString() << ":"
+         << capEndTm.date().toString().toLatin1().data() << ", "
+         << capEndTm.time().toString().toLatin1().data() << ":"
          << capEndTm.time().msec() << endl;
     cerr << "   Replay position = "
          << dataProcessor->replayPosition.tv_sec << " sec, "
          << dataProcessor->replayPosition.tv_usec << " usec - "
-         << dataProcessor->qdt_replayPosition.date().toString() << ", "
-         << dataProcessor->qdt_replayPosition.time().toString() << ":"
+         << dataProcessor->qdt_replayPosition.date().toString().toLatin1().data() << ", "
+         << dataProcessor->qdt_replayPosition.time().toString().toLatin1().data() << ":"
          << dataProcessor->qdt_replayPosition.time().msec() << endl;
     cerr << "DEBUG: reopeing file and initialising for file replay\n";
 #endif
 
-    fileCaptureInstance = pcap_open_offline(strReplayFileReference.toAscii().data(), pcapErrorBuffer);
+    fileCaptureInstance = pcap_open_offline(strReplayFileReference.toLatin1().data(), pcapErrorBuffer);
     //reopen to start from beggining again
     //check for error
     if (fileCaptureInstance == NULL)
@@ -1087,7 +1078,7 @@ bool DataProcessor::DataExtractor::reopenCaptureFile()
     if (fileCaptureInstance == NULL)
     {  //reopen the file, reapply the filter and seek to the current replay
         //position, refilling the buffer
-        fileCaptureInstance = pcap_open_offline(strReplayFileReference.toAscii().data(),
+        fileCaptureInstance = pcap_open_offline(strReplayFileReference.toLatin1().data(),
                                                 pcapErrorBuffer);
         //check for error
         if (fileCaptureInstance == NULL)
@@ -1185,7 +1176,7 @@ bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
         //dataProcessor->glVisWidget->update();
     }
 
-    liveCaptureInstance = pcap_open_live(strLocalInterface.toAscii().data(), packetCaptureLength,
+    liveCaptureInstance = pcap_open_live(strLocalInterface.toLatin1().data(), packetCaptureLength,
                                          promiscuousMode, readTimeout, pcapErrorBuffer);
     if (liveCaptureInstance == NULL)
     {  reportError("error opening network device " + strLocalInterface +
@@ -1215,7 +1206,7 @@ bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
     }
 
 #ifdef DEBUG_DATA_EXTRACTOR
-    cerr << "DEBUG: network device " + strLocalInterface + " oppened for capture" << endl;
+    cerr << "DEBUG: network device " << strLocalInterface.toLatin1().data() << " oppened for capture" << endl;
 #endif
 
     dataProcessor->setMode(MONITOR_LOCAL);
@@ -1232,7 +1223,6 @@ bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
     dataProcessor->play();
 
     return true;
-
 }
 
 
@@ -1250,7 +1240,7 @@ bool DataProcessor::DataExtractor::openDefaultInterface()
     else
     {
 #ifdef DEBUG_DATA_EXTRACTOR
-        cerr << "DEBUG: Default device set: " << strLocalInterface << endl;
+        cerr << "DEBUG: Default device set: " << strLocalInterface.toLatin1().data() << endl;
 #endif
         return openInterface(strLocalInterface);
     }
@@ -1278,7 +1268,7 @@ bool DataProcessor::DataExtractor::openDumpFile(const QString file)
     if (dumpFileDescriptor != NULL)
     {
 #ifdef DEBUG_RECORD_PACKETS
-        cerr << "   previous dump file = \"" << strRecordFileReference
+        cerr << "   previous dump file = \"" << strRecordFileReference.toLatin1().data()
              << "\" found open, now closing...\n";
 #endif
 
@@ -1301,22 +1291,22 @@ bool DataProcessor::DataExtractor::openDumpFile(const QString file)
         strRecordFileReference = file;
 
 #ifdef DEBUG_RECORD_PACKETS
-    cerr << "   new dump file = \"" << strRecordFileReference << "\"\n";
+    cerr << "   new dump file = \"" << strRecordFileReference.toLatin1().data() << "\"\n";
 #endif
 
     //open dump file, according to replay mode
     if (dataProcessor->replayMode == REPLAY_FILE)
         dumpFileDescriptor = pcap_dump_open(fileCaptureInstance,
-                                            strRecordFileReference.toAscii().data());
+                                            strRecordFileReference.toLatin1().data());
     else if (dataProcessor->replayMode == MONITOR_LOCAL)
         dumpFileDescriptor = pcap_dump_open(liveCaptureInstance,
-                                            strRecordFileReference.toAscii().data());
+                                            strRecordFileReference.toLatin1().data());
 
     //check that dump file opened correctly
-    if (dumpFileDescriptor == NULL)
-    {  reportError("failed to open dump file: \""
-                   + strRecordFileReference + "\"",
-                   "libpcap::pcap_dump_open()");
+    if (dumpFileDescriptor == NULL) {
+        reportError("failed to open dump file: \""
+                    + strRecordFileReference + "\"",
+                    "libpcap::pcap_dump_open()");
         return false;
     }
 
@@ -1333,21 +1323,20 @@ bool DataProcessor::DataExtractor::openDumpFile(const QString file)
 }
 
 
-void DataProcessor::DataExtractor::recordToDumpFile(bool record)
-{
+void DataProcessor::DataExtractor::recordToDumpFile(bool record) {
 
 #ifdef DEBUG_RECORD_PACKETS
     cerr << "DEBUG: record state changed:\n";
 #endif
 
     //assert that we are not trying to set the same state over
-    if (dataProcessor->recordToFile == record)
-    {  QString strRecordState;
-        if (dataProcessor->recordToFile)
-        {  strRecordState = "on";
+    if (dataProcessor->recordToFile == record) {
+        QString strRecordState;
+        if (dataProcessor->recordToFile) {
+            strRecordState = "on";
         }
-        else
-        {  strRecordState = "off";
+        else {
+            strRecordState = "off";
         }
         reportError("record state already " + strRecordState,
                     "DataExtractor::recordToFile()");
@@ -1355,27 +1344,29 @@ void DataProcessor::DataExtractor::recordToDumpFile(bool record)
     }
 
     //check to see if we're beginnig to record
-    if (record) //start recording
-    {  //check if dump file already open, and if not, generate auto name per
+    if (record) {
+        //start recording
+        //check if dump file already open, and if not, generate auto name per
         //record session - a record session is a press and consequent depress
         //of the button
-        if (dumpFileDescriptor == NULL)
-        {  //assume session mode
+        if (dumpFileDescriptor == NULL) {
+            //assume session mode
             recMode = SESSION;
         }
-        if (recMode == SESSION)
-        {  //create filename bassed on capture mode and file start time
+
+        if (recMode == SESSION) {
+            //create filename bassed on capture mode and file start time
             QString dumpFileName;
-            if (dataProcessor->getMode() == REPLAY_FILE)
-            {  QString replayFileName = dataProcessor->getReplayFileName();
+            if (dataProcessor->getMode() == REPLAY_FILE) {
+                QString replayFileName = dataProcessor->getReplayFileName();
                 dumpFileName = QString(DEFAULT_PCAPS_DIR) + QString("/")
                         + QString(DEFAULT_REPLAY_SUBDIR) + QString("/")
                         + replayFileName;
                 QDir dir;
                 //need to create sub dir
-                if (!dir.exists(dumpFileName))
-                {  if(!dir.mkdir(dumpFileName))
-                    {  reportError("could not create subdirectory for record session file",
+                if (!dir.exists(dumpFileName)) {
+                    if(!dir.mkdir(dumpFileName)) {
+                        reportError("could not create subdirectory for record session file",
                                    "DataExtractor::recordToFile()");
                         return;
                     }
@@ -1384,8 +1375,8 @@ void DataProcessor::DataExtractor::recordToDumpFile(bool record)
                         += QString("/")
                         + dataProcessor->qdt_twEnd.toString("yyyyMMdd-hhmmss");
             }
-            else if (dataProcessor->getMode() == MONITOR_LOCAL)
-            {  dumpFileName = QString(DEFAULT_PCAPS_DIR) + QString("/")
+            else if (dataProcessor->getMode() == MONITOR_LOCAL) {
+                dumpFileName = QString(DEFAULT_PCAPS_DIR) + QString("/")
                         + QString(DEFAULT_LIVE_SUBDIR) + QString("/")
                         + dataProcessor->qdt_replayPosition.toString("yyyyMMdd-hhmmss");
                 //this must be changed to the time window end if the buffer
@@ -1393,8 +1384,8 @@ void DataProcessor::DataExtractor::recordToDumpFile(bool record)
             }
             //only add extention once closing file
             //now open session file
-            if(!openDumpFile(dumpFileName))
-            {  emit dataProcessor->setRecordButton(false);
+            if(!openDumpFile(dumpFileName)) {
+                emit dataProcessor->setRecordButton(false);
                 return;
                 //openDumpFile() will report the error
             }
@@ -1404,25 +1395,27 @@ void DataProcessor::DataExtractor::recordToDumpFile(bool record)
         dataProcessor->recordToFile = true;
 
 #ifdef DEBUG_RECORD_PACKETS
-        cerr << "   started recording pacets to dump file \"";
-        cerr << strRecordFileReference << "\"\n";
+        cerr << "   started recording packets to dump file \"";
+        cerr << strRecordFileReference.toLatin1().data() << "\"\n";
 #endif
 
         //now process packets
-        if (dataProcessor->getMode() == REPLAY_FILE)
-        {  //reprocess file to record all packets already in time window
+        if (dataProcessor->getMode() == REPLAY_FILE) {
+
+            //reprocess file to record all packets already in time window
             reopenCaptureFile(); //we want to copy from the original file
             //the packet proccessing function will dump packets during reread
             //coping data in current buffer
         }
-        else if (dataProcessor->getMode() == MONITOR_LOCAL)
-        {  //dump current buffer contents
+        else if (dataProcessor->getMode() == MONITOR_LOCAL) {
+
+            //dump current buffer contents
             deque<PacketEvent>::iterator itr;
             for (itr = dataProcessor->packetEventBuffer.begin();
                  itr != dataProcessor->packetEventBuffer.end();
-                 itr++)
-            {  if (itr->graphicElement != NULL)
-                {  //copy event data in pcap pkyhdr struct
+                 itr++) {
+                if (itr->graphicElement != NULL) {
+                    //copy event data in pcap pkyhdr struct
                     struct pcap_pkthdr pktHdr;
                     pktHdr.ts.tv_sec = itr->timeStamp.tv_sec;
                     pktHdr.ts.tv_usec = itr->timeStamp.tv_usec;
@@ -1438,18 +1431,18 @@ void DataProcessor::DataExtractor::recordToDumpFile(bool record)
             }
         }
     }
-    else
-    {  //stop recording
+    else {
+        //stop recording
         dataProcessor->recordToFile = false;
 
 #ifdef DEBUG_RECORD_PACKETS
-        cerr << "   stoped recording pacets to dump file \"";
-        cerr << strRecordFileReference << "\"\n";
+        cerr << "   stopped recording packets to dump file \"";
+        cerr << strRecordFileReference.toLatin1().data() << "\"\n";
 #endif
 
         //if in SESSION mode, close and rename file
-        if (recMode == SESSION)
-        {  closeDumpFile();
+        if (recMode == SESSION) {
+            closeDumpFile();
             //setup file references to filename and path
             QDir fileRef = QDir(strRecordFileReference);
             QString fileName = fileRef.dirName(); //get file name
@@ -1457,39 +1450,37 @@ void DataProcessor::DataExtractor::recordToDumpFile(bool record)
             filePath = filePath.remove(fileName); //get dir on its own
             filePath = strRecordFileReference.remove(fileName);
             //navigate into dir and rename file
-            if (!fileRef.exists())
-            {  QString newFileName = fileName + QString(" - ")
+            if (!fileRef.exists()) {
+                QString newFileName = fileName + QString(" - ")
                         + dataProcessor->qdt_replayPosition.toString("yyyyMMdd-hhmmss")
                         + QString(".cap");
                 QDir navDir = QDir(dataProcessor->strAppDir);
-                if (navDir.cd(filePath))
-                {  //rename file
-                    if (!navDir.rename(fileName, newFileName))
-                    {  reportError("could not rename record session file",
+                if (navDir.cd(filePath)) {
+                    //rename file
+                    if (!navDir.rename(fileName, newFileName)) {
+                        reportError("could not rename record session file",
                                    "DataExtractor::recordToFile()");
                     }
-                    else
-                    {
+                    else {
 #ifdef DEBUG_RECORD_PACKETS
                         cerr << "   recording session dump file closed and renamed to\"";
-                        cerr << newFileName << "\"\n";
+                        cerr << newFileName.toLatin1().data() << "\"\n";
 #endif
                     }
                 }
-                else
-                {  reportError("could not change directory in order to rename record session file",
+                else {
+                    reportError("could not change directory in order to rename record session file",
                                "DataExtractor::recordToFile()");
                 }
             }
-            else
-            {  reportError("could not rename record session file",
+            else {
+                reportError("could not rename record session file",
                            "DataExtractor::recordToFile()");
             }
         }
         //if in CONTINUOUS mode, leave file open untill recording is reiniated
         //or file manually closed
     }
-
 }
 
 
@@ -1525,7 +1516,7 @@ void DataProcessor::DataExtractor::closeDumpFile()
     dumpFileDescriptor = NULL;
 
 #ifdef DEBUG_RECORD_PACKETS
-    cerr << "   dump file \"" << strRecordFileReference << "\" closed\n";
+    cerr << "   dump file \"" << strRecordFileReference.toLatin1().data() << "\" closed\n";
 #endif
 
 }
@@ -1597,8 +1588,8 @@ bool DataProcessor::DataExtractor::applyFilter()
     char filterExpr[MAX_EXPR_LENGTH];
 
     //check that the string will be within bounds of the string buffer
-    if ((implicit_bpf_FilterExpr.length() + bpfFilterExpr.length()) < MAX_EXPR_LENGTH)
-    {  strcpy(filterExpr, (implicit_bpf_FilterExpr + bpfFilterExpr).toAscii().data());
+    if ((implicit_bpf_FilterExpr.length() + bpfFilterExpr.length()) < MAX_EXPR_LENGTH) {
+        strcpy(filterExpr, (implicit_bpf_FilterExpr + bpfFilterExpr).toLatin1().data());
         //QString will cast to const char*
     }
     else
@@ -1718,7 +1709,7 @@ bool DataProcessor::DataExtractor::applyFilter()
     if (pcapRet != -1)
         cerr << "DEBUG: filter compiled and set to: '" << filterExpr
              << "' (including implicit filter), with net mask of "
-             << QString::number(netMask) << endl;
+             << QString::number(netMask).toLatin1().data() << endl;
 #endif
 
     return true;
@@ -1871,11 +1862,11 @@ DataProcessor::DataProcessor()
          << " secs, " << timeWindow.tv_usec << " microsecs\n";
     cerr << "DEBUG: replay rate init to default : " << timeFactor << "x\n";
     cerr << "DEBUG: replay position init: "
-         << qdt_replayPosition.date().toString() << ", "
-         << qdt_replayPosition.time().toString() << ":"
+         << qdt_replayPosition.date().toString().toLatin1().data() << ", "
+         << qdt_replayPosition.time().toString().toLatin1().data() << ":"
          << qdt_replayPosition.time().msec() << endl;
-    cerr << "DEBUG: time window end init: " << qdt_twEnd.date().toString()
-         << ", " << qdt_twEnd.time().toString() << ":"
+    cerr << "DEBUG: time window end init: " << qdt_twEnd.date().toString().toLatin1().data()
+         << ", " << qdt_twEnd.time().toString().toLatin1().data() << ":"
          << qdt_twEnd.time().msec() << endl;
 #endif
 
@@ -2245,7 +2236,7 @@ void DataProcessor::selectReplayFile(const QString file)
     if(dataExtractor.openCaptureFile(file))
     {
 #ifdef DEBUG_DATA_EXTRACTOR
-        cerr << "opened \"" + file + "\" for replay"
+        cerr << "opened \"" << file.toLatin1().data() << "\" for replay"
              << endl;
 #endif
 
@@ -2374,7 +2365,7 @@ void DataProcessor::setReplayPosition(const struct timeval newReplayPos)
     }
 
 #ifdef DEBUG_DATA_PROCESSOR
-    cerr << "DEBUG: replay position set to: " << qdt_replayPosition.toString()
+    cerr << "DEBUG: replay position set to: " << qdt_replayPosition.toString().toLatin1().data()
          << endl;
 #endif
 
@@ -2473,10 +2464,8 @@ void DataProcessor::togglePlayPause()
 }
 
 
-void DataProcessor::record(bool rec)
-{
+void DataProcessor::record(bool rec) {
     dataExtractor.recordToDumpFile(rec);
-
 }
 
 
@@ -2591,7 +2580,7 @@ void DataProcessor::setTimeWindow(double seconds)
         cerr << "DEBUG: time window set to: " << timeWindow.tv_sec
              << " seconds, and " << timeWindow.tv_usec << " microsecs\n";
         cerr << "DEBUG: time window end adjusted to: "
-             << twEnd.date().toString() << ", " << twEnd.time().toString()
+             << twEnd.date().toString().toLatin1().data() << ", " << twEnd.time().toString().toLatin1().data()
              << ":" << twEnd.time().msec() << endl;
 #endif
 
@@ -2718,7 +2707,7 @@ void DataProcessor::getBufferStatus()
 
 #ifdef DEBUG_DATA_PROCESSOR
     cerr << "DEBUG: packet event buffer length (time) = "
-         << TimeUtil::realativeTimevalToQString(timeLength) << ", events = ";
+         << TimeUtil::realativeTimevalToQString(timeLength).toLatin1().data() << ", events = ";
 
 #endif
 

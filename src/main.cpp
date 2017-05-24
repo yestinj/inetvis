@@ -69,14 +69,11 @@ int main(int argc, char **argv) {
     LogUIQuit luiq; //small helper object to ensure UI logging closes gracefully
 
     //declare GUI forms/windows
-    //QMainWindow cp;
-    //Ui::ControlPanel uicp;
-    //uicp.setupUi(&cp);
     ControlPanelWidget cp;
     VisDisplayWidget vd; //visaulization window
 
     GLVisWidget* vdw = vd.displayWidget;
-    vd.setFocusProxy(vdw);
+    //vd.setFocusProxy(vdw); Removed, already called in the init class of VisDisplayWidget
 
     PlotterSettingsDialogWidget ps; //to set plotting features
     ReferenceFrameSettingsDialogWidget rfs; //to set reference frame features
@@ -208,8 +205,9 @@ int main(int argc, char **argv) {
 
     dp.init();
 
-    vd.show(); //show display first so that control panel begins on top
-    cp.show();
+    // Only show the control panel once the main display widget is on screen.
+    QObject::connect(&vd, SIGNAL(window_loaded()), &cp, SLOT(show()), Qt::ConnectionType(Qt::QueuedConnection | Qt::UniqueConnection));
+    vd.show();
 
     return app.exec();
 }
