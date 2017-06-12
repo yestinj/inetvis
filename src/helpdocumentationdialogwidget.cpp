@@ -1,4 +1,5 @@
 #include "helpdocumentationdialogwidget.h"
+#include <iostream>
 
 HelpDocumentationDialogWidget::HelpDocumentationDialogWidget(QWidget *parent) : QDialog(parent) {
     setupUi(this);
@@ -6,13 +7,22 @@ HelpDocumentationDialogWidget::HelpDocumentationDialogWidget(QWidget *parent) : 
 }
 
 void HelpDocumentationDialogWidget::init() {
-    // TODO: Improve this
-    QString documentationFileRef = QDir::currentPath() + "/../doc/inetvisdoc.html";
-    QString altDocumentationText =
-            "<h3>Documentation & Help pane</h3><p>if you see this message, there was an error reading the InetVis html manual providing documentation and help for the program. It should be installed in a 'doc/' directory relative to the inetvis binary.</p>";
 
-    if (QFile::exists(documentationFileRef))
+    QString documentationFileRef = QDir::currentPath() + "/../doc/inetvisdoc.html";
+
+    // TODO: This needs to be more robust and support different OSes.
+    if (!QFile::exists(documentationFileRef)) {
+        documentationFileRef = "/opt/inetvis/doc/inetvisdoc.html";
+    }
+
+    if (QFile::exists(documentationFileRef)) {
         helpTextBrowser->setSource(documentationFileRef);
-    else
+    }
+    else {
+
+        QString altDocumentationText =
+                "<h3>Documentation & Help pane</h3><p>if you see this message, there was an error reading the InetVis html manual providing documentation and help for the program. It should be installed in a 'doc/' directory relative to the inetvis binary.</p>";
+
         helpTextBrowser->setText(altDocumentationText);
+    }
 }
