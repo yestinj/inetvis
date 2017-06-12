@@ -9,7 +9,7 @@ APPS_PATH=/usr/share/applications
 USR_BIN=/usr/local/bin
 
 
-if [ -f "${APPS_PATH}/${BIN_NAME}" ]; then
+if [ -f "${APPS_PATH}/${BIN_NAME}.desktop" ]; then
     echo "Removing desktop file..."
     sudo rm ${APPS_PATH}/${BIN_NAME}.desktop
 else
