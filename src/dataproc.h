@@ -114,13 +114,13 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #define DATA_LINK_UNSET -1
 
 //defined defaults for directories and filenames
-#define DEFAULT_RECORD_DIR "recorded"
-#define DEFAULT_PCAPS_DIR "recorded/pcaps"
+#define DEFAULT_RECORD_DIR "inetvis-recorded"
+#define DEFAULT_PCAPS_DIR "inetvis-recorded/pcaps"
 #ifndef DEFAULT_FRAMES_DIR
-#  define DEFAULT_FRAMES_DIR "recorded/frames"
+#  define DEFAULT_FRAMES_DIR "inetvis-recorded/frames"
 #endif
 #ifndef DEFAULT_SNAPSHOTS_DIR
-#  define DEFAULT_SNAPSHOTS_DIR "recorded/snapshots"
+#  define DEFAULT_SNAPSHOTS_DIR "inetvis-recorded/snapshots"
 #endif
 #ifndef DEFAULT_LIVE_SUBDIR
 #  define DEFAULT_LIVE_SUBDIR "live"

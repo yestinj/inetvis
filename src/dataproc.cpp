@@ -2038,11 +2038,13 @@ bool DataProcessor::checkDefaultDirs()
 {
     QDir dir = QDir();
     QString strDir = QString("");
+
     //main record dir
     if(!dir.exists(DEFAULT_RECORD_DIR))
     {  if(!dir.mkdir(DEFAULT_RECORD_DIR))
             return false;
     }
+
     //sub dirs
     if(!dir.exists(DEFAULT_PCAPS_DIR))
     {  if(!dir.mkdir(DEFAULT_PCAPS_DIR))
