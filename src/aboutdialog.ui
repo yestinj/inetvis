@@ -21,15 +21,19 @@
         <widget class="QTextBrowser" name="textBrowser1">
           <property name="text">
             <string>&lt;h2&gt;InetVis - &lt;b&gt;I&lt;/b&gt;nter&lt;b&gt;net&lt;/b&gt; &lt;b&gt;Vis&lt;/b&gt;ualization&lt;/h2&gt;
-&lt;p&gt;&lt;i&gt;Version&lt;/i&gt;: 0.9.5-qt4&lt;br&gt;&lt;small&gt;&lt;i&gt;Release date&lt;/i&gt;: 2007/11/21&lt;/small&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&lt;i&gt;Version&lt;/i&gt;: 2.0.1&lt;br&gt;&lt;small&gt;&lt;i&gt;Release date&lt;/i&gt;: 2017/06/12&lt;/small&gt;&lt;br&gt;&lt;/p&gt;
 &lt;h3&gt;About&lt;/h3&gt;
 &lt;p&gt;Computer Science Honours Project - 2005&lt;br&gt;
 Computer Science Masters Project - 2006/7&lt;/p&gt;
-&lt;p&gt;&lt;i&gt;Author&lt;/i&gt;: Jean-Pierre van Riel&lt;br&gt;
+Computer Science Masters Project - 2017&lt;/p&gt;
+&lt;p&gt;&lt;i&gt;Origin Author&lt;/i&gt;: Jean-Pierre van Riel (2005 - 2007)&lt;br&gt;
+&lt;p&gt;&lt;i&gt;Current Author&lt;/i&gt;: Yestin Johnson (2017)&lt;br&gt;
 &lt;i&gt;Supervisor&lt;/i&gt;: Barry Irwin&lt;br&gt;
 &lt;i&gt;Institute&lt;/i&gt;: Rhodes University, Grahamstown, 6140, Eastern Cape, South Africa&lt;br&gt;
 &lt;i&gt;website: &lt;/i&gt;&lt;u&gt;http://research.ict.ru.ac.za/G02V2468/&lt;/u&gt;&lt;br&gt;
 &lt;i&gt;email &lt;/i&gt;&lt;u&gt;jp.vanriel@gmail.com&lt;/u&gt;&lt;/p&gt;
+&lt;i&gt;email &lt;/i&gt;&lt;u&gt;yestinj@gmail.com&lt;/u&gt;&lt;/p&gt;
+
 &lt;h3&gt;Aknowledgment&lt;/h3&gt;
 &lt;p&gt;Based on the &quot;The Spinning Cube of Potential Doom&quot;, by Stephen Lau:&lt;br&gt;
 &lt;u&gt;www.nersc.gov/security/TheSpinningCube.html&lt;/u&gt;&lt;/p&gt;&lt;p&gt;Special thanks to Barry Irwin (project supervisor), and Shaun Bangay (Graphics honours course lecture of 2005). Their instruction and input has made this project possible.&lt;/p&gt;
