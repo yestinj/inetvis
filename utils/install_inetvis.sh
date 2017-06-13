@@ -20,7 +20,9 @@ OPT_DIR_SYM=/opt/${BIN_NAME}
 if [[ ! -L "${OPT_DIR_SYM}" ]]; then
     sudo ln -s /opt/${BIN_NAME}-${VER} /opt/${BIN_NAME}
 else
-    echo "Symlink for ${OPT_DIR_SYM} already exists. Please link manually to ${OPT_DIR_VER} if desired."
+    echo "Symlink for ${OPT_DIR_SYM} already exists, updating it to ${OPT_DIR_VER}."
+    sudo rm /opt/${BIN_NAME}
+    sudo ln -s /opt/${BIN_NAME}-${VER} /opt/${BIN_NAME}
 fi
 
 echo "Copying files..."
@@ -37,7 +39,7 @@ echo "Creating symlink for inetvis..."
 if [[ ! -L "${USR_BIN}/${BIN_NAME}" ]]; then
     sudo ln -s /opt/${BIN_NAME}/bin/${BIN_NAME} ${USR_BIN} 
 else
-    echo "Symlink at ${USR_BIN}/${BIN_NAME} already exists. Please update if necessary."
+    echo "Symlink at ${USR_BIN}/${BIN_NAME} already exists."
 fi
 
 echo "Setting capabilities on binary to allow monitoring interfaces"
