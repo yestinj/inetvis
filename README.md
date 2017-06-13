@@ -37,7 +37,7 @@ To run InetVis do the following:
 1. Download the latest InetVis release archive from the releases page.
     * Alternatively clone the repository, and follow the build procedure above
 2. Install the requirements (if necessary):
-    * `sudo apt-get install build-essential g++ libc6 libstdc++6 libc6-dev make libpcap-dev libgl1-mesa-dev libqt4-dev libqt4-dev qt4-dev-tools`
+    * `sudo apt-get install build-essential g++ libc6 libstdc++6 libc6-dev make libpcap-dev libgl1-mesa-dev libqt4-dev libqt4-dev qt4-dev-tools qt5-default qtdeclarative5-dev`
     * Note: These are also the build requirements, installing them may not be necessary for simply running the application.
 
 If you installed InetVis as per the instructions, you should simply be able
@@ -62,7 +62,7 @@ Building InetVis is relatively straight forward. Begin by installing the followi
 1. Update your system:
     * `sudo apt-get update` and `sudo apt-get upgrade`, finally `sudo apt-get dist-upgrade`
 2. Install the following dependencies:
-    * `sudo apt-get install build-essential g++ libc6 libstdc++6 libc6-dev make libpcap-dev libgl1-mesa-dev libqt4-dev libqt4-dev qt4-dev-tools`
+    * `sudo apt-get install build-essential g++ libc6 libstdc++6 libc6-dev make libpcap-dev libgl1-mesa-dev libqt4-dev libqt4-dev qt4-dev-tools qt5-default qtdeclarative5-dev`
 
 Once the dependencies are installed, clone this repository if you haven't already.
 
