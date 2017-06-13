@@ -59,53 +59,53 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 class TimeUtil
 {
-   private:
+private:
 
-   //preset variables for improving itterative computation
-      static struct timeval timeRange0;
-      static struct timeval timeRange1;
-      static struct timeval timeRangeLength;
-      static double dTimeRangeLength;
+    //preset variables for improving itterative computation
+    static struct timeval timeRange0;
+    static struct timeval timeRange1;
+    static struct timeval timeRangeLength;
+    static double dTimeRangeLength;
 
-   public:
+public:
 
-      //time conversion functions that convert betweem time structures and other
-      //values, i.e QDateTime object, double, etc
-      //- note callers responsability to provide parameter struct/object, and
-      //  this is in order to improve performance by passing by reference
-      static void qDateTimeToTimeval(struct timeval &tv,
-            const QDateTime &qDateTime);
-      static void timevalToQDateTime(QDateTime &qDateTime,
-            const struct timeval &tv);
-      static QString realativeTimevalToQString(const struct timeval &tv);
-      static void doubleToTimeval(struct timeval &result, double d);
-            //these functions are not intended to convert to values larger than
-            //2147483647 - the max value of a 32bit two's compliment integer
-            //If the numbers are too large, overflow will result in a negative
-            //value; it is the callers responsibility to check for this
-      static double timevalToDouble(const struct timeval &tv);
-      static double qTimeToDouble(const QTime &qTime);
-            //convert from QTime to double value of seconds, reult should always
-            //be less than TV_DAY
-      static void doubleToQTime(QTime &time, const double d);
+    //time conversion functions that convert betweem time structures and other
+    //values, i.e QDateTime object, double, etc
+    //- note callers responsability to provide parameter struct/object, and
+    //  this is in order to improve performance by passing by reference
+    static void qDateTimeToTimeval(struct timeval &tv,
+                                   const QDateTime &qDateTime);
+    static void timevalToQDateTime(QDateTime &qDateTime,
+                                   const struct timeval &tv);
+    static QString realativeTimevalToQString(const struct timeval &tv);
+    static void doubleToTimeval(struct timeval &result, double d);
+    //these functions are not intended to convert to values larger than
+    //2147483647 - the max value of a 32bit two's compliment integer
+    //If the numbers are too large, overflow will result in a negative
+    //value; it is the callers responsibility to check for this
+    static double timevalToDouble(const struct timeval &tv);
+    static double qTimeToDouble(const QTime &qTime);
+    //convert from QTime to double value of seconds, reult should always
+    //be less than TV_DAY
+    static void doubleToQTime(QTime &time, const double d);
 
-      //logical and arithmetic functions for computing time values
-      static bool timevalGreaterThan(const struct timeval &tv1,
-            const struct timeval &tv2);
-            //true if tv1 > tv2, else false
-      static void addTimevals(struct timeval &result, const struct timeval &tv1,
-            const struct timeval &tv2);
-            //result = tv1 + tv2
-      static void incTimeval(struct timeval &result, const struct timeval &tv);
-            //result += tv
-      static void subTimevals(struct timeval &result, const struct timeval &tv1,
-            const struct timeval &tv2); //result = tv2 - tv1
-      static double relTimeFrac(const struct timeval &t, const struct timeval &t0,
-            const struct timeval &t1); //returns (t - t0)/(t1 - t0), the fraction
-               //of time within the range [t0,t1] mapped to range [0,1]
-      static double relTimeFrac(const struct timeval &t);
-               //overloaded function to use precomputed values, to improve
-               //itterative performance
-      static void setTimeRange(const struct timeval &tv0, const struct timeval &tv1);
+    //logical and arithmetic functions for computing time values
+    static bool timevalGreaterThan(const struct timeval &tv1,
+                                   const struct timeval &tv2);
+    //true if tv1 > tv2, else false
+    static void addTimevals(struct timeval &result, const struct timeval &tv1,
+                            const struct timeval &tv2);
+    //result = tv1 + tv2
+    static void incTimeval(struct timeval &result, const struct timeval &tv);
+    //result += tv
+    static void subTimevals(struct timeval &result, const struct timeval &tv1,
+                            const struct timeval &tv2); //result = tv2 - tv1
+    static double relTimeFrac(const struct timeval &t, const struct timeval &t0,
+                              const struct timeval &t1); //returns (t - t0)/(t1 - t0), the fraction
+    //of time within the range [t0,t1] mapped to range [0,1]
+    static double relTimeFrac(const struct timeval &t);
+    //overloaded function to use precomputed values, to improve
+    //itterative performance
+    static void setTimeRange(const struct timeval &tv0, const struct timeval &tv1);
 
 };

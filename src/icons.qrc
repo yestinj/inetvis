@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>images/editcopy.png</file>
+        <file>images/editcut.png</file>
+        <file>images/editpaste.png</file>
+        <file>images/emblem-pictures.png</file>
+        <file>images/filenew.png</file>
+        <file>images/fileopen.png</file>
+        <file>images/filesave.png</file>
+        <file>images/print.png</file>
+        <file>images/redo.png</file>
+        <file>images/searchfind.png</file>
+        <file>images/stock_calc-accept.png</file>
+        <file>images/stock_insert-video-plugin.png</file>
+        <file>images/stock_media-fwd.png</file>
+        <file>images/stock_media-pause.png</file>
+        <file>images/stock_media-play.png</file>
+        <file>images/stock_media-rew.png</file>
+        <file>images/stock_media-rec.png</file>
+        <file>images/undo.png</file>
+    </qresource>
+</RCC>

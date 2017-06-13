@@ -1,41 +1,43 @@
-<!DOCTYPE UI><UI version="3.3" stdsetdef="1">
-<class>AboutDialog</class>
-<widget class="QDialog">
-    <property name="name">
-        <cstring>AboutDialog</cstring>
-    </property>
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0" stdsetdef="1">
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>AboutDialog</class>
+  <widget class="QDialog" name="AboutDialog">
     <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>526</width>
-            <height>335</height>
-        </rect>
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>526</width>
+        <height>335</height>
+      </rect>
     </property>
-    <property name="caption">
-        <string>About InetVis</string>
+    <property name="windowTitle">
+      <string>About InetVis</string>
     </property>
-    <vbox>
-        <property name="name">
-            <cstring>unnamed</cstring>
-        </property>
-        <widget class="QTextBrowser">
-            <property name="name">
-                <cstring>textBrowser1</cstring>
-            </property>
-            <property name="text">
-                <string>&lt;h2&gt;InetVis - &lt;b&gt;I&lt;/b&gt;nter&lt;b&gt;net&lt;/b&gt; &lt;b&gt;Vis&lt;/b&gt;ualization&lt;/h2&gt;
-&lt;p&gt;&lt;i&gt;Version&lt;/i&gt;: 0.9.5-qt4&lt;br&gt;&lt;small&gt;&lt;i&gt;Release date&lt;/i&gt;: 2007/11/21&lt;/small&gt;&lt;br&gt;&lt;/p&gt;
+    <layout class="QVBoxLayout">
+      <item>
+        <widget class="QTextBrowser" name="textBrowser1">
+          <property name="text">
+            <string>&lt;h2&gt;InetVis - &lt;b&gt;I&lt;/b&gt;nter&lt;b&gt;net&lt;/b&gt; &lt;b&gt;Vis&lt;/b&gt;ualization&lt;/h2&gt;
+&lt;p&gt;&lt;i&gt;Version&lt;/i&gt;: 2.0.1&lt;br&gt;&lt;small&gt;&lt;i&gt;Release date&lt;/i&gt;: 2017/06/12&lt;/small&gt;&lt;br&gt;&lt;/p&gt;
 &lt;h3&gt;About&lt;/h3&gt;
 &lt;p&gt;Computer Science Honours Project - 2005&lt;br&gt;
-Computer Science Masters Project - 2006/7&lt;/p&gt;
-&lt;p&gt;&lt;i&gt;Author&lt;/i&gt;: Jean-Pierre van Riel&lt;br&gt;
+Computer Science Masters Project - 2006/7&lt;br&gt;
+Computer Science Masters Project - 2017&lt;/p&gt;
+&lt;p&gt;&lt;i&gt;Original Author&lt;/i&gt;: Jean-Pierre van Riel (2005 - 2007)&lt;br&gt;
+&lt;i&gt;Current Author&lt;/i&gt;: Yestin Johnson (2017)&lt;br&gt;
 &lt;i&gt;Supervisor&lt;/i&gt;: Barry Irwin&lt;br&gt;
 &lt;i&gt;Institute&lt;/i&gt;: Rhodes University, Grahamstown, 6140, Eastern Cape, South Africa&lt;br&gt;
-&lt;i&gt;website: &lt;/i&gt;&lt;u&gt;http://research.ict.ru.ac.za/G02V2468/&lt;/u&gt;&lt;br&gt;
-&lt;i&gt;email &lt;/i&gt;&lt;u&gt;jp.vanriel@gmail.com&lt;/u&gt;&lt;/p&gt;
-&lt;h3&gt;Aknowledgment&lt;/h3&gt;
-&lt;p&gt;Based on the "The Spinning Cube of Potential Doom", by Stephen Lau:&lt;br&gt;
+&lt;i&gt;Website: &lt;/i&gt;&lt;u&gt;http://research.ict.ru.ac.za/G02V2468/&lt;/u&gt;&lt;br&gt;
+&lt;i&gt;Github: &lt;/i&gt;&lt;u&gt;https://github.com/yestinj/inetvis&lt;/u&gt;&lt;br&gt;
+
+&lt;i&gt;Email &lt;/i&gt;&lt;u&gt;jp.vanriel@gmail.com&lt;/u&gt;&lt;br&gt;
+&lt;i&gt;Email &lt;/i&gt;&lt;u&gt;yestinj@gmail.com&lt;/u&gt;&lt;/p&gt;
+&lt;h3&gt;Acknowledgment&lt;/h3&gt;
+
+&lt;p&gt;Based on the &quot;The Spinning Cube of Potential Doom&quot;, by Stephen Lau:&lt;br&gt;
 &lt;u&gt;www.nersc.gov/security/TheSpinningCube.html&lt;/u&gt;&lt;/p&gt;&lt;p&gt;Special thanks to Barry Irwin (project supervisor), and Shaun Bangay (Graphics honours course lecture of 2005). Their instruction and input has made this project possible.&lt;/p&gt;
 &lt;br&gt;
 &lt;br&gt;
@@ -43,7 +45,7 @@ Computer Science Masters Project - 2006/7&lt;/p&gt;
 &lt;h3&gt;GPL License, Version 2&lt;/h3&gt;
 
   &lt;p&gt;InetVis - Internet Visualisation for network traffic analysis.&lt;br&gt;
-  Copyright (C) 2005 - 2007, Jean-Pierre van Riel&lt;/p&gt;
+  Copyright (C) 2005 - 2017, Jean-Pierre van Riel&lt;/p&gt;
 
   &lt;p&gt;This program is free software; you can redistribute it and/or modify it
   under the terms of the GNU General Public License as published by the Free
@@ -111,8 +113,8 @@ met:&lt;/p&gt;
     the names of its contributors may be used to endorse or promote products
     derived from this software without specific prior written permission.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
-IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+&lt;p&gt;THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS
+IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
 ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
 LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
@@ -143,9 +145,9 @@ met:&lt;/p&gt;
     notice, this list of conditions and the following disclaimer in the
     documentation and/or other materials provided with the distribution.&lt;/li&gt;
   &lt;li&gt;All advertising materials mentioning features or use of this software
-    must display the following acknowledgement: "This product includes
+    must display the following acknowledgement: &quot;This product includes
     software developed by the University of California, Berkeley and its
-    contributors."&lt;/li&gt;
+    contributors.&quot;&lt;/li&gt;
   &lt;li&gt;Neither the name of the University nor the names of its contributors
     may be used to endorse or promote products derived from this software
     without specific prior written permission.&lt;/li&gt;
@@ -191,9 +193,9 @@ this list of conditions and the following disclaimer.&lt;/li&gt;
 this list of conditions and the following disclaimer in the documentation
 and/or other materials provided with the distribution.&lt;/li&gt;
 &lt;li&gt;All advertising materials mentioning features or use of this software must
-display the following acknowledgement: "This product includes software
+display the following acknowledgement: &quot;This product includes software
 developed by the Kungliga Tekniska Hogskolan and its
-contributors."&lt;/li&gt;
+contributors.&quot;&lt;/li&gt;
 &lt;li&gt;Neither the name of the University nor the names of its contributors may
 be used to endorse or promote products derived from this software without
 specific prior written permission.&lt;/li&gt;
@@ -223,8 +225,8 @@ this list of conditions and the following disclaimer.&lt;/li&gt;
 this list of conditions and the following disclaimer in the documentation
 and/or other materials provided with the distribution.&lt;/li&gt;
 &lt;li&gt;All advertising materials mentioning features or use of this software must
-display the following acknowledgement: "This product includes software
-developed by Yen Yen Lim and North Dakota State University"&lt;/li&gt;
+display the following acknowledgement: &quot;This product includes software
+developed by Yen Yen Lim and North Dakota State University&quot;&lt;/li&gt;
 &lt;li&gt;The name of the author may not be used to endorse or promote products
 derived from this software without specific prior written permission.&lt;/li&gt;
 &lt;/ol&gt;
@@ -248,7 +250,7 @@ notice and this permission notice appear in all copies, and that the name of
 Digital Equipment Corporation not be used in advertising or publicity
 pertaining to distribution of the document or software without specific,
 written prior permission.&lt;/p&gt;
-&lt;p&gt;THE SOFTWARE IS PROVIDED "AS IS" AND DIGITAL EQUIPMENT CORP. DISCLAIMS ALL
+&lt;p&gt;THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND DIGITAL EQUIPMENT CORP. DISCLAIMS ALL
 WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF
 MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL DIGITAL EQUIPMENT CORPORATION
 BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY
@@ -312,7 +314,7 @@ list of conditions and the following disclaimer.&lt;/li&gt;
 this list of conditions and the following disclaimer in the documentation
 and/or other materials provided with the distribution.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTOR "AS IS"
+&lt;p&gt;THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTOR &quot;AS IS&quot;
 AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
 ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE
@@ -334,11 +336,12 @@ distribution of the program without specific prior permission, and notice be
 given in supporting documentation that copying and distribution is by
 permission of Carnegie Mellon and Stanford University. Carnegie Mellon makes
 no representations about the suitability of this software for any purpose. It
-is provided "as is" without express or implied warranty.&lt;/p&gt;</string>
-            </property>
+is provided &quot;as is&quot; without express or implied warranty.&lt;/p&gt;</string>
+          </property>
         </widget>
-    </vbox>
-</widget>
-<pixmapinproject/>
-<layoutdefaults spacing="6" margin="11"/>
-</UI>
+      </item>
+    </layout>
+  </widget>
+  <layoutdefault spacing="6" margin="11"/>
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+</ui>

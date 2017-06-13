@@ -4,56 +4,88 @@ Source repository for the Internet Visualizer (inetvis) tool.
 
 This project is based off of the original work by JP van Riel and Barry Irwin of Rhodes University. Their original work can be found here: www.cs.ru.ac.za/research/g02v2468/inetvis.html
 
+# Notes
+
+This project was originally written in Qt3 and compiled to 32-bit code, it has since been ported to Qt5,
+and been updated to compile a 64-bit binary.
+
+The instructions below have all been tested on the current version of Ubuntu, 17.04 64-bit.
+
+# Installing InetVis (from release archive)
+
+A compiled version of InetVis is available under the releases section of https://github.com/yestinj/inetvis.
+
+In order to install and run the software please do the following:
+
+1. Download the latest release archive from the releases page.
+2. Extract the archive which will be called something like `inetvis-2.0.0.tgz`
+3. Change into the extracted directory, something like `inetvis-2.0.0`
+4. Run the `install_inetvis.sh` shell script to install the software.
+    1. This script will: install the software to `/opt/inetvis-<version>`
+    2. Create a symlink directory `/opt/inetvis` for convenience
+    3. Copy across the relevant files to the new directory under `/opt`.
+    4. Place an icon file in `/usr/share/icons/hicolor/48x48/apps/`
+    5. Place a `desktop` file in `/usr/share/applications`, allowing inetvis to be found in the menu on Ubuntu systems.
+    6. Create a symlink at `/usr/local/bin/inetvis` pointing to the main binary.
+    7. Set the `cap_net_raw`, and `cap_net_admin=eip` capabilities on the inetvis binary allowing for monitoring packets on local host without running as root.
+5. If the script completes successfully inetvis should now be in your path, and also be in the menu system of your distribution.
+
 # Running InetVis
 
-At this time InetVis only works under 32-bit flavours of Ubuntu and requires a few older libraries to be installed for correct operation.
+To run InetVis do the following:
 
-In order to get InetVis running in your own VM please consider the following guidelines:
+1. Download the latest InetVis release archive from the releases page.
+    * Alternatively clone the repository, and follow the build procedure above
+2. Install the requirements (if necessary):
+    * `sudo apt-get install build-essential g++ libc6 libstdc++6 libc6-dev make libpcap-dev libgl1-mesa-dev libqt4-dev libqt4-dev qt4-dev-tools`
+    * Note: These are also the build requirements, installing them may not be necessary for simply running the application.
 
-1. Install your choice of 32-bit Linux in a VM (Tested with Ubuntu 14.04.5 LTS 32-bit desktop edition)
-  * You may choose to install the i386 architecture under your current 64-bit distrubition, however this has not been tested.
-2. Be sure to update your system fully after installation
-  * `sudo apt-get update` and `sudo apt-get upgrade`, finally `sudo apt-get dist-upgrade`
-3. Install all of the basic requirements as mentioned in the manual (doc/inetvisdoc.html)
-  * `sudo apt-get install build-essential g++ libc6 libstdc++6 libc6-dev make libpcap-dev libgl1-mesa-dev libqt4-dev libqt4-dev qt4-dev-tools libqt4-qt3support`
-  * Note: Some of the above dependencies are only required for building and not running, but I haven't sorted out which is which yet. To be safe rather install them all.
-4. Install the older 'missing' libraries which aren't there by default
-  1. `sudo apt-get install libpq5` - libpg.so.5
-  2. libmysqlclient_r.so.15
-    1. The version we need is no longer in the Ubuntu repos, and needs to be downloaded and installed manually.
-    2. `sudo apt-get install mysql-common`
-    3. `wget -O libmysqlclient15off_5.1.30really5.0.75-0ubuntu10.5_i386.deb http://automation.binarysage.net/\?dl_id\=6`
-    4. `dpkg -i libmysqlclient15off_5.1.30really5.0.75-0ubuntu10.5_i386.deb`
-  3. `sudo apt-get install libsqlite0` - libsqlite.so.0
-5. That should be it!
+If you installed InetVis as per the instructions, you should simply be able
+to run the `inetvis` command from your command line or menu system.
 
-To run InetVis either download the latest binary from the Releases page, or clone the source code and run the `inetvis` binary from the root of the repository.
+If you have built the binary yourself, please run it using manually using `./inetvis` from the src directory.
 
-`./inetvis`
-
-If you would like to monitor your own host for network events, instead of replaying capture files, please ensure that you use `sudo`:
-
-`sudo ./inetvis`
+You will need to run your built binary as root should you wish to monitor local host.
 
 Have fun! :-)
 
+# Uninstalling InetVis
+
+A convenience script is included in the release archive, namely `uninstall_inetvis.sh`, which can be used to completely remove inetvis from your system at any time.
+
 # Building InetVis
 
-Building InetVis is relatively straight forward but comes with the same caveats as running it. Currently only 32-bit flavours of Linux, Ubuntu, are supported.
+In order to build InetVis in your own VM please consider the following guidelines:
 
-Before getting started please follow all of the instructions in **Running InetVis** to ensure that you have all of the relevant dependencies installed.
+Building InetVis is relatively straight forward. Begin by installing the following dependencies:
 
-Next you either need to set the environment variable `QT_SELECT=qt4`, wherever you prefe, or you need to run the `qmake` command below with the `-qt=qt4` option. This ensures that the project is built using Qt4, and not Qt5 which will likely be the default. 
+1. Update your system:
+    * `sudo apt-get update` and `sudo apt-get upgrade`, finally `sudo apt-get dist-upgrade`
+2. Install the following dependencies:
+    * `sudo apt-get install build-essential g++ libc6 libstdc++6 libc6-dev make libpcap-dev libgl1-mesa-dev libqt4-dev libqt4-dev qt4-dev-tools`
 
-Once your system is up and running do the following to build InetVis:
+Once the dependencies are installed, clone this repository if you haven't already.
 
-1. `cd src`
-2. `qmake`
-3. `make`
+1. Clone the github repo into the `inetvis` directory:
+    * git clone git@github.com:yestinj/inetvis.git
+2. Change into the `inetvis` directory, and then change to `src`.
+3. Checkout whichever branch you want to build, i.e. master or develop.
+    * `git checkout develop`
+
+Finally, build the `inetvis` binary:
+
+1. `qmake`
+2. `make`
 
 This should result in a new `inetvis` binary being generated within the source directory.
 
+# Development
 
-# Notes
+Development is currently done using Qt Creator.
 
-This software will make use of Semantic Versioning 2.0.0 (http://semver.org/) once reaching the v1.0.0 release phase. 
+QT Creator allows for simple editing of source code, as well as graphical form editing, and can be
+installed in Debian flavours of Linux by installing the `qtcreator` package.
+
+# Versioning
+
+This software uses Semantic Versioning 2.0.0 (http://semver.org/) as of release v2.0.0.

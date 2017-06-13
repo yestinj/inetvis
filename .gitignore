@@ -1,1 +1,10 @@
 *.DS_Store
+src/.obj/
+src/.ui/
+src/Makefile
+src/inetvis
+src/inetvis.pro.user
+.moc/
+qrc_icons.cpp
+recorded/*
+src/recorded/*

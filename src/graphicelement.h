@@ -39,56 +39,53 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
  *
  */
 
+#ifndef GRAPHICELEMENT_H
+#define GRAPHICELEMENT_H
 
 enum grapElemTypes {GE_UNDEFINED, GE_POINT, GE_LINE, GE_CUBE};
 
 
-class GraphicElement
-{
-   public:
+class GraphicElement {
+public:
 
-      int type;
+    int type;
 
-      GraphicElement(); //undefined type
-      GraphicElement(int t); //set to type
-
-};
-
-
-class Point : public GraphicElement
-{
-   public:
-
-      float coord[3]; //xyz
-      float colour[4]; //rgba
-
-      Point();
-      Point(float array_coord[3], float array_col[4]);
-      Point(float x, float y, float z, float r, float g, float b, float a);
+    GraphicElement(); //undefined type
+    GraphicElement(int t); //set to type
 
 };
 
 
-class Line : public GraphicElement
-{
-   public:
+class Point : public GraphicElement {
+public:
 
-      float coord1[3]; //xyz
-      float coord2[3]; //rgba
-      float colour[4]; //rgba
+    float coord[3]; //xyz
+    float colour[4]; //rgba
 
-};
-
-
-class Cube : public GraphicElement
-{
-   public:
-
-      float coord[3]; //xyz
-      float colour[4]; //rgba
-      float size;
+    Point();
+    Point(float array_coord[3], float array_col[4]);
+    Point(float x, float y, float z, float r, float g, float b, float a);
 
 };
 
 
+class Line : public GraphicElement {
+public:
 
+    float coord1[3]; //xyz
+    float coord2[3]; //rgba
+    float colour[4]; //rgba
+
+};
+
+
+class Cube : public GraphicElement {
+public:
+
+    float coord[3]; //xyz
+    float colour[4]; //rgba
+    float size;
+
+};
+
+#endif // GRAPHICELEMENT_H
