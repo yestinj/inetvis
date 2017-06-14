@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Type=Application
-Name=inetvis
+Name=InetVis
 Comment=Internet Visualiser
 Exec=inetvis
 Icon=/usr/share/icons/hicolor/48x48/apps/inetvis.png
