@@ -27,7 +27,7 @@ void PlotterSettingsDialogWidget::init() {
     homeNetDLineEdit->setValidator(addressValidator);
     homeNetSlashNumLineEdit->setValidator(slashNumValidator);
 
-    //apply validators for ineternet range settings
+    //apply validators for internet range settings
     internetALineEdit->setValidator(addressValidator);
     internetBLineEdit->setValidator(addressValidator);
     internetCLineEdit->setValidator(addressValidator);

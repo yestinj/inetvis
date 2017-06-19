@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>548</width>
+    <width>552</width>
     <height>473</height>
    </rect>
   </property>
@@ -432,7 +432,7 @@
       <item>
        <widget class="QGroupBox" name="SourceButtonGroup">
         <property name="title">
-         <string>Source Ineternet Network Range (Red z-Axis)</string>
+         <string>Source Internet Network Range (Red z-Axis)</string>
         </property>
         <layout class="QVBoxLayout">
          <item>
@@ -715,7 +715,7 @@
            <item>
             <widget class="QPushButton" name="fullRangePushButton">
              <property name="toolTip">
-              <string>View the entire internet as incomming source traffic</string>
+              <string>View the entire internet as incoming source traffic</string>
              </property>
              <property name="text">
               <string>Full Range</string>
@@ -750,7 +750,7 @@
               <string/>
              </property>
              <property name="icon">
-              <iconset>
+              <iconset resource="icons.qrc">
                <normaloff>:/icons/images/stock_calc-accept.png</normaloff>:/icons/images/stock_calc-accept.png</iconset>
              </property>
             </widget>
@@ -961,7 +961,7 @@
             <string/>
            </property>
            <property name="icon">
-            <iconset>
+            <iconset resource="icons.qrc">
              <normaloff>:/icons/images/stock_calc-accept.png</normaloff>:/icons/images/stock_calc-accept.png</iconset>
            </property>
           </widget>
@@ -1170,7 +1170,7 @@
         <item>
          <widget class="QCheckBox" name="pointBulgeCheckBox">
           <property name="toolTip">
-           <string>Highlight newly added events by bulging thier points for a fraction of a second</string>
+           <string>Highlight newly added events by bulging their points for a fraction of a second</string>
           </property>
           <property name="text">
            <string>bulge</string>
