@@ -30,12 +30,12 @@ GLVisWidget::GLVisWidget(QWidget *parent) : QGLWidget(parent) {
     //set background related colours
     setBackgroundCol(BLACK_BACKGROUND); //default
 
-    //set refrence for list id
+    //set reference for list id
     referenceAxesList = 1;
     referenceMarkersList = 2;
     referenceGridList = 3;
 
-    //set refrence frame rendering options
+    //set reference frame rendering options
     primaryAxesOn = true;
     boundingAxesOn = true;
     cubeReferenceOn = true;

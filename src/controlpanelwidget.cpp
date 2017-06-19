@@ -116,7 +116,7 @@ void ControlPanelWidget::fileOpen() {
     QString fileName = QFileDialog::getOpenFileName(this,
                                                     "Select a replay file for playback",
                                                     "",
-                                                    "Capture Files (*.cap *.dump)");
+                                                    "Capture Files (*.cap *.dump *.pcap)");
 
     if (!fileName.isNull()) {
         //file selected

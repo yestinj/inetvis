@@ -338,7 +338,7 @@ private:
     //absolute time values - time elapsed since 02:00:00 Jan 01 1970
     struct timeval currentTime; //current time updated by a resolution
     //determined by updateRate
-    struct timeval replayPosition; //current refrence position of play back,
+    struct timeval replayPosition; //current reference position of play back,
     //in absolute terms reference to Jan 01 1970, and updated at rate of
     //time factor - indicates time at begging of replay buffer
     struct timeval timeWindowEnd; //depends on timeWindow and end time
