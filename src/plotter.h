@@ -170,7 +170,7 @@ public:
     static float colLogRangeBaseDiv; //the value of log(colLogRangeBase)
 
     //plotting/mapping scheme variables to specifify plotting modes
-    //other objects may use these values as a refrence for plotting choices
+    //other objects may use these values as a reference for plotting choices
     static int yPlotScheme; //hold currnet plotting scheme, either linear
     //or logarithmic
     //x and y directions have linear plots

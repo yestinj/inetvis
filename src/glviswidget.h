@@ -154,7 +154,7 @@ protected:
     //list identifiers
     GLuint referenceAxesList, referenceMarkersList, referenceGridList;
 
-    //refrence frame drawing controls
+    //reference frame drawing controls
     bool primaryAxesOn, boundingAxesOn, cubeReferenceOn, planeReferenceOn,
     referenceMarkersOn;
     //reference grids around cube and plane

@@ -396,7 +396,7 @@
             <enum>Qt::StrongFocus</enum>
            </property>
            <property name="toolTip">
-            <string>packet recording - toggle to record visaulized data back out to packet capture file (depress to stop)</string>
+            <string>packet recording - toggle to record visualised data back out to packet capture file (depress to stop)</string>
            </property>
            <property name="text">
             <string/>
@@ -749,7 +749,7 @@
      <x>0</x>
      <y>0</y>
      <width>630</width>
-     <height>22</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="fileMenu">
