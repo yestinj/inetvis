@@ -47,10 +47,17 @@ copyright holder.<br>
 #include "dataproc.h"
 #include "referenceframesettingsdialogwidget.h"
 
+void initialiseGlobalQtSettings() {
+    QCoreApplication::setOrganizationName("Rhodes University");
+    QCoreApplication::setOrganizationDomain("ru.ac.za");
+    QCoreApplication::setApplicationName("InetVis");
+}
 
 int main(int argc, char **argv) {
     ios::sync_with_stdio(); //since both c++ streams and c printf are used for
     //debugging code output
+
+    initialiseGlobalQtSettings();
 
     QApplication app(argc, argv);
 

@@ -19,6 +19,8 @@ void ControlPanelWidget::init() {
     //setWFlags(Qt::WStyle_StaysOnTop);
     //setWFlags(Qt::WStyle_ContextHelp);
 
+    checkAndPopulateSettings();
+
     //init replay conditions
     replayPosSetByUser = true;
     replayPosSetBySlider = true;
@@ -62,6 +64,14 @@ void ControlPanelWidget::destroy() {
     delete playIcon;
     delete pauseIcon;
     delete timeScaleValidator;
+}
+
+void ControlPanelWidget::checkAndPopulateSettings() {
+    // TODO: These settings strings should be constants somewhere.
+    if (!settings.contains("controlpanel/recording/rootpath")) {
+        // If the setting isn't there, write the default.
+        settings.setValue("controlpanel/recording/rootpath", "inetvis-recorded/");
+    }
 }
 
 void ControlPanelWidget::applyFilter() {
