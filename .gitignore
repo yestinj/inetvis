@@ -8,3 +8,5 @@ src/inetvis.pro.user
 qrc_icons.cpp
 recorded/*
 src/recorded/*
+src/inetvis-recorded/*
+.idea/
