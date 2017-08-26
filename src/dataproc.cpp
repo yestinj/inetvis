@@ -1,6 +1,7 @@
 #include <dataproc.h>
 #include <iostream>
 #include <stdio.h>
+#import <QSettings>
 
 using namespace std; //for debugging purposes
 
@@ -1359,8 +1360,8 @@ void DataProcessor::DataExtractor::recordToDumpFile(bool record) {
             QString dumpFileName;
             if (dataProcessor->getMode() == REPLAY_FILE) {
                 QString replayFileName = dataProcessor->getReplayFileName();
-                dumpFileName = QString(DEFAULT_PCAPS_DIR) + QString("/")
-                        + QString(DEFAULT_REPLAY_SUBDIR) + QString("/")
+                dumpFileName = getPcapsDir() + QString("/")
+                        + QString(getReplaySubdir()) + QString("/")
                         + replayFileName;
                 QDir dir;
                 //need to create sub dir
@@ -1376,8 +1377,8 @@ void DataProcessor::DataExtractor::recordToDumpFile(bool record) {
                         + dataProcessor->qdt_twEnd.toString("yyyyMMdd-hhmmss");
             }
             else if (dataProcessor->getMode() == MONITOR_LOCAL) {
-                dumpFileName = QString(DEFAULT_PCAPS_DIR) + QString("/")
-                        + QString(DEFAULT_LIVE_SUBDIR) + QString("/")
+                dumpFileName = QString(getPcapsDir()) + QString("/")
+                        + QString(getLiveSubdir()) + QString("/")
                         + dataProcessor->qdt_replayPosition.toString("yyyyMMdd-hhmmss");
                 //this must be changed to the time window end if the buffer
                 //is dumped to file (TODO)
@@ -1814,9 +1815,8 @@ DataProcessor::DataProcessor()
 
     //ensure default application dirs are present, or else create them
     strAppDir = QDir::currentPath();
-    if(!checkDefaultDirs())
-    {  reportError("Unable to create default application directory",
-                   "DataProcessor()");
+    if (!checkDefaultDirs()) {
+        reportError("Unable to create default application directory", "DataProcessor()");
     }
 
     //initialization to 'zero' states, representing 02:00 01 Jan 1970
@@ -2034,75 +2034,97 @@ bool DataProcessor::updateImplicitFilter()
 }
 
 
-bool DataProcessor::checkDefaultDirs()
-{
+bool DataProcessor::checkDefaultDirs() {
     QDir dir = QDir();
     QString strDir = QString("");
 
     //main record dir
-    if(!dir.exists(DEFAULT_RECORD_DIR))
-    {  if(!dir.mkdir(DEFAULT_RECORD_DIR))
+    if(!dir.exists(getRecordDir())) {
+        std::cout << "Creating record directory: " << getRecordDir().toStdString();
+        if (!dir.mkdir(getRecordDir())) {
             return false;
+        }
     }
 
     //sub dirs
-    if(!dir.exists(DEFAULT_PCAPS_DIR))
-    {  if(!dir.mkdir(DEFAULT_PCAPS_DIR))
+    if(!dir.exists(getPcapsDir())) {
+        if (!dir.mkdir(getPcapsDir())) {
             return false;
+        }
     }
-    strDir = QString(DEFAULT_PCAPS_DIR);
+
+    strDir = QString(getPcapsDir());
     strDir.append('/');
-    strDir.append(DEFAULT_LIVE_SUBDIR);
-    if(!dir.exists(strDir))
-    {  if(!dir.mkdir(strDir))
+    strDir.append(getLiveSubdir());
+
+    if (!dir.exists(strDir)) {
+        if (!dir.mkdir(strDir)) {
             return false;
+        }
     }
-    strDir = QString(DEFAULT_PCAPS_DIR);
+
+    strDir = QString(getPcapsDir());
     strDir.append('/');
-    strDir.append(DEFAULT_REPLAY_SUBDIR);
-    if(!dir.exists(strDir))
-    {  if(!dir.mkdir(strDir))
+    strDir.append(getReplaySubdir());
+    if (!dir.exists(strDir)) {
+        if (!dir.mkdir(strDir)) {
             return false;
+        }
     }
-    if(!dir.exists(DEFAULT_FRAMES_DIR))
-    {  if(!dir.mkdir(DEFAULT_FRAMES_DIR))
+
+    if (!dir.exists(getFramesDir())) {
+        if (!dir.mkdir(getFramesDir())) {
             return false;
+        }
     }
-    strDir = QString(DEFAULT_FRAMES_DIR);
+
+    strDir = QString(getFramesDir());
     strDir.append('/');
-    strDir.append(DEFAULT_LIVE_SUBDIR);
-    if(!dir.exists(strDir))
-    {  if(!dir.mkdir(strDir))
+    strDir.append(getLiveSubdir());
+
+    if (!dir.exists(strDir)) {
+        if (!dir.mkdir(strDir)) {
             return false;
+        }
     }
-    strDir = QString(DEFAULT_FRAMES_DIR);
+
+    strDir = QString(getFramesDir());
     strDir.append('/');
-    strDir.append(DEFAULT_REPLAY_SUBDIR);
-    if(!dir.exists(strDir))
-    {  if(!dir.mkdir(strDir))
+    strDir.append(getReplaySubdir());
+
+    if (!dir.exists(strDir)) {
+        if (!dir.mkdir(strDir)) {
             return false;
+        }
     }
-    if(!dir.exists(DEFAULT_SNAPSHOTS_DIR))
-    {  if(!dir.mkdir(DEFAULT_SNAPSHOTS_DIR))
+
+    if (!dir.exists(getSnapshotsDir())) {
+        if (!dir.mkdir(getSnapshotsDir())) {
             return false;
+        }
     }
-    strDir = QString(DEFAULT_SNAPSHOTS_DIR);
+
+    strDir = QString(getSnapshotsDir());
     strDir.append('/');
-    strDir.append(DEFAULT_LIVE_SUBDIR);
-    if(!dir.exists(strDir))
-    {  if(!dir.mkdir(strDir))
+    strDir.append(getLiveSubdir());
+
+    if (!dir.exists(strDir)) {
+        if (!dir.mkdir(strDir)) {
             return false;
+        }
     }
-    strDir = QString(DEFAULT_SNAPSHOTS_DIR);
+
+    strDir = QString(getSnapshotsDir());
     strDir.append('/');
-    strDir.append(DEFAULT_REPLAY_SUBDIR);
-    if(!dir.exists(strDir))
-    {  if(!dir.mkdir(strDir))
+    strDir.append(getReplaySubdir());
+
+    if (!dir.exists(strDir)) {
+        if (!dir.mkdir(strDir)) {
             return false;
+        }
     }
 
     return true;
-
 }
 
 
@@ -3548,4 +3570,34 @@ void DataProcessor::reportError(const QString &errMsg, const QString &function)
     emit sendErrMsg(errorMessage);
 #endif
 
+}
+
+QString DataProcessor::getRecordDir() {
+    QSettings s;
+    return s.value("dataproc/recording/default_dir").toString();
+}
+
+QString DataProcessor::getPcapsDir() {
+    QSettings s;
+    return s.value("dataproc/recording/pcaps_subdir").toString();
+}
+
+QString DataProcessor::getFramesDir() {
+    QSettings s;
+    return s.value("dataproc/recording/frames_subdir").toString();
+}
+
+QString DataProcessor::getSnapshotsDir() {
+    QSettings s;
+    return s.value("dataproc/recording/snapshots_subdir").toString();
+}
+
+QString DataProcessor::getLiveSubdir() {
+    QSettings s;
+    return s.value("dataproc/recording/live_subdir").toString();
+}
+
+QString DataProcessor::getReplaySubdir() {
+    QSettings s;
+    return s.value("dataproc/recording/replay_subdir").toString();
 }

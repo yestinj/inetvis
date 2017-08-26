@@ -104,7 +104,6 @@ private:
     void init();
     void destroy();
     QString strGetRepPos();
-    QSettings settings;
-    void checkAndPopulateSettings();
+
 };
 #endif // CONTROLPANELWIDGET_H

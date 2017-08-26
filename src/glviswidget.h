@@ -94,14 +94,6 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #define CAPTURE_BUFFER_DECREASE_FACTOR 2.0
 //threshold trigger to decrease memory
 
-#define DEFAULT_FRAMES_DIR "inetvis-recorded/frames"
-#define DEFAULT_SNAPSHOTS_DIR "inetvis-recorded/snapshots"
-#define DEFAULT_LIVE_SUBDIR "live"
-#define DEFAULT_REPLAY_SUBDIR "replayed"
-//the qt QDir and QFile classes accomodate cross platform filesystems using
-//'/' directory unix convention and make approprite changes '\' for windows
-//transparently
-
 #define DEFAULT_FPS_SAMPLE_RATE 1000
 //default number of milliseconds to wait before calculating average
 //framerate
@@ -247,7 +239,6 @@ protected:
 
     //internal methods
     void checkFrameCaptureBufferSize();
-
 public:
 
     //GLVisWidget(QWidget *parent, const char *name);

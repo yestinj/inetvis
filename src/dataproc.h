@@ -125,24 +125,6 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 #define DATA_LINK_UNSET -1
 
-//defined defaults for directories and filenames
-#define DEFAULT_RECORD_DIR "inetvis-recorded"
-#define DEFAULT_PCAPS_DIR "inetvis-recorded/pcaps"
-#ifndef DEFAULT_FRAMES_DIR
-#  define DEFAULT_FRAMES_DIR "inetvis-recorded/frames"
-#endif
-#ifndef DEFAULT_SNAPSHOTS_DIR
-#  define DEFAULT_SNAPSHOTS_DIR "inetvis-recorded/snapshots"
-#endif
-#ifndef DEFAULT_LIVE_SUBDIR
-#  define DEFAULT_LIVE_SUBDIR "live"
-#endif
-#ifndef DEFAULT_REPLAY_SUBDIR
-#  define DEFAULT_REPLAY_SUBDIR "replayed"
-#endif
-//the qt QDir and QFile classes accomodate cross platform filesystems using
-//'/' directory unix convention and make approprite changes '\' for windows
-//transparently
 #define DEFAULT_DUMP_FILE_NAME "dump.cap"
 
 #define UPDATE_TIMER_ID 1
@@ -406,7 +388,6 @@ private:
     bool updateImplicitFilter();
     bool checkDefaultDirs();
 
-
 public:
 
     std::deque <PacketEvent> packetEventBuffer; //buffer with public access
@@ -430,6 +411,14 @@ public:
 
     //error reporting
     void reportError(const QString &errMsg, const QString &function = NULL);
+
+    // configuration
+    static QString getRecordDir();
+    static QString getPcapsDir();
+    static QString getFramesDir();
+    static QString getSnapshotsDir();
+    static QString getLiveSubdir();
+    static QString getReplaySubdir();
 
 public slots:
 
