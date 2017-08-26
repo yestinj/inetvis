@@ -67,7 +67,19 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #include <qtimer.h>
 #include <qdir.h>
 #include <pcap.h>
+
+#ifdef MAC
+#include <OpenGL/gl.h>
+#endif
+
+#ifdef LINUX
 #include <GL/gl.h>
+#endif
+
+#ifdef WINDOWS
+#include <GL/gl.h>
+#endif
+
 #include <timeutil.h>
 #include <plotter.h>
 //packetevent.h and in turn, packetheaders.h are linked via plotter

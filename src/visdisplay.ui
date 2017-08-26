@@ -57,7 +57,7 @@
   </customwidget>
  </customwidgets>
  <includes>
-  <include location="local">../glviswidget.h</include>
+  <include location="local">glviswidget.h</include>
  </includes>
  <resources/>
  <connections/>
