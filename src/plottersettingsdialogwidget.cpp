@@ -100,12 +100,20 @@ void PlotterSettingsDialogWidget::applyHomeNetSettings() {
     int octD = homeNetDLineEdit->text().toInt();
     int slashMask = homeNetSlashNumLineEdit->text().toInt();
 
+    // TODO: Just a test for now, might want to remove it later.
+    //save this home network in the config as the default
+    // For now only save when the user clicks the button.
+    // Decide what to do with this later.. Does it even make sense to read in a 'default'?
+    // since this would depend highly on the packet capture open, or the underlying source net..
+    writeHomeNetworkConfig(octA, octB, octC, octD, slashMask);
+
     emit setHomeNetwork(octA, octB, octC, octD, slashMask);
 
     //update UI Log
-    if(LogUI::isEnabled())
+    if(LogUI::isEnabled()) {
         LogUI::logEvent("[PS] home network set to: "
                         + QString("%1.%2.%3.%4/%5").arg(octA).arg(octB).arg(octC).arg(octD).arg(slashMask));
+    }
 }
 
 void PlotterSettingsDialogWidget::applyInternetRangeSettings() {
@@ -238,8 +246,8 @@ void PlotterSettingsDialogWidget::setFullSrcNetRange() {
 
 void PlotterSettingsDialogWidget::guessHomeNetworkPressed() {
     //update UI Log
-    if(LogUI::isEnabled())
-    {  LogUI::logEvent("[PS] guess home network pressed");
+    if(LogUI::isEnabled()) {
+        LogUI::logEvent("[PS] guess home network pressed");
     }
 
     emit guessHomeNetwork();
@@ -314,12 +322,26 @@ void PlotterSettingsDialogWidget::backgroundColourChange() {
     {  emit setBackgroundColour(BLACK_BACKGROUND);
 
         //update UI Log
-        if(LogUI::isEnabled())
-        {  LogUI::logEvent("[PS] background set to black");
+        if(LogUI::isEnabled()) {
+            LogUI::logEvent("[PS] background set to black");
         }
     }
 }
 
+QString PlotterSettingsDialogWidget::readHomeNetworkConfig() {
+    QSettings s;
+    return s.value("plottersettings/default_home_network").toString();
+}
+
+void PlotterSettingsDialogWidget::writeHomeNetworkConfig(int octA, int octB, int octC, int octD, int slashMask) {
+    QString ipAddress = QString::number(octA) + "."
+            + QString::number(octB) + "."
+            + QString::number(octC) + "."
+            + QString::number(octD) + "/"
+            + QString::number(slashMask);
+    QSettings s;
+    s.setValue("plottersettings/default_home_network", ipAddress);
+}
 
 
 
