@@ -11,7 +11,6 @@
 #include "aboutdialogwidget.h"
 #include "helpdocumentationdialogwidget.h"
 #include "logui.h"
-#include <QSettings>
 
 #define DISABLE_RECORDING_LIVE_CAPTURE true
 
