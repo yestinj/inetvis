@@ -103,5 +103,6 @@ private:
     void init();
     void destroy();
     QString strGetRepPos();
+
 };
 #endif // CONTROLPANELWIDGET_H

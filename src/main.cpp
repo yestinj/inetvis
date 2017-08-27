@@ -47,12 +47,47 @@ copyright holder.<br>
 #include "dataproc.h"
 #include "referenceframesettingsdialogwidget.h"
 
+void initialiseQtSettings() {
+    QCoreApplication::setOrganizationName("Rhodes University");
+    QCoreApplication::setOrganizationDomain("ru.ac.za");
+    QCoreApplication::setApplicationName("InetVis");
+
+    QSettings settings;
+
+    //settings.clear();
+
+    // TODO: Test code - Using this for testing. Make appropriate per distro later
+    QString recordPath = QStandardPaths::standardLocations(QStandardPaths::DownloadLocation).first() + "/" + "inetvis-recorded";
+
+    // TODO: These settings strings should be constants somewhere.
+    // The recording directories
+    if (!settings.contains("dataproc/recording/default_dir")) {
+        settings.setValue("dataproc/recording/default_dir", recordPath);
+    }
+    if (!settings.contains("dataproc/recording/pcaps_subdir")) {
+        settings.setValue("dataproc/recording/pcaps_subdir", recordPath + "/pcaps");
+    }
+    if (!settings.contains("dataproc/recording/frames_subdir")) {
+        settings.setValue("dataproc/recording/frames_subdir", recordPath + "/frames");
+    }
+    if (!settings.contains("dataproc/recording/snapshots_subdir")) {
+        settings.setValue("dataproc/recording/snapshots_subdir", recordPath + "/snapshots");
+    }
+    if (!settings.contains("dataproc/recording/live_subdir")) {
+        settings.setValue("dataproc/recording/live_subdir", "live");
+    }
+    if (!settings.contains("dataproc/recording/replay_subdir")) {
+        settings.setValue("dataproc/recording/replay_subdir", "replayed");
+    }
+    // Next..
+}
 
 int main(int argc, char **argv) {
     ios::sync_with_stdio(); //since both c++ streams and c printf are used for
     //debugging code output
 
     QApplication app(argc, argv);
+    initialiseQtSettings();
 
     //Test and ensure that system has OpenGL support
     if (!QGLFormat::hasOpenGL()) {
@@ -73,14 +108,12 @@ int main(int argc, char **argv) {
     VisDisplayWidget vd; //visaulization window
 
     GLVisWidget* vdw = vd.displayWidget;
-    //vd.setFocusProxy(vdw); Removed, already called in the init class of VisDisplayWidget
 
     PlotterSettingsDialogWidget ps; //to set plotting features
     ReferenceFrameSettingsDialogWidget rfs; //to set reference frame features
 
     //setup object reference links
     vdw->setDataProcLink(dp.getDataProcessorPtr());
-    //dp.setGLVisWidgetLink(vdw);
 
     //connect signals and slots for control panel
     QObject::connect(vdw, SIGNAL(showControlPanel()), &cp, SLOT(showOnTop()));
@@ -101,8 +134,7 @@ int main(int argc, char **argv) {
                      &cp, SLOT(setRecordButton(bool)));
     QObject::connect(&dp, SIGNAL(sendErrMsg(QString)), &cp, SLOT(reportErrorMessage(QString)));
 
-    //connect signals and slots for visualization display window
-    //and the visualization display widget
+    //connect signals and slots for visualization display window and the visualization display widget
     QObject::connect(&cp, SIGNAL(showVisDisplayPanel()), &vd, SLOT(show()));
     QObject::connect(&dp, SIGNAL(updateGLVisWidget()), &vd, SLOT(updateGLVisWidget()));
     QObject::connect(&rfs, SIGNAL(setPerspectiveProjection()), vdw,

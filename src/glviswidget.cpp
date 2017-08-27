@@ -1252,8 +1252,8 @@ void GLVisWidget::captureFrames(bool on) {
         //setup directory to save to
         if (dataProcessor->getMode() == REPLAY_FILE) {  //create first sub dir bassed on replay file name
             QString replayFileName = dataProcessor->getReplayFileName();
-            frameCaptureDir = QString(DEFAULT_FRAMES_DIR) + QString("/")
-                              + QString(DEFAULT_REPLAY_SUBDIR) + QString("/")
+            frameCaptureDir = QString(DataProcessor::getFramesDir()) + QString("/")
+                              + QString(DataProcessor::getReplaySubdir()) + QString("/")
                               + replayFileName;
             if (!dir.exists(frameCaptureDir)) {
                 if (!dir.mkdir(frameCaptureDir)) {
@@ -1279,8 +1279,8 @@ void GLVisWidget::captureFrames(bool on) {
                 }
             }
         } else if (dataProcessor->getMode() == MONITOR_LOCAL) {
-            frameCaptureDir = QString(DEFAULT_FRAMES_DIR) + QString("/")
-                              + QString(DEFAULT_LIVE_SUBDIR) + QString("/")
+            frameCaptureDir = QString(DataProcessor::getFramesDir()) + QString("/")
+                              + QString(DataProcessor::getLiveSubdir()) + QString("/")
                               + dataProcessor->getReplayPosition()->toString("yyyyMMdd-hhmmss");
             if (!dir.exists(frameCaptureDir)) {
                 if (!dir.mkdir(frameCaptureDir)) {
@@ -1293,7 +1293,7 @@ void GLVisWidget::captureFrames(bool on) {
                 }
             }
         } else {
-            frameCaptureDir = QString(DEFAULT_FRAMES_DIR);
+            frameCaptureDir = QString(DataProcessor::getFramesDir());
         }
         //init frameFileName reference
         strcpy(frameFileName, frameCaptureDir.toLatin1());
@@ -1303,7 +1303,7 @@ void GLVisWidget::captureFrames(bool on) {
     } else {
         captureFrameToFile = false;
         //if capturing frames add end time to subdir
-        if (frameCaptureDir != QString(DEFAULT_FRAMES_DIR)) {  //was replay file or monitor local mode during frame dump
+        if (frameCaptureDir != QString(DataProcessor::getFramesDir())) {  //was replay file or monitor local mode during frame dump
             dir = QDir(frameCaptureDir);
             //navigate into dir and rename file
             if (dir.exists()) {
@@ -1338,8 +1338,8 @@ void GLVisWidget::captureCurrentFrame() {
         //setup directory to save to
         if (dataProcessor->getMode() == REPLAY_FILE) {
             QString replayFileName = dataProcessor->getReplayFileName();
-            frameCaptureDir = QString(DEFAULT_SNAPSHOTS_DIR) + QString("/")
-                              + QString(DEFAULT_REPLAY_SUBDIR) + QString("/") + replayFileName;
+            frameCaptureDir = QString(DataProcessor::getSnapshotsDir()) + QString("/")
+                              + QString(DataProcessor::getReplaySubdir()) + QString("/") + replayFileName;
             //create sub dir
             QDir dir;
             if (!dir.exists(frameCaptureDir)) {
@@ -1351,10 +1351,10 @@ void GLVisWidget::captureCurrentFrame() {
                 }
             }
         } else if (dataProcessor->getMode() == MONITOR_LOCAL) {
-            frameCaptureDir = QString(DEFAULT_SNAPSHOTS_DIR) + QString("/")
-                              + QString(DEFAULT_LIVE_SUBDIR);
+            frameCaptureDir = QString(DataProcessor::getSnapshotsDir()) + QString("/")
+                              + QString(DataProcessor::getLiveSubdir());
         } else {
-            frameCaptureDir = QString(DEFAULT_SNAPSHOTS_DIR);
+            frameCaptureDir = QString(DataProcessor::getSnapshotsDir());
         }
         //init frameFileName reference
         strcpy(frameFileName, frameCaptureDir.toLatin1());
