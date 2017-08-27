@@ -54,7 +54,8 @@ void initialiseQtSettings() {
 
     QSettings settings;
 
-    //settings.clear();
+    // TODO: Remove this for production
+    settings.clear();
 
     // TODO: Test code - Using this for testing. Make appropriate per distro later
     QString recordPath = QStandardPaths::standardLocations(QStandardPaths::DownloadLocation).first() + "/" + "inetvis-recorded";
@@ -80,6 +81,9 @@ void initialiseQtSettings() {
         settings.setValue("dataproc/recording/replay_subdir", "replayed");
     }
     // Next..
+    if (!settings.contains("dataproc/home_network/show_not_set_error")) {
+        settings.setValue("dataproc/home_network/show_not_set_error", true);
+    }
 }
 
 int main(int argc, char **argv) {

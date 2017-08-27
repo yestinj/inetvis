@@ -6,12 +6,14 @@
 #include <QValidator>
 #include "plotter.h"
 #include "logui.h"
+#include <QSettings>
 
 class PlotterSettingsDialogWidget : public QDialog, public Ui::PlotterSettingsDialog {
     Q_OBJECT
 public:
     PlotterSettingsDialogWidget(QWidget *parent = 0);
     ~PlotterSettingsDialogWidget();
+    QString readHomeNetworkConfig();
 
 signals:
     void setHomeNetwork(int, int, int, int, int);
@@ -50,6 +52,7 @@ private:
     QIntValidator *logPlotNumValidator;
     void init();
     void destroy();
+    void writeHomeNetworkConfig(int, int, int, int, int);
 };
 
 #endif // PLOTTERSETTINGSDIALOGWIDGET_H

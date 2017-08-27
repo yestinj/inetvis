@@ -419,6 +419,7 @@ public:
     static QString getSnapshotsDir();
     static QString getLiveSubdir();
     static QString getReplaySubdir();
+    static bool getShowHomeNetworkNotSetError();
 
 public slots:
 
