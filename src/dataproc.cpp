@@ -2040,7 +2040,6 @@ bool DataProcessor::checkDefaultDirs() {
 
     //main record dir
     if(!dir.exists(getRecordDir())) {
-        std::cout << "Creating record directory: " << getRecordDir().toStdString();
         if (!dir.mkdir(getRecordDir())) {
             return false;
         }
