@@ -108,14 +108,12 @@ int main(int argc, char **argv) {
     VisDisplayWidget vd; //visaulization window
 
     GLVisWidget* vdw = vd.displayWidget;
-    //vd.setFocusProxy(vdw); Removed, already called in the init class of VisDisplayWidget
 
     PlotterSettingsDialogWidget ps; //to set plotting features
     ReferenceFrameSettingsDialogWidget rfs; //to set reference frame features
 
     //setup object reference links
     vdw->setDataProcLink(dp.getDataProcessorPtr());
-    //dp.setGLVisWidgetLink(vdw);
 
     //connect signals and slots for control panel
     QObject::connect(vdw, SIGNAL(showControlPanel()), &cp, SLOT(showOnTop()));
@@ -136,8 +134,7 @@ int main(int argc, char **argv) {
                      &cp, SLOT(setRecordButton(bool)));
     QObject::connect(&dp, SIGNAL(sendErrMsg(QString)), &cp, SLOT(reportErrorMessage(QString)));
 
-    //connect signals and slots for visualization display window
-    //and the visualization display widget
+    //connect signals and slots for visualization display window and the visualization display widget
     QObject::connect(&cp, SIGNAL(showVisDisplayPanel()), &vd, SLOT(show()));
     QObject::connect(&dp, SIGNAL(updateGLVisWidget()), &vd, SLOT(updateGLVisWidget()));
     QObject::connect(&rfs, SIGNAL(setPerspectiveProjection()), vdw,
