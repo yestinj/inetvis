@@ -46,6 +46,7 @@ copyright holder.<br>
 #include "plottersettingsdialogwidget.h"
 #include "dataproc.h"
 #include "referenceframesettingsdialogwidget.h"
+#include "log.h"
 
 void initialiseQtSettings() {
     QCoreApplication::setOrganizationName("Rhodes University");
@@ -80,9 +81,19 @@ void initialiseQtSettings() {
     if (!settings.contains("dataproc/recording/replay_subdir")) {
         settings.setValue("dataproc/recording/replay_subdir", "replayed");
     }
-    // Next..
+    // Home network settings
     if (!settings.contains("dataproc/home_network/show_not_set_error")) {
         settings.setValue("dataproc/home_network/show_not_set_error", true);
+    }
+    // Log file settings
+    if (!settings.contains("logging/root_dir")) {
+        settings.setValue("logging/root_dir", "logs");
+    }
+    if (!settings.contains("logging/stdout_filename")) {
+        settings.setValue("logging/stdout_filename", "stdout");
+    }
+    if (!settings.contains("logging/stderr_filename")) {
+        settings.setValue("logging/stderr_filename", "stderr");
     }
 }
 
@@ -102,10 +113,12 @@ int main(int argc, char **argv) {
     //uncomment the two lines below to diable user interface logging
     //if(!LogUI::enable())  // facilitates logging user interaction
     //   qWarning("Unable to open file for user interface logging - feature left disabled.");
+    Log::enable();
 
     //declare support objects
     DataProcessor dp;  //provides backend for reading and parsing capture files
     LogUIQuit luiq; //small helper object to ensure UI logging closes gracefully
+    LogQuit lq; //small helper object to ensure logging closes gracefully
 
     //declare GUI forms/windows
     ControlPanelWidget cp;
@@ -237,7 +250,9 @@ int main(int argc, char **argv) {
 
     //connect slot for reciving quit signal
     QObject::connect(&app, SIGNAL(lastWindowClosed()), &luiq, SLOT(close()));
+    QObject::connect(&app, SIGNAL(lastWindowClosed()), &lq, SLOT(close()));
     QObject::connect(&app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()));
+    // TODO: Add a connection to close everything after the main control window is closed.
 
     dp.init();
 

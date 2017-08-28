@@ -76,8 +76,8 @@ public:
 class LogUIQuit : public QObject {
     Q_OBJECT //macro for use of signals and slots
 
-    //implimented to recieve quit signal and close any open loggin sessions. This
-    //will be called by main
+    //implemented to receive quit signal and close any open logging sessions.
+    // This will be called by main.
 
 public slots:
     void close();
