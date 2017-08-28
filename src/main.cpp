@@ -111,8 +111,10 @@ int main(int argc, char **argv) {
     }
 
     //uncomment the two lines below to diable user interface logging
-    //if(!LogUI::enable())  // facilitates logging user interaction
-    //   qWarning("Unable to open file for user interface logging - feature left disabled.");
+    // facilitates logging user interaction
+    if(!LogUI::enable())   {
+       qWarning("Unable to open file for user interface logging - feature left disabled.");
+    }
     Log::enable();
 
     //declare support objects

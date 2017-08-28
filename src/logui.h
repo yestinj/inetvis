@@ -47,7 +47,7 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #include <QDir>
 #include <QFile>
 #include <QTextStream>
-
+#include "log.h";
 
 class LogUI {
 

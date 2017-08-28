@@ -30,8 +30,8 @@ void LogUI::disable() {
 
 bool LogUI::openFile() {
     //check that logui dir exists and make the dir if necessary
-    if (!QDir::current().exists("logui")) {
-        if (!QDir::current().mkdir("logui")) {
+    if (!QDir::current().exists(Log::getLogRootDir() + "/logui")) {
+        if (!QDir::current().mkdir(Log::getLogRootDir() + "/logui")) {
             return false;
         }
     }
@@ -39,7 +39,7 @@ bool LogUI::openFile() {
     //set log file name according to the starting timestamp
     QString startTime = QDateTime::currentDateTime().toString("yyyyMMdd-hhmmss");
     logFileName = QString("ui-" + startTime + ".log");
-    logFile.setFileName("logui/" + logFileName);
+    logFile.setFileName(Log::getLogRootDir() + "/logui/" + logFileName);
 
     //open log file - note we do not need to append to pre-existing logs, since
     //we open one log file per user session and never append to it again
