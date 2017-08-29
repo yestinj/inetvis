@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stdio.h>
 #import <QSettings>
+#import "log.h"
 
 using namespace std; //for debugging purposes
 
@@ -3509,21 +3510,20 @@ void DataProcessor::renderDataDynamic()
 }
 
 
-void DataProcessor::reportError(const QString &errMsg, const QString &function)
-{
+void DataProcessor::reportError(const QString &errMsg, const QString &function) {
     QString errorMessage;
     errorMessage.append("ERROR: ");
     errorMessage.append(errMsg);
-    if (function.isNull())
-    {  errorMessage.append("\n - in function: ");
+    if (function.isNull()) {
+        errorMessage.append("\n - in function: ");
         errorMessage.append(function);
     }
     errorMessage.append("\n");
 
 #ifdef OUTPUT_ERRORS_STD_OUT
-    cerr << errorMessage.toStdString();
+    Log::logError(errorMessage);
 #elif DEBUG_DATA_PROCESSOR
-    cerr << errorMessage.toStdString();
+    Log::logError(errorMessage);
 #endif
 
     //ensure timer is reset so that error is displayed for 1 seconds
@@ -3535,7 +3535,6 @@ void DataProcessor::reportError(const QString &errMsg, const QString &function)
 #ifdef OUTPUT_ERRORS_GUI
     emit sendErrMsg(errorMessage);
 #endif
-
 }
 
 QString DataProcessor::getRecordDir() {
@@ -3571,4 +3570,19 @@ QString DataProcessor::getReplaySubdir() {
 bool DataProcessor::getShowHomeNetworkNotSetError() {
     QSettings s;
     return s.value("dataproc/home_network/show_not_set_error").toBool();
+}
+
+QString DataProcessor::getScreenshotFormat() {
+    QSettings s;
+    return s.value("dataproc/screenshot/screenshot_format").toString();
+}
+
+QString DataProcessor::getScreenshotExtension() {
+    QSettings s;
+    return s.value("dataproc/screenshot/screenshot_extension").toString();
+}
+
+int DataProcessor::getScreenshotQuality() {
+    QSettings s;
+    return s.value("dataproc/screenshot/screenshot_quality").toInt();
 }

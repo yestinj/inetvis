@@ -95,6 +95,16 @@ void initialiseQtSettings() {
     if (!settings.contains("logging/stderr_filename")) {
         settings.setValue("logging/stderr_filename", "stderr");
     }
+    // Frame snapshot settings
+    if (!settings.contains("dataproc/screenshot/screenshot_format")) {
+        settings.setValue("dataproc/screenshot/screenshot_format", "png");
+    }
+    if (!settings.contains("dataproc/screenshot/screenshot_quality")) {
+        settings.setValue("dataproc/screenshot/screenshot_quality", -1);
+    }
+    if (!settings.contains("dataproc/screenshot/screenshot_extension")) {
+        settings.setValue("dataproc/screenshot/screenshot_extension", "png");
+    }
 }
 
 int main(int argc, char **argv) {

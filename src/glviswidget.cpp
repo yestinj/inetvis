@@ -338,41 +338,51 @@ void GLVisWidget::paintGL() {
     //dump frames into raw bitmaps
     if (captureFrameToFile) {
         //create file name
+        QString screenshotExtension = DataProcessor::getScreenshotExtension();
         if (captureSingleFrameToFile) {
             //grabbed the single frame, don't want any more
             captureSingleFrameToFile = false;
-            captureFrameToFile = false;
+            captureFrameToFile = false;            
             //create filename
-            QString fname_part = "/" + currentTime->toString("/yyyyMMdd-hhmmsszzz") + "_snap%02d.png";
+            QString fname_part = "/" + currentTime->toString("/yyyyMMdd-hhmmsszzz") + "_snap%02d." + screenshotExtension;
             sprintf(&frameFileName[frameDirCharIndex], fname_part.toLatin1(), snapshotCount);
+            QString fmtExt = QString("%02d.").append(screenshotExtension);
             //check if filename exists - in case of multiple snapshots at same position in file
             if (QFile::exists(frameFileName)) {
                 snapshotCount++;
                 //reprint the end of the files name
-                sprintf(&frameFileName[frameDirCharIndex + 25], "%02d.png", snapshotCount);
+                sprintf(&frameFileName[frameDirCharIndex + 25], fmtExt.toStdString().c_str(), snapshotCount);
             } else {
                 snapshotCount = 0;
                 //reprint the end of the files name
-                sprintf(&frameFileName[frameDirCharIndex + 25], "%02d.png", snapshotCount);
+                sprintf(&frameFileName[frameDirCharIndex + 25], fmtExt.toStdString().c_str(), snapshotCount);
             }
         } else {
             //capturing multiple frames to files
             recFrameCount++;
-            QString fname_part = "/frame%09d - " + currentTime->toString("yyyyMMdd-hhmmsszzz") + ".png";
+            QString fname_part = "/frame%09d - " + currentTime->toString("yyyyMMdd-hhmmsszzz") + "." + screenshotExtension;
             sprintf(&frameFileName[frameDirCharIndex], fname_part.toLatin1(), recFrameCount);
             //here we cater for framecount of up to 9 digits
         }
 
-        // Read the GL screen pixels into the captureBuffer
-        glReadPixels (0, 0, width, height, GL_BGRA_EXT, GL_UNSIGNED_BYTE, captureBuffer);
+        QString screenshotFormat = DataProcessor::getScreenshotFormat();
 
-        // Create and write out a PNG image screenshot.
-        QImage image((const unsigned char*)captureBuffer, width, height, QImage::Format_ARGB32);
-        image = image.mirrored();
-        bool success = image.save(frameFileName, "PNG");
+        // Handle each screenshot format differently as they may require some unique tweaking..
+        // The null check is to act as a failsafe incase config is not set for some reason.
+        if (screenshotFormat.toStdString() == "png" || screenshotFormat == "") {
+            // Read the GL screen pixels into the captureBuffer
+            glReadPixels (0, 0, width, height, GL_BGRA_EXT, GL_UNSIGNED_BYTE, captureBuffer);
 
-        if (!success) {
-            cerr << "ERROR: Failed to output frame capture " << frameFileName << "\n";
+            // Create and write out a PNG image screenshot.
+            QImage image((const unsigned char*)captureBuffer, width, height, QImage::Format_ARGB32);
+            // For some reason it's flipped, need to fix that here before outputting.
+            image = image.mirrored();
+            int screenshotQuality = DataProcessor::getScreenshotQuality();
+            bool success = image.save(frameFileName, "PNG", screenshotQuality);
+
+            if (!success) {
+                Log::logError(QString("ERROR: Failed to output frame capture ").append(frameFileName));
+            }
         }
     }
 }
