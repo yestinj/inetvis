@@ -47,10 +47,9 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #include <QDir>
 #include <QFile>
 #include <QTextStream>
+#include "log.h";
 
-
-class LogUI
-{
+class LogUI {
 
 private:
 
@@ -64,7 +63,6 @@ private:
     static bool openFile();
     static void closeFile();
 
-
 public:
 
     static bool enable(); //toggle loggin on
@@ -72,20 +70,16 @@ public:
     static bool isEnabled();
     static void logEvent(QString msg);  //funtion automatically prepends
     //timestamp
-
 };
 
 
-class LogUIQuit : public QObject
-{
+class LogUIQuit : public QObject {
     Q_OBJECT //macro for use of signals and slots
 
-    //implimented to recieve quit signal and close any open loggin sessions. This
-    //will be called by main
+    //implemented to receive quit signal and close any open logging sessions.
+    // This will be called by main.
 
 public slots:
-
     void close();
-
 };
 #endif // LOGUI_H
