@@ -47,6 +47,10 @@ Building InetVis is relatively straight forward. Begin by doing the following:
 2. Install the following dependencies:
     * `sudo apt-get install libpcap-dev qt5-default`
 
+It has been noted that the following dependencies were also required on Linux Mint based systems:
+
+`sudo apt-get install libqglviewer-dev libqglviewer2`
+
 Once the dependencies are installed, clone this repository if you haven't already.
 
 1. Clone the github repo into the `inetvis` directory:
