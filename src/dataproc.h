@@ -420,6 +420,9 @@ public:
     static QString getLiveSubdir();
     static QString getReplaySubdir();
     static bool getShowHomeNetworkNotSetError();
+    static QString getScreenshotFormat();
+    static QString getScreenshotExtension();
+    static int getScreenshotQuality();
 
 public slots:
 
