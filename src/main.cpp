@@ -47,6 +47,7 @@ copyright holder.<br>
 #include "dataproc.h"
 #include "referenceframesettingsdialogwidget.h"
 #include "log.h"
+#include "generalsettingsdialog.h"
 
 void initialiseQtSettings() {
     QCoreApplication::setOrganizationName("Rhodes University");
@@ -140,6 +141,7 @@ int main(int argc, char **argv) {
 
     PlotterSettingsDialogWidget ps; //to set plotting features
     ReferenceFrameSettingsDialogWidget rfs; //to set reference frame features
+    GeneralSettingsDialog gsd; //to set general settings
 
     //setup object reference links
     vdw->setDataProcLink(dp.getDataProcessorPtr());
@@ -217,9 +219,13 @@ int main(int argc, char **argv) {
     QObject::connect(&dp, SIGNAL(updatePortRangeDisplay(int, int)), &ps,
                      SLOT(updatePortRange(int, int)));
 
-    //connect siganls and slots for the reference frame dialog
+    //connect signals and slots for the reference frame dialog
     QObject::connect(&cp, SIGNAL(showReferenceFrameSettings()), &rfs, SLOT(show()));
     QObject::connect(vdw, SIGNAL(showReferenceFrameSettings()), &rfs, SLOT(show()));
+
+    //connect signals and slots for the general settings dialog
+    QObject::connect(&cp, SIGNAL(showGeneralSettings()), &gsd, SLOT(show()));
+    QObject::connect(vdw, SIGNAL(showGeneralSettings()), &gsd, SLOT(show()));
 
     //connect signals and slots for data processor
     //dp.connect(&cp, SIGNAL(selectMode(int)), &dp, SLOT(setMode(int)));

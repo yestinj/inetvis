@@ -301,5 +301,5 @@ signals:
     void showControlPanel();
     void showPlotterSettings();
     void showReferenceFrameSettings();
-
+    void showGeneralSettings();
 };

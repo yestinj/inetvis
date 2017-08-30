@@ -1,3 +1,6 @@
+#ifndef TIMEUTIL_H
+#define TIMEUTIL_H
+
 /*******************************************************************************
 
 InetVis - Internet Visualisation
@@ -109,3 +112,4 @@ public:
     static void setTimeRange(const struct timeval &tv0, const struct timeval &tv1);
 
 };
+#endif TIMEUTIL_H

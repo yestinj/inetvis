@@ -3542,6 +3542,11 @@ QString DataProcessor::getRecordDir() {
     return s.value("dataproc/recording/default_dir").toString();
 }
 
+void DataProcessor::setRecordDir(QString recordDir) {
+    QSettings s;
+    s.setValue("dataproc/recording/default_dir", recordDir);
+}
+
 QString DataProcessor::getPcapsDir() {
     QSettings s;
     return s.value("dataproc/recording/pcaps_subdir").toString();

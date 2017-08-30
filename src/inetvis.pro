@@ -17,7 +17,8 @@ HEADERS	+= dataproc.h \
         plottersettingsdialogwidget.h \
         referenceframesettingsdialogwidget.h \
         visdisplaywidget.h \
-        log.h
+        log.h \
+    generalsettingsdialog.h
 
 SOURCES	+= graphicelement.cpp \
 	packetheaders.cpp \
@@ -34,14 +35,16 @@ SOURCES	+= graphicelement.cpp \
         plottersettingsdialogwidget.cpp \
         referenceframesettingsdialogwidget.cpp \
         visdisplaywidget.cpp \
-        log.cpp
+        log.cpp \
+    generalsettingsdialog.cpp
 
 FORMS = controlpanel.ui \
 	visdisplay.ui \
 	plottersettingsdialog.ui \
 	referenceframesettingsdialog.ui \
 	aboutdialog.ui \
-	helpdocumentationdialog.ui
+	helpdocumentationdialog.ui \
+    generalsettingsdialog.ui
 
 RESOURCES += icons.qrc	
 

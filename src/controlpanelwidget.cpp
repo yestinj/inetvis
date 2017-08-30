@@ -1,7 +1,4 @@
 #include "controlpanelwidget.h"
-#include <iostream>
-#include <math.h>
-#include "timeutil.h"
 
 ControlPanelWidget::ControlPanelWidget(QMainWindow *parent) : QMainWindow(parent) {
     setupUi(this);
@@ -499,7 +496,7 @@ void ControlPanelWidget::timeWindowSliderReleased() {
 
 void ControlPanelWidget::viewVisDisplayPanel() {
     //update UI Log
-    if(LogUI::isEnabled()) {
+    if (LogUI::isEnabled()) {
         LogUI::logEvent("[CP] 'Display Window' opened");
     }
     emit showVisDisplayPanel();
@@ -507,8 +504,9 @@ void ControlPanelWidget::viewVisDisplayPanel() {
 
 void ControlPanelWidget::viewPlotterSettings() {
     //update UI log
-    if(LogUI::isEnabled())
+    if (LogUI::isEnabled()) {
         LogUI::logEvent("[CP] 'Plotter Settings' opened");
+    }
 
     emit showPlotterSettings();
 
@@ -516,19 +514,29 @@ void ControlPanelWidget::viewPlotterSettings() {
 
 void ControlPanelWidget::viewReferenceFrameSettings() {
     //update UI log
-    if(LogUI::isEnabled())
+    if (LogUI::isEnabled()) {
         LogUI::logEvent("[CP] 'Reference Frame Settings' opened");
+    }
 
     emit showReferenceFrameSettings();
+}
+
+void ControlPanelWidget::viewGeneralSettings() {
+    //update UI log
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[CP] 'General Settings' opened");
+    }
+
+    emit showGeneralSettings();
 }
 
 void ControlPanelWidget::helpDoc() {
     helpDialog->show();
 
     //update UI log
-    if(LogUI::isEnabled())
+    if(LogUI::isEnabled()) {
         LogUI::logEvent("[CP] menu 'Help->Documentation' selected");
-
+    }
 }
 
 void ControlPanelWidget::showOnTop() {

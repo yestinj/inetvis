@@ -1,3 +1,6 @@
+#ifndef DATAPROC_H
+#define DATAPROC_H
+
 /*******************************************************************************
 
 InetVis - Internet Visualisation
@@ -414,6 +417,7 @@ public:
 
     // configuration
     static QString getRecordDir();
+    static void setRecordDir(QString recordDir);
     static QString getPcapsDir();
     static QString getFramesDir();
     static QString getSnapshotsDir();
@@ -502,3 +506,4 @@ signals:
     void sendErrMsg(QString errMsg);
 
 };
+#endif DATAPROC_H
