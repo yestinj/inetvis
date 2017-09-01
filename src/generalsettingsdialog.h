@@ -20,6 +20,33 @@ public:
 public slots:
     void rootDirUndoAction();
     void rootDirSaveAction();
+    void pcapSubdirSaveAction();
+    void pcapSubdirUndoAction();
+    void framesSubdirSaveAction();
+    void framesSubdirUndoAction();
+    void snapshotsSubdirSaveAction();
+    void snapshotsSubdirUndoAction();
+    void liveSubdirSaveAction();
+    void liveSubdirUndoAction();
+    void replaySubdirSaveAction();
+    void replaySubdirUndoAction();
+    void defaultHomeNetworkSaveAction();
+    void defaultHomeNetworkUndoAction();
+    void showHomeNetNotSetWarningSaveAction();
+    void showHomeNetNotSetWarningUndoAction();
+    void logRootDirSaveAction();
+    void logRootDirUndoAction();
+    void stdoutFilenameSaveAction();
+    void stdoutFilenameUndoAction();
+    void stderrFilenameSaveAction();
+    void stderrFilenameUndoAction();
+    void snapshotFormatSaveAction();
+    void snapshotFormatUndoAction();
+    void snapshotQualitySaveAction();
+    void snapshotQualityUndoAction();
+    void snapshotExtensionSaveAction();
+    void snapshotExtensionUndoAction();
+
 
 private:
     Ui::GeneralSettingsDialog *ui;

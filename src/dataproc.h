@@ -419,14 +419,25 @@ public:
     static QString getRecordDir();
     static void setRecordDir(QString recordDir);
     static QString getPcapsDir();
+    static void setPcapsDir(QString pcapsDir);
     static QString getFramesDir();
+    static void setFramesDir(QString framesDir);
     static QString getSnapshotsDir();
+    static void setSnapshotsDir(QString snapshotsDir);
     static QString getLiveSubdir();
-    static QString getReplaySubdir();
+    static void setLiveSubdir(QString liveSubdir);
+    static QString getReplaySubdir();    
+    static void setReplaySubdir(QString replaySubdir);
+    static QString getDefaultHomeNetwork();
+    static void setDefaultHomeNetwork(int, int, int, int, int);
     static bool getShowHomeNetworkNotSetError();
+    static void setShowHomeNetworkNotSetError(bool show);
     static QString getScreenshotFormat();
+    static void setScreenshotFormat(QString screenshotFormat);
     static QString getScreenshotExtension();
+    static void setScreenshotExtension(QString screenshotExtension);
     static int getScreenshotQuality();
+    static void setScreenshotQuality(int screenshotQuality);
 
 public slots:
 

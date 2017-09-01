@@ -7,6 +7,7 @@
 #include "plotter.h"
 #include "logui.h"
 #include <QSettings>
+#include "dataproc.h"
 
 class PlotterSettingsDialogWidget : public QDialog, public Ui::PlotterSettingsDialog {
     Q_OBJECT
@@ -51,8 +52,7 @@ private:
     QIntValidator *portNumValidator;
     QIntValidator *logPlotNumValidator;
     void init();
-    void destroy();
-    void writeHomeNetworkConfig(int, int, int, int, int);
+    void destroy();   
 };
 
 #endif // PLOTTERSETTINGSDIALOGWIDGET_H

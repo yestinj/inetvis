@@ -86,14 +86,29 @@ QString Log::getLogRootDir() {
     return s.value("logging/root_dir").toString();
 }
 
+void Log::setLogRootDir(QString logRootDir) {
+    QSettings s;
+    s.setValue("logging/root_dir", logRootDir);
+}
+
 QString Log::getStdoutFilename() {
     QSettings s;
     return s.value("logging/stdout_filename").toString();
 }
 
+void Log::setStdoutFilename(QString stdoutFilename) {
+    QSettings s;
+    s.setValue("logging/stdout_filename", stdoutFilename);
+}
+
 QString Log::getStderrFilename() {
     QSettings s;
     return s.value("logging/stderr_filename").toString();
+}
+
+void Log::setStderrFilename(QString stderrFilename) {
+    QSettings s;
+        s.setValue("logging/stderr_filename", stderrFilename);
 }
 
 bool Log::enable() {

@@ -31,8 +31,11 @@ public:
     static void logOutput(QString);
     static void logError(QString);
     static QString getLogRootDir();
+    static void setLogRootDir(QString logRootDir);
     static QString getStdoutFilename();
+    static void setStdoutFilename(QString stdoutFilename);
     static QString getStderrFilename();    
+    static void setStderrFilename(QString stderrFilename);
 };
 
 class LogQuit : public QObject {

@@ -82,7 +82,10 @@ void initialiseQtSettings() {
     if (!settings.contains("dataproc/recording/replay_subdir")) {
         settings.setValue("dataproc/recording/replay_subdir", "replayed");
     }
-    // Home network settings
+    // Home network settings    
+    if (!settings.contains("dataproc/home_network/default_home_network")) {
+        settings.setValue("dataproc/home_network/default_home_network", "0.0.0.0/0");
+    }
     if (!settings.contains("dataproc/home_network/show_not_set_error")) {
         settings.setValue("dataproc/home_network/show_not_set_error", true);
     }

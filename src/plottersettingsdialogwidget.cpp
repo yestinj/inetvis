@@ -105,7 +105,7 @@ void PlotterSettingsDialogWidget::applyHomeNetSettings() {
     // For now only save when the user clicks the button.
     // Decide what to do with this later.. Does it even make sense to read in a 'default'?
     // since this would depend highly on the packet capture open, or the underlying source net..
-    writeHomeNetworkConfig(octA, octB, octC, octD, slashMask);
+    DataProcessor::setDefaultHomeNetwork(octA, octB, octC, octD, slashMask);
 
     emit setHomeNetwork(octA, octB, octC, octD, slashMask);
 
@@ -332,17 +332,6 @@ QString PlotterSettingsDialogWidget::readHomeNetworkConfig() {
     QSettings s;
     return s.value("plottersettings/default_home_network").toString();
 }
-
-void PlotterSettingsDialogWidget::writeHomeNetworkConfig(int octA, int octB, int octC, int octD, int slashMask) {
-    QString ipAddress = QString::number(octA) + "."
-            + QString::number(octB) + "."
-            + QString::number(octC) + "."
-            + QString::number(octD) + "/"
-            + QString::number(slashMask);
-    QSettings s;
-    s.setValue("plottersettings/default_home_network", ipAddress);
-}
-
 
 
 

@@ -3552,9 +3552,19 @@ QString DataProcessor::getPcapsDir() {
     return s.value("dataproc/recording/pcaps_subdir").toString();
 }
 
+void DataProcessor::setPcapsDir(QString pcapsDir) {
+    QSettings s;
+    s.setValue("dataproc/recording/pcaps_subdir", pcapsDir);
+}
+
 QString DataProcessor::getFramesDir() {
     QSettings s;
     return s.value("dataproc/recording/frames_subdir").toString();
+}
+
+void DataProcessor::setFramesDir(QString framesDir) {
+    QSettings s;
+    s.setValue("dataproc/recording/frames_subdir", framesDir);
 }
 
 QString DataProcessor::getSnapshotsDir() {
@@ -3562,9 +3572,19 @@ QString DataProcessor::getSnapshotsDir() {
     return s.value("dataproc/recording/snapshots_subdir").toString();
 }
 
+void DataProcessor::setSnapshotsDir(QString snapshotsDir) {
+    QSettings s;
+    s.setValue("dataproc/recording/snapshots_subdir", snapshotsDir);
+}
+
 QString DataProcessor::getLiveSubdir() {
     QSettings s;
     return s.value("dataproc/recording/live_subdir").toString();
+}
+
+void DataProcessor::setLiveSubdir(QString liveSubdir) {
+    QSettings s;
+    s.setValue("dataproc/recording/live_subdir", liveSubdir);
 }
 
 QString DataProcessor::getReplaySubdir() {
@@ -3572,9 +3592,34 @@ QString DataProcessor::getReplaySubdir() {
     return s.value("dataproc/recording/replay_subdir").toString();
 }
 
+void DataProcessor::setReplaySubdir(QString replaySubdir) {
+    QSettings s;
+    s.setValue("dataproc/recording/replay_subdir", replaySubdir);
+}
+
+QString DataProcessor::getDefaultHomeNetwork() {
+    QSettings s;
+    return s.value("dataproc/home_network/default_home_network").toString();
+}
+
+void DataProcessor::setDefaultHomeNetwork(int octA, int octB, int octC, int octD, int slashMask) {
+    QString ipAddress = QString::number(octA) + "."
+            + QString::number(octB) + "."
+            + QString::number(octC) + "."
+            + QString::number(octD) + "/"
+            + QString::number(slashMask);
+    QSettings s;
+    s.setValue("dataproc/home_network/default_home_network", ipAddress);
+}
+
 bool DataProcessor::getShowHomeNetworkNotSetError() {
     QSettings s;
     return s.value("dataproc/home_network/show_not_set_error").toBool();
+}
+
+void DataProcessor::setShowHomeNetworkNotSetError(bool show) {
+    QSettings s;
+    s.setValue("dataproc/home_network/show_not_set_error", show);
 }
 
 QString DataProcessor::getScreenshotFormat() {
@@ -3582,12 +3627,27 @@ QString DataProcessor::getScreenshotFormat() {
     return s.value("dataproc/screenshot/screenshot_format").toString();
 }
 
+void DataProcessor::setScreenshotFormat(QString screenshotFormat) {
+    QSettings s;
+    s.setValue("dataproc/screenshot/screenshot_format", screenshotFormat);
+}
+
 QString DataProcessor::getScreenshotExtension() {
     QSettings s;
     return s.value("dataproc/screenshot/screenshot_extension").toString();
 }
 
+void DataProcessor::setScreenshotExtension(QString screenshotExtension) {
+    QSettings s;
+    s.setValue("dataproc/screenshot/screenshot_extension", screenshotExtension);
+}
+
 int DataProcessor::getScreenshotQuality() {
     QSettings s;
     return s.value("dataproc/screenshot/screenshot_quality").toInt();
+}
+
+void DataProcessor::setScreenshotQuality(int screenshotQuality) {
+    QSettings s;
+    s.setValue("dataproc/screenshot/screenshot_quality", screenshotQuality);
 }
