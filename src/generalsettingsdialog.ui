@@ -53,6 +53,9 @@
         <height>61</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>The root directory where all other recording subdirectories will be based</string>
+      </property>
       <property name="title">
        <string>Root Directory</string>
       </property>
@@ -75,6 +78,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -92,6 +98,9 @@
          <width>26</width>
          <height>22</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
        </property>
        <property name="text">
         <string>...</string>
@@ -111,6 +120,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -129,6 +141,9 @@
         <width>611</width>
         <height>61</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>The subdirectory where all packet captures will be saved to</string>
       </property>
       <property name="title">
        <string>Packet Captures Subdirectory</string>
@@ -152,6 +167,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -169,6 +187,9 @@
          <width>26</width>
          <height>22</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
        </property>
        <property name="text">
         <string>...</string>
@@ -188,6 +209,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -206,6 +230,9 @@
         <width>611</width>
         <height>61</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>The subdirectory where video frames will be saved to</string>
       </property>
       <property name="title">
        <string>Frames Subdirectory</string>
@@ -229,6 +256,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -246,6 +276,9 @@
          <width>26</width>
          <height>22</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
        </property>
        <property name="text">
         <string>...</string>
@@ -265,6 +298,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -283,6 +319,9 @@
         <width>611</width>
         <height>61</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>The subdirectory where snapshots/screenshots will be saved to.</string>
       </property>
       <property name="title">
        <string>Snapshots Subdirectory</string>
@@ -306,6 +345,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -323,6 +365,9 @@
          <width>26</width>
          <height>22</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
        </property>
        <property name="text">
         <string>...</string>
@@ -342,6 +387,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -360,6 +408,9 @@
         <width>611</width>
         <height>61</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>The subdirectory where packet captures, frames, and snapshots will be saved when using 'live' mode.</string>
       </property>
       <property name="title">
        <string>Monitor Local Host (Live) Subdirectory</string>
@@ -383,6 +434,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -400,6 +454,9 @@
          <width>26</width>
          <height>22</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
        </property>
        <property name="text">
         <string>...</string>
@@ -419,6 +476,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -437,6 +497,9 @@
         <width>611</width>
         <height>61</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>The subdirectory where packet captures, frames, and snapshots will be saved to when operating in replay mode.</string>
       </property>
       <property name="title">
        <string>Replay Packet Capture Subdirectory</string>
@@ -460,6 +523,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -478,6 +544,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -495,6 +564,9 @@
          <width>26</width>
          <height>22</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
        </property>
        <property name="text">
         <string>...</string>
@@ -533,6 +605,9 @@
         <height>61</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>The IP address and subnet bitlength of the default home network address to apply to plotter settings.</string>
+      </property>
       <property name="title">
        <string>Default Home Network IP Address and Subnet Bit Length</string>
       </property>
@@ -555,6 +630,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -572,6 +650,9 @@
          <width>26</width>
          <height>22</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
        </property>
        <property name="text">
         <string>...</string>
@@ -591,6 +672,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -609,6 +693,9 @@
         <width>611</width>
         <height>61</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>Whether or not the warning should be shown when a packet capture is loaded but no home network is set under plotter settings.</string>
       </property>
       <property name="title">
        <string>Show Home Network Not Set Warning</string>
@@ -632,6 +719,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -650,6 +740,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -667,6 +760,9 @@
          <width>26</width>
          <height>22</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
        </property>
        <property name="text">
         <string>...</string>
@@ -705,6 +801,9 @@
         <height>61</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>The root directory where log files will be stored.</string>
+      </property>
       <property name="title">
        <string>Root Directory</string>
       </property>
@@ -727,6 +826,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -744,6 +846,9 @@
          <width>26</width>
          <height>22</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
        </property>
        <property name="text">
         <string>...</string>
@@ -763,6 +868,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -781,6 +889,9 @@
         <width>611</width>
         <height>61</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>The filename to use to log output to standard out to.</string>
       </property>
       <property name="title">
        <string>Standard Output (stdout) Filename</string>
@@ -804,6 +915,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -821,6 +935,9 @@
          <width>26</width>
          <height>22</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
        </property>
        <property name="text">
         <string>...</string>
@@ -840,6 +957,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -858,6 +978,9 @@
         <width>611</width>
         <height>61</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>The filename to use to log standard error to.</string>
       </property>
       <property name="title">
        <string>Standard Error (stderr) Filename</string>
@@ -881,6 +1004,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -899,6 +1025,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -916,6 +1045,9 @@
          <width>26</width>
          <height>22</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
        </property>
        <property name="text">
         <string>...</string>
@@ -954,6 +1086,9 @@
         <height>61</height>
        </rect>
       </property>
+      <property name="toolTip">
+       <string>The snapshot and frame image format that should be used.</string>
+      </property>
       <property name="title">
        <string>Snapshot/Frame Format</string>
       </property>
@@ -976,6 +1111,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -993,6 +1131,9 @@
          <width>26</width>
          <height>22</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
        </property>
        <property name="text">
         <string>...</string>
@@ -1012,6 +1153,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -1030,6 +1174,9 @@
         <width>611</width>
         <height>61</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>The quality of snapshots and frames.</string>
       </property>
       <property name="title">
        <string>Snapshot Quality (-1 default, 0 = max compression, 100 = max quality)</string>
@@ -1053,6 +1200,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -1070,6 +1220,9 @@
          <width>26</width>
          <height>22</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
        </property>
        <property name="text">
         <string>...</string>
@@ -1089,6 +1242,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -1107,6 +1263,9 @@
         <width>611</width>
         <height>61</height>
        </rect>
+      </property>
+      <property name="toolTip">
+       <string>The file extension to use when saving snapshots and frames.</string>
       </property>
       <property name="title">
        <string>Snapshot File Extension</string>
@@ -1130,6 +1289,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -1148,6 +1310,9 @@
          <height>22</height>
         </rect>
        </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
        <property name="text">
         <string>...</string>
        </property>
@@ -1165,6 +1330,9 @@
          <width>26</width>
          <height>22</height>
         </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
        </property>
        <property name="text">
         <string>...</string>
