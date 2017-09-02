@@ -195,9 +195,23 @@ void GeneralSettingsDialog::defaultHomeNetworkSaveAction() {
         LogUI::logEvent("[GS] Save default home network button pressed");
     }
     // Write the new value
-    QString newValue = ui->defaultHomeNetworkLineEdit->text();
-    // TODO: Add some parsing here
-    DataProcessor::setDefaultHomeNetwork(0, 0,0, 0, 0);
+    QString newValue = ui->defaultHomeNetworkLineEdit->text();    
+    // First split the IP address from the subnet.
+    QStringList ipAndMask = newValue.split('/');
+    // Next split out just the ip string
+    QString ip = ipAndMask.at(0);
+    // turn the ip stirng into a list of octets
+    QStringList octets = ip.split(".");
+
+    // extract the mask from the list.
+    QString mask = ipAndMask.at(1);
+
+    // TODO: This all needs proper validation.
+    DataProcessor::setDefaultHomeNetwork(octets.at(0).toInt(),
+                                         octets.at(1).toInt(),
+                                         octets.at(2).toInt(),
+                                         octets.at(3).toInt(),
+                                         mask.toInt());
 
     QString defaultHomeNetwork = DataProcessor::getDefaultHomeNetwork();
     ui->defaultHomeNetworkLineEdit->setText(defaultHomeNetwork);
@@ -218,10 +232,10 @@ void GeneralSettingsDialog::showHomeNetNotSetWarningSaveAction() {
     // Write the new value
     QString newValue = ui->homeNetNotSetWarnLineEdit->text();
     // Add validation and conversion
-    DataProcessor::setShowHomeNetworkNotSetError(1);
+    DataProcessor::setShowHomeNetworkNotSetError(newValue.toInt());
 
     bool showHomeNetNotSetWarning = DataProcessor::getShowHomeNetworkNotSetError();
-    ui->homeNetNotSetWarnLineEdit->setText(QString(showHomeNetNotSetWarning));
+    ui->homeNetNotSetWarnLineEdit->setText(QString::number(showHomeNetNotSetWarning));
 }
 
 void GeneralSettingsDialog::showHomeNetNotSetWarningUndoAction() {
@@ -319,11 +333,10 @@ void GeneralSettingsDialog::snapshotQualitySaveAction() {
     }
     // Write the new value
     QString newValue = ui->snapshotQualityLineEdit->text();
-    // TODO: Proper convrsion + validation
-    DataProcessor::setScreenshotQuality(-1);
+    DataProcessor::setScreenshotQuality(newValue.toInt());
 
     int screenshotQuality = DataProcessor::getScreenshotQuality();
-    ui->snapshotQualityLineEdit->setText(QString(screenshotQuality));
+    ui->snapshotQualityLineEdit->setText(QString::number(screenshotQuality));
 }
 
 void GeneralSettingsDialog::snapshotQualityUndoAction() {
