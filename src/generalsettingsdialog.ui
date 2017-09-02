@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="recordDirectoryTab">
     <property name="accessibleName">
@@ -1405,7 +1405,7 @@
    <slot>rootDirUndoAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>638</x>
+     <x>598</x>
      <y>117</y>
     </hint>
     <hint type="destinationlabel">
@@ -1421,7 +1421,7 @@
    <slot>rootDirSaveAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>608</x>
+     <x>568</x>
      <y>117</y>
     </hint>
     <hint type="destinationlabel">
@@ -1437,8 +1437,8 @@
    <slot>pcapSubdirSaveAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>595</x>
-     <y>174</y>
+     <x>558</x>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
      <x>382</x>
@@ -1453,8 +1453,8 @@
    <slot>pcapSubdirUndoAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>627</x>
-     <y>172</y>
+     <x>590</x>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
      <x>404</x>
@@ -1469,8 +1469,8 @@
    <slot>framesSubdirSaveAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>588</x>
-     <y>229</y>
+     <x>551</x>
+     <y>237</y>
     </hint>
     <hint type="destinationlabel">
      <x>425</x>
@@ -1485,8 +1485,8 @@
    <slot>framesSubdirUndoAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>619</x>
-     <y>230</y>
+     <x>582</x>
+     <y>237</y>
     </hint>
     <hint type="destinationlabel">
      <x>442</x>
@@ -1501,8 +1501,8 @@
    <slot>snapshotsSubdirSaveAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>600</x>
-     <y>289</y>
+     <x>563</x>
+     <y>297</y>
     </hint>
     <hint type="destinationlabel">
      <x>455</x>
@@ -1517,8 +1517,8 @@
    <slot>snapshotsSubdirUndoAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>626</x>
-     <y>285</y>
+     <x>589</x>
+     <y>297</y>
     </hint>
     <hint type="destinationlabel">
      <x>495</x>
@@ -1533,8 +1533,8 @@
    <slot>liveSubdirSaveAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>601</x>
-     <y>347</y>
+     <x>564</x>
+     <y>357</y>
     </hint>
     <hint type="destinationlabel">
      <x>658</x>
@@ -1549,8 +1549,8 @@
    <slot>liveSubdirUndoAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>631</x>
-     <y>352</y>
+     <x>594</x>
+     <y>357</y>
     </hint>
     <hint type="destinationlabel">
      <x>639</x>
@@ -1565,8 +1565,8 @@
    <slot>replaySubdirSaveAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>592</x>
-     <y>405</y>
+     <x>555</x>
+     <y>417</y>
     </hint>
     <hint type="destinationlabel">
      <x>221</x>
@@ -1581,8 +1581,8 @@
    <slot>replaySubdirUndoAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>622</x>
-     <y>406</y>
+     <x>585</x>
+     <y>417</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
@@ -1597,8 +1597,8 @@
    <slot>defaultHomeNetworkSaveAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>596</x>
-     <y>109</y>
+     <x>559</x>
+     <y>117</y>
     </hint>
     <hint type="destinationlabel">
      <x>514</x>
@@ -1613,8 +1613,8 @@
    <slot>defaultHomeNetworkUndoAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>621</x>
-     <y>112</y>
+     <x>584</x>
+     <y>117</y>
     </hint>
     <hint type="destinationlabel">
      <x>514</x>
@@ -1629,8 +1629,8 @@
    <slot>showHomeNetNotSetWarningSaveAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>601</x>
-     <y>165</y>
+     <x>564</x>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
      <x>490</x>
@@ -1645,8 +1645,8 @@
    <slot>showHomeNetNotSetWarningUndoAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>629</x>
-     <y>168</y>
+     <x>592</x>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
      <x>647</x>
@@ -1661,8 +1661,8 @@
    <slot>logRootDirSaveAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>596</x>
-     <y>113</y>
+     <x>559</x>
+     <y>117</y>
     </hint>
     <hint type="destinationlabel">
      <x>543</x>
@@ -1677,8 +1677,8 @@
    <slot>logRootDirUndoAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>628</x>
-     <y>109</y>
+     <x>591</x>
+     <y>117</y>
     </hint>
     <hint type="destinationlabel">
      <x>606</x>
@@ -1693,8 +1693,8 @@
    <slot>stdoutFilenameSaveAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>588</x>
-     <y>173</y>
+     <x>551</x>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
      <x>577</x>
@@ -1709,8 +1709,8 @@
    <slot>stdoutFilenameUndoAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>622</x>
-     <y>173</y>
+     <x>585</x>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
      <x>626</x>
@@ -1725,8 +1725,8 @@
    <slot>stderrFilenameSaveAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>601</x>
-     <y>230</y>
+     <x>564</x>
+     <y>237</y>
     </hint>
     <hint type="destinationlabel">
      <x>606</x>
@@ -1741,8 +1741,8 @@
    <slot>stderrFilenameUndoAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>630</x>
-     <y>231</y>
+     <x>593</x>
+     <y>237</y>
     </hint>
     <hint type="destinationlabel">
      <x>666</x>
@@ -1757,8 +1757,8 @@
    <slot>snapshotFormatSaveAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>599</x>
-     <y>109</y>
+     <x>562</x>
+     <y>117</y>
     </hint>
     <hint type="destinationlabel">
      <x>578</x>
@@ -1773,8 +1773,8 @@
    <slot>snapshotFormatUndoAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>629</x>
-     <y>114</y>
+     <x>592</x>
+     <y>117</y>
     </hint>
     <hint type="destinationlabel">
      <x>657</x>
@@ -1789,8 +1789,8 @@
    <slot>snapshotQualitySaveAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>592</x>
-     <y>175</y>
+     <x>555</x>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
      <x>580</x>
@@ -1805,8 +1805,8 @@
    <slot>snapshotQualityUndoAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>620</x>
-     <y>166</y>
+     <x>583</x>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
      <x>650</x>
@@ -1821,8 +1821,8 @@
    <slot>snapshotExtensionSaveAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>600</x>
-     <y>232</y>
+     <x>563</x>
+     <y>237</y>
     </hint>
     <hint type="destinationlabel">
      <x>586</x>
@@ -1837,12 +1837,284 @@
    <slot>snapshotExtensionUndoAction()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>637</x>
-     <y>224</y>
+     <x>598</x>
+     <y>237</y>
     </hint>
     <hint type="destinationlabel">
      <x>614</x>
      <y>678</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rootDirReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>rootDirResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>619</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>624</x>
+     <y>650</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pcapsSubDirReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>pcapSubdirResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>612</x>
+     <y>171</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>563</x>
+     <y>688</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>framesSubDirReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>framesSubdirResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>620</x>
+     <y>236</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>589</x>
+     <y>726</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotsSubDirReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotsSubdirResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>616</x>
+     <y>292</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>569</x>
+     <y>673</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>liveSubDirReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>liveSubdirResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>623</x>
+     <y>352</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>611</x>
+     <y>734</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaySubDirReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>replaySubdirResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>615</x>
+     <y>402</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>630</x>
+     <y>715</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>defaultHomeNetworkReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>defaultHomeNetworkResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>618</x>
+     <y>114</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>588</x>
+     <y>656</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>homeNetNotSetWarnReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>showHomeNetNotSetWarningResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>624</x>
+     <y>171</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>669</x>
+     <y>726</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stderrFilenameReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>stderrFilenameResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>618</x>
+     <y>232</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>526</x>
+     <y>620</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stdoutFilenameReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>stdoutFilenameResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>618</x>
+     <y>167</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>422</x>
+     <y>644</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rootLogDirReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>logRootDirResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>611</x>
+     <y>105</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>345</x>
+     <y>625</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotExtensionReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotExtensionResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>618</x>
+     <y>232</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>441</x>
+     <y>610</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotQualityReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotQualityResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>618</x>
+     <y>174</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>491</x>
+     <y>573</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotFormatReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotFormatResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>619</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>655</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>resetAllPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>resetAllSettingsAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>115</x>
+     <y>465</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>163</x>
+     <y>564</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>loadSettingsPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>loadAllSettingsAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>346</x>
+     <y>461</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>341</x>
+     <y>585</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>closeGeneralSettingsPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>547</x>
+     <y>467</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>544</x>
+     <y>548</y>
     </hint>
    </hints>
   </connection>
@@ -1876,5 +2148,21 @@
   <slot>snapshotQualityUndoAction()</slot>
   <slot>snapshotExtensionSaveAction()</slot>
   <slot>snapshotExtensionUndoAction()</slot>
+  <slot>rootDirResetAction()</slot>
+  <slot>pcapSubdirResetAction()</slot>
+  <slot>framesSubdirResetAction()</slot>
+  <slot>snapshotsSubdirResetAction()</slot>
+  <slot>liveSubdirResetAction()</slot>
+  <slot>replaySubdirResetAction()</slot>
+  <slot>defaultHomeNetworkResetAction()</slot>
+  <slot>showHomeNetNotSetWarningResetAction()</slot>
+  <slot>logRootDirResetAction()</slot>
+  <slot>stdoutFilenameResetAction()</slot>
+  <slot>stderrFilenameResetAction()</slot>
+  <slot>snapshotFormatResetAction()</slot>
+  <slot>snapshotQualityResetAction()</slot>
+  <slot>snapshotExtensionResetAction()</slot>
+  <slot>resetAllSettingsAction()</slot>
+  <slot>loadAllSettingsAction()</slot>
  </slots>
 </ui>

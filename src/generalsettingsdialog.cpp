@@ -82,6 +82,21 @@ void GeneralSettingsDialog::rootDirSaveAction() {
     ui->rootDirLineEdit->setText(loggingDefaultDir);
 }
 
+void GeneralSettingsDialog::rootDirResetAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Reset root directory button pressed");
+    }
+
+    QString recordPath = QStandardPaths::standardLocations(QStandardPaths::DownloadLocation).first() + "/" + "inetvis-recorded";
+
+    // Write the new value
+    DataProcessor::setRecordDir(recordPath );
+
+    // Read it out just to make sure it worked.
+    QString loggingDefaultDir = DataProcessor::getRecordDir();
+    ui->rootDirLineEdit->setText(loggingDefaultDir);
+}
+
 void GeneralSettingsDialog::pcapSubdirSaveAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Save pcap subdirectory button pressed");
@@ -100,6 +115,21 @@ void GeneralSettingsDialog::pcapSubdirUndoAction() {
         LogUI::logEvent("[GS] Undo pcap subdirectory button pressed");
     }
 
+    QString pcapSubdir = DataProcessor::getPcapsDir();
+    ui->pcapsSubdirLineEdit->setText(pcapSubdir);
+}
+
+void GeneralSettingsDialog::pcapSubdirResetAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Reset pcap subdirectory button pressed");
+    }
+
+    QString recordPath = DataProcessor::getRecordDir();
+    QString newValue = recordPath + "/pcaps";
+
+    DataProcessor::setPcapsDir(newValue);
+
+    // Read it out just to make sure it worked.
     QString pcapSubdir = DataProcessor::getPcapsDir();
     ui->pcapsSubdirLineEdit->setText(pcapSubdir);
 }
@@ -126,6 +156,20 @@ void GeneralSettingsDialog::framesSubdirUndoAction() {
     ui->framesSubdirLineEdit->setText(framesSubdir);
 }
 
+void GeneralSettingsDialog::framesSubdirResetAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Reset frames subdirectory button pressed");
+    }
+    QString recordPath = DataProcessor::getRecordDir();
+    QString newValue = recordPath + "/frames";
+
+    DataProcessor::setFramesDir(newValue);
+
+    // Read it out just to make sure it worked.
+    QString framesSubdir = DataProcessor::getFramesDir();
+    ui->framesSubdirLineEdit->setText(framesSubdir);
+}
+
 void GeneralSettingsDialog::snapshotsSubdirSaveAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Save snapshots subdirectory button pressed");
@@ -147,6 +191,20 @@ void GeneralSettingsDialog::snapshotsSubdirUndoAction() {
     ui->snapshotsSubdirLineEdit->setText(snapshotsSubdir);
 }
 
+void GeneralSettingsDialog::snapshotsSubdirResetAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Reset snapshots subdirectory button pressed");
+    }
+    QString recordPath = DataProcessor::getRecordDir();
+    QString newValue = recordPath + "/snapshots";
+
+    DataProcessor::setSnapshotsDir(newValue);
+
+    // Read it out just to make sure it worked.
+    QString snapshotsSubdir = DataProcessor::getSnapshotsDir();
+    ui->snapshotsSubdirLineEdit->setText(snapshotsSubdir);
+}
+
 void GeneralSettingsDialog::liveSubdirSaveAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Save live subdirectory button pressed");
@@ -163,8 +221,19 @@ void GeneralSettingsDialog::liveSubdirSaveAction() {
 
 void GeneralSettingsDialog::liveSubdirUndoAction() {
     if (LogUI::isEnabled()) {
-        LogUI::logEvent("[GS] Undolive subdirectory button pressed");
+        LogUI::logEvent("[GS] Undo live subdirectory button pressed");
     }
+    QString liveSubdir = DataProcessor::getLiveSubdir();
+    ui->liveSubdirLineEdit->setText(liveSubdir);
+}
+
+void GeneralSettingsDialog::liveSubdirResetAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Rest live subdirectory button pressed");
+    }
+    DataProcessor::setLiveSubdir("live");
+
+    // Read it out just to make sure it worked.
     QString liveSubdir = DataProcessor::getLiveSubdir();
     ui->liveSubdirLineEdit->setText(liveSubdir);
 }
@@ -186,6 +255,17 @@ void GeneralSettingsDialog::replaySubdirUndoAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Undo replay subdirectory button pressed");
     }
+    QString replaySubdir = DataProcessor::getReplaySubdir();
+    ui->replaySubdirLineEdit->setText(replaySubdir);
+}
+
+void GeneralSettingsDialog::replaySubdirResetAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Reset replay subdirectory button pressed");
+    }
+    DataProcessor::setReplaySubdir("replayed");
+
+    // Read it out just to make sure it worked.
     QString replaySubdir = DataProcessor::getReplaySubdir();
     ui->replaySubdirLineEdit->setText(replaySubdir);
 }
@@ -225,6 +305,16 @@ void GeneralSettingsDialog::defaultHomeNetworkUndoAction() {
     ui->defaultHomeNetworkLineEdit->setText(defaultHomeNetwork);
 }
 
+void GeneralSettingsDialog::defaultHomeNetworkResetAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Reset default home network button pressed");
+    }
+    DataProcessor::setDefaultHomeNetwork(0, 0, 0, 0, 0);
+
+    QString defaultHomeNetwork = DataProcessor::getDefaultHomeNetwork();
+    ui->defaultHomeNetworkLineEdit->setText(defaultHomeNetwork);
+}
+
 void GeneralSettingsDialog::showHomeNetNotSetWarningSaveAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Save show home network not set warning button pressed");
@@ -242,6 +332,16 @@ void GeneralSettingsDialog::showHomeNetNotSetWarningUndoAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Undo show home network not set warning button pressed");
     }
+    bool showHomeNetNotSetWarning = DataProcessor::getShowHomeNetworkNotSetError();
+    ui->homeNetNotSetWarnLineEdit->setText(QString::number(showHomeNetNotSetWarning));
+}
+
+void GeneralSettingsDialog::showHomeNetNotSetWarningResetAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Reset show home network not set warning button pressed");
+    }
+    DataProcessor::setShowHomeNetworkNotSetError(true);
+
     bool showHomeNetNotSetWarning = DataProcessor::getShowHomeNetworkNotSetError();
     ui->homeNetNotSetWarnLineEdit->setText(QString::number(showHomeNetNotSetWarning));
 }
@@ -266,6 +366,17 @@ void GeneralSettingsDialog::logRootDirUndoAction() {
     ui->rootLogDirLineEdit->setText(loggingDefaultDir);
 }
 
+void GeneralSettingsDialog::logRootDirResetAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Reset log root directory button pressed");
+    }
+
+    Log::setLogRootDir("logs");
+
+    QString loggingDefaultDir = Log::getLogRootDir();
+    ui->rootLogDirLineEdit->setText(loggingDefaultDir);
+}
+
 void GeneralSettingsDialog::stdoutFilenameSaveAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Save stdout filename button pressed");
@@ -286,6 +397,16 @@ void GeneralSettingsDialog::stdoutFilenameUndoAction() {
     ui->stdoutFilenameLineEdit->setText(stdoutFilename);
 }
 
+void GeneralSettingsDialog::stdoutFilenameResetAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Reset stdout filename button pressed");
+    }
+    Log::setStdoutFilename("stdout");
+
+    QString stdoutFilename = Log::getStdoutFilename();
+    ui->stdoutFilenameLineEdit->setText(stdoutFilename);
+}
+
 void GeneralSettingsDialog::stderrFilenameSaveAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Save stderr filename button pressed");
@@ -302,6 +423,16 @@ void GeneralSettingsDialog::stderrFilenameUndoAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Undo stderr filename button pressed");
     }
+    QString stderrFilename = Log::getStderrFilename();
+    ui->stderrFilenameLineEdit->setText(stderrFilename);
+}
+
+void GeneralSettingsDialog::stderrFilenameResetAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Reset stderr filename button pressed");
+    }
+    Log::setStderrFilename("stderr");
+
     QString stderrFilename = Log::getStderrFilename();
     ui->stderrFilenameLineEdit->setText(stderrFilename);
 }
@@ -327,6 +458,16 @@ void GeneralSettingsDialog::snapshotFormatUndoAction() {
     ui->snapshotFormatLineEdit->setText(screenshotFormat);
 }
 
+void GeneralSettingsDialog::snapshotFormatResetAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Reset snapshot format button pressed");
+    }
+    DataProcessor::setScreenshotFormat("png");
+
+    QString screenshotFormat = DataProcessor::getScreenshotFormat();
+    ui->snapshotFormatLineEdit->setText(screenshotFormat);
+}
+
 void GeneralSettingsDialog::snapshotQualitySaveAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Save snapshot quality button pressed");
@@ -343,6 +484,16 @@ void GeneralSettingsDialog::snapshotQualityUndoAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Undo snapshot quality button pressed");
     }
+    int screenshotQuality = DataProcessor::getScreenshotQuality();
+    ui->snapshotQualityLineEdit->setText(QString::number(screenshotQuality));
+}
+
+void GeneralSettingsDialog::snapshotQualityResetAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Reset snapshot quality button pressed");
+    }
+    DataProcessor::setScreenshotQuality(-1);
+
     int screenshotQuality = DataProcessor::getScreenshotQuality();
     ui->snapshotQualityLineEdit->setText(QString::number(screenshotQuality));
 }
@@ -367,3 +518,57 @@ void GeneralSettingsDialog::snapshotExtensionUndoAction() {
     ui->snapshotExtensionLineEdit->setText(screenshotExtension);
 }
 
+void GeneralSettingsDialog::snapshotExtensionResetAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Reset snapshot extension button pressed");
+    }
+    DataProcessor::setScreenshotExtension("png");
+
+    QString screenshotExtension = DataProcessor::getScreenshotExtension();
+    ui->snapshotExtensionLineEdit->setText(screenshotExtension);
+}
+
+void GeneralSettingsDialog::resetAllSettingsAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Reset all settings button pressed");
+    }
+
+    // TODO: See if there's a better way to do this.. Perhaps a list/map?
+    rootDirResetAction();
+    pcapSubdirResetAction();
+    framesSubdirResetAction();
+    snapshotsSubdirResetAction();
+    liveSubdirResetAction();
+    replaySubdirResetAction();
+    defaultHomeNetworkResetAction();
+    showHomeNetNotSetWarningResetAction();
+    logRootDirResetAction();
+    stdoutFilenameResetAction();
+    stderrFilenameResetAction();
+    snapshotFormatResetAction();
+    snapshotQualityResetAction();
+    snapshotExtensionResetAction();
+
+    // TODO: Add to show a popup saying completed successfully (or not)
+}
+
+void GeneralSettingsDialog::loadAllSettingsAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Load all settings from disk button pressed");
+    }
+
+    rootDirUndoAction();
+    pcapSubdirUndoAction();
+    framesSubdirUndoAction();
+    snapshotsSubdirUndoAction();
+    liveSubdirUndoAction();
+    replaySubdirUndoAction();
+    defaultHomeNetworkUndoAction();
+    showHomeNetNotSetWarningUndoAction();
+    logRootDirUndoAction();
+    stdoutFilenameUndoAction();
+    stderrFilenameUndoAction();
+    snapshotFormatUndoAction();
+    snapshotQualityUndoAction();
+    snapshotExtensionUndoAction();
+}
