@@ -1,12 +1,14 @@
 #include <log.h>
 #include <iostream>
 
+// Re-define static member variables here.
 QString Log::stdoutFilename;
 QString Log::stderrFilename;
 QFile Log::stdoutFile;
 QFile Log::stderrFile;
 QTextStream Log::stdoutLogStream;
 QTextStream Log::stderrLogStream;
+QSettings Log::settings;
 
 bool Log::createDirectories() {
     QDir dir = QDir();
@@ -82,33 +84,39 @@ void Log::logError(QString msg) {
 }
 
 QString Log::getLogRootDir() {
-    QSettings s;
-    return s.value("logging/root_dir").toString();
+    return settings.value(LOG_ROOT_DIR_KEY).toString();
 }
 
 void Log::setLogRootDir(QString logRootDir) {
-    QSettings s;
-    s.setValue("logging/root_dir", logRootDir);
+    settings.setValue(LOG_ROOT_DIR_KEY, logRootDir);
+}
+
+bool Log::isLogRootDirSet() {
+    return settings.contains(LOG_ROOT_DIR_KEY);
 }
 
 QString Log::getStdoutFilename() {
-    QSettings s;
-    return s.value("logging/stdout_filename").toString();
+    return settings.value(STDOUT_FILENAME_KEY).toString();
 }
 
 void Log::setStdoutFilename(QString stdoutFilename) {
-    QSettings s;
-    s.setValue("logging/stdout_filename", stdoutFilename);
+    settings.setValue(STDOUT_FILENAME_KEY, stdoutFilename);
+}
+
+bool Log::isStdoutFilenameSet() {
+    return settings.contains(STDOUT_FILENAME_KEY);
 }
 
 QString Log::getStderrFilename() {
-    QSettings s;
-    return s.value("logging/stderr_filename").toString();
+    return settings.value(STDERR_FILENAME_KEY).toString();
 }
 
 void Log::setStderrFilename(QString stderrFilename) {
-    QSettings s;
-        s.setValue("logging/stderr_filename", stderrFilename);
+    settings.setValue(STDERR_FILENAME_KEY, stderrFilename);
+}
+
+bool Log::isStderrFilenameSet() {
+    return settings.contains(STDERR_FILENAME_KEY);
 }
 
 bool Log::enable() {

@@ -60,54 +60,52 @@ void initialiseQtSettings() {
     settings.clear();
 
     // TODO: Test code - Using this for testing. Make appropriate per distro later
-    QString recordPath = QStandardPaths::standardLocations(QStandardPaths::DownloadLocation).first() + "/" + "inetvis-recorded";
+    //QString recordPath = QStandardPaths::standardLocations(QStandardPaths::DownloadLocation).first() + "/" + "inetvis-recorded";
 
-    // TODO: These settings strings should be constants somewhere.
-    // The recording directories
-    if (!settings.contains("dataproc/recording/default_dir")) {
-        settings.setValue("dataproc/recording/default_dir", recordPath);
+    if (!DataProcessor::isRecordDirSet()) {
+        DataProcessor::setRecordDir(RECORD_DEFAULT_DIR_DEFAULT);
     }
-    if (!settings.contains("dataproc/recording/pcaps_subdir")) {
-        settings.setValue("dataproc/recording/pcaps_subdir", recordPath + "/pcaps");
+    if (!DataProcessor::isPcapsDirSet()) {
+        DataProcessor::setPcapsDir(RECORD_PCAPS_SUBDIR_DEFAULT);
     }
-    if (!settings.contains("dataproc/recording/frames_subdir")) {
-        settings.setValue("dataproc/recording/frames_subdir", recordPath + "/frames");
+    if (!DataProcessor::isFramesDirSet()) {
+        DataProcessor::setFramesDir(RECORD_FRAMES_SUBDIR_DEFAULT);
     }
-    if (!settings.contains("dataproc/recording/snapshots_subdir")) {
-        settings.setValue("dataproc/recording/snapshots_subdir", recordPath + "/snapshots");
+    if (!DataProcessor::isSnapshotDirSet()) {
+        DataProcessor::setSnapshotsDir(RECORD_SNAPSHOTS_SUBDIR_DEFAULT);
     }
-    if (!settings.contains("dataproc/recording/live_subdir")) {
-        settings.setValue("dataproc/recording/live_subdir", "live");
+    if (!DataProcessor::isDefaultHomeNetworkSet()) {
+        DataProcessor::setLiveSubdir(RECORD_LIVE_SUBDIR_DEFAULT);
     }
-    if (!settings.contains("dataproc/recording/replay_subdir")) {
-        settings.setValue("dataproc/recording/replay_subdir", "replayed");
+    if (!DataProcessor::isShowHomeNetworkNotSetError()) {
+        DataProcessor::setReplaySubdir(RECORD_REPLAY_SUBDIR_DEFAULT);
     }
     // Home network settings    
-    if (!settings.contains("dataproc/home_network/default_home_network")) {
-        settings.setValue("dataproc/home_network/default_home_network", "0.0.0.0/0");
+    if (!DataProcessor::isDefaultHomeNetworkSet()) {
+        DataProcessor::setDefaultHomeNetwork(DEFAULT_HOME_NETWORK_DEFAULT);
     }
-    if (!settings.contains("dataproc/home_network/show_not_set_error")) {
-        settings.setValue("dataproc/home_network/show_not_set_error", true);
+    if (!DataProcessor::isShowHomeNetworkNotSetError()) {
+        DataProcessor::setShowHomeNetworkNotSetError(SHOW_HOME_NETWORK_NOT_SET_ERROR_DEFAULT);
     }
     // Log file settings
-    if (!settings.contains("logging/root_dir")) {
-        settings.setValue("logging/root_dir", "logs");
+    if (!Log::isLogRootDirSet()) {
+        Log::setLogRootDir(LOG_ROOT_DIR_DEFAULT);
     }
-    if (!settings.contains("logging/stdout_filename")) {
-        settings.setValue("logging/stdout_filename", "stdout");
+    if (!Log::isStdoutFilenameSet()) {
+        Log::setStdoutFilename(STDOUT_FILENAME_DEFAULT);
     }
-    if (!settings.contains("logging/stderr_filename")) {
-        settings.setValue("logging/stderr_filename", "stderr");
+    if (!Log::isStderrFilenameSet()) {
+        Log::setStderrFilename(STDERR_FILENAME_DEFAULT);
     }
     // Frame snapshot settings
-    if (!settings.contains("dataproc/screenshot/screenshot_format")) {
-        settings.setValue("dataproc/screenshot/screenshot_format", "png");
+    if (!DataProcessor::isScreenshotFormatSet()) {
+        DataProcessor::setScreenshotFormat(SCREENSHOT_FORMAT_DEFAULT);
     }
-    if (!settings.contains("dataproc/screenshot/screenshot_quality")) {
-        settings.setValue("dataproc/screenshot/screenshot_quality", -1);
+    if (!DataProcessor::isScreenshotQualitySet()) {
+        DataProcessor::setScreenshotQuality(SCREENSHOT_QUALITY_DEFAULT);
     }
-    if (!settings.contains("dataproc/screenshot/screenshot_extension")) {
-        settings.setValue("dataproc/screenshot/screenshot_extension", "png");
+    if (!DataProcessor::isScreenshotExtensionSet()) {
+        DataProcessor::setScreenshotExtension(SCREENSHOT_EXTENSION_DEFAULT);
     }
 }
 

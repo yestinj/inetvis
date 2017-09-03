@@ -70,6 +70,7 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #include <qtimer.h>
 #include <qdir.h>
 #include <pcap.h>
+#include <QSettings>
 
 #ifdef MAC
 #include <OpenGL/gl.h>
@@ -173,6 +174,32 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 #define NEW_POINT_BULGE_USEC 500000
 //this value is the number of microseconds the new points should bulge for
+
+// Settings key definitions
+#define RECORD_DEFAULT_DIR_KEY "dataproc/recording/default_dir"
+#define RECORD_PCAPS_SUBDIR_KEY "dataproc/recording/pcaps_subdir"
+#define RECORD_FRAMES_SUBDIR_KEY "dataproc/recording/frames_subdir"
+#define RECORD_SNAPSHOTS_SUBDIR_KEY "dataproc/recording/snapshots_subdir"
+#define RECORD_LIVE_SUBDIR_KEY "dataproc/recording/live_subdir"
+#define RECORD_REPLAY_SUBDIR_KEY "dataproc/recording/replay_subdir"
+#define DEFAULT_HOME_NETWORK_KEY "dataproc/home_network/default_home_network"
+#define SHOW_HOME_NETWORK_NOT_SET_ERROR_KEY "dataproc/home_network/show_not_set_error"
+#define SCREENSHOT_FORMAT_KEY "dataproc/screenshot/screenshot_format"
+#define SCREENSHOT_QUALITY_KEY "dataproc/screenshot/screenshot_quality"
+#define SCREENSHOT_EXTENSION_KEY "dataproc/screenshot/screenshot_extension"
+
+// Default settings values
+#define RECORD_DEFAULT_DIR_DEFAULT "inetvis-recorded"
+#define RECORD_PCAPS_SUBDIR_DEFAULT "inetvis-recorded/pcaps"
+#define RECORD_FRAMES_SUBDIR_DEFAULT "inetvis-recorded/frames"
+#define RECORD_SNAPSHOTS_SUBDIR_DEFAULT "inetvis-recorded/snapshots"
+#define RECORD_LIVE_SUBDIR_DEFAULT "live"
+#define RECORD_REPLAY_SUBDIR_DEFAULT "replayed"
+#define DEFAULT_HOME_NETWORK_DEFAULT "0.0.0.0/0"
+#define SHOW_HOME_NETWORK_NOT_SET_ERROR_DEFAULT true
+#define SCREENSHOT_FORMAT_DEFAULT "png"
+#define SCREENSHOT_QUALITY_DEFAULT -1
+#define SCREENSHOT_EXTENSION_DEFAULT "png"
 
 
 enum replayModes {NOT_READY, MONITOR_LOCAL, MONITOR_REMOTE, REPLAY_FILE};
@@ -380,6 +407,8 @@ private:
     //points in a diplay list if playback is not running
     GLuint staticSatterplotList;
 
+    static QSettings settings;
+
     //private internal operations --------------------------------------------
 
     void updateTimeIncrimental(int tmLapse); //function to set the
@@ -418,26 +447,49 @@ public:
     // configuration
     static QString getRecordDir();
     static void setRecordDir(QString recordDir);
+    static bool isRecordDirSet();
+
     static QString getPcapsDir();
     static void setPcapsDir(QString pcapsDir);
+    static bool isPcapsDirSet();
+
     static QString getFramesDir();
     static void setFramesDir(QString framesDir);
+    static bool isFramesDirSet();
+
     static QString getSnapshotsDir();
     static void setSnapshotsDir(QString snapshotsDir);
+    static bool isSnapshotDirSet();
+
     static QString getLiveSubdir();
     static void setLiveSubdir(QString liveSubdir);
-    static QString getReplaySubdir();    
+    static bool isLiveSubdirSet();
+
+    static QString getReplaySubdir();
     static void setReplaySubdir(QString replaySubdir);
+    static bool isReplaySubdirSet();
+
     static QString getDefaultHomeNetwork();
     static void setDefaultHomeNetwork(int, int, int, int, int);
+    static void setDefaultHomeNetwork(QString);
+    static bool isDefaultHomeNetworkSet();
+
     static bool getShowHomeNetworkNotSetError();
     static void setShowHomeNetworkNotSetError(bool show);
+    static bool isShowHomeNetworkNotSetError();
+
     static QString getScreenshotFormat();
     static void setScreenshotFormat(QString screenshotFormat);
+    static bool isScreenshotFormatSet();
+
     static QString getScreenshotExtension();
     static void setScreenshotExtension(QString screenshotExtension);
+    static bool isScreenshotExtensionSet();
+
     static int getScreenshotQuality();
     static void setScreenshotQuality(int screenshotQuality);
+    static bool isScreenshotQualitySet();
+
 
 public slots:
 

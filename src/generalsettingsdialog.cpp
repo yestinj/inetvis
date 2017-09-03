@@ -87,12 +87,8 @@ void GeneralSettingsDialog::rootDirResetAction() {
         LogUI::logEvent("[GS] Reset root directory button pressed");
     }
 
-    QString recordPath = QStandardPaths::standardLocations(QStandardPaths::DownloadLocation).first() + "/" + "inetvis-recorded";
+    DataProcessor::setRecordDir(RECORD_DEFAULT_DIR_DEFAULT);
 
-    // Write the new value
-    DataProcessor::setRecordDir(recordPath );
-
-    // Read it out just to make sure it worked.
     QString loggingDefaultDir = DataProcessor::getRecordDir();
     ui->rootDirLineEdit->setText(loggingDefaultDir);
 }
@@ -124,10 +120,7 @@ void GeneralSettingsDialog::pcapSubdirResetAction() {
         LogUI::logEvent("[GS] Reset pcap subdirectory button pressed");
     }
 
-    QString recordPath = DataProcessor::getRecordDir();
-    QString newValue = recordPath + "/pcaps";
-
-    DataProcessor::setPcapsDir(newValue);
+    DataProcessor::setPcapsDir(RECORD_PCAPS_SUBDIR_DEFAULT);
 
     // Read it out just to make sure it worked.
     QString pcapSubdir = DataProcessor::getPcapsDir();
@@ -160,12 +153,9 @@ void GeneralSettingsDialog::framesSubdirResetAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Reset frames subdirectory button pressed");
     }
-    QString recordPath = DataProcessor::getRecordDir();
-    QString newValue = recordPath + "/frames";
 
-    DataProcessor::setFramesDir(newValue);
+    DataProcessor::setFramesDir(RECORD_FRAMES_SUBDIR_DEFAULT);
 
-    // Read it out just to make sure it worked.
     QString framesSubdir = DataProcessor::getFramesDir();
     ui->framesSubdirLineEdit->setText(framesSubdir);
 }
@@ -195,12 +185,9 @@ void GeneralSettingsDialog::snapshotsSubdirResetAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Reset snapshots subdirectory button pressed");
     }
-    QString recordPath = DataProcessor::getRecordDir();
-    QString newValue = recordPath + "/snapshots";
 
-    DataProcessor::setSnapshotsDir(newValue);
+    DataProcessor::setSnapshotsDir(RECORD_SNAPSHOTS_SUBDIR_DEFAULT);
 
-    // Read it out just to make sure it worked.
     QString snapshotsSubdir = DataProcessor::getSnapshotsDir();
     ui->snapshotsSubdirLineEdit->setText(snapshotsSubdir);
 }
@@ -231,9 +218,9 @@ void GeneralSettingsDialog::liveSubdirResetAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Rest live subdirectory button pressed");
     }
-    DataProcessor::setLiveSubdir("live");
 
-    // Read it out just to make sure it worked.
+    DataProcessor::setLiveSubdir(RECORD_LIVE_SUBDIR_DEFAULT);
+
     QString liveSubdir = DataProcessor::getLiveSubdir();
     ui->liveSubdirLineEdit->setText(liveSubdir);
 }
@@ -263,9 +250,9 @@ void GeneralSettingsDialog::replaySubdirResetAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Reset replay subdirectory button pressed");
     }
-    DataProcessor::setReplaySubdir("replayed");
 
-    // Read it out just to make sure it worked.
+    DataProcessor::setReplaySubdir(RECORD_REPLAY_SUBDIR_DEFAULT);
+
     QString replaySubdir = DataProcessor::getReplaySubdir();
     ui->replaySubdirLineEdit->setText(replaySubdir);
 }
@@ -276,22 +263,8 @@ void GeneralSettingsDialog::defaultHomeNetworkSaveAction() {
     }
     // Write the new value
     QString newValue = ui->defaultHomeNetworkLineEdit->text();    
-    // First split the IP address from the subnet.
-    QStringList ipAndMask = newValue.split('/');
-    // Next split out just the ip string
-    QString ip = ipAndMask.at(0);
-    // turn the ip stirng into a list of octets
-    QStringList octets = ip.split(".");
-
-    // extract the mask from the list.
-    QString mask = ipAndMask.at(1);
-
-    // TODO: This all needs proper validation.
-    DataProcessor::setDefaultHomeNetwork(octets.at(0).toInt(),
-                                         octets.at(1).toInt(),
-                                         octets.at(2).toInt(),
-                                         octets.at(3).toInt(),
-                                         mask.toInt());
+    // TODO: Validation
+    DataProcessor::setDefaultHomeNetwork(newValue);
 
     QString defaultHomeNetwork = DataProcessor::getDefaultHomeNetwork();
     ui->defaultHomeNetworkLineEdit->setText(defaultHomeNetwork);
@@ -309,7 +282,7 @@ void GeneralSettingsDialog::defaultHomeNetworkResetAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Reset default home network button pressed");
     }
-    DataProcessor::setDefaultHomeNetwork(0, 0, 0, 0, 0);
+    DataProcessor::setDefaultHomeNetwork(DEFAULT_HOME_NETWORK_DEFAULT);
 
     QString defaultHomeNetwork = DataProcessor::getDefaultHomeNetwork();
     ui->defaultHomeNetworkLineEdit->setText(defaultHomeNetwork);
@@ -340,7 +313,8 @@ void GeneralSettingsDialog::showHomeNetNotSetWarningResetAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Reset show home network not set warning button pressed");
     }
-    DataProcessor::setShowHomeNetworkNotSetError(true);
+
+    DataProcessor::setShowHomeNetworkNotSetError(SHOW_HOME_NETWORK_NOT_SET_ERROR_DEFAULT);
 
     bool showHomeNetNotSetWarning = DataProcessor::getShowHomeNetworkNotSetError();
     ui->homeNetNotSetWarnLineEdit->setText(QString::number(showHomeNetNotSetWarning));
@@ -371,7 +345,7 @@ void GeneralSettingsDialog::logRootDirResetAction() {
         LogUI::logEvent("[GS] Reset log root directory button pressed");
     }
 
-    Log::setLogRootDir("logs");
+    Log::setLogRootDir(LOG_ROOT_DIR_DEFAULT);
 
     QString loggingDefaultDir = Log::getLogRootDir();
     ui->rootLogDirLineEdit->setText(loggingDefaultDir);
@@ -401,7 +375,8 @@ void GeneralSettingsDialog::stdoutFilenameResetAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Reset stdout filename button pressed");
     }
-    Log::setStdoutFilename("stdout");
+
+    Log::setStdoutFilename(STDOUT_FILENAME_DEFAULT);
 
     QString stdoutFilename = Log::getStdoutFilename();
     ui->stdoutFilenameLineEdit->setText(stdoutFilename);
@@ -431,7 +406,7 @@ void GeneralSettingsDialog::stderrFilenameResetAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Reset stderr filename button pressed");
     }
-    Log::setStderrFilename("stderr");
+    Log::setStderrFilename(STDERR_FILENAME_DEFAULT);
 
     QString stderrFilename = Log::getStderrFilename();
     ui->stderrFilenameLineEdit->setText(stderrFilename);
@@ -462,7 +437,7 @@ void GeneralSettingsDialog::snapshotFormatResetAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Reset snapshot format button pressed");
     }
-    DataProcessor::setScreenshotFormat("png");
+    DataProcessor::setScreenshotFormat(SCREENSHOT_FORMAT_DEFAULT);
 
     QString screenshotFormat = DataProcessor::getScreenshotFormat();
     ui->snapshotFormatLineEdit->setText(screenshotFormat);
@@ -492,7 +467,7 @@ void GeneralSettingsDialog::snapshotQualityResetAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Reset snapshot quality button pressed");
     }
-    DataProcessor::setScreenshotQuality(-1);
+    DataProcessor::setScreenshotQuality(SCREENSHOT_QUALITY_DEFAULT);
 
     int screenshotQuality = DataProcessor::getScreenshotQuality();
     ui->snapshotQualityLineEdit->setText(QString::number(screenshotQuality));
@@ -522,7 +497,7 @@ void GeneralSettingsDialog::snapshotExtensionResetAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Reset snapshot extension button pressed");
     }
-    DataProcessor::setScreenshotExtension("png");
+    DataProcessor::setScreenshotExtension(SCREENSHOT_EXTENSION_DEFAULT);
 
     QString screenshotExtension = DataProcessor::getScreenshotExtension();
     ui->snapshotExtensionLineEdit->setText(screenshotExtension);

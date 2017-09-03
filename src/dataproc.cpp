@@ -6,6 +6,7 @@
 
 using namespace std; //for debugging purposes
 
+QSettings DataProcessor::settings;
 
 /* libpcap pcap_pkthdr definition for reference purposes
 
@@ -3538,68 +3539,92 @@ void DataProcessor::reportError(const QString &errMsg, const QString &function) 
 }
 
 QString DataProcessor::getRecordDir() {
-    QSettings s;
-    return s.value("dataproc/recording/default_dir").toString();
+    return settings.value(RECORD_DEFAULT_DIR_KEY).toString();
 }
 
 void DataProcessor::setRecordDir(QString recordDir) {
-    QSettings s;
-    s.setValue("dataproc/recording/default_dir", recordDir);
+    settings.setValue(RECORD_DEFAULT_DIR_KEY, recordDir);
 }
 
-QString DataProcessor::getPcapsDir() {
-    QSettings s;
-    return s.value("dataproc/recording/pcaps_subdir").toString();
+bool DataProcessor::isRecordDirSet() {
+    return settings.contains(RECORD_DEFAULT_DIR_KEY);
+}
+
+QString DataProcessor::getPcapsDir() {    
+    return settings.value(RECORD_PCAPS_SUBDIR_KEY).toString();
 }
 
 void DataProcessor::setPcapsDir(QString pcapsDir) {
-    QSettings s;
-    s.setValue("dataproc/recording/pcaps_subdir", pcapsDir);
+    settings.setValue(RECORD_PCAPS_SUBDIR_KEY, pcapsDir);
+}
+
+bool DataProcessor::isPcapsDirSet() {
+    return settings.contains(RECORD_PCAPS_SUBDIR_KEY);
 }
 
 QString DataProcessor::getFramesDir() {
-    QSettings s;
-    return s.value("dataproc/recording/frames_subdir").toString();
+    return settings.value(RECORD_FRAMES_SUBDIR_KEY).toString();
 }
 
 void DataProcessor::setFramesDir(QString framesDir) {
-    QSettings s;
-    s.setValue("dataproc/recording/frames_subdir", framesDir);
+    settings.setValue(RECORD_FRAMES_SUBDIR_KEY, framesDir);
+}
+
+bool DataProcessor::isFramesDirSet() {
+    return settings.contains(RECORD_FRAMES_SUBDIR_KEY);
 }
 
 QString DataProcessor::getSnapshotsDir() {
-    QSettings s;
-    return s.value("dataproc/recording/snapshots_subdir").toString();
+    return settings.value(RECORD_SNAPSHOTS_SUBDIR_KEY).toString();
 }
 
-void DataProcessor::setSnapshotsDir(QString snapshotsDir) {
-    QSettings s;
-    s.setValue("dataproc/recording/snapshots_subdir", snapshotsDir);
+void DataProcessor::setSnapshotsDir(QString snapshotsDir) {    
+    settings.setValue(RECORD_SNAPSHOTS_SUBDIR_KEY, snapshotsDir);
+}
+
+bool DataProcessor::isSnapshotDirSet() {
+    return settings.contains(RECORD_SNAPSHOTS_SUBDIR_KEY);
 }
 
 QString DataProcessor::getLiveSubdir() {
-    QSettings s;
-    return s.value("dataproc/recording/live_subdir").toString();
+    return settings.value(RECORD_LIVE_SUBDIR_KEY).toString();
 }
 
 void DataProcessor::setLiveSubdir(QString liveSubdir) {
-    QSettings s;
-    s.setValue("dataproc/recording/live_subdir", liveSubdir);
+    settings.setValue(RECORD_LIVE_SUBDIR_KEY, liveSubdir);
+}
+
+bool DataProcessor::isLiveSubdirSet() {
+    return settings.contains(RECORD_LIVE_SUBDIR_KEY);
 }
 
 QString DataProcessor::getReplaySubdir() {
-    QSettings s;
-    return s.value("dataproc/recording/replay_subdir").toString();
+    return settings.value(RECORD_REPLAY_SUBDIR_KEY).toString();
 }
 
 void DataProcessor::setReplaySubdir(QString replaySubdir) {
-    QSettings s;
-    s.setValue("dataproc/recording/replay_subdir", replaySubdir);
+    settings.setValue(RECORD_REPLAY_SUBDIR_KEY, replaySubdir);
+}
+
+bool DataProcessor::isReplaySubdirSet() {
+    return settings.contains(RECORD_REPLAY_SUBDIR_KEY);
 }
 
 QString DataProcessor::getDefaultHomeNetwork() {
-    QSettings s;
-    return s.value("dataproc/home_network/default_home_network").toString();
+    return settings.value(DEFAULT_HOME_NETWORK_KEY).toString();
+}
+
+void DataProcessor::setDefaultHomeNetwork(QString ipAddress) {
+    QStringList ipAndMask = ipAddress.split('/');
+    QString ip = ipAndMask.at(0);
+    QStringList octets = ip.split(".");
+    QString mask = ipAndMask.at(1);
+
+    DataProcessor::setDefaultHomeNetwork(octets.at(0).toInt(),
+                                         octets.at(1).toInt(),
+                                         octets.at(2).toInt(),
+                                         octets.at(3).toInt(),
+                                         mask.toInt());
 }
 
 void DataProcessor::setDefaultHomeNetwork(int octA, int octB, int octC, int octD, int slashMask) {
@@ -3608,46 +3633,57 @@ void DataProcessor::setDefaultHomeNetwork(int octA, int octB, int octC, int octD
             + QString::number(octC) + "."
             + QString::number(octD) + "/"
             + QString::number(slashMask);
-    QSettings s;
-    s.setValue("dataproc/home_network/default_home_network", ipAddress);
+    settings.setValue(DEFAULT_HOME_NETWORK_KEY, ipAddress);
+}
+
+bool DataProcessor::isDefaultHomeNetworkSet() {
+    return settings.contains(DEFAULT_HOME_NETWORK_KEY);
 }
 
 bool DataProcessor::getShowHomeNetworkNotSetError() {
-    QSettings s;
-    return s.value("dataproc/home_network/show_not_set_error").toBool();
+    return settings.value(SHOW_HOME_NETWORK_NOT_SET_ERROR_KEY).toBool();
 }
 
 void DataProcessor::setShowHomeNetworkNotSetError(bool show) {
-    QSettings s;
-    s.setValue("dataproc/home_network/show_not_set_error", show);
+    settings.setValue(SHOW_HOME_NETWORK_NOT_SET_ERROR_KEY, show);
+}
+
+bool DataProcessor::isShowHomeNetworkNotSetError() {
+    return settings.contains(SHOW_HOME_NETWORK_NOT_SET_ERROR_KEY);
 }
 
 QString DataProcessor::getScreenshotFormat() {
-    QSettings s;
-    return s.value("dataproc/screenshot/screenshot_format").toString();
+    return settings.value(SCREENSHOT_FORMAT_KEY).toString();
 }
 
 void DataProcessor::setScreenshotFormat(QString screenshotFormat) {
-    QSettings s;
-    s.setValue("dataproc/screenshot/screenshot_format", screenshotFormat);
+    settings.setValue(SCREENSHOT_FORMAT_KEY, screenshotFormat);
+}
+
+bool DataProcessor::isScreenshotFormatSet() {
+    return settings.contains(SCREENSHOT_FORMAT_KEY);
 }
 
 QString DataProcessor::getScreenshotExtension() {
-    QSettings s;
-    return s.value("dataproc/screenshot/screenshot_extension").toString();
+    return settings.value(SCREENSHOT_EXTENSION_KEY).toString();
 }
 
 void DataProcessor::setScreenshotExtension(QString screenshotExtension) {
-    QSettings s;
-    s.setValue("dataproc/screenshot/screenshot_extension", screenshotExtension);
+    settings.setValue(SCREENSHOT_EXTENSION_KEY, screenshotExtension);
+}
+
+bool DataProcessor::isScreenshotExtensionSet() {
+    return settings.contains(SCREENSHOT_EXTENSION_KEY);
 }
 
 int DataProcessor::getScreenshotQuality() {
-    QSettings s;
-    return s.value("dataproc/screenshot/screenshot_quality").toInt();
+    return settings.value(SCREENSHOT_QUALITY_KEY).toInt();
 }
 
 void DataProcessor::setScreenshotQuality(int screenshotQuality) {
-    QSettings s;
-    s.setValue("dataproc/screenshot/screenshot_quality", screenshotQuality);
+    settings.setValue(SCREENSHOT_QUALITY_KEY, screenshotQuality);
+}
+
+bool DataProcessor::isScreenshotQualitySet() {
+    return settings.contains(SCREENSHOT_QUALITY_KEY);
 }
