@@ -8,6 +8,7 @@
 #include "logui.h"
 #include <QSettings>
 #include "dataproc.h"
+#include <QStringList>
 
 class PlotterSettingsDialogWidget : public QDialog, public Ui::PlotterSettingsDialog {
     Q_OBJECT
@@ -45,6 +46,7 @@ public slots:
     void smoothingEnabled(bool);
     void enablePointBulge(bool);
     void backgroundColourChange();
+    void loadDefaultHomeNetwork();
 
 private:
     QIntValidator *addressValidator;
