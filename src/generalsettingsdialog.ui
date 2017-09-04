@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>3</number>
    </property>
    <widget class="QWidget" name="recordDirectoryTab">
     <property name="accessibleName">
@@ -67,6 +67,9 @@
          <width>481</width>
          <height>21</height>
         </rect>
+       </property>
+       <property name="maxLength">
+        <number>500</number>
        </property>
       </widget>
       <widget class="QToolButton" name="rootDirSave">
@@ -157,6 +160,9 @@
          <height>21</height>
         </rect>
        </property>
+       <property name="maxLength">
+        <number>500</number>
+       </property>
       </widget>
       <widget class="QToolButton" name="pcapsSubdirSave">
        <property name="geometry">
@@ -245,6 +251,9 @@
          <width>481</width>
          <height>21</height>
         </rect>
+       </property>
+       <property name="maxLength">
+        <number>500</number>
        </property>
       </widget>
       <widget class="QToolButton" name="framesSubdirSave">
@@ -335,6 +344,9 @@
          <height>21</height>
         </rect>
        </property>
+       <property name="maxLength">
+        <number>500</number>
+       </property>
       </widget>
       <widget class="QToolButton" name="snapshotsSubdirSave">
        <property name="geometry">
@@ -424,6 +436,9 @@
          <height>21</height>
         </rect>
        </property>
+       <property name="maxLength">
+        <number>500</number>
+       </property>
       </widget>
       <widget class="QToolButton" name="liveSubdirSave">
        <property name="geometry">
@@ -512,6 +527,9 @@
          <width>481</width>
          <height>21</height>
         </rect>
+       </property>
+       <property name="maxLength">
+        <number>500</number>
        </property>
       </widget>
       <widget class="QToolButton" name="replaySubdirSave">
@@ -620,6 +638,12 @@
          <height>21</height>
         </rect>
        </property>
+       <property name="inputMask">
+        <string>999.999.999.999/90</string>
+       </property>
+       <property name="maxLength">
+        <number>18</number>
+       </property>
       </widget>
       <widget class="QToolButton" name="defaultHomeNetworkSave">
        <property name="geometry">
@@ -708,6 +732,9 @@
          <width>481</width>
          <height>21</height>
         </rect>
+       </property>
+       <property name="inputMask">
+        <string>B</string>
        </property>
       </widget>
       <widget class="QToolButton" name="homeNetNotSetWarnSave">
@@ -816,6 +843,15 @@
          <height>21</height>
         </rect>
        </property>
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>200</number>
+       </property>
       </widget>
       <widget class="QToolButton" name="rootLogDirSave">
        <property name="geometry">
@@ -905,6 +941,15 @@
          <height>21</height>
         </rect>
        </property>
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>50</number>
+       </property>
       </widget>
       <widget class="QToolButton" name="stdoutFilenameSave">
        <property name="geometry">
@@ -993,6 +1038,9 @@
          <width>481</width>
          <height>21</height>
         </rect>
+       </property>
+       <property name="maxLength">
+        <number>50</number>
        </property>
       </widget>
       <widget class="QToolButton" name="stderrFilenameSave">
@@ -1101,6 +1149,12 @@
          <height>21</height>
         </rect>
        </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>5</number>
+       </property>
       </widget>
       <widget class="QToolButton" name="snapshotFormatFilenameSave">
        <property name="geometry">
@@ -1190,6 +1244,9 @@
          <height>21</height>
         </rect>
        </property>
+       <property name="inputMask">
+        <string>#D00</string>
+       </property>
       </widget>
       <widget class="QToolButton" name="snapshotQualitySave">
        <property name="geometry">
@@ -1278,6 +1335,9 @@
          <width>481</width>
          <height>21</height>
         </rect>
+       </property>
+       <property name="maxLength">
+        <number>5</number>
        </property>
       </widget>
       <widget class="QToolButton" name="snapshotExtensionSave">
