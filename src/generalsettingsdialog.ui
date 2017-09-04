@@ -93,7 +93,7 @@
         </iconset>
        </property>
       </widget>
-      <widget class="QToolButton" name="rootDirUndo">
+      <widget class="QToolButton" name="rootDirLoad">
        <property name="geometry">
         <rect>
          <x>540</x>
@@ -185,7 +185,7 @@
         </iconset>
        </property>
       </widget>
-      <widget class="QToolButton" name="pcapsSubdirUndo">
+      <widget class="QToolButton" name="pcapsSubdirLoad">
        <property name="geometry">
         <rect>
          <x>540</x>
@@ -277,7 +277,7 @@
         </iconset>
        </property>
       </widget>
-      <widget class="QToolButton" name="framesSubdirUndo">
+      <widget class="QToolButton" name="framesSubdirLoad">
        <property name="geometry">
         <rect>
          <x>540</x>
@@ -369,7 +369,7 @@
         </iconset>
        </property>
       </widget>
-      <widget class="QToolButton" name="snapshotsSubdirUndo">
+      <widget class="QToolButton" name="snapshotsSubdirLoad">
        <property name="geometry">
         <rect>
          <x>540</x>
@@ -461,7 +461,7 @@
         </iconset>
        </property>
       </widget>
-      <widget class="QToolButton" name="liveSubdirUndo">
+      <widget class="QToolButton" name="liveSubdirLoad">
        <property name="geometry">
         <rect>
          <x>540</x>
@@ -553,7 +553,7 @@
         </iconset>
        </property>
       </widget>
-      <widget class="QToolButton" name="replaySubdirUndo">
+      <widget class="QToolButton" name="replaySubdirLoad">
        <property name="geometry">
         <rect>
          <x>540</x>
@@ -666,7 +666,7 @@
         </iconset>
        </property>
       </widget>
-      <widget class="QToolButton" name="defaultHomeNetworkUndo">
+      <widget class="QToolButton" name="defaultHomeNetworkLoad">
        <property name="geometry">
         <rect>
          <x>540</x>
@@ -758,7 +758,7 @@
         </iconset>
        </property>
       </widget>
-      <widget class="QToolButton" name="homeNetNotSetWarnUndo">
+      <widget class="QToolButton" name="homeNetNotSetWarnLoad">
        <property name="geometry">
         <rect>
          <x>540</x>
@@ -874,7 +874,7 @@
         </iconset>
        </property>
       </widget>
-      <widget class="QToolButton" name="rootLogDirUndo">
+      <widget class="QToolButton" name="rootLogDirLoad">
        <property name="geometry">
         <rect>
          <x>540</x>
@@ -972,7 +972,7 @@
         </iconset>
        </property>
       </widget>
-      <widget class="QToolButton" name="stdoutFilenameUndo">
+      <widget class="QToolButton" name="stdoutFilenameLoad">
        <property name="geometry">
         <rect>
          <x>540</x>
@@ -1064,7 +1064,7 @@
         </iconset>
        </property>
       </widget>
-      <widget class="QToolButton" name="stderrFilenameUndo">
+      <widget class="QToolButton" name="stderrFilenameLoad">
        <property name="geometry">
         <rect>
          <x>540</x>
@@ -1177,7 +1177,7 @@
         </iconset>
        </property>
       </widget>
-      <widget class="QToolButton" name="snapshotFormatUndo">
+      <widget class="QToolButton" name="snapshotFormatLoad">
        <property name="geometry">
         <rect>
          <x>540</x>
@@ -1269,7 +1269,7 @@
         </iconset>
        </property>
       </widget>
-      <widget class="QToolButton" name="snapshotQualityUndo">
+      <widget class="QToolButton" name="snapshotQualityLoad">
        <property name="geometry">
         <rect>
          <x>540</x>
@@ -1361,7 +1361,7 @@
         </iconset>
        </property>
       </widget>
-      <widget class="QToolButton" name="snapshotExtensionUndo">
+      <widget class="QToolButton" name="snapshotExtensionLoad">
        <property name="geometry">
         <rect>
          <x>540</x>
@@ -1459,10 +1459,10 @@
  <resources/>
  <connections>
   <connection>
-   <sender>rootDirUndo</sender>
+   <sender>rootDirLoad</sender>
    <signal>clicked()</signal>
    <receiver>GeneralSettingsDialog</receiver>
-   <slot>rootDirUndoAction()</slot>
+   <slot>rootDirLoadAction()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>598</x>
@@ -1507,10 +1507,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>pcapsSubdirUndo</sender>
+   <sender>pcapsSubdirLoad</sender>
    <signal>clicked()</signal>
    <receiver>GeneralSettingsDialog</receiver>
-   <slot>pcapSubdirUndoAction()</slot>
+   <slot>pcapSubdirLoadAction()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>590</x>
@@ -1539,10 +1539,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>framesSubdirUndo</sender>
+   <sender>framesSubdirLoad</sender>
    <signal>clicked()</signal>
    <receiver>GeneralSettingsDialog</receiver>
-   <slot>framesSubdirUndoAction()</slot>
+   <slot>framesSubdirLoadAction()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>582</x>
@@ -1571,10 +1571,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>snapshotsSubdirUndo</sender>
+   <sender>snapshotsSubdirLoad</sender>
    <signal>clicked()</signal>
    <receiver>GeneralSettingsDialog</receiver>
-   <slot>snapshotsSubdirUndoAction()</slot>
+   <slot>snapshotsSubdirLoadAction()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>589</x>
@@ -1603,10 +1603,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>liveSubdirUndo</sender>
+   <sender>liveSubdirLoad</sender>
    <signal>clicked()</signal>
    <receiver>GeneralSettingsDialog</receiver>
-   <slot>liveSubdirUndoAction()</slot>
+   <slot>liveSubdirLoadAction()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>594</x>
@@ -1635,10 +1635,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>replaySubdirUndo</sender>
+   <sender>replaySubdirLoad</sender>
    <signal>clicked()</signal>
    <receiver>GeneralSettingsDialog</receiver>
-   <slot>replaySubdirUndoAction()</slot>
+   <slot>replaySubdirLoadAction()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>585</x>
@@ -1667,10 +1667,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>defaultHomeNetworkUndo</sender>
+   <sender>defaultHomeNetworkLoad</sender>
    <signal>clicked()</signal>
    <receiver>GeneralSettingsDialog</receiver>
-   <slot>defaultHomeNetworkUndoAction()</slot>
+   <slot>defaultHomeNetworkLoadAction()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>584</x>
@@ -1699,10 +1699,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>homeNetNotSetWarnUndo</sender>
+   <sender>homeNetNotSetWarnLoad</sender>
    <signal>clicked()</signal>
    <receiver>GeneralSettingsDialog</receiver>
-   <slot>showHomeNetNotSetWarningUndoAction()</slot>
+   <slot>showHomeNetNotSetWarningLoadAction()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>592</x>
@@ -1731,10 +1731,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>rootLogDirUndo</sender>
+   <sender>rootLogDirLoad</sender>
    <signal>clicked()</signal>
    <receiver>GeneralSettingsDialog</receiver>
-   <slot>logRootDirUndoAction()</slot>
+   <slot>logRootDirLoadAction()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>591</x>
@@ -1763,10 +1763,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>stdoutFilenameUndo</sender>
+   <sender>stdoutFilenameLoad</sender>
    <signal>clicked()</signal>
    <receiver>GeneralSettingsDialog</receiver>
-   <slot>stdoutFilenameUndoAction()</slot>
+   <slot>stdoutFilenameLoadAction()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>585</x>
@@ -1795,10 +1795,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>stderrFilenameUndo</sender>
+   <sender>stderrFilenameLoad</sender>
    <signal>clicked()</signal>
    <receiver>GeneralSettingsDialog</receiver>
-   <slot>stderrFilenameUndoAction()</slot>
+   <slot>stderrFilenameLoadAction()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>593</x>
@@ -1827,10 +1827,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>snapshotFormatUndo</sender>
+   <sender>snapshotFormatLoad</sender>
    <signal>clicked()</signal>
    <receiver>GeneralSettingsDialog</receiver>
-   <slot>snapshotFormatUndoAction()</slot>
+   <slot>snapshotFormatLoadAction()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>592</x>
@@ -1859,10 +1859,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>snapshotQualityUndo</sender>
+   <sender>snapshotQualityLoad</sender>
    <signal>clicked()</signal>
    <receiver>GeneralSettingsDialog</receiver>
-   <slot>snapshotQualityUndoAction()</slot>
+   <slot>snapshotQualityLoadAction()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>583</x>
@@ -1891,10 +1891,10 @@
    </hints>
   </connection>
   <connection>
-   <sender>snapshotExtensionUndo</sender>
+   <sender>snapshotExtensionLoad</sender>
    <signal>clicked()</signal>
    <receiver>GeneralSettingsDialog</receiver>
-   <slot>snapshotExtensionUndoAction()</slot>
+   <slot>snapshotExtensionLoadAction()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>598</x>
@@ -2180,34 +2180,34 @@
   </connection>
  </connections>
  <slots>
-  <slot>rootDirUndoAction()</slot>
+  <slot>rootDirLoadAction()</slot>
   <slot>rootDirSaveAction()</slot>
   <slot>pcapSubdirSaveAction()</slot>
-  <slot>pcapSubdirUndoAction()</slot>
+  <slot>pcapSubdirLoadAction()</slot>
   <slot>framesSubdirSaveAction()</slot>
-  <slot>framesSubdirUndoAction()</slot>
+  <slot>framesSubdirLoadAction()</slot>
   <slot>snapshotsSubdirSaveAction()</slot>
-  <slot>snapshotsSubdirUndoAction()</slot>
+  <slot>snapshotsSubdirLoadAction()</slot>
   <slot>liveSubdirSaveAction()</slot>
-  <slot>liveSubdirUndoAction()</slot>
+  <slot>liveSubdirLoadAction()</slot>
   <slot>replaySubdirSaveAction()</slot>
-  <slot>replaySubdirUndoAction()</slot>
+  <slot>replaySubdirLoadAction()</slot>
   <slot>defaultHomeNetworkSaveAction()</slot>
-  <slot>defaultHomeNetworkUndoAction()</slot>
+  <slot>defaultHomeNetworkLoadAction()</slot>
   <slot>showHomeNetNotSetWarningSaveAction()</slot>
-  <slot>showHomeNetNotSetWarningUndoAction()</slot>
+  <slot>showHomeNetNotSetWarningLoadAction()</slot>
   <slot>logRootDirSaveAction()</slot>
-  <slot>logRootDirUndoAction()</slot>
+  <slot>logRootDirLoadAction()</slot>
   <slot>stdoutFilenameSaveAction()</slot>
-  <slot>stdoutFilenameUndoAction()</slot>
+  <slot>stdoutFilenameLoadAction()</slot>
   <slot>stderrFilenameSaveAction()</slot>
-  <slot>stderrFilenameUndoAction()</slot>
+  <slot>stderrFilenameLoadAction()</slot>
   <slot>snapshotFormatSaveAction()</slot>
-  <slot>snapshotFormatUndoAction()</slot>
+  <slot>snapshotFormatLoadAction()</slot>
   <slot>snapshotQualitySaveAction()</slot>
-  <slot>snapshotQualityUndoAction()</slot>
+  <slot>snapshotQualityLoadAction()</slot>
   <slot>snapshotExtensionSaveAction()</slot>
-  <slot>snapshotExtensionUndoAction()</slot>
+  <slot>snapshotExtensionLoadAction()</slot>
   <slot>rootDirResetAction()</slot>
   <slot>pcapSubdirResetAction()</slot>
   <slot>framesSubdirResetAction()</slot>

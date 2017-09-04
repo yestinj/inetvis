@@ -60,9 +60,9 @@ void GeneralSettingsDialog::initializeSettingsDialog() {
     ui->snapshotExtensionLineEdit->setText(screenshotExtension);
 }
 
-void GeneralSettingsDialog::rootDirUndoAction() {
+void GeneralSettingsDialog::rootDirLoadAction() {
     if (LogUI::isEnabled()) {
-        LogUI::logEvent("[GS] Undo root directory button pressed");
+        LogUI::logEvent("[GS] Load root directory button pressed");
     }
 
     QString loggingDefaultDir = DataProcessor::getRecordDir();
@@ -107,9 +107,9 @@ void GeneralSettingsDialog::pcapSubdirSaveAction() {
     ui->pcapsSubdirLineEdit->setText(pcapSubdir);
 }
 
-void GeneralSettingsDialog::pcapSubdirUndoAction() {
+void GeneralSettingsDialog::pcapSubdirLoadAction() {
     if (LogUI::isEnabled()) {
-        LogUI::logEvent("[GS] Undo pcap subdirectory button pressed");
+        LogUI::logEvent("[GS] Load pcap subdirectory button pressed");
     }
 
     QString pcapSubdir = DataProcessor::getPcapsDir();
@@ -141,9 +141,9 @@ void GeneralSettingsDialog::framesSubdirSaveAction() {
     ui->framesSubdirLineEdit->setText(framesSubdir);
 }
 
-void GeneralSettingsDialog::framesSubdirUndoAction() {
+void GeneralSettingsDialog::framesSubdirLoadAction() {
     if (LogUI::isEnabled()) {
-        LogUI::logEvent("[GS] Undo frames subdirectory button pressed");
+        LogUI::logEvent("[GS] Load frames subdirectory button pressed");
     }
 
     QString framesSubdir = DataProcessor::getFramesDir();
@@ -174,9 +174,9 @@ void GeneralSettingsDialog::snapshotsSubdirSaveAction() {
     ui->snapshotsSubdirLineEdit->setText(snapshotsSubdir);
 }
 
-void GeneralSettingsDialog::snapshotsSubdirUndoAction() {
+void GeneralSettingsDialog::snapshotsSubdirLoadAction() {
     if (LogUI::isEnabled()) {
-        LogUI::logEvent("[GS] Undo snapshots subdirectory button pressed");
+        LogUI::logEvent("[GS] Load snapshots subdirectory button pressed");
     }
     QString snapshotsSubdir = DataProcessor::getSnapshotsDir();
     ui->snapshotsSubdirLineEdit->setText(snapshotsSubdir);
@@ -207,9 +207,9 @@ void GeneralSettingsDialog::liveSubdirSaveAction() {
     ui->liveSubdirLineEdit->setText(liveSubdir);
 }
 
-void GeneralSettingsDialog::liveSubdirUndoAction() {
+void GeneralSettingsDialog::liveSubdirLoadAction() {
     if (LogUI::isEnabled()) {
-        LogUI::logEvent("[GS] Undo live subdirectory button pressed");
+        LogUI::logEvent("[GS] Load live subdirectory button pressed");
     }
     QString liveSubdir = DataProcessor::getLiveSubdir();
     ui->liveSubdirLineEdit->setText(liveSubdir);
@@ -239,9 +239,9 @@ void GeneralSettingsDialog::replaySubdirSaveAction() {
     ui->replaySubdirLineEdit->setText(replaySubdir);
 }
 
-void GeneralSettingsDialog::replaySubdirUndoAction() {
+void GeneralSettingsDialog::replaySubdirLoadAction() {
     if (LogUI::isEnabled()) {
-        LogUI::logEvent("[GS] Undo replay subdirectory button pressed");
+        LogUI::logEvent("[GS] Load replay subdirectory button pressed");
     }
     QString replaySubdir = DataProcessor::getReplaySubdir();
     ui->replaySubdirLineEdit->setText(replaySubdir);
@@ -277,9 +277,9 @@ void GeneralSettingsDialog::defaultHomeNetworkSaveAction() {
     ui->defaultHomeNetworkLineEdit->setText(defaultHomeNetwork);
 }
 
-void GeneralSettingsDialog::defaultHomeNetworkUndoAction() {
+void GeneralSettingsDialog::defaultHomeNetworkLoadAction() {
     if (LogUI::isEnabled()) {
-        LogUI::logEvent("[GS] Undo default home network button pressed");
+        LogUI::logEvent("[GS] Load default home network button pressed");
     }
     QString defaultHomeNetwork = DataProcessor::getDefaultHomeNetwork();
     ui->defaultHomeNetworkLineEdit->setText(defaultHomeNetwork);
@@ -308,9 +308,9 @@ void GeneralSettingsDialog::showHomeNetNotSetWarningSaveAction() {
     ui->homeNetNotSetWarnLineEdit->setText(QString::number(showHomeNetNotSetWarning));
 }
 
-void GeneralSettingsDialog::showHomeNetNotSetWarningUndoAction() {
+void GeneralSettingsDialog::showHomeNetNotSetWarningLoadAction() {
     if (LogUI::isEnabled()) {
-        LogUI::logEvent("[GS] Undo show home network not set warning button pressed");
+        LogUI::logEvent("[GS] Load show home network not set warning button pressed");
     }
     bool showHomeNetNotSetWarning = DataProcessor::getShowHomeNetworkNotSetError();
     ui->homeNetNotSetWarnLineEdit->setText(QString::number(showHomeNetNotSetWarning));
@@ -339,9 +339,9 @@ void GeneralSettingsDialog::logRootDirSaveAction() {
     ui->rootLogDirLineEdit->setText(loggingDefaultDir);
 }
 
-void GeneralSettingsDialog::logRootDirUndoAction() {
+void GeneralSettingsDialog::logRootDirLoadAction() {
     if (LogUI::isEnabled()) {
-        LogUI::logEvent("[GS] Undo log root directory button pressed");
+        LogUI::logEvent("[GS] Load log root directory button pressed");
     }
     QString loggingDefaultDir = Log::getLogRootDir();
     ui->rootLogDirLineEdit->setText(loggingDefaultDir);
@@ -370,9 +370,9 @@ void GeneralSettingsDialog::stdoutFilenameSaveAction() {
     ui->stdoutFilenameLineEdit->setText(stdoutFilename);
 }
 
-void GeneralSettingsDialog::stdoutFilenameUndoAction() {
+void GeneralSettingsDialog::stdoutFilenameLoadAction() {
     if (LogUI::isEnabled()) {
-        LogUI::logEvent("[GS] Undo stdout filename button pressed");
+        LogUI::logEvent("[GS] Load stdout filename button pressed");
     }
     QString stdoutFilename = Log::getStdoutFilename();
     ui->stdoutFilenameLineEdit->setText(stdoutFilename);
@@ -401,9 +401,9 @@ void GeneralSettingsDialog::stderrFilenameSaveAction() {
     ui->stderrFilenameLineEdit->setText(stderrFilename);
 }
 
-void GeneralSettingsDialog::stderrFilenameUndoAction() {
+void GeneralSettingsDialog::stderrFilenameLoadAction() {
     if (LogUI::isEnabled()) {
-        LogUI::logEvent("[GS] Undo stderr filename button pressed");
+        LogUI::logEvent("[GS] Load stderr filename button pressed");
     }
     QString stderrFilename = Log::getStderrFilename();
     ui->stderrFilenameLineEdit->setText(stderrFilename);
@@ -432,9 +432,9 @@ void GeneralSettingsDialog::snapshotFormatSaveAction() {
     ui->snapshotFormatLineEdit->setText(screenshotFormat);
 }
 
-void GeneralSettingsDialog::snapshotFormatUndoAction() {
+void GeneralSettingsDialog::snapshotFormatLoadAction() {
     if (LogUI::isEnabled()) {
-        LogUI::logEvent("[GS] Undo snapshot format button pressed");
+        LogUI::logEvent("[GS] Load snapshot format button pressed");
     }
     QString screenshotFormat = DataProcessor::getScreenshotFormat();
     ui->snapshotFormatLineEdit->setText(screenshotFormat);
@@ -462,9 +462,9 @@ void GeneralSettingsDialog::snapshotQualitySaveAction() {
     ui->snapshotQualityLineEdit->setText(QString::number(screenshotQuality));
 }
 
-void GeneralSettingsDialog::snapshotQualityUndoAction() {
+void GeneralSettingsDialog::snapshotQualityLoadAction() {
     if (LogUI::isEnabled()) {
-        LogUI::logEvent("[GS] Undo snapshot quality button pressed");
+        LogUI::logEvent("[GS] Load snapshot quality button pressed");
     }
     int screenshotQuality = DataProcessor::getScreenshotQuality();
     ui->snapshotQualityLineEdit->setText(QString::number(screenshotQuality));
@@ -492,9 +492,9 @@ void GeneralSettingsDialog::snapshotExtensionSaveAction() {
     ui->snapshotExtensionLineEdit->setText(screenshotExtension);
 }
 
-void GeneralSettingsDialog::snapshotExtensionUndoAction() {
+void GeneralSettingsDialog::snapshotExtensionLoadAction() {
     if (LogUI::isEnabled()) {
-        LogUI::logEvent("[GS] Undo snapshot extension button pressed");
+        LogUI::logEvent("[GS] Load snapshot extension button pressed");
     }
     QString screenshotExtension = DataProcessor::getScreenshotExtension();
     ui->snapshotExtensionLineEdit->setText(screenshotExtension);
@@ -537,18 +537,18 @@ void GeneralSettingsDialog::loadAllSettingsAction() {
         LogUI::logEvent("[GS] Load all settings from disk button pressed");
     }
 
-    rootDirUndoAction();
-    pcapSubdirUndoAction();
-    framesSubdirUndoAction();
-    snapshotsSubdirUndoAction();
-    liveSubdirUndoAction();
-    replaySubdirUndoAction();
-    defaultHomeNetworkUndoAction();
-    showHomeNetNotSetWarningUndoAction();
-    logRootDirUndoAction();
-    stdoutFilenameUndoAction();
-    stderrFilenameUndoAction();
-    snapshotFormatUndoAction();
-    snapshotQualityUndoAction();
-    snapshotExtensionUndoAction();
+    rootDirLoadAction();
+    pcapSubdirLoadAction();
+    framesSubdirLoadAction();
+    snapshotsSubdirLoadAction();
+    liveSubdirLoadAction();
+    replaySubdirLoadAction();
+    defaultHomeNetworkLoadAction();
+    showHomeNetNotSetWarningLoadAction();
+    logRootDirLoadAction();
+    stdoutFilenameLoadAction();
+    stderrFilenameLoadAction();
+    snapshotFormatLoadAction();
+    snapshotQualityLoadAction();
+    snapshotExtensionLoadAction();
 }
