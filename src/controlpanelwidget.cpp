@@ -3,10 +3,27 @@
 ControlPanelWidget::ControlPanelWidget(QMainWindow *parent) : QMainWindow(parent) {
     setupUi(this);
     init();
+    readSettings();
 }
 
 ControlPanelWidget::~ControlPanelWidget() {
     destroy();
+}
+
+void ControlPanelWidget::writeSettings() {
+    QSettings settings;
+    settings.beginGroup("ControlPanel");
+    settings.setValue("size", size());
+    settings.setValue("pos", pos());
+    settings.endGroup();
+}
+
+void ControlPanelWidget::readSettings() {
+    QSettings settings;
+    settings.beginGroup("ControlPanel");
+    resize(settings.value("size", QSize(598, 323)).toSize());
+    move(settings.value("pos", QPoint(598, 323)).toPoint());
+    settings.endGroup();
 }
 
 void ControlPanelWidget::init() {
@@ -686,4 +703,9 @@ void ControlPanelWidget::reportErrorMessage(QString errMsg) {
 QString ControlPanelWidget::strGetRepPos() {
     return replayDateTimeEdit->dateTime().toString("yyyy/MM/dd-hh:mm:ss")
             + QString(".%1").arg((millisecondsSpinBox->value()));
+}
+
+void ControlPanelWidget::closeEvent(QCloseEvent *event) {
+    writeSettings();
+    event->accept();
 }

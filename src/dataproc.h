@@ -71,6 +71,7 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #include <qdir.h>
 #include <pcap.h>
 #include <QSettings>
+#include <QCoreApplication>
 
 #ifdef MAC
 #include <OpenGL/gl.h>
@@ -203,6 +204,10 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #define SCREENSHOT_QUALITY_DEFAULT -1
 #define SCREENSHOT_EXTENSION_DEFAULT "png"
 
+// Settings config values
+#define ORGANISATION_NAME = "Rhodes University"
+#define ORGANISATION_DOMAIN = "ru.az.za"
+#define APPLICATION_NAME = "InetVis"
 
 enum replayModes {NOT_READY, MONITOR_LOCAL, MONITOR_REMOTE, REPLAY_FILE};
 //NOT_READY indicates that the mode is not yet set

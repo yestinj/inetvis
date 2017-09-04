@@ -1772,8 +1772,8 @@ void DataProcessor::DataExtractor::run()
 
 //Constructor and Destructor ------------------------------
 
-DataProcessor::DataProcessor()
-{
+DataProcessor::DataProcessor() {
+
     //link objects
     dataExtractor.setDataProcLink(this);
 

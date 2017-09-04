@@ -50,16 +50,16 @@ copyright holder.<br>
 #include "generalsettingsdialog.h"
 
 void initialiseQtSettings() {
+
     QCoreApplication::setOrganizationName("Rhodes University");
     QCoreApplication::setOrganizationDomain("ru.ac.za");
     QCoreApplication::setApplicationName("InetVis");
 
-    QSettings settings;
+    //QSettings settings;
 
     // TODO: Remove this for production
-    settings.clear();
+    //settings.clear();
 
-    // TODO: Test code - Using this for testing. Make appropriate per distro later
     //QString recordPath = QStandardPaths::standardLocations(QStandardPaths::DownloadLocation).first() + "/" + "inetvis-recorded";
 
     if (!DataProcessor::isRecordDirSet()) {
@@ -116,8 +116,10 @@ int main(int argc, char **argv) {
     ios::sync_with_stdio(); //since both c++ streams and c printf are used for
     //debugging code output
 
-    QApplication app(argc, argv);
     initialiseQtSettings();
+
+    QApplication app(argc, argv);
+
 
     //Test and ensure that system has OpenGL support
     if (!QGLFormat::hasOpenGL()) {

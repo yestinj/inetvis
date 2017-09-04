@@ -16,6 +16,8 @@
 #include <iostream>
 #include <math.h>
 #include "timeutil.h"
+#include <QSettings>
+#include <QCloseEvent>
 
 #define DISABLE_RECORDING_LIVE_CAPTURE true
 
@@ -110,6 +112,8 @@ private:
     void init();
     void destroy();
     QString strGetRepPos();
-
+    void writeSettings();
+    void readSettings();
+    void closeEvent(QCloseEvent *event);
 };
 #endif // CONTROLPANELWIDGET_H
