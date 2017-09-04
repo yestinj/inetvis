@@ -470,8 +470,8 @@ public:
     static bool isReplaySubdirSet();
 
     static QString getDefaultHomeNetwork();
-    static void setDefaultHomeNetwork(int, int, int, int, int);
-    static void setDefaultHomeNetwork(QString);
+    static bool setDefaultHomeNetwork(int, int, int, int, int);
+    static bool setDefaultHomeNetwork(QString);
     static bool isDefaultHomeNetworkSet();
 
     static bool getShowHomeNetworkNotSetError();

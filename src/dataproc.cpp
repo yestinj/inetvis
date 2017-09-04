@@ -3614,26 +3614,60 @@ QString DataProcessor::getDefaultHomeNetwork() {
     return settings.value(DEFAULT_HOME_NETWORK_KEY).toString();
 }
 
-void DataProcessor::setDefaultHomeNetwork(QString ipAddress) {
+bool DataProcessor::setDefaultHomeNetwork(QString ipAddress) {
     QStringList ipAndMask = ipAddress.split('/');
+
+    // If the list length is less than 2, it's invalid, return false.
+    if (ipAndMask.length() < 2) {
+        return false;
+    }
+
     QString ip = ipAndMask.at(0);
     QStringList octets = ip.split(".");
-    QString mask = ipAndMask.at(1);
 
-    DataProcessor::setDefaultHomeNetwork(octets.at(0).toInt(),
-                                         octets.at(1).toInt(),
-                                         octets.at(2).toInt(),
-                                         octets.at(3).toInt(),
-                                         mask.toInt());
+    // If the IP address is malformed, return false.
+    if (octets.length() != 4) {
+        return false;
+    }
+
+    int octA = octets.at(0).toInt();
+    int octB = octets.at(1).toInt();
+    int octC = octets.at(2).toInt();
+    int octD = octets.at(3).toInt();
+
+    // Ensure the octets are actual IP address octets.
+    // This isn't elegant, should be improved.
+    if (octA < 0 || octA > 255) {
+        return false;
+    }
+    if (octB < 0 || octB > 255) {
+        return false;
+    }
+    if (octC < 0 || octC > 255) {
+        return false;
+    }
+    if (octD < 0 || octD > 255) {
+        return false;
+    }
+
+    QString mask = ipAndMask.at(1);
+    int maskInt = mask.toInt();
+
+    if (maskInt < 0 || maskInt > 32) {
+        return false;
+    }
+
+    return DataProcessor::setDefaultHomeNetwork(octA, octB, octC, octD, maskInt);
 }
 
-void DataProcessor::setDefaultHomeNetwork(int octA, int octB, int octC, int octD, int slashMask) {
+bool DataProcessor::setDefaultHomeNetwork(int octA, int octB, int octC, int octD, int slashMask) {
     QString ipAddress = QString::number(octA) + "."
             + QString::number(octB) + "."
             + QString::number(octC) + "."
             + QString::number(octD) + "/"
             + QString::number(slashMask);
     settings.setValue(DEFAULT_HOME_NETWORK_KEY, ipAddress);
+    return true;
 }
 
 bool DataProcessor::isDefaultHomeNetworkSet() {

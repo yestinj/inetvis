@@ -7,6 +7,9 @@ GeneralSettingsDialog::GeneralSettingsDialog(QWidget *parent) :
     ui->setupUi(this);
 
     initializeSettingsDialog();
+
+    qErrMsg = new QErrorMessage((QWidget*)this);
+    qErrMsg->resize(QSize(400,240)); //set custom size to report error msg
 }
 
 GeneralSettingsDialog::~GeneralSettingsDialog() {
@@ -61,7 +64,7 @@ void GeneralSettingsDialog::rootDirUndoAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Undo root directory button pressed");
     }
-    // TODO: Look at de-duplicating this
+
     QString loggingDefaultDir = DataProcessor::getRecordDir();
     ui->rootDirLineEdit->setText(loggingDefaultDir);
 }
@@ -70,8 +73,6 @@ void GeneralSettingsDialog::rootDirSaveAction() {
     if (LogUI::isEnabled()) {
         LogUI::logEvent("[GS] Save root directory button pressed");
     }
-
-    // TODO: Add validation!!!
 
     // Write the new value
     QString newValue = ui->rootDirLineEdit->text();
@@ -263,9 +264,15 @@ void GeneralSettingsDialog::defaultHomeNetworkSaveAction() {
     }
     // Write the new value
     QString newValue = ui->defaultHomeNetworkLineEdit->text();    
-    // TODO: Validation
-    DataProcessor::setDefaultHomeNetwork(newValue);
 
+    bool success = DataProcessor::setDefaultHomeNetwork(newValue);
+
+    // If the update failed, show an error.
+    if (!success) {
+        qErrMsg->showMessage("ERROR: Invalid IP address or subnet mask set. Please try again.");
+    }
+
+    // This will update to the last valid setting value.
     QString defaultHomeNetwork = DataProcessor::getDefaultHomeNetwork();
     ui->defaultHomeNetworkLineEdit->setText(defaultHomeNetwork);
 }
@@ -522,9 +529,7 @@ void GeneralSettingsDialog::resetAllSettingsAction() {
     stderrFilenameResetAction();
     snapshotFormatResetAction();
     snapshotQualityResetAction();
-    snapshotExtensionResetAction();
-
-    // TODO: Add to show a popup saying completed successfully (or not)
+    snapshotExtensionResetAction();  
 }
 
 void GeneralSettingsDialog::loadAllSettingsAction() {

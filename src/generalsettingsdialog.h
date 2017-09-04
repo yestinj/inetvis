@@ -6,6 +6,7 @@
 
 #include "dataproc.h"
 #include "logui.h"
+#include "QErrorMessage"
 
 namespace Ui {
 class GeneralSettingsDialog;
@@ -17,7 +18,7 @@ class GeneralSettingsDialog : public QDialog
 
 public:
     explicit GeneralSettingsDialog(QWidget *parent = 0);
-    ~GeneralSettingsDialog();
+    ~GeneralSettingsDialog();    
 
 public slots:
     void rootDirUndoAction();
@@ -69,6 +70,7 @@ public slots:
 private:
     Ui::GeneralSettingsDialog *ui;
     void initializeSettingsDialog();
+    QErrorMessage *qErrMsg;
 };
 
 #endif // GENERALSETTINGSDIALOG_H
