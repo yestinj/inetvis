@@ -87,6 +87,9 @@ void initialiseQtSettings() {
     if (!DataProcessor::isShowHomeNetworkNotSetError()) {
         DataProcessor::setShowHomeNetworkNotSetError(SHOW_HOME_NETWORK_NOT_SET_ERROR_DEFAULT);
     }
+    if (!DataProcessor::isDefaultMonitorInterfaceSet()) {
+        DataProcessor::setDefaultMonitorInterface(DEFAULT_MONITOR_INTERFACE_DEFAULT);
+    }
     // Log file settings
     if (!Log::isLogRootDirSet()) {
         Log::setLogRootDir(LOG_ROOT_DIR_DEFAULT);

@@ -1122,25 +1122,25 @@ QString DataProcessor::DataExtractor::getReplayFileName()
 }
 
 
-bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
-{
+bool DataProcessor::DataExtractor::openInterface(const QString netInterface) {
 #ifdef DEBUG_DATA_EXTRACTOR
     cerr << "DEBUG: live interface open --------------------------------------------------------\n";
 #endif
 
     dataProcessor->setMode(NOT_READY);
-    if (dataProcessor->getState() == PLAYING)
+    if (dataProcessor->getState() == PLAYING) {
         dataProcessor->pause();
-
-    if (netInterface.isEmpty()) //use existing string value for local interface
-    {  return openDefaultInterface();
-    }
-    else //set to new value
-    {  strLocalInterface = netInterface;
     }
 
-    if (liveCaptureInstance != NULL)
-    {
+    //use existing string value for local interface
+    if (netInterface.isEmpty()) {
+        return openDefaultInterface();
+    } else {
+        //set to new value
+        strLocalInterface = netInterface;
+    }
+
+    if (liveCaptureInstance != NULL) {
 #ifdef DEBUG_CAPTURE_INSTANCE
         cerr << "DEBUG: opening live interface and previous live capture instance was still open\n";
         cerr << "DEBUG: closing previous live capture instance"
@@ -1155,8 +1155,7 @@ bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
         //dataProcessor->glVisWidget->update();
     }
 
-    if (fileCaptureInstance != NULL)
-    {
+    if (fileCaptureInstance != NULL) {
 #ifdef DEBUG_CAPTURE_INSTANCE
         cerr << "DEBUG: opening live interface and previous file capture instance was still open\n";
         cerr << "DEBUG: closing previous file capture instance: "
@@ -1173,15 +1172,15 @@ bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
 
     liveCaptureInstance = pcap_open_live(strLocalInterface.toLatin1().data(), packetCaptureLength,
                                          promiscuousMode, readTimeout, pcapErrorBuffer);
-    if (liveCaptureInstance == NULL)
-    {  reportError("error opening network device " + strLocalInterface +
+    if (liveCaptureInstance == NULL) {
+        reportError("error opening network device " + strLocalInterface +
                    " for capture (a lack of user privileges may be the cause)",
                    "libpcap::pcap_open_live");
         return false;
     }
     //else interface opened for capture - check for warning message
-    if (checkPcapErrorBuffer())
-    {  reportError("libpacp warning when opening network device",
+    if (checkPcapErrorBuffer()) {
+        reportError("libpacp warning when opening network device",
                    "libpcap::pcap_open_live()");
     }
 
@@ -1194,8 +1193,8 @@ bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
     //but has no effect on replay of capture files
 #define NON_BLOCK_MODE 1
     pcapRet = pcap_setnonblock(liveCaptureInstance, NON_BLOCK_MODE, pcapErrorBuffer);
-    if (pcapRet == -1)
-    {  reportError("failed to enable non-blocking live capture mode", "libpcap::pcap_setnonblock()");
+    if (pcapRet == -1) {
+        reportError("failed to enable non-blocking live capture mode", "libpcap::pcap_setnonblock()");
         dataProcessor->setMode(NOT_READY);
         return false;
     }
@@ -1221,35 +1220,27 @@ bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
 }
 
 
-bool DataProcessor::DataExtractor::openDefaultInterface()
-{
+bool DataProcessor::DataExtractor::openDefaultInterface() {
 #define MAX_DEV_NAME_LENGTH 32
 
     strLocalInterface = QString((const char*)pcap_lookupdev(pcapErrorBuffer));
 
-    if (strLocalInterface.isNull() || strLocalInterface.isEmpty())
-    {  reportError("could not lookup default device", "libpcap::pcap_lookupdev");
+    if (strLocalInterface.isNull() || strLocalInterface.isEmpty()) {
+        reportError("could not lookup default device", "libpcap::pcap_lookupdev");
         dataProcessor->setMode(NOT_READY);
         return false;
-    }
-    else
-    {
+    } else {
 #ifdef DEBUG_DATA_EXTRACTOR
         cerr << "DEBUG: Default device set: " << strLocalInterface.toLatin1().data() << endl;
 #endif
         return openInterface(strLocalInterface);
     }
-
-
 }
 
 
-bool DataProcessor::DataExtractor::connectServer(const QString server)
-{
+bool DataProcessor::DataExtractor::connectServer(const QString server) {
     //TODO: The idea is to recieve processed information from a server
-
     return false;
-
 }
 
 
@@ -2256,11 +2247,10 @@ void DataProcessor::selectReplayFile(const QString file)
 }
 
 
-void DataProcessor::selectNetworkInterface(const QString netInterface)
-{
-    if (replayMode != MONITOR_LOCAL)
-    {  if(dataExtractor.openInterface(netInterface))
-        {  //try guess home network
+void DataProcessor::selectNetworkInterface(const QString netInterface) {
+    if (replayMode != MONITOR_LOCAL) {
+        if (dataExtractor.openInterface(netInterface)) {
+            //try guess home network
             guessHomeNetwork();
             unsigned int a, m; //address, mask
             dataExtractor.getHomeNetwork(a, m);
@@ -2269,7 +2259,6 @@ void DataProcessor::selectNetworkInterface(const QString netInterface)
         //openInterface() and guessHomeNetwork() will report errors
     }
     //else already monitoring local interface
-
 }
 
 
@@ -3684,6 +3673,18 @@ void DataProcessor::setShowHomeNetworkNotSetError(bool show) {
 
 bool DataProcessor::isShowHomeNetworkNotSetError() {
     return settings.contains(SHOW_HOME_NETWORK_NOT_SET_ERROR_KEY);
+}
+
+QString DataProcessor::getDefaultMonitorInterface() {
+    return settings.value(DEFAULT_MONITOR_INTERFACE_KEY).toString();
+}
+
+void DataProcessor::setDefaultMonitorInterface(QString monitorInterface) {
+    settings.setValue(DEFAULT_MONITOR_INTERFACE_KEY, monitorInterface);
+}
+
+bool DataProcessor::isDefaultMonitorInterfaceSet() {
+    return settings.contains(DEFAULT_MONITOR_INTERFACE_KEY);
 }
 
 QString DataProcessor::getScreenshotFormat() {

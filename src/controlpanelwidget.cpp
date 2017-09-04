@@ -174,8 +174,13 @@ void ControlPanelWidget::monitorLocalHostSelected() {
     if(LogUI::isEnabled()) {
         LogUI::logEvent("[CP] menu 'Mode->Monitor Local Host' selected");
     }
+
     //notify the data processor of mode change
-    emit selectNetworkInterface(""); //will open default interface
+    QString monitorInterface = DataProcessor::getDefaultMonitorInterface();
+
+    // If an interface is not set, the default of empty string will be used which
+    // will trigger automatic determination of the default interface.
+    emit selectNetworkInterface(monitorInterface);
 }
 
 void ControlPanelWidget::pauseMenuAction() {

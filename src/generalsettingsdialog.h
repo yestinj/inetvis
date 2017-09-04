@@ -45,6 +45,9 @@ public slots:
     void showHomeNetNotSetWarningSaveAction();
     void showHomeNetNotSetWarningLoadAction();
     void showHomeNetNotSetWarningResetAction();
+    void defaultMonitoringInterfaceSaveAction();
+    void defaultMonitoringInterfaceLoadAction();
+    void defaultMonitoringInterfaceResetAction();
     void logRootDirSaveAction();
     void logRootDirLoadAction();
     void logRootDirResetAction();

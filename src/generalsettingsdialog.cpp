@@ -300,8 +300,7 @@ void GeneralSettingsDialog::showHomeNetNotSetWarningSaveAction() {
         LogUI::logEvent("[GS] Save show home network not set warning button pressed");
     }
     // Write the new value
-    QString newValue = ui->homeNetNotSetWarnLineEdit->text();
-    // Add validation and conversion
+    QString newValue = ui->homeNetNotSetWarnLineEdit->text();    
     DataProcessor::setShowHomeNetworkNotSetError(newValue.toInt());
 
     bool showHomeNetNotSetWarning = DataProcessor::getShowHomeNetworkNotSetError();
@@ -325,6 +324,36 @@ void GeneralSettingsDialog::showHomeNetNotSetWarningResetAction() {
 
     bool showHomeNetNotSetWarning = DataProcessor::getShowHomeNetworkNotSetError();
     ui->homeNetNotSetWarnLineEdit->setText(QString::number(showHomeNetNotSetWarning));
+}
+
+void GeneralSettingsDialog::defaultMonitoringInterfaceSaveAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Save default monitor interface button pressed");
+    }
+    // Write the new value
+    QString newValue = ui->defaultMonitorInterfaceLineEdit->text();
+    DataProcessor::setDefaultMonitorInterface(newValue);
+
+    QString defaultMonitorInterface = DataProcessor::getDefaultMonitorInterface();
+    ui->defaultMonitorInterfaceLineEdit->setText(defaultMonitorInterface);
+}
+
+void GeneralSettingsDialog::defaultMonitoringInterfaceLoadAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Load default monitor interface button pressed");
+    }
+    QString defaultMonitorInterface = DataProcessor::getDefaultMonitorInterface();
+    ui->defaultMonitorInterfaceLineEdit->setText(defaultMonitorInterface);
+}
+
+void GeneralSettingsDialog::defaultMonitoringInterfaceResetAction() {
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[GS] Reset default monitor interface button pressed");
+    }
+    DataProcessor::setDefaultMonitorInterface(DEFAULT_MONITOR_INTERFACE_DEFAULT);
+
+    QString defaultMonitorInterface = DataProcessor::getDefaultMonitorInterface();
+    ui->defaultMonitorInterfaceLineEdit->setText(defaultMonitorInterface);
 }
 
 void GeneralSettingsDialog::logRootDirSaveAction() {

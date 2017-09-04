@@ -184,6 +184,7 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #define RECORD_REPLAY_SUBDIR_KEY "dataproc/recording/replay_subdir"
 #define DEFAULT_HOME_NETWORK_KEY "dataproc/home_network/default_home_network"
 #define SHOW_HOME_NETWORK_NOT_SET_ERROR_KEY "dataproc/home_network/show_not_set_error"
+#define DEFAULT_MONITOR_INTERFACE_KEY "dataproc/home_network/monitor_interface"
 #define SCREENSHOT_FORMAT_KEY "dataproc/screenshot/screenshot_format"
 #define SCREENSHOT_QUALITY_KEY "dataproc/screenshot/screenshot_quality"
 #define SCREENSHOT_EXTENSION_KEY "dataproc/screenshot/screenshot_extension"
@@ -197,6 +198,7 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #define RECORD_REPLAY_SUBDIR_DEFAULT "replayed"
 #define DEFAULT_HOME_NETWORK_DEFAULT "0.0.0.0/0"
 #define SHOW_HOME_NETWORK_NOT_SET_ERROR_DEFAULT true
+#define DEFAULT_MONITOR_INTERFACE_DEFAULT ""
 #define SCREENSHOT_FORMAT_DEFAULT "png"
 #define SCREENSHOT_QUALITY_DEFAULT -1
 #define SCREENSHOT_EXTENSION_DEFAULT "png"
@@ -477,6 +479,10 @@ public:
     static bool getShowHomeNetworkNotSetError();
     static void setShowHomeNetworkNotSetError(bool show);
     static bool isShowHomeNetworkNotSetError();
+
+    static QString getDefaultMonitorInterface();
+    static void setDefaultMonitorInterface(QString monitorInterface);
+    static bool isDefaultMonitorInterfaceSet();
 
     static QString getScreenshotFormat();
     static void setScreenshotFormat(QString screenshotFormat);

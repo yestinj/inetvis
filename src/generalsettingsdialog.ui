@@ -608,7 +608,7 @@
        <x>10</x>
        <y>10</y>
        <width>631</width>
-       <height>151</height>
+       <height>211</height>
       </rect>
      </property>
      <property name="title">
@@ -780,6 +780,101 @@
        </property>
       </widget>
       <widget class="QToolButton" name="homeNetNotSetWarnReset">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_media-rec.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="defaultMonitorInterfaceGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>611</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>The default network inteface to use when in monitor local host mode.</string>
+      </property>
+      <property name="title">
+       <string>Default Live Monitoring Interface</string>
+      </property>
+      <widget class="QLineEdit" name="defaultMonitorInterfaceLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>481</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>32</number>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="defaultMonitorInterfaceSave">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_calc-accept.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="defaultMonitorInterfaceLoad">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/undo.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="defaultMonitorInterfaceReset">
        <property name="geometry">
         <rect>
          <x>570</x>
@@ -2178,6 +2273,54 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>defaultMonitorInterfaceSave</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>defaultMonitoringInterfaceSaveAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>554</x>
+     <y>224</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>488</x>
+     <y>-38</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>defaultMonitorInterfaceLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>defaultMonitoringInterfaceLoadAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>581</x>
+     <y>224</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>576</x>
+     <y>-34</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>defaultMonitorInterfaceReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>defaultMonitoringInterfaceResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>611</x>
+     <y>223</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>601</x>
+     <y>-47</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>rootDirLoadAction()</slot>
@@ -2224,5 +2367,8 @@
   <slot>snapshotExtensionResetAction()</slot>
   <slot>resetAllSettingsAction()</slot>
   <slot>loadAllSettingsAction()</slot>
+  <slot>defaultMonitoringInterfaceSaveAction()</slot>
+  <slot>defaultMonitoringInterfaceResetAction()</slot>
+  <slot>defaultMonitoringInterfaceLoadAction()</slot>
  </slots>
 </ui>
