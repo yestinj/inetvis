@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "ui_visdisplay.h"
 #include "logui.h"
+#include <QCloseEvent>
 
 class VisDisplayWidget : public QWidget, public Ui::VisDisplay {
     Q_OBJECT
@@ -22,6 +23,9 @@ public slots:
 private:
     void init();
     GLVisWidget* getPtrToVisPane();
+    void writeSettings();
+    void readSettings();
+    void closeEvent(QCloseEvent *event);
 
 };
 #endif // VISDISPLAYWIDGET_H

@@ -6,8 +6,6 @@
 
 using namespace std; //for debugging purposes
 
-QSettings DataProcessor::settings;
-
 /* libpcap pcap_pkthdr definition for reference purposes
 
    struct pcap_pkthdr
@@ -3527,79 +3525,98 @@ void DataProcessor::reportError(const QString &errMsg, const QString &function) 
 #endif
 }
 
-QString DataProcessor::getRecordDir() {
+QString DataProcessor::getRecordDir() {   
+    QSettings settings;
     return settings.value(RECORD_DEFAULT_DIR_KEY).toString();
 }
 
 void DataProcessor::setRecordDir(QString recordDir) {
+    QSettings settings;
     settings.setValue(RECORD_DEFAULT_DIR_KEY, recordDir);
 }
 
 bool DataProcessor::isRecordDirSet() {
+    QSettings settings;
     return settings.contains(RECORD_DEFAULT_DIR_KEY);
 }
 
 QString DataProcessor::getPcapsDir() {    
+    QSettings settings;
     return settings.value(RECORD_PCAPS_SUBDIR_KEY).toString();
 }
 
 void DataProcessor::setPcapsDir(QString pcapsDir) {
+    QSettings settings;
     settings.setValue(RECORD_PCAPS_SUBDIR_KEY, pcapsDir);
 }
 
 bool DataProcessor::isPcapsDirSet() {
+    QSettings settings;
     return settings.contains(RECORD_PCAPS_SUBDIR_KEY);
 }
 
 QString DataProcessor::getFramesDir() {
+    QSettings settings;
     return settings.value(RECORD_FRAMES_SUBDIR_KEY).toString();
 }
 
 void DataProcessor::setFramesDir(QString framesDir) {
+    QSettings settings;
     settings.setValue(RECORD_FRAMES_SUBDIR_KEY, framesDir);
 }
 
 bool DataProcessor::isFramesDirSet() {
+    QSettings settings;
     return settings.contains(RECORD_FRAMES_SUBDIR_KEY);
 }
 
 QString DataProcessor::getSnapshotsDir() {
+    QSettings settings;
     return settings.value(RECORD_SNAPSHOTS_SUBDIR_KEY).toString();
 }
 
 void DataProcessor::setSnapshotsDir(QString snapshotsDir) {    
+    QSettings settings;
     settings.setValue(RECORD_SNAPSHOTS_SUBDIR_KEY, snapshotsDir);
 }
 
 bool DataProcessor::isSnapshotDirSet() {
+    QSettings settings;
     return settings.contains(RECORD_SNAPSHOTS_SUBDIR_KEY);
 }
 
 QString DataProcessor::getLiveSubdir() {
+    QSettings settings;
     return settings.value(RECORD_LIVE_SUBDIR_KEY).toString();
 }
 
 void DataProcessor::setLiveSubdir(QString liveSubdir) {
+    QSettings settings;
     settings.setValue(RECORD_LIVE_SUBDIR_KEY, liveSubdir);
 }
 
 bool DataProcessor::isLiveSubdirSet() {
+    QSettings settings;
     return settings.contains(RECORD_LIVE_SUBDIR_KEY);
 }
 
 QString DataProcessor::getReplaySubdir() {
+    QSettings settings;
     return settings.value(RECORD_REPLAY_SUBDIR_KEY).toString();
 }
 
 void DataProcessor::setReplaySubdir(QString replaySubdir) {
+    QSettings settings;
     settings.setValue(RECORD_REPLAY_SUBDIR_KEY, replaySubdir);
 }
 
 bool DataProcessor::isReplaySubdirSet() {
+    QSettings settings;
     return settings.contains(RECORD_REPLAY_SUBDIR_KEY);
 }
 
 QString DataProcessor::getDefaultHomeNetwork() {
+    QSettings settings;
     return settings.value(DEFAULT_HOME_NETWORK_KEY).toString();
 }
 
@@ -3655,70 +3672,87 @@ bool DataProcessor::setDefaultHomeNetwork(int octA, int octB, int octC, int octD
             + QString::number(octC) + "."
             + QString::number(octD) + "/"
             + QString::number(slashMask);
+    QSettings settings;
     settings.setValue(DEFAULT_HOME_NETWORK_KEY, ipAddress);
     return true;
 }
 
 bool DataProcessor::isDefaultHomeNetworkSet() {
+    QSettings settings;
     return settings.contains(DEFAULT_HOME_NETWORK_KEY);
 }
 
 bool DataProcessor::getShowHomeNetworkNotSetError() {
+    QSettings settings;
     return settings.value(SHOW_HOME_NETWORK_NOT_SET_ERROR_KEY).toBool();
 }
 
 void DataProcessor::setShowHomeNetworkNotSetError(bool show) {
+    QSettings settings;
     settings.setValue(SHOW_HOME_NETWORK_NOT_SET_ERROR_KEY, show);
 }
 
 bool DataProcessor::isShowHomeNetworkNotSetError() {
+    QSettings settings;
     return settings.contains(SHOW_HOME_NETWORK_NOT_SET_ERROR_KEY);
 }
 
 QString DataProcessor::getDefaultMonitorInterface() {
+    QSettings settings;
     return settings.value(DEFAULT_MONITOR_INTERFACE_KEY).toString();
 }
 
 void DataProcessor::setDefaultMonitorInterface(QString monitorInterface) {
+    QSettings settings;
     settings.setValue(DEFAULT_MONITOR_INTERFACE_KEY, monitorInterface);
 }
 
 bool DataProcessor::isDefaultMonitorInterfaceSet() {
+    QSettings settings;
     return settings.contains(DEFAULT_MONITOR_INTERFACE_KEY);
 }
 
 QString DataProcessor::getScreenshotFormat() {
+    QSettings settings;
     return settings.value(SCREENSHOT_FORMAT_KEY).toString();
 }
 
 void DataProcessor::setScreenshotFormat(QString screenshotFormat) {
+    QSettings settings;
     settings.setValue(SCREENSHOT_FORMAT_KEY, screenshotFormat);
 }
 
 bool DataProcessor::isScreenshotFormatSet() {
+    QSettings settings;
     return settings.contains(SCREENSHOT_FORMAT_KEY);
 }
 
 QString DataProcessor::getScreenshotExtension() {
+    QSettings settings;
     return settings.value(SCREENSHOT_EXTENSION_KEY).toString();
 }
 
 void DataProcessor::setScreenshotExtension(QString screenshotExtension) {
+    QSettings settings;
     settings.setValue(SCREENSHOT_EXTENSION_KEY, screenshotExtension);
 }
 
 bool DataProcessor::isScreenshotExtensionSet() {
+    QSettings settings;
     return settings.contains(SCREENSHOT_EXTENSION_KEY);
 }
 
 int DataProcessor::getScreenshotQuality() {
+    QSettings settings;
     return settings.value(SCREENSHOT_QUALITY_KEY).toInt();
 }
 
 void DataProcessor::setScreenshotQuality(int screenshotQuality) {
+    QSettings settings;
     settings.setValue(SCREENSHOT_QUALITY_KEY, screenshotQuality);
 }
 
 bool DataProcessor::isScreenshotQualitySet() {
+    QSettings settings;
     return settings.contains(SCREENSHOT_QUALITY_KEY);
 }

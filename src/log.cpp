@@ -8,7 +8,6 @@ QFile Log::stdoutFile;
 QFile Log::stderrFile;
 QTextStream Log::stdoutLogStream;
 QTextStream Log::stderrLogStream;
-QSettings Log::settings;
 
 bool Log::createDirectories() {
     QDir dir = QDir();
@@ -84,38 +83,47 @@ void Log::logError(QString msg) {
 }
 
 QString Log::getLogRootDir() {
+    QSettings settings;
     return settings.value(LOG_ROOT_DIR_KEY).toString();
 }
 
 void Log::setLogRootDir(QString logRootDir) {
+    QSettings settings;
     settings.setValue(LOG_ROOT_DIR_KEY, logRootDir);
 }
 
 bool Log::isLogRootDirSet() {
+    QSettings settings;
     return settings.contains(LOG_ROOT_DIR_KEY);
 }
 
 QString Log::getStdoutFilename() {
+    QSettings settings;
     return settings.value(STDOUT_FILENAME_KEY).toString();
 }
 
 void Log::setStdoutFilename(QString stdoutFilename) {
+    QSettings settings;
     settings.setValue(STDOUT_FILENAME_KEY, stdoutFilename);
 }
 
 bool Log::isStdoutFilenameSet() {
+    QSettings settings;
     return settings.contains(STDOUT_FILENAME_KEY);
 }
 
 QString Log::getStderrFilename() {
+    QSettings settings;
     return settings.value(STDERR_FILENAME_KEY).toString();
 }
 
 void Log::setStderrFilename(QString stderrFilename) {
+    QSettings settings;
     settings.setValue(STDERR_FILENAME_KEY, stderrFilename);
 }
 
 bool Log::isStderrFilenameSet() {
+    QSettings settings;
     return settings.contains(STDERR_FILENAME_KEY);
 }
 

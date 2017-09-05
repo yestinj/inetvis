@@ -414,8 +414,6 @@ private:
     //points in a diplay list if playback is not running
     GLuint staticSatterplotList;
 
-    static QSettings settings;
-
     //private internal operations --------------------------------------------
 
     void updateTimeIncrimental(int tmLapse); //function to set the

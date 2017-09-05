@@ -25,7 +25,6 @@ private:
     static QFile stderrFile;  //object to manage log file - file handle
     static QTextStream stdoutLogStream;  //stream to write into log file
     static QTextStream stderrLogStream;  //stream to write into log fil    
-    static QSettings settings;
 
     static bool openStdoutFile();
     static bool openStderrFile();

@@ -125,8 +125,6 @@ GLVisWidget::GLVisWidget(QWidget *parent) : QGLWidget(parent) {
     resOffsetz = 0.0;
 
     setFocusPolicy(Qt::StrongFocus);
-
-
 }
 
 
@@ -139,7 +137,6 @@ GLVisWidget::~GLVisWidget() {
 
 void GLVisWidget::setDataProcLink(DataProcessor *ptr) {
     dataProcessor = ptr;
-
 }
 
 

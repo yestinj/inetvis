@@ -12,7 +12,7 @@ ControlPanelWidget::~ControlPanelWidget() {
 
 void ControlPanelWidget::writeSettings() {
     QSettings settings;
-    settings.beginGroup("ControlPanel");
+    settings.beginGroup("controlpanel");
     settings.setValue("size", size());
     settings.setValue("pos", pos());
     settings.endGroup();
@@ -20,9 +20,9 @@ void ControlPanelWidget::writeSettings() {
 
 void ControlPanelWidget::readSettings() {
     QSettings settings;
-    settings.beginGroup("ControlPanel");
+    settings.beginGroup("controlpanel");
     resize(settings.value("size", QSize(598, 323)).toSize());
-    move(settings.value("pos", QPoint(598, 323)).toPoint());
+    move(settings.value("pos", QPoint(700, 0)).toPoint());
     settings.endGroup();
 }
 
