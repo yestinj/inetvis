@@ -55,10 +55,8 @@ void initialiseQtSettings() {
     QCoreApplication::setOrganizationDomain("ru.ac.za");
     QCoreApplication::setApplicationName("InetVis");
 
-    QSettings settings;
-
-    // TODO: Remove this for production
-    settings.clear();
+    //QSettings settings;
+    //settings.clear();
 
     //QString recordPath = QStandardPaths::standardLocations(QStandardPaths::DownloadLocation).first() + "/" + "inetvis-recorded";
 
