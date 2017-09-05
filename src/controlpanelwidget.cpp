@@ -1,15 +1,29 @@
 #include "controlpanelwidget.h"
-#include <iostream>
-#include <math.h>
-#include "timeutil.h"
 
 ControlPanelWidget::ControlPanelWidget(QMainWindow *parent) : QMainWindow(parent) {
     setupUi(this);
     init();
+    readSettings();
 }
 
 ControlPanelWidget::~ControlPanelWidget() {
     destroy();
+}
+
+void ControlPanelWidget::writeSettings() {
+    QSettings settings;
+    settings.beginGroup("controlpanel");
+    settings.setValue("size", size());
+    settings.setValue("pos", pos());
+    settings.endGroup();
+}
+
+void ControlPanelWidget::readSettings() {
+    QSettings settings;
+    settings.beginGroup("controlpanel");
+    resize(settings.value("size", QSize(598, 323)).toSize());
+    move(settings.value("pos", QPoint(700, 0)).toPoint());
+    settings.endGroup();
 }
 
 void ControlPanelWidget::init() {
@@ -177,8 +191,13 @@ void ControlPanelWidget::monitorLocalHostSelected() {
     if(LogUI::isEnabled()) {
         LogUI::logEvent("[CP] menu 'Mode->Monitor Local Host' selected");
     }
+
     //notify the data processor of mode change
-    emit selectNetworkInterface(""); //will open default interface
+    QString monitorInterface = DataProcessor::getDefaultMonitorInterface();
+
+    // If an interface is not set, the default of empty string will be used which
+    // will trigger automatic determination of the default interface.
+    emit selectNetworkInterface(monitorInterface);
 }
 
 void ControlPanelWidget::pauseMenuAction() {
@@ -499,7 +518,7 @@ void ControlPanelWidget::timeWindowSliderReleased() {
 
 void ControlPanelWidget::viewVisDisplayPanel() {
     //update UI Log
-    if(LogUI::isEnabled()) {
+    if (LogUI::isEnabled()) {
         LogUI::logEvent("[CP] 'Display Window' opened");
     }
     emit showVisDisplayPanel();
@@ -507,8 +526,9 @@ void ControlPanelWidget::viewVisDisplayPanel() {
 
 void ControlPanelWidget::viewPlotterSettings() {
     //update UI log
-    if(LogUI::isEnabled())
+    if (LogUI::isEnabled()) {
         LogUI::logEvent("[CP] 'Plotter Settings' opened");
+    }
 
     emit showPlotterSettings();
 
@@ -516,19 +536,29 @@ void ControlPanelWidget::viewPlotterSettings() {
 
 void ControlPanelWidget::viewReferenceFrameSettings() {
     //update UI log
-    if(LogUI::isEnabled())
+    if (LogUI::isEnabled()) {
         LogUI::logEvent("[CP] 'Reference Frame Settings' opened");
+    }
 
     emit showReferenceFrameSettings();
+}
+
+void ControlPanelWidget::viewGeneralSettings() {
+    //update UI log
+    if (LogUI::isEnabled()) {
+        LogUI::logEvent("[CP] 'General Settings' opened");
+    }
+
+    emit showGeneralSettings();
 }
 
 void ControlPanelWidget::helpDoc() {
     helpDialog->show();
 
     //update UI log
-    if(LogUI::isEnabled())
+    if(LogUI::isEnabled()) {
         LogUI::logEvent("[CP] menu 'Help->Documentation' selected");
-
+    }
 }
 
 void ControlPanelWidget::showOnTop() {
@@ -673,4 +703,9 @@ void ControlPanelWidget::reportErrorMessage(QString errMsg) {
 QString ControlPanelWidget::strGetRepPos() {
     return replayDateTimeEdit->dateTime().toString("yyyy/MM/dd-hh:mm:ss")
             + QString(".%1").arg((millisecondsSpinBox->value()));
+}
+
+void ControlPanelWidget::closeEvent(QCloseEvent *event) {
+    writeSettings();
+    event->accept();
 }

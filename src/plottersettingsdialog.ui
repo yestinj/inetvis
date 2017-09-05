@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>552</width>
-    <height>473</height>
+    <width>563</width>
+    <height>518</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -333,7 +333,7 @@
            <item>
             <widget class="QPushButton" name="guessPushButton">
              <property name="toolTip">
-              <string>Guess the home network range based on the packet capture file (for replay), or quary the default interface (for live monitoring)</string>
+              <string>Guess the home network range based on the packet capture file (for replay), or query the default interface (for live monitoring)</string>
              </property>
              <property name="text">
               <string>Guess </string>
@@ -341,20 +341,14 @@
             </widget>
            </item>
            <item>
-            <spacer name="spacer6">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
+            <widget class="QPushButton" name="loadPushButton">
+             <property name="toolTip">
+              <string>Load the default IP address stored in settings. This can be changed in General Settings</string>
              </property>
-             <property name="sizeType">
-              <enum>QSizePolicy::Expanding</enum>
+             <property name="text">
+              <string>Load</string>
              </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>10</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
+            </widget>
            </item>
            <item>
             <widget class="QToolButton" name="homeNetApplyToolButton">
@@ -1200,8 +1194,8 @@
    <slot>applyInternetRangeSettings()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>517</x>
+     <y>197</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
@@ -1216,8 +1210,8 @@
    <slot>applyPortRange()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>518</x>
+     <y>312</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
@@ -1232,8 +1226,8 @@
    <slot>pointSizeChanged()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>514</x>
+     <y>425</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
@@ -1248,8 +1242,8 @@
    <slot>setColScheme(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>104</x>
+     <y>408</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
@@ -1264,8 +1258,8 @@
    <slot>setFullSrcNetRange()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>361</x>
+     <y>196</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
@@ -1280,8 +1274,8 @@
    <slot>guessHomeNetworkPressed()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>361</x>
+     <y>77</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
@@ -1296,24 +1290,8 @@
    <slot>transDecaySelected()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>20</x>
-     <y>20</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>homeNetApplyToolButton</sender>
-   <signal>pressed()</signal>
-   <receiver>PlotterSettingsDialog</receiver>
-   <slot>applyHomeNetSettings()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>274</x>
+     <y>472</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
@@ -1328,8 +1306,8 @@
    <slot>smoothingEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>448</x>
+     <y>472</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
@@ -1344,8 +1322,8 @@
    <slot>enablePointBulge(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>448</x>
+     <y>493</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
@@ -1360,8 +1338,8 @@
    <slot>backgroundColourChange()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>20</x>
-     <y>20</y>
+     <x>62</x>
+     <y>474</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
@@ -1369,5 +1347,24 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>loadPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>PlotterSettingsDialog</receiver>
+   <slot>loadDefaultHomeNetwork()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>461</x>
+     <y>73</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>477</x>
+     <y>605</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
+ <slots>
+  <slot>loadDefaultHomeNetwork()</slot>
+ </slots>
 </ui>

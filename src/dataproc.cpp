@@ -6,7 +6,6 @@
 
 using namespace std; //for debugging purposes
 
-
 /* libpcap pcap_pkthdr definition for reference purposes
 
    struct pcap_pkthdr
@@ -1121,25 +1120,25 @@ QString DataProcessor::DataExtractor::getReplayFileName()
 }
 
 
-bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
-{
+bool DataProcessor::DataExtractor::openInterface(const QString netInterface) {
 #ifdef DEBUG_DATA_EXTRACTOR
     cerr << "DEBUG: live interface open --------------------------------------------------------\n";
 #endif
 
     dataProcessor->setMode(NOT_READY);
-    if (dataProcessor->getState() == PLAYING)
+    if (dataProcessor->getState() == PLAYING) {
         dataProcessor->pause();
-
-    if (netInterface.isEmpty()) //use existing string value for local interface
-    {  return openDefaultInterface();
-    }
-    else //set to new value
-    {  strLocalInterface = netInterface;
     }
 
-    if (liveCaptureInstance != NULL)
-    {
+    //use existing string value for local interface
+    if (netInterface.isEmpty()) {
+        return openDefaultInterface();
+    } else {
+        //set to new value
+        strLocalInterface = netInterface;
+    }
+
+    if (liveCaptureInstance != NULL) {
 #ifdef DEBUG_CAPTURE_INSTANCE
         cerr << "DEBUG: opening live interface and previous live capture instance was still open\n";
         cerr << "DEBUG: closing previous live capture instance"
@@ -1154,8 +1153,7 @@ bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
         //dataProcessor->glVisWidget->update();
     }
 
-    if (fileCaptureInstance != NULL)
-    {
+    if (fileCaptureInstance != NULL) {
 #ifdef DEBUG_CAPTURE_INSTANCE
         cerr << "DEBUG: opening live interface and previous file capture instance was still open\n";
         cerr << "DEBUG: closing previous file capture instance: "
@@ -1172,15 +1170,15 @@ bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
 
     liveCaptureInstance = pcap_open_live(strLocalInterface.toLatin1().data(), packetCaptureLength,
                                          promiscuousMode, readTimeout, pcapErrorBuffer);
-    if (liveCaptureInstance == NULL)
-    {  reportError("error opening network device " + strLocalInterface +
+    if (liveCaptureInstance == NULL) {
+        reportError("error opening network device " + strLocalInterface +
                    " for capture (a lack of user privileges may be the cause)",
                    "libpcap::pcap_open_live");
         return false;
     }
     //else interface opened for capture - check for warning message
-    if (checkPcapErrorBuffer())
-    {  reportError("libpacp warning when opening network device",
+    if (checkPcapErrorBuffer()) {
+        reportError("libpacp warning when opening network device",
                    "libpcap::pcap_open_live()");
     }
 
@@ -1193,8 +1191,8 @@ bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
     //but has no effect on replay of capture files
 #define NON_BLOCK_MODE 1
     pcapRet = pcap_setnonblock(liveCaptureInstance, NON_BLOCK_MODE, pcapErrorBuffer);
-    if (pcapRet == -1)
-    {  reportError("failed to enable non-blocking live capture mode", "libpcap::pcap_setnonblock()");
+    if (pcapRet == -1) {
+        reportError("failed to enable non-blocking live capture mode", "libpcap::pcap_setnonblock()");
         dataProcessor->setMode(NOT_READY);
         return false;
     }
@@ -1220,35 +1218,27 @@ bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
 }
 
 
-bool DataProcessor::DataExtractor::openDefaultInterface()
-{
+bool DataProcessor::DataExtractor::openDefaultInterface() {
 #define MAX_DEV_NAME_LENGTH 32
 
     strLocalInterface = QString((const char*)pcap_lookupdev(pcapErrorBuffer));
 
-    if (strLocalInterface.isNull() || strLocalInterface.isEmpty())
-    {  reportError("could not lookup default device", "libpcap::pcap_lookupdev");
+    if (strLocalInterface.isNull() || strLocalInterface.isEmpty()) {
+        reportError("could not lookup default device", "libpcap::pcap_lookupdev");
         dataProcessor->setMode(NOT_READY);
         return false;
-    }
-    else
-    {
+    } else {
 #ifdef DEBUG_DATA_EXTRACTOR
         cerr << "DEBUG: Default device set: " << strLocalInterface.toLatin1().data() << endl;
 #endif
         return openInterface(strLocalInterface);
     }
-
-
 }
 
 
-bool DataProcessor::DataExtractor::connectServer(const QString server)
-{
+bool DataProcessor::DataExtractor::connectServer(const QString server) {
     //TODO: The idea is to recieve processed information from a server
-
     return false;
-
 }
 
 
@@ -1780,8 +1770,8 @@ void DataProcessor::DataExtractor::run()
 
 //Constructor and Destructor ------------------------------
 
-DataProcessor::DataProcessor()
-{
+DataProcessor::DataProcessor() {
+
     //link objects
     dataExtractor.setDataProcLink(this);
 
@@ -2255,11 +2245,10 @@ void DataProcessor::selectReplayFile(const QString file)
 }
 
 
-void DataProcessor::selectNetworkInterface(const QString netInterface)
-{
-    if (replayMode != MONITOR_LOCAL)
-    {  if(dataExtractor.openInterface(netInterface))
-        {  //try guess home network
+void DataProcessor::selectNetworkInterface(const QString netInterface) {
+    if (replayMode != MONITOR_LOCAL) {
+        if (dataExtractor.openInterface(netInterface)) {
+            //try guess home network
             guessHomeNetwork();
             unsigned int a, m; //address, mask
             dataExtractor.getHomeNetwork(a, m);
@@ -2268,7 +2257,6 @@ void DataProcessor::selectNetworkInterface(const QString netInterface)
         //openInterface() and guessHomeNetwork() will report errors
     }
     //else already monitoring local interface
-
 }
 
 
@@ -3537,52 +3525,234 @@ void DataProcessor::reportError(const QString &errMsg, const QString &function) 
 #endif
 }
 
-QString DataProcessor::getRecordDir() {
-    QSettings s;
-    return s.value("dataproc/recording/default_dir").toString();
+QString DataProcessor::getRecordDir() {   
+    QSettings settings;
+    return settings.value(RECORD_DEFAULT_DIR_KEY).toString();
 }
 
-QString DataProcessor::getPcapsDir() {
-    QSettings s;
-    return s.value("dataproc/recording/pcaps_subdir").toString();
+void DataProcessor::setRecordDir(QString recordDir) {
+    QSettings settings;
+    settings.setValue(RECORD_DEFAULT_DIR_KEY, recordDir);
+}
+
+bool DataProcessor::isRecordDirSet() {
+    QSettings settings;
+    return settings.contains(RECORD_DEFAULT_DIR_KEY);
+}
+
+QString DataProcessor::getPcapsDir() {    
+    QSettings settings;
+    return settings.value(RECORD_PCAPS_SUBDIR_KEY).toString();
+}
+
+void DataProcessor::setPcapsDir(QString pcapsDir) {
+    QSettings settings;
+    settings.setValue(RECORD_PCAPS_SUBDIR_KEY, pcapsDir);
+}
+
+bool DataProcessor::isPcapsDirSet() {
+    QSettings settings;
+    return settings.contains(RECORD_PCAPS_SUBDIR_KEY);
 }
 
 QString DataProcessor::getFramesDir() {
-    QSettings s;
-    return s.value("dataproc/recording/frames_subdir").toString();
+    QSettings settings;
+    return settings.value(RECORD_FRAMES_SUBDIR_KEY).toString();
+}
+
+void DataProcessor::setFramesDir(QString framesDir) {
+    QSettings settings;
+    settings.setValue(RECORD_FRAMES_SUBDIR_KEY, framesDir);
+}
+
+bool DataProcessor::isFramesDirSet() {
+    QSettings settings;
+    return settings.contains(RECORD_FRAMES_SUBDIR_KEY);
 }
 
 QString DataProcessor::getSnapshotsDir() {
-    QSettings s;
-    return s.value("dataproc/recording/snapshots_subdir").toString();
+    QSettings settings;
+    return settings.value(RECORD_SNAPSHOTS_SUBDIR_KEY).toString();
+}
+
+void DataProcessor::setSnapshotsDir(QString snapshotsDir) {    
+    QSettings settings;
+    settings.setValue(RECORD_SNAPSHOTS_SUBDIR_KEY, snapshotsDir);
+}
+
+bool DataProcessor::isSnapshotDirSet() {
+    QSettings settings;
+    return settings.contains(RECORD_SNAPSHOTS_SUBDIR_KEY);
 }
 
 QString DataProcessor::getLiveSubdir() {
-    QSettings s;
-    return s.value("dataproc/recording/live_subdir").toString();
+    QSettings settings;
+    return settings.value(RECORD_LIVE_SUBDIR_KEY).toString();
+}
+
+void DataProcessor::setLiveSubdir(QString liveSubdir) {
+    QSettings settings;
+    settings.setValue(RECORD_LIVE_SUBDIR_KEY, liveSubdir);
+}
+
+bool DataProcessor::isLiveSubdirSet() {
+    QSettings settings;
+    return settings.contains(RECORD_LIVE_SUBDIR_KEY);
 }
 
 QString DataProcessor::getReplaySubdir() {
-    QSettings s;
-    return s.value("dataproc/recording/replay_subdir").toString();
+    QSettings settings;
+    return settings.value(RECORD_REPLAY_SUBDIR_KEY).toString();
+}
+
+void DataProcessor::setReplaySubdir(QString replaySubdir) {
+    QSettings settings;
+    settings.setValue(RECORD_REPLAY_SUBDIR_KEY, replaySubdir);
+}
+
+bool DataProcessor::isReplaySubdirSet() {
+    QSettings settings;
+    return settings.contains(RECORD_REPLAY_SUBDIR_KEY);
+}
+
+QString DataProcessor::getDefaultHomeNetwork() {
+    QSettings settings;
+    return settings.value(DEFAULT_HOME_NETWORK_KEY).toString();
+}
+
+bool DataProcessor::setDefaultHomeNetwork(QString ipAddress) {
+    QStringList ipAndMask = ipAddress.split('/');
+
+    // If the list length is less than 2, it's invalid, return false.
+    if (ipAndMask.length() < 2) {
+        return false;
+    }
+
+    QString ip = ipAndMask.at(0);
+    QStringList octets = ip.split(".");
+
+    // If the IP address is malformed, return false.
+    if (octets.length() != 4) {
+        return false;
+    }
+
+    int octA = octets.at(0).toInt();
+    int octB = octets.at(1).toInt();
+    int octC = octets.at(2).toInt();
+    int octD = octets.at(3).toInt();
+
+    // Ensure the octets are actual IP address octets.
+    // This isn't elegant, should be improved.
+    if (octA < 0 || octA > 255) {
+        return false;
+    }
+    if (octB < 0 || octB > 255) {
+        return false;
+    }
+    if (octC < 0 || octC > 255) {
+        return false;
+    }
+    if (octD < 0 || octD > 255) {
+        return false;
+    }
+
+    QString mask = ipAndMask.at(1);
+    int maskInt = mask.toInt();
+
+    if (maskInt < 0 || maskInt > 32) {
+        return false;
+    }
+
+    return DataProcessor::setDefaultHomeNetwork(octA, octB, octC, octD, maskInt);
+}
+
+bool DataProcessor::setDefaultHomeNetwork(int octA, int octB, int octC, int octD, int slashMask) {
+    QString ipAddress = QString::number(octA) + "."
+            + QString::number(octB) + "."
+            + QString::number(octC) + "."
+            + QString::number(octD) + "/"
+            + QString::number(slashMask);
+    QSettings settings;
+    settings.setValue(DEFAULT_HOME_NETWORK_KEY, ipAddress);
+    return true;
+}
+
+bool DataProcessor::isDefaultHomeNetworkSet() {
+    QSettings settings;
+    return settings.contains(DEFAULT_HOME_NETWORK_KEY);
 }
 
 bool DataProcessor::getShowHomeNetworkNotSetError() {
-    QSettings s;
-    return s.value("dataproc/home_network/show_not_set_error").toBool();
+    QSettings settings;
+    return settings.value(SHOW_HOME_NETWORK_NOT_SET_ERROR_KEY).toBool();
+}
+
+void DataProcessor::setShowHomeNetworkNotSetError(bool show) {
+    QSettings settings;
+    settings.setValue(SHOW_HOME_NETWORK_NOT_SET_ERROR_KEY, show);
+}
+
+bool DataProcessor::isShowHomeNetworkNotSetError() {
+    QSettings settings;
+    return settings.contains(SHOW_HOME_NETWORK_NOT_SET_ERROR_KEY);
+}
+
+QString DataProcessor::getDefaultMonitorInterface() {
+    QSettings settings;
+    return settings.value(DEFAULT_MONITOR_INTERFACE_KEY).toString();
+}
+
+void DataProcessor::setDefaultMonitorInterface(QString monitorInterface) {
+    QSettings settings;
+    settings.setValue(DEFAULT_MONITOR_INTERFACE_KEY, monitorInterface);
+}
+
+bool DataProcessor::isDefaultMonitorInterfaceSet() {
+    QSettings settings;
+    return settings.contains(DEFAULT_MONITOR_INTERFACE_KEY);
 }
 
 QString DataProcessor::getScreenshotFormat() {
-    QSettings s;
-    return s.value("dataproc/screenshot/screenshot_format").toString();
+    QSettings settings;
+    return settings.value(SCREENSHOT_FORMAT_KEY).toString();
+}
+
+void DataProcessor::setScreenshotFormat(QString screenshotFormat) {
+    QSettings settings;
+    settings.setValue(SCREENSHOT_FORMAT_KEY, screenshotFormat);
+}
+
+bool DataProcessor::isScreenshotFormatSet() {
+    QSettings settings;
+    return settings.contains(SCREENSHOT_FORMAT_KEY);
 }
 
 QString DataProcessor::getScreenshotExtension() {
-    QSettings s;
-    return s.value("dataproc/screenshot/screenshot_extension").toString();
+    QSettings settings;
+    return settings.value(SCREENSHOT_EXTENSION_KEY).toString();
+}
+
+void DataProcessor::setScreenshotExtension(QString screenshotExtension) {
+    QSettings settings;
+    settings.setValue(SCREENSHOT_EXTENSION_KEY, screenshotExtension);
+}
+
+bool DataProcessor::isScreenshotExtensionSet() {
+    QSettings settings;
+    return settings.contains(SCREENSHOT_EXTENSION_KEY);
 }
 
 int DataProcessor::getScreenshotQuality() {
-    QSettings s;
-    return s.value("dataproc/screenshot/screenshot_quality").toInt();
+    QSettings settings;
+    return settings.value(SCREENSHOT_QUALITY_KEY).toInt();
+}
+
+void DataProcessor::setScreenshotQuality(int screenshotQuality) {
+    QSettings settings;
+    settings.setValue(SCREENSHOT_QUALITY_KEY, screenshotQuality);
+}
+
+bool DataProcessor::isScreenshotQualitySet() {
+    QSettings settings;
+    return settings.contains(SCREENSHOT_QUALITY_KEY);
 }

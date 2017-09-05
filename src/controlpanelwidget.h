@@ -1,5 +1,6 @@
 #ifndef CONTROLPANELWIDGET_H
 #define CONTROLPANELWIDGET_H
+
 #include "ui_controlpanel.h"
 #include <QMainWindow>
 #include <QDateTime>
@@ -11,6 +12,12 @@
 #include "aboutdialogwidget.h"
 #include "helpdocumentationdialogwidget.h"
 #include "logui.h"
+#include "generalsettingsdialog.h"
+#include <iostream>
+#include <math.h>
+#include "timeutil.h"
+#include <QSettings>
+#include <QCloseEvent>
 
 #define DISABLE_RECORDING_LIVE_CAPTURE true
 
@@ -48,6 +55,7 @@ public slots:
     void timeWindowSliderReleased();
     void viewVisDisplayPanel();
     void viewPlotterSettings();
+    void viewGeneralSettings();
     void viewReferenceFrameSettings();
     void helpDoc();
     void showOnTop();
@@ -60,7 +68,7 @@ public slots:
     void setTimeRange(const QDateTime, const QDateTime);
     void setRecordButton(bool);
     void reportErrorMessage(QString);
-    void replayPositionDateTimeChanged();
+    void replayPositionDateTimeChanged();    
 
 signals:
     void play();
@@ -77,6 +85,7 @@ signals:
     void selectNetworkInterface(const QString);
     void showPlotterSettings();
     void showReferenceFrameSettings();
+    void showGeneralSettings();
     void captureFrames(bool);
     void captureSingleFrame();
     void recordToFile(bool);
@@ -103,6 +112,8 @@ private:
     void init();
     void destroy();
     QString strGetRepPos();
-
+    void writeSettings();
+    void readSettings();
+    void closeEvent(QCloseEvent *event);
 };
 #endif // CONTROLPANELWIDGET_H

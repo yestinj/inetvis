@@ -64,6 +64,7 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #include <QMouseEvent>
 #include <QKeyEvent>
 #include <sys/time.h>
+#include <QCloseEvent>
 
 // DEGBUG DIRECTIVES -----------------------------------------------------------
 //un-commnet to compile with debug info
@@ -239,6 +240,7 @@ protected:
 
     //internal methods
     void checkFrameCaptureBufferSize();
+
 public:
 
     //GLVisWidget(QWidget *parent, const char *name);
@@ -301,5 +303,5 @@ signals:
     void showControlPanel();
     void showPlotterSettings();
     void showReferenceFrameSettings();
-
+    void showGeneralSettings();
 };

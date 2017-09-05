@@ -100,13 +100,6 @@ void PlotterSettingsDialogWidget::applyHomeNetSettings() {
     int octD = homeNetDLineEdit->text().toInt();
     int slashMask = homeNetSlashNumLineEdit->text().toInt();
 
-    // TODO: Just a test for now, might want to remove it later.
-    //save this home network in the config as the default
-    // For now only save when the user clicks the button.
-    // Decide what to do with this later.. Does it even make sense to read in a 'default'?
-    // since this would depend highly on the packet capture open, or the underlying source net..
-    writeHomeNetworkConfig(octA, octB, octC, octD, slashMask);
-
     emit setHomeNetwork(octA, octB, octC, octD, slashMask);
 
     //update UI Log
@@ -333,18 +326,27 @@ QString PlotterSettingsDialogWidget::readHomeNetworkConfig() {
     return s.value("plottersettings/default_home_network").toString();
 }
 
-void PlotterSettingsDialogWidget::writeHomeNetworkConfig(int octA, int octB, int octC, int octD, int slashMask) {
-    QString ipAddress = QString::number(octA) + "."
-            + QString::number(octB) + "."
-            + QString::number(octC) + "."
-            + QString::number(octD) + "/"
-            + QString::number(slashMask);
-    QSettings s;
-    s.setValue("plottersettings/default_home_network", ipAddress);
+void PlotterSettingsDialogWidget::loadDefaultHomeNetwork() {
+
+    if(LogUI::isEnabled()) {
+        LogUI::logEvent("[PS] load Default home network button pressed");
+    }
+
+    QString homeNetwork = DataProcessor::getDefaultHomeNetwork();
+
+    QStringList ipAndMask = homeNetwork.split('/');
+    QStringList octets = ipAndMask.at(0).split(".");
+
+    int octA = octets.at(0).toInt();
+    int octB = octets.at(1).toInt();
+    int octC = octets.at(2).toInt();
+    int octD = octets.at(3).toInt();
+
+    QString mask = ipAndMask.at(1);
+    int maskInt = mask.toInt();
+
+    emit setHomeNetwork(octA, octB, octC, octD, maskInt);
 }
-
-
-
 
 
 
