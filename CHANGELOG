@@ -9,6 +9,8 @@ General
 
 New Features
 -------------
+* added HaRlEMsHaKe - causes jittering when view to help with depth perception , triggered with ~
+* added autorotation in View to roate around x axis. 1 to trigger, 2 to increment , 3 to decrement
 
 Bugs Fixed
 ----------
