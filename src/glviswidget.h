@@ -226,6 +226,14 @@ protected:
     //internal methods
     void checkFrameCaptureBufferSize();
 
+    // for Harlem shake mode
+    float harlemCount;
+    bool harlemToggle;
+    
+    // for rotation
+    bool rotateToggle;
+    float rotateAmount;
+
 public:
 
     //GLVisWidget(QWidget *parent, const char *name);

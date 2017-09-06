@@ -1,12 +1,3 @@
-#include <glviswidget.h>
-#include <math.h>
-#include <iostream>
-#include <dataproc.h>
-#include <logui.h>
-#include <QKeyEvent>
-#include <QMouseEvent>
-#include <QWheelEvent>
-
 /*******************************************************************
 InetVis - Internet Visualisation
 Version: 2.1.0
@@ -25,6 +16,15 @@ InetVis - Internet Visualisation for network traffic.
 Copyright (C) 2006-2017, Jean-Pierre van Riel, Barry Irwin, Yestin Johnson
 
 *******************************************************************/
+
+#include <glviswidget.h>
+#include <math.h>
+#include <iostream>
+#include <dataproc.h>
+#include <logui.h>
+#include <QKeyEvent>
+#include <QMouseEvent>
+#include <QWheelEvent>
 
 using namespace std;
 
@@ -143,6 +143,14 @@ GLVisWidget::GLVisWidget(QWidget *parent) : QGLWidget(parent) {
     resOffsety = 0.0;
     resOffsetz = 0.0;
 
+    // init Harlem shake counter
+    harlemCount = 0;
+    harlemToggle = false;
+
+    // init rotate
+    rotateToggle = false;
+    rotateAmount = 0.05;
+
     setFocusPolicy(Qt::StrongFocus);
 }
 
@@ -251,7 +259,28 @@ void GLVisWidget::updateProjection() {
 
 
 void GLVisWidget::paintGL() {
-
+    
+    /* Hacky code start */
+    
+    if(harlemToggle)
+    {
+        rotx += sin(harlemCount) * 0.25;
+        roty += cos(harlemCount) * 0.25;
+        harlemCount = (harlemCount + 0.1);
+        
+        if(harlemCount == 360)
+        {
+            harlemCount = 0.0;
+        }
+    }
+    
+    if(rotateToggle)
+    {
+        rotx += rotateAmount;
+    }
+    
+    /*  Hacky code end  */
+    
     glLoadIdentity();
 
     //clear the previous frame rendered
@@ -876,6 +905,23 @@ void GLVisWidget::keyPressEvent(QKeyEvent *ev) {
                 checkControlBounds();
             } else
                 roty -= 1.0;
+            break;
+            
+            
+        case Qt::Key_QuoteLeft:
+            harlemToggle = !harlemToggle;
+            break;
+            
+        case Qt::Key_1:
+            rotateToggle = !rotateToggle;
+            break;
+            
+        case Qt::Key_2:
+            rotateAmount -= 0.01;
+            break;
+            
+        case Qt::Key_3:
+            rotateAmount += 0.01;
             break;
     }
 }
