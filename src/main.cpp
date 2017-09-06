@@ -1,39 +1,21 @@
-/******************************************************************************
-
+/*******************************************************************
 InetVis - Internet Visualisation
+Version: 2.1.0
+release date: 2017/09/21
 
-version: 0.9.5
-release date: 2007/11/21
-
+Original Authors: Jean-Pierre van Riel, Barry Irwin
+Initvis 2.x Authors: Yestin Johnson, Barry Irwin
+Rhodes University
 Computer Science Honours Project - 2005
 Computer Science Masters Project - 2006/7
-
+Computer Science Masters Project - 2017
 author: Jean-Pierre van Riel
 supervisor: Barry Irwin
 
-Copyright
----------
+InetVis - Internet Visualisation for network traffic.
+Copyright (C) 2006-2017, Jean-Pierre van Riel, Barry Irwin, Yestin Johnson
 
-Creative Commons 'Attribution-NonCommercial-ShareAlike 2.5'
-http://creativecommons.org/licenses/by-nc-sa/2.5/
-You are free:
-* to copy, distribute, display, and perform the work
-* to make derivative works
-Under the following conditions:
-* [by] Attribution. You must attribute the work in the manner specified by the
-author or licensor.
-* [nc] Noncommercial. You may not use this work for commercial purposes.<br>
-* [sa] Share Alike. If you alter, transform, or build upon this work, you may
-distribute the resulting work only under a license identical to this one.
-- For any reuse or distribution, you must make clear to others the license
-terms of this work.
-- Any of these conditions can be waived if you get permission from the
-copyright holder.<br>
-
-******************************************************************************/
-
-
-//Platform directives
+*******************************************************************/
 
 #include <QtGui>
 #include <QApplication>

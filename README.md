@@ -18,8 +18,8 @@ A compiled version of InetVis is available under the releases section of https:/
 In order to install and run the software please do the following:
 
 1. Download the latest release archive from the releases page.
-2. Extract the archive which will be called something like `inetvis-2.0.2.tgz`
-3. Change into the extracted directory, something like `inetvis-2.0.2`
+2. Extract the archive which will be called something like `inetvis-2.1.0.tgz`
+3. Change into the extracted directory, something like `inetvis-2.1.0`
 4. Run the `install_inetvis.sh` shell script to install the software.
     1. This script will: install the software to `/opt/inetvis-<version>`
     2. Create a symlink directory `/opt/inetvis` for convenience
