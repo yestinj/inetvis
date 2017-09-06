@@ -1,5 +1,25 @@
 #ifndef CONTROLPANELWIDGET_H
 #define CONTROLPANELWIDGET_H
+
+/*******************************************************************
+InetVis - Internet Visualisation
+Version: 2.1.0
+release date: 2017/09/21
+
+Original Authors: Jean-Pierre van Riel, Barry Irwin
+Initvis 2.x Authors: Yestin Johnson, Barry Irwin
+Rhodes University
+Computer Science Honours Project - 2005
+Computer Science Masters Project - 2006/7
+Computer Science Masters Project - 2017
+author: Jean-Pierre van Riel
+supervisor: Barry Irwin
+
+InetVis - Internet Visualisation for network traffic.
+Copyright (C) 2006-2017, Jean-Pierre van Riel, Barry Irwin, Yestin Johnson
+
+*******************************************************************/
+
 #include "ui_controlpanel.h"
 #include <QMainWindow>
 #include <QDateTime>
@@ -11,6 +31,12 @@
 #include "aboutdialogwidget.h"
 #include "helpdocumentationdialogwidget.h"
 #include "logui.h"
+#include "generalsettingsdialog.h"
+#include <iostream>
+#include <math.h>
+#include "timeutil.h"
+#include <QSettings>
+#include <QCloseEvent>
 
 #define DISABLE_RECORDING_LIVE_CAPTURE true
 
@@ -48,6 +74,7 @@ public slots:
     void timeWindowSliderReleased();
     void viewVisDisplayPanel();
     void viewPlotterSettings();
+    void viewGeneralSettings();
     void viewReferenceFrameSettings();
     void helpDoc();
     void showOnTop();
@@ -60,7 +87,7 @@ public slots:
     void setTimeRange(const QDateTime, const QDateTime);
     void setRecordButton(bool);
     void reportErrorMessage(QString);
-    void replayPositionDateTimeChanged();
+    void replayPositionDateTimeChanged();    
 
 signals:
     void play();
@@ -77,6 +104,7 @@ signals:
     void selectNetworkInterface(const QString);
     void showPlotterSettings();
     void showReferenceFrameSettings();
+    void showGeneralSettings();
     void captureFrames(bool);
     void captureSingleFrame();
     void recordToFile(bool);
@@ -103,5 +131,8 @@ private:
     void init();
     void destroy();
     QString strGetRepPos();
+    void writeSettings();
+    void readSettings();
+    void closeEvent(QCloseEvent *event);
 };
 #endif // CONTROLPANELWIDGET_H

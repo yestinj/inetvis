@@ -16,7 +16,9 @@ HEADERS	+= dataproc.h \
         helpdocumentationdialogwidget.h \
         plottersettingsdialogwidget.h \
         referenceframesettingsdialogwidget.h \
-        visdisplaywidget.h
+        visdisplaywidget.h \
+        log.h \
+    generalsettingsdialog.h
 
 SOURCES	+= graphicelement.cpp \
 	packetheaders.cpp \
@@ -32,23 +34,26 @@ SOURCES	+= graphicelement.cpp \
         helpdocumentationdialogwidget.cpp \
         plottersettingsdialogwidget.cpp \
         referenceframesettingsdialogwidget.cpp \
-        visdisplaywidget.cpp
+        visdisplaywidget.cpp \
+        log.cpp \
+    generalsettingsdialog.cpp
 
 FORMS = controlpanel.ui \
 	visdisplay.ui \
 	plottersettingsdialog.ui \
 	referenceframesettingsdialog.ui \
 	aboutdialog.ui \
-	helpdocumentationdialog.ui
+	helpdocumentationdialog.ui \
+    generalsettingsdialog.ui
 
 RESOURCES += icons.qrc	
 
 ## CUSTOM SETTINGS ----------------------------------------
 
 ## Build Mode
-#CONFIG   += debug warn_on
+CONFIG   += debug warn_on
 #CONFIG	  += debug
-CONFIG   += release
+#CONFIG   += release
 ### uncomment one or the other above
 
 # Turn off C++ warnings while building
@@ -58,29 +63,33 @@ CONFIG += warn_off
 CONFIG   += create_prl link_prl static
 
 ## Optimization flags
-QMAKE_CFLAGS_RELEASE = -O3 -march=native -mfpmath=sse -mmmx -msse -msse2 -mno-sse3 -momit-leaf-frame-pointer -maccumulate-outgoing-args
+QMAKE_CFLAGS_RELEASE = -O3 -march=native -mfpmath=sse -mmmx -msse -msse2 -mno-sse3 -momit-leaf-frame-pointer
 QMAKE_CXXFLAGS_RELEASE = $$QMAKE_CFLAGS_RELEASE
 
 QT +=  opengl
 
 ## end of CUSTOM SETTINGS ---------------------------------
 
-
 ## platform specific settings -----------------------------
-unix {
+macx {
+    DEFINES += MAC
+    LIBS += -lpcap
+    UI_DIR = .ui
+    MOC_DIR = .moc
+    OBJECTS_DIR = .obj
 
-	DEFINES += LINUX
-	LIBS	+= -lGL -lpcap
+} else:unix {
 
-  UI_DIR = .ui
-  MOC_DIR = .moc
-  OBJECTS_DIR = .obj
-}
+    DEFINES += LINUX
+    LIBS += -lpcap
+    UI_DIR = .ui
+    MOC_DIR = .moc
+    OBJECTS_DIR = .obj
 
-win32 {
+} else:win32 {
 
-	LIBS	+= .\lib\win\wpcap.lib c:\MinGW\lib\libws2_32.a
-	DEFINES += WIN
-	INCLUDEPATH += include\win\winpcap4
+    LIBS += .\lib\win\wpcap.lib c:\MinGW\lib\libws2_32.a
+    DEFINES += WIN
+    INCLUDEPATH += include\win\winpcap4
 }
 ## end platform specific settings

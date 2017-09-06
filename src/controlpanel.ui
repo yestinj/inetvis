@@ -18,7 +18,7 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>598</width>
+    <width>610</width>
     <height>323</height>
    </size>
   </property>
@@ -749,7 +749,7 @@
      <x>0</x>
      <y>0</y>
      <width>630</width>
-     <height>25</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="fileMenu">
@@ -791,6 +791,7 @@
     <addaction name="viewDisplayWindowAction"/>
     <addaction name="viewPlotterSettingsAction"/>
     <addaction name="viewReferenceFrameSettingsAction"/>
+    <addaction name="viewGeneralSettingsAction"/>
    </widget>
    <widget class="QMenu" name="helpMenu">
     <property name="title">
@@ -1110,6 +1111,14 @@
    </property>
    <property name="iconText">
     <string>Documentation</string>
+   </property>
+  </action>
+  <action name="viewGeneralSettingsAction">
+   <property name="text">
+    <string>&amp;General Settings</string>
+   </property>
+   <property name="iconText">
+    <string>&amp;General Settings</string>
    </property>
   </action>
   <actiongroup name="replayActionGroup">
@@ -1777,6 +1786,22 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>viewGeneralSettingsAction</sender>
+   <signal>triggered()</signal>
+   <receiver>ControlPanel</receiver>
+   <slot>viewGeneralSettings()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>314</x>
+     <y>169</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>applyFilter()</slot>
@@ -1803,6 +1828,7 @@
   <slot>timeWindowSliderReleased()</slot>
   <slot>viewVisDisplayPanel()</slot>
   <slot>viewPlotterSettings()</slot>
+  <slot>viewGeneralSettings()</slot>
   <slot>viewReferenceFrameSettings()</slot>
   <slot>helpDoc()</slot>
   <slot>showOnTop()</slot>

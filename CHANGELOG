@@ -1,0 +1,33 @@
+# Changelog for Inetvis
+
+
+2.1.0 RELEASE  2017/09/??
+================================
+General
+-------
+
+
+New Features
+-------------
+* added HaRlEMsHaKe - causes jittering when view to help with depth perception , triggered with ~
+* added autorotation in View to roate around x axis. 1 to trigger, 2 to increment , 3 to decrement
+
+Bugs Fixed
+----------
+
+Known Issues
+------------
+
+2.0.4
+
+
+
+
+2.0.3
+
+
+2.0.1
+======================
+First public releae of Inetvis Lasaruz Edition.
+Complete port to Qt5
+

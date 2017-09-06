@@ -1,39 +1,21 @@
-/******************************************************************************
-
+/*******************************************************************
 InetVis - Internet Visualisation
+Version: 2.1.0
+release date: 2017/09/21
 
-version: 0.9.5
-release date: 2007/11/21
-
+Original Authors: Jean-Pierre van Riel, Barry Irwin
+Initvis 2.x Authors: Yestin Johnson, Barry Irwin
+Rhodes University
 Computer Science Honours Project - 2005
 Computer Science Masters Project - 2006/7
-
+Computer Science Masters Project - 2017
 author: Jean-Pierre van Riel
 supervisor: Barry Irwin
 
-Copyright
----------
+InetVis - Internet Visualisation for network traffic.
+Copyright (C) 2006-2017, Jean-Pierre van Riel, Barry Irwin, Yestin Johnson
 
-Creative Commons 'Attribution-NonCommercial-ShareAlike 2.5'
-http://creativecommons.org/licenses/by-nc-sa/2.5/
-You are free:
-* to copy, distribute, display, and perform the work
-* to make derivative works
-Under the following conditions:
-* [by] Attribution. You must attribute the work in the manner specified by the
-author or licensor.
-* [nc] Noncommercial. You may not use this work for commercial purposes.<br>
-* [sa] Share Alike. If you alter, transform, or build upon this work, you may
-distribute the resulting work only under a license identical to this one.
-- For any reuse or distribution, you must make clear to others the license
-terms of this work.
-- Any of these conditions can be waived if you get permission from the
-copyright holder.<br>
-
-******************************************************************************/
-
-
-//Platform directives
+*******************************************************************/
 
 #include <QtGui>
 #include <QApplication>
@@ -46,13 +28,78 @@ copyright holder.<br>
 #include "plottersettingsdialogwidget.h"
 #include "dataproc.h"
 #include "referenceframesettingsdialogwidget.h"
+#include "log.h"
+#include "generalsettingsdialog.h"
 
+void initialiseQtSettings() {
+
+    QCoreApplication::setOrganizationName("Rhodes University");
+    QCoreApplication::setOrganizationDomain("ru.ac.za");
+    QCoreApplication::setApplicationName("InetVis");
+
+    //QSettings settings;
+    //settings.clear();
+
+    //QString recordPath = QStandardPaths::standardLocations(QStandardPaths::DownloadLocation).first() + "/" + "inetvis-recorded";
+
+    if (!DataProcessor::isRecordDirSet()) {
+        DataProcessor::setRecordDir(RECORD_DEFAULT_DIR_DEFAULT);
+    }
+    if (!DataProcessor::isPcapsDirSet()) {
+        DataProcessor::setPcapsDir(RECORD_PCAPS_SUBDIR_DEFAULT);
+    }
+    if (!DataProcessor::isFramesDirSet()) {
+        DataProcessor::setFramesDir(RECORD_FRAMES_SUBDIR_DEFAULT);
+    }
+    if (!DataProcessor::isSnapshotDirSet()) {
+        DataProcessor::setSnapshotsDir(RECORD_SNAPSHOTS_SUBDIR_DEFAULT);
+    }
+    if (!DataProcessor::isDefaultHomeNetworkSet()) {
+        DataProcessor::setLiveSubdir(RECORD_LIVE_SUBDIR_DEFAULT);
+    }
+    if (!DataProcessor::isShowHomeNetworkNotSetError()) {
+        DataProcessor::setReplaySubdir(RECORD_REPLAY_SUBDIR_DEFAULT);
+    }
+    // Home network settings    
+    if (!DataProcessor::isDefaultHomeNetworkSet()) {
+        DataProcessor::setDefaultHomeNetwork(DEFAULT_HOME_NETWORK_DEFAULT);
+    }
+    if (!DataProcessor::isShowHomeNetworkNotSetError()) {
+        DataProcessor::setShowHomeNetworkNotSetError(SHOW_HOME_NETWORK_NOT_SET_ERROR_DEFAULT);
+    }
+    if (!DataProcessor::isDefaultMonitorInterfaceSet()) {
+        DataProcessor::setDefaultMonitorInterface(DEFAULT_MONITOR_INTERFACE_DEFAULT);
+    }
+    // Log file settings
+    if (!Log::isLogRootDirSet()) {
+        Log::setLogRootDir(LOG_ROOT_DIR_DEFAULT);
+    }
+    if (!Log::isStdoutFilenameSet()) {
+        Log::setStdoutFilename(STDOUT_FILENAME_DEFAULT);
+    }
+    if (!Log::isStderrFilenameSet()) {
+        Log::setStderrFilename(STDERR_FILENAME_DEFAULT);
+    }
+    // Frame snapshot settings
+    if (!DataProcessor::isScreenshotFormatSet()) {
+        DataProcessor::setScreenshotFormat(SCREENSHOT_FORMAT_DEFAULT);
+    }
+    if (!DataProcessor::isScreenshotQualitySet()) {
+        DataProcessor::setScreenshotQuality(SCREENSHOT_QUALITY_DEFAULT);
+    }
+    if (!DataProcessor::isScreenshotExtensionSet()) {
+        DataProcessor::setScreenshotExtension(SCREENSHOT_EXTENSION_DEFAULT);
+    }
+}
 
 int main(int argc, char **argv) {
     ios::sync_with_stdio(); //since both c++ streams and c printf are used for
     //debugging code output
 
+    initialiseQtSettings();
+
     QApplication app(argc, argv);
+
 
     //Test and ensure that system has OpenGL support
     if (!QGLFormat::hasOpenGL()) {
@@ -61,26 +108,29 @@ int main(int argc, char **argv) {
     }
 
     //uncomment the two lines below to diable user interface logging
-    //if(!LogUI::enable())  // facilitates logging user interaction
-    //   qWarning("Unable to open file for user interface logging - feature left disabled.");
+    // facilitates logging user interaction
+    if(!LogUI::enable())   {
+       qWarning("Unable to open file for user interface logging - feature left disabled.");
+    }
+    Log::enable();
 
     //declare support objects
     DataProcessor dp;  //provides backend for reading and parsing capture files
     LogUIQuit luiq; //small helper object to ensure UI logging closes gracefully
+    LogQuit lq; //small helper object to ensure logging closes gracefully
 
     //declare GUI forms/windows
     ControlPanelWidget cp;
     VisDisplayWidget vd; //visaulization window
 
     GLVisWidget* vdw = vd.displayWidget;
-    //vd.setFocusProxy(vdw); Removed, already called in the init class of VisDisplayWidget
 
     PlotterSettingsDialogWidget ps; //to set plotting features
     ReferenceFrameSettingsDialogWidget rfs; //to set reference frame features
+    GeneralSettingsDialog gsd; //to set general settings
 
     //setup object reference links
     vdw->setDataProcLink(dp.getDataProcessorPtr());
-    //dp.setGLVisWidgetLink(vdw);
 
     //connect signals and slots for control panel
     QObject::connect(vdw, SIGNAL(showControlPanel()), &cp, SLOT(showOnTop()));
@@ -101,8 +151,7 @@ int main(int argc, char **argv) {
                      &cp, SLOT(setRecordButton(bool)));
     QObject::connect(&dp, SIGNAL(sendErrMsg(QString)), &cp, SLOT(reportErrorMessage(QString)));
 
-    //connect signals and slots for visualization display window
-    //and the visualization display widget
+    //connect signals and slots for visualization display window and the visualization display widget
     QObject::connect(&cp, SIGNAL(showVisDisplayPanel()), &vd, SLOT(show()));
     QObject::connect(&dp, SIGNAL(updateGLVisWidget()), &vd, SLOT(updateGLVisWidget()));
     QObject::connect(&rfs, SIGNAL(setPerspectiveProjection()), vdw,
@@ -156,9 +205,13 @@ int main(int argc, char **argv) {
     QObject::connect(&dp, SIGNAL(updatePortRangeDisplay(int, int)), &ps,
                      SLOT(updatePortRange(int, int)));
 
-    //connect siganls and slots for the reference frame dialog
+    //connect signals and slots for the reference frame dialog
     QObject::connect(&cp, SIGNAL(showReferenceFrameSettings()), &rfs, SLOT(show()));
     QObject::connect(vdw, SIGNAL(showReferenceFrameSettings()), &rfs, SLOT(show()));
+
+    //connect signals and slots for the general settings dialog
+    QObject::connect(&cp, SIGNAL(showGeneralSettings()), &gsd, SLOT(show()));
+    QObject::connect(vdw, SIGNAL(showGeneralSettings()), &gsd, SLOT(show()));
 
     //connect signals and slots for data processor
     //dp.connect(&cp, SIGNAL(selectMode(int)), &dp, SLOT(setMode(int)));
@@ -201,7 +254,9 @@ int main(int argc, char **argv) {
 
     //connect slot for reciving quit signal
     QObject::connect(&app, SIGNAL(lastWindowClosed()), &luiq, SLOT(close()));
+    QObject::connect(&app, SIGNAL(lastWindowClosed()), &lq, SLOT(close()));
     QObject::connect(&app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()));
+    // TODO: Add a connection to close everything after the main control window is closed.
 
     dp.init();
 
