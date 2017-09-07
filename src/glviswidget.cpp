@@ -872,21 +872,21 @@ void GLVisWidget::keyPressEvent(QKeyEvent *ev) {
             scale -= 0.01;
             checkControlBounds();
             break;
-        case Qt::Key_Left:
+        case Qt::Key_Left: // left arrow
             if (ev->modifiers() & Qt::ControlModifier) {
                 offsetx -= 0.5;
                 checkControlBounds();
             } else
                 rotx += 1.0;
             break;
-        case Qt::Key_Right:
+        case Qt::Key_Right: //down arrow
             if (ev->modifiers() & Qt::ControlModifier) {
                 offsetx += 0.5;
                 checkControlBounds();
             } else
                 rotx -= 1.0;
             break;
-        case Qt::Key_Up:
+        case Qt::Key_Up: //up arrow
             if (ev->modifiers() & Qt::ControlModifier) {
                 offsety += 0.5;
                 checkControlBounds();
@@ -896,7 +896,7 @@ void GLVisWidget::keyPressEvent(QKeyEvent *ev) {
             } else
                 roty += 1.0;
             break;
-        case Qt::Key_Down:
+        case Qt::Key_Down: //right arrow
             if (ev->modifiers() & Qt::ControlModifier) {
                 offsety -= 0.5;
                 checkControlBounds();
@@ -908,19 +908,19 @@ void GLVisWidget::keyPressEvent(QKeyEvent *ev) {
             break;
             
             
-        case Qt::Key_QuoteLeft:
+        case Qt::Key_QuoteLeft:  //Toggle Harlem
             harlemToggle = !harlemToggle;
             break;
             
-        case Qt::Key_1:
+        case Qt::Key_1:  // Rotation Toggle
             rotateToggle = !rotateToggle;
             break;
             
-        case Qt::Key_2:
+        case Qt::Key_2:  // Decrease Rotation
             rotateAmount -= 0.01;
             break;
             
-        case Qt::Key_3:
+        case Qt::Key_3: //Increase Rotation
             rotateAmount += 0.01;
             break;
     }
@@ -928,11 +928,11 @@ void GLVisWidget::keyPressEvent(QKeyEvent *ev) {
 
 void GLVisWidget::keyReleaseEvent(QKeyEvent *ev) {
     switch (ev->key()) {
-        case Qt::Key_F: //toggle full screen
+        case Qt::Key_F: //front view and full screen
             if (ev->modifiers() & Qt::ControlModifier) //ctrl F
             {
                 setFrontView();
-            } else // just F
+            } else // just F //toggle full screen
             {
                 if (parentWidget->isFullScreen())
                     setFullScreen(false);
@@ -968,20 +968,20 @@ void GLVisWidget::keyReleaseEvent(QKeyEvent *ev) {
             if (parentWidget->isFullScreen())
                 setFullScreen(false);
             break;
-        case Qt::Key_C: //toggle control panel
+        case Qt::Key_C: // Control Panel
             emit showControlPanel();
             break;
-        case Qt::Key_P: //toggle control panel
+        case Qt::Key_P: // Plotter Settings
             emit showPlotterSettings();
             break;
-        case Qt::Key_R: //toggle control panel
+        case Qt::Key_R: // Reference Frame Settings
             if (ev->modifiers() & Qt::ControlModifier) //ctrl R
             {
                 setRightView();
             } else
                 emit showReferenceFrameSettings();
             break;
-        case Qt::Key_H:
+        case Qt::Key_H: // toggle hide home range
             if (ev->modifiers() & Qt::ControlModifier) //ctrl H
             {
                 if (hideHomeRange) {
