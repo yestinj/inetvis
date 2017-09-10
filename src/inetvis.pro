@@ -66,7 +66,7 @@ CONFIG   += create_prl link_prl static
 QMAKE_CFLAGS_RELEASE = -O3 -march=native -mfpmath=sse -mmmx -msse -msse2 -mno-sse3 -momit-leaf-frame-pointer
 QMAKE_CXXFLAGS_RELEASE = $$QMAKE_CFLAGS_RELEASE
 
-QT +=  opengl
+QT +=  opengl widgets
 
 ## end of CUSTOM SETTINGS ---------------------------------
 
