@@ -907,7 +907,6 @@ void GLVisWidget::keyPressEvent(QKeyEvent *ev) {
                 roty -= 1.0;
             break;
             
-            
         case Qt::Key_QuoteLeft:  //Toggle Harlem
             harlemToggle = !harlemToggle;
             break;
@@ -923,6 +922,11 @@ void GLVisWidget::keyPressEvent(QKeyEvent *ev) {
         case Qt::Key_3: //Increase Rotation
             rotateAmount += 0.01;
             break;
+	case Qt::Key_Z: // take single frame snapshot
+	    //captureSingleFrame();
+	    captureCurrentFrame();
+	    break;
+
     }
 }
 
