@@ -17,7 +17,7 @@ Copyright (C) 2006-2017, Jean-Pierre van Riel, Barry Irwin, Yestin Johnson
 
 *******************************************************************/
 
-#include <QtGui>
+#include <QtWidgets>
 #include <QApplication>
 #include <QWidget>
 #include <qgl.h>
@@ -99,7 +99,6 @@ int main(int argc, char **argv) {
     initialiseQtSettings();
 
     QApplication app(argc, argv);
-
 
     //Test and ensure that system has OpenGL support
     if (!QGLFormat::hasOpenGL()) {
