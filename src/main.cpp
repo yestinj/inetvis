@@ -153,6 +153,9 @@ int main(int argc, char **argv) {
     //connect signals and slots for visualization display window and the visualization display widget
     QObject::connect(&cp, SIGNAL(showVisDisplayPanel()), &vd, SLOT(show()));
     QObject::connect(&dp, SIGNAL(updateGLVisWidget()), &vd, SLOT(updateGLVisWidget()));
+
+    QObject::connect(vdw, SIGNAL(resetGLVisWidget()), &dp, SLOT(resetVisualisationPlane()));
+
     QObject::connect(&rfs, SIGNAL(setPerspectiveProjection()), vdw,
                      SLOT(setPerspectiveProjection()));
     QObject::connect(&rfs, SIGNAL(setOrthographicProjection()), vdw,
@@ -218,6 +221,7 @@ int main(int argc, char **argv) {
     QObject::connect(&cp, SIGNAL(play()), &dp, SLOT(play()));
     QObject::connect(&cp, SIGNAL(pause()), &dp, SLOT(pause()));
     QObject::connect(&cp, SIGNAL(togglePlayPause()), &dp, SLOT(togglePlayPause()));
+    QObject::connect(vdw, SIGNAL(togglePlayPause()), &dp, SLOT(togglePlayPause()));
     QObject::connect(&cp, SIGNAL(setReplayRate(double)), &dp,
                      SLOT(setReplayRate(double)));
     QObject::connect(&cp, SIGNAL(setReplayPosition(const QDateTime)), &dp,

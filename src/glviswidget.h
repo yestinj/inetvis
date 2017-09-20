@@ -297,4 +297,6 @@ signals:
     void showPlotterSettings();
     void showReferenceFrameSettings();
     void showGeneralSettings();
+    void togglePlayPause();
+    void resetGLVisWidget();
 };
