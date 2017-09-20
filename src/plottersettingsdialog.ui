@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>563</width>
+    <width>573</width>
     <height>518</height>
    </rect>
   </property>
@@ -1359,12 +1359,39 @@
     </hint>
     <hint type="destinationlabel">
      <x>477</x>
-     <y>605</y>
+     <y>517</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>homeNetApplyToolButton</sender>
+   <signal>clicked()</signal>
+   <receiver>PlotterSettingsDialog</receiver>
+   <slot>homeNetApplyToolButton()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>521</x>
+     <y>72</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>524</x>
+     <y>544</y>
     </hint>
    </hints>
   </connection>
  </connections>
  <slots>
   <slot>loadDefaultHomeNetwork()</slot>
+  <slot>backgroundColourChange()</slot>
+  <slot>transDecaySelected()</slot>
+  <slot>smoothingEnabled(bool)</slot>
+  <slot>applyPortRange()</slot>
+  <slot>pointSizeChanged()</slot>
+  <slot>enablePointBulge(bool)</slot>
+  <slot>applyInternetRangeSettings()</slot>
+  <slot>guessHomeNetworkPressed()</slot>
+  <slot>setFullSrcNetRange()</slot>
+  <slot>setColScheme(int)</slot>
+  <slot>homeNetApplyToolButton()</slot>
  </slots>
 </ui>
