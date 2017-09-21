@@ -6,7 +6,7 @@
 General
 -------
 
-Version 2.1.0 of InetVis is the first feature release since the port from Qt 3 was completed.
+Version 2.1.0 of InetVis is the first feature release since the initial port from Qt 3 to Qt5 was completed.
 Noteworthy features include support for building and running the application on Mac OS X,
 screenshots in PNG format, a settings file with UI dialog have been introduced,
 two new automatic movement modes have been added for visualisation, and new and useful keyboard
@@ -22,8 +22,10 @@ New Features
 * New hotkey 'Z' in view to quickly capture a screenshot.
 * Added play/pause function linked to spacebar being pressed in visualisation pane.
 * Added new hotkey '0' to reset the visualisation pane, clearning all events.
-* Added HaRlEMsHaKe mode - causes jittering when view to help with depth perception, triggered with ~
+* Added 'Harelemshake' mode - causes jittering when view to help with depth perception, triggered with ~
 * Added autorotation in View to rotate around x axis. 1 to trigger, 2 to increment, 3 to decrement
+	Decrementing will result in cube roatating in the opposite direction.
+* Added Ctrl-Q (^Q) to quit application from plotter window.	
 * Introduced application log file for stdout and stderr.
 
 Bugs Fixed / Improvements
@@ -37,11 +39,10 @@ Bugs Fixed / Improvements
 
 Known Issues
 ------------
-
-At present running the standalone app does not work on Mac OS, however opening with Qt Creator,
-building, and then running does work.
-
-Monitoring local network interfaces does not work under Mac OS at this time.
+* At present running the standalone app does not work on Mac OS, however opening with Qt Creator,
+	building, and then running does work.
+* Monitoring local network interfaces does not work under Mac OS at this time.
+* Windows support is failing to compile.
 
 2.0.4
 ======================
