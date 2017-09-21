@@ -49,7 +49,6 @@ Copyright (C) 2006-2017, Jean-Pierre van Riel, Barry Irwin, Yestin Johnson
 #include <QMouseEvent>
 #include <QKeyEvent>
 #include <sys/time.h>
-#include <QCloseEvent>
 
 // DEGBUG DIRECTIVES -----------------------------------------------------------
 //un-commnet to compile with debug info
@@ -299,4 +298,5 @@ signals:
     void showGeneralSettings();
     void togglePlayPause();
     void resetGLVisWidget();
+    void closeAllWindows();
 };

@@ -31,6 +31,7 @@ Copyright (C) 2006-2017, Jean-Pierre van Riel, Barry Irwin, Yestin Johnson
 #include "log.h"
 #include "generalsettingsdialog.h"
 
+
 void initialiseQtSettings() {
 
     QCoreApplication::setOrganizationName("Rhodes University");
@@ -254,6 +255,10 @@ int main(int argc, char **argv) {
                      SLOT(enablePointBulge(bool)));
     QObject::connect(&ps, SIGNAL(setBackgroundColour(int)), &dp,
                      SLOT(changeBackgroundColour(int)));
+
+    QObject::connect(vdw, SIGNAL(closeAllWindows()), &ps, SLOT(reject()));
+    QObject::connect(vdw, SIGNAL(closeAllWindows()), &rfs, SLOT(reject()));
+    QObject::connect(vdw, SIGNAL(closeAllWindows()), &gsd, SLOT(reject()));
 
     //connect slot for reciving quit signal
     QObject::connect(&app, SIGNAL(lastWindowClosed()), &luiq, SLOT(close()));

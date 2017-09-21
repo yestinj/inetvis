@@ -1007,9 +1007,13 @@ void GLVisWidget::keyReleaseEvent(QKeyEvent *ev) {
         case Qt::Key_0: // Reset the visualisation plane
             emit resetGLVisWidget();
         break;
-
+    case Qt::Key_Q: // Ctrl + Q override to close the window
+        if (ev->modifiers() & Qt::ControlModifier) {
+            parentWidget->close();
+            emit closeAllWindows();
+            break;
+        }
     }
-
 }
 
 

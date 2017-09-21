@@ -85,7 +85,6 @@ public slots:
     void snapshotExtensionSaveAction();
     void snapshotExtensionLoadAction();
     void snapshotExtensionResetAction();
-
     void resetAllSettingsAction();
     void loadAllSettingsAction();
 
