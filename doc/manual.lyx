@@ -1,0 +1,1941 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{url}
+\usepackage{keystroke}
+%\usepackage[os=win]{menukeys}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "newcent" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family rmdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\topmargin 2.5cm
+\rightmargin 2.5cm
+\bottommargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+InetVis 2.1.0 Manual
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/icon.gif
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Date
+Last revision: 2017-09-21
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Description
+\end_layout
+
+\begin_layout Standard
+InetVis -
+\series bold
+ I
+\series default
+nter
+\series bold
+net
+\series default
+ 
+\series bold
+Vis
+\series default
+ualization
+\begin_inset Newline newline
+\end_inset
+
+version: 2.1.1 release date: 2017/09/21
+\end_layout
+
+\begin_layout Standard
+InetVis is a 3-D scatter-plot visualization for network traffic.
+ It's more or less like a media player, but for network traffic.
+ At the moment its just an academic toy for reviewing packet capture files,
+ but may be useful in other endeavours.
+ For example, InetVis has been used to verify and critique the accuracy
+ of scan detection algorithms in the Snort IDS and Bro IDS.
+\end_layout
+
+\begin_layout Subsection
+Concept
+\end_layout
+
+\begin_layout Standard
+The original source of inspiration for InetVis is the "
+\emph on
+The Spinning Cube of Potential Doom
+\emph default
+" (by Stephen Lau).
+ Whilst many other network visualizations employ lines as a metaphor for
+ connection, the 3-D scatter-plot of points proves to scale well with larger
+ volumes of data.
+ The visualization makes network scanning and port scanning readily evident
+ as horizontal and vertical lines respectively.
+ InetVis offers numerous extensions that enhance the original basic concept
+ (see [1.4
+\backslash
+.
+ Features](#1.4.)).
+ For a description of "The Spinning Cube of Potential Doom" see:(
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.nersc.gov/security/TheSpinningCube.html
+\end_layout
+
+\end_inset
+
+)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+fix urls
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+ Input
+\end_layout
+
+\begin_layout Standard
+InetVis visualizes packet captures of network traffic using Libpcap to either
+\end_layout
+
+\begin_layout Itemize
+capture live traffic from the default interface
+\end_layout
+
+\begin_layout Itemize
+replay traffic from a pcap file.
+\end_layout
+
+\begin_layout Standard
+Tcpdump (
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://www.tcpdump.org
+\end_layout
+
+\end_inset
+
+), Wireshark (
+\begin_inset Flex URL
+status collapsed
+
+\begin_layout Plain Layout
+
+http://wireshark.org
+\end_layout
+
+\end_inset
+
+) and Snort (
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+http://www.snort.org
+\end_layout
+
+\end_inset
+
+) are examples of other applications can use and produce network packet
+ captures in the Libpcap file format.
+\end_layout
+
+\begin_layout Subsection
+Supported Protocols
+\end_layout
+
+\begin_layout Standard
+Currently only Ethernet based IPv4 pakets are supported.
+ Within the TCP/IP suite explicit support is provided for TCP, UDP and ICMP
+ protocols.
+ Other protocols may be silently dropped by the builtin base BPF filter.
+\end_layout
+
+\begin_layout Subsection
+Plotting scheme
+\end_layout
+
+\begin_layout Enumerate
+Destination address (home network) plotted along blue x-axis (horizontal).
+\end_layout
+
+\begin_layout Enumerate
+Source address (external Internet range) plotted along red z-axis (depth).
+ 
+\end_layout
+
+\begin_layout Enumerate
+Ports (TCP and UDP) plotted along green y-axis (vertical).
+ 
+\end_layout
+
+\begin_layout Enumerate
+ICMP traffic plotted below TCP/UDP cube grey/white ICMP plane.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/inetvis_plotting_scheme.png
+	lyxscale 50
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Features
+\end_layout
+
+\begin_layout Itemize
+Adjustable replay position to seek through the traffic capture files.
+\end_layout
+
+\begin_layout Itemize
+Variable playback speed (time scaling), from as slow as 0.001x (1 ms/s),
+ or as fast as 86400x (1 day/s).
+\end_layout
+
+\begin_layout Itemize
+Variable time frame/window to view events for the past 100 ms up to 5 years.
+\end_layout
+
+\begin_layout Itemize
+Transparent decay of events - points fade as they age (with respect to the
+ time window).
+\end_layout
+
+\begin_layout Itemize
+New events are highlighted by pulsing once (a momentarily bulge of the point).
+ 
+\end_layout
+
+\begin_layout Itemize
+Filtering capability via BPF filter expressions (as used in Libpcap and
+ Tcpdump).
+\end_layout
+
+\begin_layout Itemize
+Various colour schemes for colouring points and adjustable point size.
+\end_layout
+
+\begin_layout Itemize
+Setting the data ranges and scaling down into sub-domain IP addresses (destinati
+on and source) as well as port ranges to view a subset of the traffic data.
+\end_layout
+
+\begin_layout Itemize
+Adjustable logarithmic plot for stretching out (thus increasing visibility)
+ lower port range where, in general, most TCP/UDP traffic occurs.
+\end_layout
+
+\begin_layout Itemize
+Various reference frame controls, i.e.
+ toggling visibility of axes, markers, transparent grid lines, labels, and
+ background colour.
+ 
+\end_layout
+
+\begin_layout Itemize
+Orthographic and perspective projection modes.
+ 
+\end_layout
+
+\begin_layout Itemize
+Immersive navigation - scaling (zooming), translating (moving) and rotating.
+ 
+\end_layout
+
+\begin_layout Itemize
+Record single snapshot image, or dump all image frames (useful for manually
+ encoding video clips).
+ 
+\end_layout
+
+\begin_layout Itemize
+Record output back to pcap binary file format, for further detailed analysis
+ with other applications (e.g.
+ Tcpdump, Ethereal and Snort).
+\end_layout
+
+\begin_layout Section
+Usage
+\end_layout
+
+\begin_layout Subsection
+Command Line
+\end_layout
+
+\begin_layout Standard
+
+\family typewriter
+$ ./inetvis 
+\end_layout
+
+\begin_layout Standard
+Inetvis takes no commandline arguments at this time.
+\end_layout
+
+\begin_layout Subsection
+User Interface and Controls
+\end_layout
+
+\begin_layout Standard
+The display pane and control panel are in separate windows, with a plotter
+ settings dialogue and reference frame settings dialogue accessed via the
+ 'view' menu of the control panel
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/inetvis_screenshot_labeled.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Control Panel
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename images/inetvis_control_panel.jpg
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+main menu to open files, set mode (monitor local host or replay file), or
+ to access other dialogues (view).
+\end_layout
+
+\begin_layout Itemize
+Replay position controls.
+ 
+\end_layout
+
+\begin_layout Itemize
+Playback and replay speed controls.
+ 
+\end_layout
+
+\begin_layout Itemize
+Recording controls.
+ 
+\end_layout
+
+\begin_layout Itemize
+Time window controls (Historic View).
+ 
+\end_layout
+
+\begin_layout Itemize
+Filter.
+\end_layout
+
+\begin_layout Itemize
+Task-bar reports the number of packets currently in the buffer.
+\end_layout
+
+\begin_layout Subsection
+InetVis Display
+\end_layout
+
+\begin_layout Standard
+This is the primary visualization display pane.
+\end_layout
+
+\begin_layout Subsubsection
+Navigation via Mouse Controls
+\end_layout
+
+\begin_layout Itemize
+Holding left button and moving rotates.
+ 
+\end_layout
+
+\begin_layout Itemize
+Holding right button and moving translates along x and y (horizontally and
+ vertically respectively).
+ 
+\end_layout
+
+\begin_layout Itemize
+Rotating scroll wheel translates along z (depth).
+ 
+\end_layout
+
+\begin_layout Itemize
+Holding middle button and moving zooms.
+\end_layout
+
+\begin_layout Subsubsection
+Navigation via Keyboard Controls
+\end_layout
+
+\begin_layout Itemize
+Arrow Keys 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+arrowkeyup 
+\backslash
+arrowkeydown 
+\backslash
+arrowkeyleft 
+\backslash
+arrowkeyright
+\end_layout
+
+\end_inset
+
+ to rotate the cube.
+\end_layout
+
+\begin_layout Itemize
+Ctrl' + 'Arrow Keys' 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+ctrl +  
+\backslash
+arrowkeyup 
+\backslash
+arrowkeydown 
+\backslash
+arrowkeyleft 
+\end_layout
+
+\end_inset
+
+ to translate (x and y).
+ 
+\end_layout
+
+\begin_layout Itemize
+Alt + UP Arrow Key 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+alt+
+\backslash
+arrowkeyup
+\end_layout
+
+\end_inset
+
+ or Alt 'Down Arrow Key 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+%
+\backslash
+alt+
+\backslash
+arrowkeydown
+\end_layout
+
+\end_inset
+
+ to translate (z).
+ 
+\end_layout
+
+\begin_layout Itemize
+'+' and '-' to scale (zoom).
+ 
+\end_layout
+
+\begin_layout Itemize
+'Ctrl-L ^L' Set Left View (up _x_ axis)
+\end_layout
+
+\begin_layout Itemize
+'Ctrl-R ^R' Set Right View (down _x_ axis) 
+\end_layout
+
+\begin_layout Itemize
+'Ctrl-T ^T' Set Top View (down _y_ axis) 
+\end_layout
+
+\begin_layout Itemize
+'Ctrl-B ^B' Set Bottom View (up _y_ axis)
+\end_layout
+
+\begin_layout Itemize
+'Ctrl-F ^F' Set Front View (up _x_ axis) 
+\end_layout
+
+\begin_layout Itemize
+'Home' Set Front view (down _y_ axis)
+\end_layout
+
+\begin_layout Itemize
+'End' Set Back View (down _z_ axis)
+\end_layout
+
+\begin_layout Subsubsection
+Other Keyboard Controls
+\end_layout
+
+\begin_layout Itemize
+'f' Toggle full screen.
+ 
+\end_layout
+
+\begin_layout Itemize
+'Esc' Exit full screen 
+\end_layout
+
+\begin_layout Itemize
+'QuoteLeft ~`' Toggle Harlemshake 
+\end_layout
+
+\begin_layout Itemize
+'0' Clear the visualisation pane 
+\end_layout
+
+\begin_layout Itemize
+'1' Rotation Toggle 
+\end_layout
+
+\begin_layout Itemize
+'2' Decrease Rotation 
+\end_layout
+
+\begin_layout Itemize
+'3' Increase Rotation 
+\end_layout
+
+\begin_layout Itemize
+'Ctrl-H ^H' Hide Home Range (addresses prefix replaced with the.drk.net) 
+\end_layout
+
+\begin_layout Itemize
+'Z' Take single frame Screenshot 
+\end_layout
+
+\begin_layout Itemize
+'Space' Play/Pause the visualisation 
+\end_layout
+
+\begin_layout Itemize
+'Ctrl-Q ^Q' Quit the application 
+\end_layout
+
+\begin_layout Itemize
+'p' to bring up Plotter Settings Dialogue.
+ 
+\end_layout
+
+\begin_layout Itemize
+'r' to bring up Reference Frame Settings Dialogue.
+ 
+\end_layout
+
+\begin_layout Itemize
+'c' to bring up Control Panel Dialogue.
+ 
+\end_layout
+
+\begin_layout Subsection
+ Plotter Settings Dialogue
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/inetvis_plotter_settings.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Set the destination home network range (or drill down into it).
+\end_layout
+
+\begin_layout Itemize
+Set the source Internet range (drill down into a domain).
+\end_layout
+
+\begin_layout Itemize
+Set the port range (drill down into a port range).
+ 
+\end_layout
+
+\begin_layout Itemize
+Set linear or logarithmic plotting for ports.
+ 
+\end_layout
+
+\begin_layout Itemize
+Set colour mapping, toggle transparent decay, and set background colour
+ (black or white).
+ 
+\end_layout
+
+\begin_layout Itemize
+Set point size, point bulging (highlight new events), and toggle point smoothing
+ (rounded points).
+\end_layout
+
+\begin_layout Subsection
+Reference Frame Settings Dialogue
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/inetvis_reference_frame_settings.jpg
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Set projection mode (Orthographic or perspective).
+ 
+\end_layout
+
+\begin_layout Itemize
+Toggle visibility of reference frame axes and markers.
+ 
+\end_layout
+
+\begin_layout Itemize
+Toggle visibility and transparency of grid lines.
+ 
+\end_layout
+
+\begin_layout Itemize
+Set number of divisions along x, y, and z for markers and grid lines.
+ 
+\end_layout
+
+\begin_layout Itemize
+Toggle text labels (time, axes ranges, frame rate).
+\end_layout
+
+\begin_layout Section
+Usage Notes
+\end_layout
+
+\begin_layout Standard
+Tool tips as Helpful Hints</a>
+\end_layout
+
+\begin_layout Standard
+Majority of the controls, buttons and fields in the GUI provide tool tips
+ to help explain their function and usage.
+ Tool tips can be seen by hovering the mouse cursor over the GUI component
+ in question.
+\end_layout
+
+\begin_layout Standard
+Applying Settings</a>
+\end_layout
+
+\begin_layout Standard
+Many of the settings are grouped together and require the user to click
+ the apply button (button with a tick icon) once they are ready to apply
+ the new settings.
+\end_layout
+
+\begin_layout Standard
+#### <a id="2.3.3." name="2.3.3.">2.3.3
+\backslash
+.
+ Setting the Home Network Range Before Playback</a>
+\end_layout
+
+\begin_layout Standard
+After opening a file, set the home network address (in Plotter Settings
+ dialogue) to scale the data along the blue axis - otherwise all traffic
+ is rendered in a narrow single band with respect to the x-axis.
+ A 'guess' button can help infer this home network range by checking the
+ destination addresses contained within the file.
+ In the case of monitoring the local network interface (live packet capture),
+ the application will automatically retrieve the home network address from
+ Libpcap.
+\end_layout
+
+\begin_layout Standard
+#### <a id="2.3.4." name="2.3.4.">2.3.4
+\backslash
+.
+ Setting Address Ranges with CIDR Notation</a>
+\end_layout
+
+\begin_layout Standard
+Setting the address ranges entails using 'dots-slash' (CIDR) notation to
+ specify network sub-domains.
+ For example 192.168.0.0/24 is the network with address 192.168.0.0, subnet mask
+ 255.255.255.0, giving the network range 192.168.0.0 to 192.168.0.255
+\backslash
+.
+ The number after the slash represents the number of bits in the subnet
+ mask.
+ Thus the octet classed network masks are:
+\end_layout
+
+\begin_layout Standard
+* Class A = 255.0.0.0 = /8 * Class B = 255.255.0.0 = /16 * Class C = 255.255.255.0
+ = /24
+\end_layout
+
+\begin_layout Standard
+Values other than /8, /16 and /24 are trickier as they involve bits in between
+ the four octets of a 32 bit IP address.
+ The Plotter Settings dialogue has a field below the dots-slash edit boxes
+ that show the range and subnet mask to help as guide.
+ For bits added on to a full octet (i.e.
+ /8+x or /16+x or /24+x), the following octet in the mask will have the
+ value:
+\end_layout
+
+\begin_layout Standard
+| /+1 | /+2 | /+3 | /+4 | /+5 | /+6 | /+7 | | .128 | .192 | .224 | .240 | .248
+ | .252 | .254 |
+\end_layout
+
+\begin_layout Standard
+For example, 146.231.120/20 has subnet mask 255.255.248.0 and represents 8 class
+ C networks in the range 146.231.120.0 to 146.231.127.255.
+\end_layout
+
+\begin_layout Standard
+#### <a id="2.3.5." name="2.3.5.">2.3.5
+\backslash
+.
+ Recording</a>
+\end_layout
+
+\begin_layout Standard
+All three record methods, recording to capture file, taking a single image
+ snapshot, or dumping rendered frames to image files, can be used simultaneously
+ and used in conjunction with playback.
+\end_layout
+
+\begin_layout Standard
+#### <a id="2.3.5.1." name="2.3.5.1.">2.3.5.1
+\backslash
+.
+ Record to Capture File</a>
+\end_layout
+
+\begin_layout Standard
+InetVis can record back out to a Libpcap packet capture file which can later
+ be reviewed with any other tool capable of reading the file format (e.g.
+ Ethereal).
+ A record session begins when the record button (with the round red record
+ symbol) is toggled on, and stops once the button its toggled off.
+ Everything seen in the current display (and time window), as well as any
+ consequent playback, will be recorded while the red record button is toggled
+ on.
+\end_layout
+
+\begin_layout Standard
+#### <a id="2.3.5.2." name="2.3.5.2.">2.3.5.2
+\backslash
+.
+ Taking an Image Snapshot</a>
+\end_layout
+
+\begin_layout Standard
+Pressing the record button with a picture symbol allows the user to take
+ a snapshot of the current image in the visualization pane of the InetVis
+ Display window.
+\end_layout
+
+\begin_layout Standard
+#### <a id="2.3.5.3." name="2.3.5.3.">2.3.5.3
+\backslash
+.
+ Dumping Rendered Frames to Image Files</a>
+\end_layout
+
+\begin_layout Standard
+InetVis can record rendered frames to image files.
+ Frame record sessions work much the same way as capture file record sessions.
+ Whilst the record button with the film symbol is on, the application dumps
+ each frame to an image file, and stops when the button is toggled off.
+ For each frame, a raw copy of the image buffer is copied into an uncompressed
+ image file (.ppm format).
+ Consequently, recording image frames uses up a large amount of disk space
+ at a rapid rate and can degrade the applications performance - setting
+ the window to a smaller resolution will help reduce the performance hit.
+\end_layout
+
+\begin_layout Standard
+During frame recording, the timing is fixed to produce frames suitable for
+ encoding video clips at 25 frames per second (fps).
+ Even if, whilst recording, it appears that playback is degraded to less
+ than 25 fps, the timing between each frames is calculated with respect
+ to the data in the file and according to the replay speed.
+ Therefore, when the frame capture files are encoded to video a clip at
+ 25 frames per second, the video clip has the correct timing and replay
+ speed while despite the recording process appearing slower.
+ As a consequence, playback of some video clips may appear faster that the
+ original recording.
+\end_layout
+
+\begin_layout Standard
+#### <a id="2.3.5.4." name="2.3.5.4.">2.3.5.4
+\backslash
+.
+ Location of Recorded Files</a>
+\end_layout
+
+\begin_layout Standard
+Recording back to capture file, taking a snapshot image, or dumping frames,
+ creates a directory hierarchy relative to the InetVis running directory.
+\end_layout
+
+\begin_layout Standard
+* recorded/frames * recorded/pcaps * recorded/snapshots
+\end_layout
+
+\begin_layout Standard
+Within these directories, sub-directory structures follow and should be
+ self explanatory.
+ Some file and directory names include numeric timestamps of the form yyyymmdd-h
+hMMsszzz (where MM is minutes and zzz milliseconds) - the timestamps refer
+ to timestamps in the capture file (or live capture).
+\end_layout
+
+\begin_layout Standard
+#### <a id="2.3.6." name="2.3.6.">2.3.6
+\backslash
+.
+ Administrator Privileges</a>
+\end_layout
+
+\begin_layout Standard
+Administer privileges are required to open a live capture interface of the
+ systems network interface.
+\end_layout
+
+\begin_layout Standard
+* * *
+\end_layout
+
+\begin_layout Standard
+## <a id="3." name="3.">3
+\backslash
+.
+ Requirements and Performance</a>
+\end_layout
+
+\begin_layout Standard
+### <a id="3.1." name="3.1.">3.1
+\backslash
+.
+ Operating Platform</a>
+\end_layout
+
+\begin_layout Standard
+* Currently actively developed and supported on Linux.
+ Known to run and compile on Ubuntu, Debian and Fedora Core.
+ * Ported to Windows, but the windows port remains largely untested.
+ The OpenGL performance in the windows port appears inferior to Linux.
+ * It is possible to port to Mac OS X, but a port has not been attempted.
+\end_layout
+
+\begin_layout Standard
+### <a id="3.2." name="3.2.">3.2
+\backslash
+.
+ Requirements to Run Linux Binary</a>
+\end_layout
+
+\begin_layout Standard
+The binary is compiled for Linux based systems and optimised for the Intel
+ i686 processor.
+ It requires OpenGL, the Libpcap packet capture library and Trolltech Qt
+ GUI API (as well as other system libraries that should be present by default,
+ such as libc6).
+\end_layout
+
+\begin_layout Standard
+* libqt4 * libqt4-qt3support * lipcap * libc6 * libstdc++6
+\end_layout
+
+\begin_layout Standard
+### <a id="3.3." name="3.3.">3.3
+\backslash
+.
+ Requirements to Run Windows Binary</a>
+\end_layout
+
+\begin_layout Standard
+The binary is compiled for the Intel 686 processor.
+ It relies on WinPCap and Trolltech Qt 4.
+ The DLLs of these are included with the distribution.
+ The DLLs for WinPCap are the Windows NT/2000/XP/2003 compatible version.
+ Standard system C libraries as well as winsock2 are required and should
+ be present on the system by default.
+\end_layout
+
+\begin_layout Standard
+Minimum System Specification
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+Neeeds updating
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+At least a Pentium III class processor with 256MB RAM and a 3-D graphics
+ accelerator supporting OpenGL is recommended.
+ While InetVis may work with on-board video cards, poor performance and
+ limited OpenGL support is a typical drawback.
+\end_layout
+
+\begin_layout Standard
+Typical Performance
+\end_layout
+
+\begin_layout Standard
+Tested on Ubuntu 7.04 with Intel Core2 (6300) 1.86 GHz CPU, 2GB RAM, GeForce
+ 7600GS (256MB) graphics card.
+\end_layout
+
+\begin_layout Standard
+* The application takes a best effort approach to rendering 25 frames a
+ second.
+ Once rendering at less than 25 frames per second, playback becomes slower
+ than the chosen replay rate.
+ * During playback, handles 100MB capture file with about 500,000 packets
+ at 25 frames per second.
+ * During playback, handles 200MB capture file with about 2,000,000 packets
+ at about 5 FPS.
+ * When paused, handles 600MB capture file with about 6,000,000 packets
+ at 8 FPS using an OpenGL display list optimisation.
+ * When recording frames, expect a significant performance hit due to heavy
+ file I/O.
+\end_layout
+
+\begin_layout Standard
+*
+\end_layout
+
+\begin_layout Standard
+Known Issues</a>
+\end_layout
+
+\begin_layout Standard
+Stability and Performance</a>
+\end_layout
+
+\begin_layout Standard
+1.
+ Target frame rate is intentionally caped at 25 frames per second.
+ The achieved frame rate is usualy a little slower and when the system reaches
+ full processor usage, the replay rate is reduced to a best effort (plays
+ slower than the chosen replay rate).
+ 2.
+ Large capture files take a while to load while the GUI remains unresponsive.
+ Similarly, some interactions require reloading the capture file, which,
+ if not cached in RAM, will be applied with noticeable delay.
+ 3.
+ Attempting to view too many packets may exhaust system memory.
+ The system will just about halt if the application starts running from
+ swap space.
+ To improve InetVis should (yet to be implemented) have a memory cap set
+ and warn the user while automatically decreasing the time window to limit
+ memory usage.
+ 4.
+ Unspecified GUI problems may exist due to a port from Qt3 to Qt4 5.
+ The windows port is quick and dirty, not tested extensively and expected
+ to be buggy.
+ The pre-packaged version is very basic with no proper installer and the
+ required DLLs are lumped with the exe file.
+ The WinPcap DLLs are for Windows NT/XP/2K/2003 (windows 9x requires a different
+ version of packet.dll).
+ 6.
+ Live monitoring is not tested extensively and expected to be buggy.
+ Switching numerous times between replay file mode and monitor local may
+ cause the application to crash with a memory segmentation bug.
+ 7.
+ Pre-compiled binaries are only for Intel Processors.
+ No tests have been performed with AMD.
+\end_layout
+
+\begin_layout Standard
+### <a id="4.2" name="4.2">Limitations and Feature Wish List</a>
+\end_layout
+
+\begin_layout Standard
+1.
+ The option to aggregate packet traffic into flows would be a major improvement
+ for dealing with production class network traffic.
+ 2.
+ Additional colour schemes would be nice.
+ Furthermore, colour legends would help assist the users interpreting colours.
+ 3.
+ Axes labels overlap in certain orientations.
+ 4.
+ The reference frame and grid lines could be made more intelligent by dynamicall
+y scaling according to the data ranges chosen and only applying grids on
+ the panes of the cube in the background.
+ 5.
+ Error reporting needs refinement (multiple reports and obscure references
+ to code functions might be experienced).
+ 6.
+ InetVis lacks a mechanism to select a point an call up detailed textual
+ information, such as the IP addresses, ports, and other such details.
+ 7.
+ The multi-window GUI is a little awkward and could do with re-factoring
+ into a single integrated window with semi-transparent control overlays.
+ This would allow the user to toggle controls and while making changes see
+ the effect on the visualisation in the background.
+ 8.
+ Would be nice to have a 'play list' of capture files that can be queued
+ for replay.
+ 9.
+ Proper file indexing, instead of re-reading the file from the start would
+ improve manipulations (such as setting the filter, setting the domain/port
+ ranges, changing the colour scheme, and so forth).
+ 10.
+ Needs GUI controls to choose network interface for live monitoring, rather
+ than always selecting the systems default interface.
+ 11.
+ Currently, the application only caters for traffic captured from an Ethernet
+ data link.
+ 12.
+ IP packets with options are processed, but the options are ignored.
+ Fragmented IP packets are not yet handled and simply drooped by an implicit
+ BPF filter "ip[6:2] & 0x3fff".
+ Refer to RFC 791 for details about the fragment flags and offset field.
+ 13.
+ The ability to integrate IDS alerts, or at least scan detection alerts
+ from an IDS, would be awesome.
+\end_layout
+
+\begin_layout Standard
+InetVis is still regarded as a pre-production.
+\end_layout
+
+\begin_layout Standard
+NB! Help improve InetVis - please report bugs (including tYpos and spelin
+ errors in this doc), user experience, and feature wishes (see [8
+\backslash
+.
+ Contact](#8.)).
+\end_layout
+
+\begin_layout Standard
+* * *
+\end_layout
+
+\begin_layout Standard
+## <a id="5." name="5.">5
+\backslash
+.
+ Building and Developing InetVis</a>
+\end_layout
+
+\begin_layout Standard
+Written with c++, OpenGL, the Qt API, and Libpcap.
+\end_layout
+
+\begin_layout Standard
+### <a id="5.1." name="5.1.">5.1
+\backslash
+.
+ Build Requirements for Linux (Ubuntu/Debian)</a>
+\end_layout
+
+\begin_layout Standard
+* essential build utilities like: * g++ * libc-dev * libstdc++-dev * make
+ * libpcap-dev (old versions may cause compile errors) * libgl1-mesa-dev
+ * libqt4-dev * qt4-dev-tools
+\end_layout
+
+\begin_layout Standard
+### <a id="5.2." name="5.2.">5.2
+\backslash
+.
+ Build Requirements for Windows</a>
+\end_layout
+
+\begin_layout Standard
+* Qt4 Windows Open Source Edition and MinGW (the open source / free way).
+ * OR Qt4 Windows and Visual Studio.
+ * WinPCap
+\end_layout
+
+\begin_layout Standard
+### <a id="5.3." name="5.3.">5.3
+\backslash
+.
+ Recommend Development Tools</a>
+\end_layout
+
+\begin_layout Standard
+The way I did it.
+\end_layout
+
+\begin_layout Standard
+* qtdesigner-qt3.
+ * qtassistant.
+ * kate with make plugin.
+\end_layout
+
+\begin_layout Standard
+Perhaps a better way:
+\end_layout
+
+\begin_layout Standard
+* qtdesigner-qt4.
+ * qtassistant.
+ * Eclipse C++ with Qt4 integration.
+\end_layout
+
+\begin_layout Standard
+* * *
+\end_layout
+
+\begin_layout Standard
+## <a id="6." name="6.">6
+\backslash
+.
+ Acknowledgement</a>
+\end_layout
+
+\begin_layout Standard
+Based on the "The Spinning Cube of Potential Doom", by Stephen Lau
+\end_layout
+
+\begin_layout Standard
+* [www.nersc.gov/security/TheSpinningCube.html](http://www.nersc.gov/security/TheSpin
+ningCube.html).
+\end_layout
+
+\begin_layout Standard
+Special thanks to Barry Irwin (project supervisor), and Shaun Bangay (Graphics
+ honours course lecture of 2005).
+ Their instruction and input has made this project possible.
+\end_layout
+
+\begin_layout Standard
+* * *
+\end_layout
+
+\begin_layout Standard
+## <a id="7." name="7.">7
+\backslash
+.
+ Disclaimer</a>
+\end_layout
+
+\begin_layout Standard
+**USE AT YOUR OWN RISK!** InetVis is an academic project and not fit for
+ commercial use.
+ Whilst every effort has been made to confirm that the software accurately
+ represents network traffic as intended, the developer(s) make no guarantee
+ that it is error free.
+ The source code is fairly contrived and convoluted as features where hastily
+ hacked in as needed.
+ Review of the code will be non-(non-non-trivial).
+\end_layout
+
+\begin_layout Standard
+* * *
+\end_layout
+
+\begin_layout Section
+Contact
+\end_layout
+
+\begin_layout Standard
+Jean-Pierre van Riel email: jp _dot_ vanriel _at_ gmail _dot_ com website:
+ [http://research.ict.ru.ac.za/G02V2468/](http://research.ict.ru.ac.za/G02V2468/)
+\end_layout
+
+\begin_layout Standard
+* * *
+\end_layout
+
+\begin_layout Section
+Licence
+\end_layout
+
+\begin_layout Paragraph
+
+\emph on
+InetVis - Internet Visualisation for network traffic analysis.
+ 
+\end_layout
+
+\begin_layout Paragraph
+
+\emph on
+Copyright (C) 2005 - 2007, Jean-Pierre van Riel
+\end_layout
+
+\begin_layout Paragraph
+
+\emph on
+Copyright (C) 2017, Yestin Johnson, Barry Irwin Jean-Pierre van Riel
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+This program is free software; you can redistribute it and/or modify it
+ under the terms of the GNU General Public License as published by the Free
+ Software Foundation; either version 2 of the License, or (at your option)
+ any later version.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+This program is distributed in the hope that it will be useful, but WITHOUT
+ ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ FOR A PARTICULAR PURPOSE.
+ See the GNU General Public License for more details.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+You should have received a copy of the GNU General Public License along
+ with this program; if not, write to the Free Software Foundation, Inc.,
+ 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+\end_layout
+
+\begin_layout Section
+Software Dependencies and Licensing
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Greyedout
+status open
+
+\begin_layout Plain Layout
+THIS NEEDS TO BE UPDATED
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+InetVis makes use of Libpcap/WinPcap, Qt and OpenGL.
+ The open source version of Qt by Trolltech is licensed under the GPL, version
+ 2 (as shown above).
+ According to SGI, use of the OpenGL API requires no license.
+ Libpcap is distributed under the BSD license.
+ WinPcap, the windows derivative of libpcap is licensed by CASE Technologies.
+ As required, the respective licenses are shown below.
+\end_layout
+
+\begin_layout Subsection
+
+\family sans
+\shape slanted
+\size footnotesize
+Libpcap License
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+License: BSD
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Redistribution and use in source and binary forms, with or without modification,
+ are permitted provided that the following conditions are met:
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+1.
+ Redistributions of source code must retain the above copyright notice,
+ this list of conditions and the following disclaimer.
+ 2.
+ Redistributions in binary form must reproduce the above copyright notice,
+ this list of conditions and the following disclaimer in the documentation
+ and/or other materials provided with the distribution.
+ 3.
+ The names of the authors may not be used to endorse or promote products
+ derived from this software without specific prior written permission.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR IMPLIED WARRANTIE
+S, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+ AND FITNESS FOR A PARTICULAR PURPOSE.
+\end_layout
+
+\begin_layout Subsection*
+
+\family sans
+\shape slanted
+\size footnotesize
+WinPcap License
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Copyright (c) 1999 - 2005 NetGroup, Politecnico di Torino (Italy).
+ Copyright (c) 2005 - 2007 CACE Technologies, Davis (California).
+ All rights reserved.
+ Redistribution and use in source and binary forms, with or without modification
+, are permitted provided that the following conditions are met:
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+1.
+ Redistributions of source code must retain the above copyright notice,
+ this list of conditions and the following disclaimer.
+ 2.
+ Redistributions in binary form must reproduce the above copyright notice,
+ this list of conditions and the following disclaimer in the documentation
+ and/or other materials provided with the distribution.
+ 3.
+ Neither the name of the Politecnico di Torino, CACE Technologies nor the
+ names of its contributors may be used to endorse or promote products derived
+ from this software without specific prior written permission.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
+ IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+ THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY
+ DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+ AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+_This product includes software developed by the University of California,
+ Lawrence Berkeley Laboratory and its contributors.
+ This product includes software developed by the Kungliga Tekniska Hogskolan
+ and its contributors.
+ This product includes software developed by Yen Yen Lim and North Dakota
+ State University._
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+* * *
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Portions Copyright (c) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997 The
+ Regents of the University of California.
+ All rights reserved.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Redistribution and use in source and binary forms, with or without modification,
+ are permitted provided that the following conditions are met:
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+1.
+ Redistributions of source code must retain the above copyright notice,
+ this list of conditions and the following disclaimer.
+ 2.
+ Redistributions in binary form must reproduce the above copyright notice,
+ this list of conditions and the following disclaimer in the documentation
+ and/or other materials provided with the distribution.
+ 3.
+ All advertising materials mentioning features or use of this software must
+ display the following acknowledgement: "This product includes software
+ developed by the University of California, Berkeley and its contributors."
+ 4.
+ Neither the name of the University nor the names of its contributors may
+ be used to endorse or promote products derived from this software without
+ specific prior written permission.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+THIS SOFTWARE IS PROVIDED BY THE INSTITUTE AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED.
+ IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
+ USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+* * *
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Portions Copyright (c) 1983 Regents of the University of California.
+ All rights reserved.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Redistribution and use in source and binary forms are permitted provided
+ that the above copyright notice and this paragraph are duplicated in all
+ such forms and that any documentation, advertising materials, and other
+ materials related to such distribution and use acknowledge that the software
+ was developed by the University of California, Berkeley.
+ The name of the University may not be used to endorse or promote products
+ derived from this software without specific prior written permission.
+ THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR IMPLIED
+ WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF MERCHANTIB
+ILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+* * *
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Portions Copyright (c) 1995, 1996, 1997 Kungliga Tekniska Hogskolan (Royal
+ Institute of Technology, Stockholm, Sweden).
+ All rights reserved.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Redistribution and use in source and binary forms, with or without modification,
+ are permitted provided that the following conditions are met:
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+1.
+ Redistributions of source code must retain the above copyright notice,
+ this list of conditions and the following disclaimer.
+ 2.
+ Redistributions in binary form must reproduce the above copyright notice,
+ this list of conditions and the following disclaimer in the documentation
+ and/or other materials provided with the distribution.
+ 3.
+ All advertising materials mentioning features or use of this software must
+ display the following acknowledgement: "This product includes software
+ developed by the Kungliga Tekniska Hogskolan and its contributors." 4.
+ Neither the name of the University nor the names of its contributors may
+ be used to endorse or promote products derived from this software without
+ specific prior written permission.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+THIS SOFTWARE IS PROVIDED BY THE INSTITUTE AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED.
+ IN NO EVENT SHALL THE INSTITUTE OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
+ USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+* * *
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Portions Copyright (c) 1997 Yen Yen Lim and North Dakota State University.
+ All rights reserved.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Redistribution and use in source and binary forms, with or without modification,
+ are permitted provided that the following conditions are met:
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+1.
+ Redistributions of source code must retain the above copyright notice,
+ this list of conditions and the following disclaimer.
+ 2.
+ Redistributions in binary form must reproduce the above copyright notice,
+ this list of conditions and the following disclaimer in the documentation
+ and/or other materials provided with the distribution.
+ 3.
+ All advertising materials mentioning features or use of this software must
+ display the following acknowledgement: "This product includes software
+ developed by Yen Yen Lim and North Dakota State University" 4.
+ The name of the author may not be used to endorse or promote products derived
+ from this software without specific prior written permission.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED
+ WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTAB
+ILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+ IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+ TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+* * *
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Portions Copyright (c) 1993 by Digital Equipment Corporation.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Permission to use, copy, modify, and distribute this software for any purpose
+ with or without fee is hereby granted, provided that the above copyright
+ notice and this permission notice appear in all copies, and that the name
+ of Digital Equipment Corporation not be used in advertising or publicity
+ pertaining to distribution of the document or software without specific,
+ written prior permission.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+THE SOFTWARE IS PROVIDED "AS IS" AND DIGITAL EQUIPMENT CORP.
+ DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS.
+ IN NO EVENT SHALL DIGITAL EQUIPMENT CORPORATION BE LIABLE FOR ANY SPECIAL,
+ DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING
+ FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
+ OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE
+ OR PERFORMANCE OF THIS SOFTWARE.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+* * *
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Portions Copyright (C) 1995, 1996, 1997, 1998, and 1999 WIDE Project.
+ All rights reserved.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Redistribution and use in source and binary forms, with or without modification,
+ are permitted provided that the following conditions are met:
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+1.
+ Redistributions of source code must retain the above copyright notice,
+ this list of conditions and the following disclaimer.
+ 2.
+ Redistributions in binary form must reproduce the above copyright notice,
+ this list of conditions and the following disclaimer in the documentation
+ and/or other materials provided with the distribution.
+ 3.
+ Neither the name of the project nor the names of its contributors may be
+ used to endorse or promote products derived from this software without
+ specific prior written permission.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+THIS SOFTWARE IS PROVIDED BY THE PROJECT AND CONTRIBUTORS ``AS IS'' AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED.
+ IN NO EVENT SHALL THE PROJECT OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+ INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+ BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
+ USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+ THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+* * *
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Portions Copyright (c) 1996 Juniper Networks, Inc.
+ All rights reserved.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Redistribution and use in source and binary forms, with or without modification,
+ are permitted provided that: (1) source code distributions retain the above
+ copyright notice and this paragraph in its entirety, (2) distributions
+ including binary code include the above copyright notice and this paragraph
+ in its entirety in the documentation or other materials provided with the
+ distribution.
+ The name of Juniper Networks may not be used to endorse or promote products
+ derived from this software without specific prior written permission.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR IMPLIED WARRANTIE
+S, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+ AND FITNESS FOR A PARTICULAR PURPOSE.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Portions Copyright (c) 2001 Daniel Hartmeier All rights reserved.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Redistribution and use in source and binary forms, with or without modification,
+ are permitted provided that the following conditions are met:
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+1.
+ Redistributions of source code must retain the above copyright notice,
+ this list of conditions and the following disclaimer.
+ 2.
+ Redistributions in binary form must reproduce the above copyright notice,
+ this list of conditions and the following disclaimer in the documentation
+ and/or other materials provided with the distribution.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTOR "AS IS"
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED.
+ IN NO EVENT SHALL THE COPYRIGHT HOLDERS OR CONTRIBUTORS BE LIABLE FOR ANY
+ DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+ AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+ USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Portions Copyright 1989 by Carnegie Mellon.
+\end_layout
+
+\begin_layout Standard
+
+\family sans
+\shape slanted
+\size footnotesize
+Permission to use, copy, modify, and distribute this program for any purpose
+ and without fee is hereby granted, provided that this copyright and permission
+ notice appear on all copies and supporting documentation, the name of Carnegie
+ Mellon not be used in advertising or publicity pertaining to distribution
+ of the program without specific prior permission, and notice be given in
+ supporting documentation that copying and distribution is by permission
+ of Carnegie Mellon and Stanford University.
+ Carnegie Mellon makes no representations about the suitability of this
+ software for any purpose.
+ It is provided "as is" without express or implied warranty.
+\end_layout
+
+\end_body
+\end_document
