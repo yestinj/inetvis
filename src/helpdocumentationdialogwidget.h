@@ -30,6 +30,6 @@ class HelpDocumentationDialogWidget : public QDialog, public Ui::HelpDocumentati
 public:
     HelpDocumentationDialogWidget(QWidget *parent = 0);
 private:
-    void init();
+    void init();  
 };
 #endif // HELPDOCUMENTATIONDIALOGWIDGET_H

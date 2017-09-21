@@ -366,8 +366,3 @@ void PlotterSettingsDialogWidget::loadDefaultHomeNetwork() {
 
     emit setHomeNetwork(octA, octB, octC, octD, maskInt);
 }
-
-
-
-
-

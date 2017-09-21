@@ -922,11 +922,13 @@ void GLVisWidget::keyPressEvent(QKeyEvent *ev) {
         case Qt::Key_3: //Increase Rotation
             rotateAmount += 0.01;
             break;
-	case Qt::Key_Z: // take single frame snapshot
-	    //captureSingleFrame();
-	    captureCurrentFrame();
-	    break;
-
+        case Qt::Key_Z: // take single frame snapshot
+            //captureSingleFrame();
+            captureCurrentFrame();
+            break;
+        case Qt::Key_Space: // pause / play
+            emit togglePlayPause();
+            break;
     }
 }
 
@@ -985,6 +987,9 @@ void GLVisWidget::keyReleaseEvent(QKeyEvent *ev) {
             } else
                 emit showReferenceFrameSettings();
             break;
+        case Qt::Key_G: // General Settings
+            emit showGeneralSettings();
+            break;
         case Qt::Key_H: // toggle hide home range
             if (ev->modifiers() & Qt::ControlModifier) //ctrl H
             {
@@ -999,8 +1004,16 @@ void GLVisWidget::keyReleaseEvent(QKeyEvent *ev) {
                 }
             }
             break;
+        case Qt::Key_0: // Reset the visualisation plane
+            emit resetGLVisWidget();
+        break;
+    case Qt::Key_Q: // Ctrl + Q override to close the window
+        if (ev->modifiers() & Qt::ControlModifier) {
+            parentWidget->close();
+            emit closeAllWindows();
+            break;
+        }
     }
-
 }
 
 
