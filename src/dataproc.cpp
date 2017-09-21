@@ -3775,3 +3775,17 @@ bool DataProcessor::isScreenshotQualitySet() {
     QSettings settings;
     return settings.contains(SCREENSHOT_QUALITY_KEY);
 }
+
+void DataProcessor::resetVisualisationPlane() {
+    //if currently playing, pause
+    if (getState() == PLAYING) {
+        pause();
+    }
+
+    packetEventBuffer.clear();
+    updateGLVisWidget();
+
+    if (getState() == PAUSED) {
+        play();
+    }
+}

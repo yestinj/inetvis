@@ -503,6 +503,7 @@ public slots:
     void setBufferAhead(double seconds);
     void setUpdateRate(int timesPerSecond);
     void enablePointBulge(bool on);
+    void resetVisualisationPlane();
 
     //report functions
     void getBufferStatus(); //report the size of the buffer in terms of the

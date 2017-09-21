@@ -31,6 +31,7 @@ Copyright (C) 2006-2017, Jean-Pierre van Riel, Barry Irwin, Yestin Johnson
 #include "log.h"
 #include "generalsettingsdialog.h"
 
+
 void initialiseQtSettings() {
 
     QCoreApplication::setOrganizationName("Rhodes University");
@@ -153,6 +154,9 @@ int main(int argc, char **argv) {
     //connect signals and slots for visualization display window and the visualization display widget
     QObject::connect(&cp, SIGNAL(showVisDisplayPanel()), &vd, SLOT(show()));
     QObject::connect(&dp, SIGNAL(updateGLVisWidget()), &vd, SLOT(updateGLVisWidget()));
+
+    QObject::connect(vdw, SIGNAL(resetGLVisWidget()), &dp, SLOT(resetVisualisationPlane()));
+
     QObject::connect(&rfs, SIGNAL(setPerspectiveProjection()), vdw,
                      SLOT(setPerspectiveProjection()));
     QObject::connect(&rfs, SIGNAL(setOrthographicProjection()), vdw,
@@ -218,6 +222,7 @@ int main(int argc, char **argv) {
     QObject::connect(&cp, SIGNAL(play()), &dp, SLOT(play()));
     QObject::connect(&cp, SIGNAL(pause()), &dp, SLOT(pause()));
     QObject::connect(&cp, SIGNAL(togglePlayPause()), &dp, SLOT(togglePlayPause()));
+    QObject::connect(vdw, SIGNAL(togglePlayPause()), &dp, SLOT(togglePlayPause()));
     QObject::connect(&cp, SIGNAL(setReplayRate(double)), &dp,
                      SLOT(setReplayRate(double)));
     QObject::connect(&cp, SIGNAL(setReplayPosition(const QDateTime)), &dp,
@@ -251,11 +256,15 @@ int main(int argc, char **argv) {
     QObject::connect(&ps, SIGNAL(setBackgroundColour(int)), &dp,
                      SLOT(changeBackgroundColour(int)));
 
+    QObject::connect(vdw, SIGNAL(closeAllWindows()), &ps, SLOT(reject()));
+    QObject::connect(vdw, SIGNAL(closeAllWindows()), &rfs, SLOT(reject()));
+    QObject::connect(vdw, SIGNAL(closeAllWindows()), &gsd, SLOT(reject()));
+    QObject::connect(vdw, SIGNAL(closeAllWindows()), &cp, SLOT(close()));
+
     //connect slot for reciving quit signal
     QObject::connect(&app, SIGNAL(lastWindowClosed()), &luiq, SLOT(close()));
     QObject::connect(&app, SIGNAL(lastWindowClosed()), &lq, SLOT(close()));
     QObject::connect(&app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()));
-    // TODO: Add a connection to close everything after the main control window is closed.
 
     dp.init();
 
