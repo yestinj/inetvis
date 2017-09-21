@@ -7,6 +7,10 @@
 \textclass article
 \begin_preamble
 \usepackage{url}
+
+%used by keystroke
+\usepackage{array}
+\usepackage{keystroke}
 \usepackage{keystroke}
 %\usepackage[os=win]{menukeys}
 \end_preamble
@@ -33,7 +37,16 @@
 \index_command default
 \paperfontsize default
 \spacing single
-\use_hyperref false
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen true
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
 \papersize a4paper
 \use_geometry true
 \use_package amsmath 1
@@ -94,10 +107,6 @@ InetVis 2.1.0 Manual
 
 \end_layout
 
-\begin_layout Date
-Last revision: 2017-09-21
-\end_layout
-
 \begin_layout Standard
 \begin_inset CommandInset toc
 LatexCommand tableofcontents
@@ -111,7 +120,7 @@ LatexCommand tableofcontents
 Description
 \end_layout
 
-\begin_layout Standard
+\begin_layout Description
 InetVis -
 \series bold
  I
@@ -125,10 +134,18 @@ net
 Vis
 \series default
 ualization
-\begin_inset Newline newline
+\end_layout
+
+\begin_layout Description
+Version 2.1.1 
+\end_layout
+
+\begin_layout Description
+Rrelease
+\begin_inset space ~
 \end_inset
 
-version: 2.1.1 release date: 2017/09/21
+Date: 2017/09/21
 \end_layout
 
 \begin_layout Standard
@@ -275,7 +292,7 @@ ICMP traffic plotted below TCP/UDP cube grey/white ICMP plane.
 \begin_inset Graphics
 	filename images/inetvis_plotting_scheme.png
 	lyxscale 50
-	scale 60
+	scale 50
 
 \end_inset
 
@@ -388,6 +405,7 @@ The display pane and control panel are in separate windows, with a plotter
 \begin_layout Standard
 \begin_inset Graphics
 	filename images/inetvis_screenshot_labeled.jpg
+	scale 50
 
 \end_inset
 
@@ -401,6 +419,7 @@ Control Panel
 \begin_layout Standard
 \begin_inset Graphics
 	filename images/inetvis_control_panel.jpg
+	scale 50
 
 \end_inset
 
@@ -477,21 +496,30 @@ Navigation via Keyboard Controls
 \end_layout
 
 \begin_layout Itemize
-Arrow Keys 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Arrow Keys
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-%
+ 
 \backslash
-arrowkeyup 
+LArrow
 \backslash
-arrowkeydown 
+UArrow
 \backslash
-arrowkeyleft 
+DArrow
 \backslash
-arrowkeyright
+RArrow
 \end_layout
 
 \end_inset
@@ -500,21 +528,32 @@ arrowkeyright
 \end_layout
 
 \begin_layout Itemize
-Ctrl' + 'Arrow Keys' 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ctrl + Arrow Keys
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-%
+
 \backslash
-ctrl +  
+Ctrl +   
 \backslash
-arrowkeyup 
+LArrow
 \backslash
-arrowkeydown 
+UArrow
 \backslash
-arrowkeyleft 
+DArrow
+\backslash
+RArrow 
 \end_layout
 
 \end_inset
@@ -524,32 +563,51 @@ arrowkeyleft
 \end_layout
 
 \begin_layout Itemize
-Alt + UP Arrow Key 
-\begin_inset ERT
+\begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-
-%
-\backslash
-alt+
-\backslash
-arrowkeyup
+Alt + UP Arrow Key
 \end_layout
 
 \end_inset
 
- or Alt 'Down Arrow Key 
+ 
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
-%
+
 \backslash
-alt+
+Alt+
 \backslash
-arrowkeydown
+UArrow
+\end_layout
+
+\end_inset
+
+ or 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Alt 'Down Arrow Key
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Alt+
+\backslash
+DArrow
 \end_layout
 
 \end_inset
@@ -559,36 +617,253 @@ arrowkeydown
 \end_layout
 
 \begin_layout Itemize
-'+' and '-' to scale (zoom).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+keystroke{+}
+\end_layout
+
+\end_inset
+
+ and 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+keystroke{-}
+\end_layout
+
+\end_inset
+
+to scale (zoom).
  
 \end_layout
 
 \begin_layout Itemize
-'Ctrl-L ^L' Set Left View (up _x_ axis)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ctrl-L
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Ctrl + 
+\backslash
+keystroke{L}
+\end_layout
+
+\end_inset
+
+ Set Left View (up 
+\emph on
+x
+\emph default
+ axis)
 \end_layout
 
 \begin_layout Itemize
-'Ctrl-R ^R' Set Right View (down _x_ axis) 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ctrl-R
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Ctrl + 
+\backslash
+keystroke{R}
+\end_layout
+
+\end_inset
+
+ Set Right View (down 
+\emph on
+x
+\emph default
+ axis) 
 \end_layout
 
 \begin_layout Itemize
-'Ctrl-T ^T' Set Top View (down _y_ axis) 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ctrl-T
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Ctrl + 
+\backslash
+keystroke{T}
+\end_layout
+
+\end_inset
+
+ Set Top View (down
+\emph on
+ y
+\emph default
+ axis) 
 \end_layout
 
 \begin_layout Itemize
-'Ctrl-B ^B' Set Bottom View (up _y_ axis)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ctrl-B
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Ctrl + 
+\backslash
+keystroke{B}
+\end_layout
+
+\end_inset
+
+ Set Bottom View (up
+\emph on
+ y
+\emph default
+ axis)
 \end_layout
 
 \begin_layout Itemize
-'Ctrl-F ^F' Set Front View (up _x_ axis) 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ctrl-F
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Ctrl + 
+\backslash
+keystroke{F}
+\end_layout
+
+\end_inset
+
+ Set Front View (up
+\emph on
+ x
+\emph default
+ axis) 
 \end_layout
 
 \begin_layout Itemize
-'Home' Set Front view (down _y_ axis)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Home
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Home
+\end_layout
+
+\end_inset
+
+ Set Front view (down
+\emph on
+ y
+\emph default
+ axis)
 \end_layout
 
 \begin_layout Itemize
-'End' Set Back View (down _z_ axis)
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+'End'
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+End
+\end_layout
+
+\end_inset
+
+ Set Back View (down
+\emph on
+ z
+\emph default
+ axis)
 \end_layout
 
 \begin_layout Subsubsection
@@ -596,62 +871,384 @@ Other Keyboard Controls
 \end_layout
 
 \begin_layout Itemize
-'f' Toggle full screen.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+'f'
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+keystroke{F}
+\end_layout
+
+\end_inset
+
+ Toggle full screen.
  
 \end_layout
 
 \begin_layout Itemize
-'Esc' Exit full screen 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+'Esc'
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Esc 
+\end_layout
+
+\end_inset
+
+Exit full screen 
 \end_layout
 
 \begin_layout Itemize
-'QuoteLeft ~`' Toggle Harlemshake 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+QuoteLeft
 \end_layout
 
-\begin_layout Itemize
-'0' Clear the visualisation pane 
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+keystroke{$
+\backslash
+sim$} 
 \end_layout
 
-\begin_layout Itemize
-'1' Rotation Toggle 
-\end_layout
+\end_inset
 
-\begin_layout Itemize
-'2' Decrease Rotation 
-\end_layout
-
-\begin_layout Itemize
-'3' Increase Rotation 
-\end_layout
-
-\begin_layout Itemize
-'Ctrl-H ^H' Hide Home Range (addresses prefix replaced with the.drk.net) 
-\end_layout
-
-\begin_layout Itemize
-'Z' Take single frame Screenshot 
-\end_layout
-
-\begin_layout Itemize
-'Space' Play/Pause the visualisation 
-\end_layout
-
-\begin_layout Itemize
-'Ctrl-Q ^Q' Quit the application 
-\end_layout
-
-\begin_layout Itemize
-'p' to bring up Plotter Settings Dialogue.
+ Toggle 
+\emph on
+Harlemshake
+\emph default
  
 \end_layout
 
 \begin_layout Itemize
-'r' to bring up Reference Frame Settings Dialogue.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+keystroke{0}
+\end_layout
+
+\end_inset
+
+ Clear the visualisation pane 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+keystroke{1}
+\end_layout
+
+\end_inset
+
+ Rotation Toggle 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+keystroke{2}
+\end_layout
+
+\end_inset
+
+ Decrease Rotation 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+keystroke{3}
+\end_layout
+
+\end_inset
+
+ Increase Rotation 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Ctrl-H
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Ctrl + 
+\backslash
+keystroke{H}
+\end_layout
+
+\end_inset
+
+ Hide Home Range (addresses prefix replaced with 
+\emph on
+the.drk.net
+\emph default
+) 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+'Z'
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+keystroke{F}
+\end_layout
+
+\end_inset
+
+ Take single frame Screenshot 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+'Space'
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Spacebar
+\end_layout
+
+\end_inset
+
+ Pause/Resume the visualisation 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+'Ctrl-Q
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+Ctrl + 
+\backslash
+keystroke{Q}
+\end_layout
+
+\end_inset
+
+ Quit the application 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+p
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+keystroke{P}
+\end_layout
+
+\end_inset
+
+ to bring up Plotter Settings Dialogue.
  
 \end_layout
 
 \begin_layout Itemize
-'c' to bring up Control Panel Dialogue.
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+r
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+keystroke{R}
+\end_layout
+
+\end_inset
+
+ to bring up Reference Frame Settings Dialogue.
+ 
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+c
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+keystroke{C}
+\end_layout
+
+\end_inset
+
+ to bring up Control Panel Dialogue.
  
 \end_layout
 
@@ -736,6 +1333,10 @@ Set number of divisions along x, y, and z for markers and grid lines.
 
 \begin_layout Itemize
 Toggle text labels (time, axes ranges, frame rate).
+\end_layout
+
+\begin_layout Subsection
+General Settings Dialogue
 \end_layout
 
 \begin_layout Section
@@ -998,7 +1599,7 @@ The binary is compiled for the Intel 686 processor.
  be present on the system by default.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection
 Minimum System Specification
 \end_layout
 
@@ -1050,8 +1651,8 @@ Tested on Ubuntu 7.04 with Intel Core2 (6300) 1.86 GHz CPU, 2GB RAM, GeForce
 *
 \end_layout
 
-\begin_layout Standard
-Known Issues</a>
+\begin_layout Section
+Known Issues
 \end_layout
 
 \begin_layout Standard
@@ -1159,11 +1760,8 @@ NB! Help improve InetVis - please report bugs (including tYpos and spelin
 * * *
 \end_layout
 
-\begin_layout Standard
-## <a id="5." name="5.">5
-\backslash
-.
- Building and Developing InetVis</a>
+\begin_layout Section
+Building and Developing InetVis
 \end_layout
 
 \begin_layout Standard
