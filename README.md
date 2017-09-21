@@ -18,8 +18,8 @@ A compiled version of InetVis is available under the releases section of https:/
 In order to install and run the software please do the following:
 
 1. Download the latest release archive from the releases page.
-2. Extract the archive which will be called something like `inetvis-2.0.2.tgz`
-3. Change into the extracted directory, something like `inetvis-2.0.2`
+2. Extract the archive which will be called something like `inetvis-2.1.0.tgz`
+3. Change into the extracted directory, something like `inetvis-2.1.0`
 4. Run the `install_inetvis.sh` shell script to install the software.
     1. This script will: install the software to `/opt/inetvis-<version>`
     2. Create a symlink directory `/opt/inetvis` for convenience
@@ -28,6 +28,8 @@ In order to install and run the software please do the following:
     5. Place a `desktop` file in `/usr/share/applications`, allowing inetvis to be found in the menu on Ubuntu systems.
     6. Create a symlink at `/usr/local/bin/inetvis` pointing to the main binary.
     7. Set the `cap_net_raw`, and `cap_net_admin=eip` capabilities on the inetvis binary allowing for monitoring packets on local host without running as root.
+	$sudo  setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' <inetvis binary>
+       This needs to generally not be /home which on Debian/ubuntu systems is mounted nosuid
 5. If the script completes successfully inetvis should now be in your path, and also be in the menu system of your distribution.
 
 You should now be able to run the `inetvis` binary from the command line, as it will be in your path, or you can run it from the Ubuntu menu system, where it will show up as an item. Running from the command line allows you to view console messages produced while the application is running.
@@ -47,6 +49,10 @@ Building InetVis is relatively straight forward. Begin by doing the following:
 2. Install the following dependencies:
     * `sudo apt-get install libpcap-dev qt5-default`
 
+It has been noted that the following dependencies were also required on Linux Mint based systems:
+
+`sudo apt-get install libqglviewer-dev libqglviewer2`
+
 Once the dependencies are installed, clone this repository if you haven't already.
 
 1. Clone the github repo into the `inetvis` directory:
@@ -62,7 +68,7 @@ Finally, build the `inetvis` binary:
 
 This will result in a new `inetvis` binary being generated within the source directory.
 
-You may now run `inetvis` by simply running the generated binary. You will need to either run using sudo, or set packet capture capabilities on the file in the
+You may now run `inetvis` by simply running the generated binary. You will need to either run using sudo, or set packet capture capabilities (see instructions above) on the file in the
 event that you would like to monitor your local host for packets.
 
 Have fun! :-)

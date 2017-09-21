@@ -1,3 +1,22 @@
+/*******************************************************************
+InetVis - Internet Visualisation
+Version: 2.1.0
+release date: 2017/09/21
+
+Original Authors: Jean-Pierre van Riel, Barry Irwin
+Initvis 2.x Authors: Yestin Johnson, Barry Irwin
+Rhodes University
+Computer Science Honours Project - 2005
+Computer Science Masters Project - 2006/7
+Computer Science Masters Project - 2017
+author: Jean-Pierre van Riel
+supervisor: Barry Irwin
+
+InetVis - Internet Visualisation for network traffic.
+Copyright (C) 2006-2017, Jean-Pierre van Riel, Barry Irwin, Yestin Johnson
+
+*******************************************************************/
+
 #include "plottersettingsdialogwidget.h"
 
 PlotterSettingsDialogWidget::PlotterSettingsDialogWidget(QWidget *parent) :
@@ -103,9 +122,10 @@ void PlotterSettingsDialogWidget::applyHomeNetSettings() {
     emit setHomeNetwork(octA, octB, octC, octD, slashMask);
 
     //update UI Log
-    if(LogUI::isEnabled())
+    if(LogUI::isEnabled()) {
         LogUI::logEvent("[PS] home network set to: "
                         + QString("%1.%2.%3.%4/%5").arg(octA).arg(octB).arg(octC).arg(octD).arg(slashMask));
+    }
 }
 
 void PlotterSettingsDialogWidget::applyInternetRangeSettings() {
@@ -238,8 +258,8 @@ void PlotterSettingsDialogWidget::setFullSrcNetRange() {
 
 void PlotterSettingsDialogWidget::guessHomeNetworkPressed() {
     //update UI Log
-    if(LogUI::isEnabled())
-    {  LogUI::logEvent("[PS] guess home network pressed");
+    if(LogUI::isEnabled()) {
+        LogUI::logEvent("[PS] guess home network pressed");
     }
 
     emit guessHomeNetwork();
@@ -314,17 +334,35 @@ void PlotterSettingsDialogWidget::backgroundColourChange() {
     {  emit setBackgroundColour(BLACK_BACKGROUND);
 
         //update UI Log
-        if(LogUI::isEnabled())
-        {  LogUI::logEvent("[PS] background set to black");
+        if(LogUI::isEnabled()) {
+            LogUI::logEvent("[PS] background set to black");
         }
     }
 }
 
+QString PlotterSettingsDialogWidget::readHomeNetworkConfig() {
+    QSettings s;
+    return s.value("plottersettings/default_home_network").toString();
+}
 
+void PlotterSettingsDialogWidget::loadDefaultHomeNetwork() {
 
+    if(LogUI::isEnabled()) {
+        LogUI::logEvent("[PS] load Default home network button pressed");
+    }
 
+    QString homeNetwork = DataProcessor::getDefaultHomeNetwork();
 
+    QStringList ipAndMask = homeNetwork.split('/');
+    QStringList octets = ipAndMask.at(0).split(".");
 
+    int octA = octets.at(0).toInt();
+    int octB = octets.at(1).toInt();
+    int octC = octets.at(2).toInt();
+    int octD = octets.at(3).toInt();
 
+    QString mask = ipAndMask.at(1);
+    int maskInt = mask.toInt();
 
-
+    emit setHomeNetwork(octA, octB, octC, octD, maskInt);
+}

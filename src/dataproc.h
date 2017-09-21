@@ -1,37 +1,24 @@
-/*******************************************************************************
+#ifndef DATAPROC_H
+#define DATAPROC_H
 
+/*******************************************************************
 InetVis - Internet Visualisation
+Version: 2.1.0
+release date: 2017/09/21
 
-version: 0.9.5
-release date: 2007/11/21
-
+Original Authors: Jean-Pierre van Riel, Barry Irwin
+Initvis 2.x Authors: Yestin Johnson, Barry Irwin
+Rhodes University
 Computer Science Honours Project - 2005
 Computer Science Masters Project - 2006/7
-
+Computer Science Masters Project - 2017
 author: Jean-Pierre van Riel
 supervisor: Barry Irwin
 
-License
--------
+InetVis - Internet Visualisation for network traffic.
+Copyright (C) 2006-2017, Jean-Pierre van Riel, Barry Irwin, Yestin Johnson
 
-InetVis - Internet Visaulisation for network traffic.
-Copyright (C) 2006, Jean-Pierre van Riel
-
-This program is free software; you can redistribute it and/or modify it under
-the terms of the GNU General Public License as published by the Free Software
-Foundation; either version 2 of the License, or (at your option) any later
-version.
-
-This program is distributed in the hope that it will be useful, but WITHOUT ANY
-WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
-PARTICULAR PURPOSE. See the GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along with
-this program; if not, write to the Free Software Foundation, Inc., 51 Franklin
-Street, Fifth Floor, Boston, MA 02110-1301, USA.
-
-*******************************************************************************/
-
+*******************************************************************/
 
 /* dataproc.h & dataproc.cpp
  *
@@ -67,7 +54,21 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #include <qtimer.h>
 #include <qdir.h>
 #include <pcap.h>
+#include <QSettings>
+#include <QCoreApplication>
+
+#ifdef MAC
+#include <OpenGL/gl.h>
+#endif
+
+#ifdef LINUX
 #include <GL/gl.h>
+#endif
+
+#ifdef WINDOWS
+#include <GL/gl.h>
+#endif
+
 #include <timeutil.h>
 #include <plotter.h>
 //packetevent.h and in turn, packetheaders.h are linked via plotter
@@ -113,24 +114,6 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
 #define DATA_LINK_UNSET -1
 
-//defined defaults for directories and filenames
-#define DEFAULT_RECORD_DIR "inetvis-recorded"
-#define DEFAULT_PCAPS_DIR "inetvis-recorded/pcaps"
-#ifndef DEFAULT_FRAMES_DIR
-#  define DEFAULT_FRAMES_DIR "inetvis-recorded/frames"
-#endif
-#ifndef DEFAULT_SNAPSHOTS_DIR
-#  define DEFAULT_SNAPSHOTS_DIR "inetvis-recorded/snapshots"
-#endif
-#ifndef DEFAULT_LIVE_SUBDIR
-#  define DEFAULT_LIVE_SUBDIR "live"
-#endif
-#ifndef DEFAULT_REPLAY_SUBDIR
-#  define DEFAULT_REPLAY_SUBDIR "replayed"
-#endif
-//the qt QDir and QFile classes accomodate cross platform filesystems using
-//'/' directory unix convention and make approprite changes '\' for windows
-//transparently
 #define DEFAULT_DUMP_FILE_NAME "dump.cap"
 
 #define UPDATE_TIMER_ID 1
@@ -177,6 +160,38 @@ Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #define NEW_POINT_BULGE_USEC 500000
 //this value is the number of microseconds the new points should bulge for
 
+// Settings key definitions
+#define RECORD_DEFAULT_DIR_KEY "dataproc/recording/default_dir"
+#define RECORD_PCAPS_SUBDIR_KEY "dataproc/recording/pcaps_subdir"
+#define RECORD_FRAMES_SUBDIR_KEY "dataproc/recording/frames_subdir"
+#define RECORD_SNAPSHOTS_SUBDIR_KEY "dataproc/recording/snapshots_subdir"
+#define RECORD_LIVE_SUBDIR_KEY "dataproc/recording/live_subdir"
+#define RECORD_REPLAY_SUBDIR_KEY "dataproc/recording/replay_subdir"
+#define DEFAULT_HOME_NETWORK_KEY "dataproc/home_network/default_home_network"
+#define SHOW_HOME_NETWORK_NOT_SET_ERROR_KEY "dataproc/home_network/show_not_set_error"
+#define DEFAULT_MONITOR_INTERFACE_KEY "dataproc/home_network/monitor_interface"
+#define SCREENSHOT_FORMAT_KEY "dataproc/screenshot/screenshot_format"
+#define SCREENSHOT_QUALITY_KEY "dataproc/screenshot/screenshot_quality"
+#define SCREENSHOT_EXTENSION_KEY "dataproc/screenshot/screenshot_extension"
+
+// Default settings values
+#define RECORD_DEFAULT_DIR_DEFAULT "inetvis-recorded"
+#define RECORD_PCAPS_SUBDIR_DEFAULT "inetvis-recorded/pcaps"
+#define RECORD_FRAMES_SUBDIR_DEFAULT "inetvis-recorded/frames"
+#define RECORD_SNAPSHOTS_SUBDIR_DEFAULT "inetvis-recorded/snapshots"
+#define RECORD_LIVE_SUBDIR_DEFAULT "live"
+#define RECORD_REPLAY_SUBDIR_DEFAULT "replayed"
+#define DEFAULT_HOME_NETWORK_DEFAULT "0.0.0.0/0"
+#define SHOW_HOME_NETWORK_NOT_SET_ERROR_DEFAULT true
+#define DEFAULT_MONITOR_INTERFACE_DEFAULT ""
+#define SCREENSHOT_FORMAT_DEFAULT "png"
+#define SCREENSHOT_QUALITY_DEFAULT -1
+#define SCREENSHOT_EXTENSION_DEFAULT "png"
+
+// Settings config values
+#define ORGANISATION_NAME = "Rhodes University"
+#define ORGANISATION_DOMAIN = "ru.az.za"
+#define APPLICATION_NAME = "InetVis"
 
 enum replayModes {NOT_READY, MONITOR_LOCAL, MONITOR_REMOTE, REPLAY_FILE};
 //NOT_READY indicates that the mode is not yet set
@@ -394,7 +409,6 @@ private:
     bool updateImplicitFilter();
     bool checkDefaultDirs();
 
-
 public:
 
     std::deque <PacketEvent> packetEventBuffer; //buffer with public access
@@ -419,6 +433,57 @@ public:
     //error reporting
     void reportError(const QString &errMsg, const QString &function = NULL);
 
+    // configuration
+    static QString getRecordDir();
+    static void setRecordDir(QString recordDir);
+    static bool isRecordDirSet();
+
+    static QString getPcapsDir();
+    static void setPcapsDir(QString pcapsDir);
+    static bool isPcapsDirSet();
+
+    static QString getFramesDir();
+    static void setFramesDir(QString framesDir);
+    static bool isFramesDirSet();
+
+    static QString getSnapshotsDir();
+    static void setSnapshotsDir(QString snapshotsDir);
+    static bool isSnapshotDirSet();
+
+    static QString getLiveSubdir();
+    static void setLiveSubdir(QString liveSubdir);
+    static bool isLiveSubdirSet();
+
+    static QString getReplaySubdir();
+    static void setReplaySubdir(QString replaySubdir);
+    static bool isReplaySubdirSet();
+
+    static QString getDefaultHomeNetwork();
+    static bool setDefaultHomeNetwork(int, int, int, int, int);
+    static bool setDefaultHomeNetwork(QString);
+    static bool isDefaultHomeNetworkSet();
+
+    static bool getShowHomeNetworkNotSetError();
+    static void setShowHomeNetworkNotSetError(bool show);
+    static bool isShowHomeNetworkNotSetError();
+
+    static QString getDefaultMonitorInterface();
+    static void setDefaultMonitorInterface(QString monitorInterface);
+    static bool isDefaultMonitorInterfaceSet();
+
+    static QString getScreenshotFormat();
+    static void setScreenshotFormat(QString screenshotFormat);
+    static bool isScreenshotFormatSet();
+
+    static QString getScreenshotExtension();
+    static void setScreenshotExtension(QString screenshotExtension);
+    static bool isScreenshotExtensionSet();
+
+    static int getScreenshotQuality();
+    static void setScreenshotQuality(int screenshotQuality);
+    static bool isScreenshotQualitySet();
+
+
 public slots:
 
     //signals recived from gui control panel - set playback options
@@ -438,6 +503,7 @@ public slots:
     void setBufferAhead(double seconds);
     void setUpdateRate(int timesPerSecond);
     void enablePointBulge(bool on);
+    void resetVisualisationPlane();
 
     //report functions
     void getBufferStatus(); //report the size of the buffer in terms of the
@@ -497,3 +563,4 @@ signals:
     void sendErrMsg(QString errMsg);
 
 };
+#endif DATAPROC_H

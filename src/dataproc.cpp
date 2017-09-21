@@ -1,9 +1,29 @@
 #include <dataproc.h>
 #include <iostream>
 #include <stdio.h>
+#import <QSettings>
+#import "log.h"
+
+/*******************************************************************
+InetVis - Internet Visualisation
+Version: 2.1.0
+release date: 2017/09/21
+
+Original Authors: Jean-Pierre van Riel, Barry Irwin
+Initvis 2.x Authors: Yestin Johnson, Barry Irwin
+Rhodes University
+Computer Science Honours Project - 2005
+Computer Science Masters Project - 2006/7
+Computer Science Masters Project - 2017
+author: Jean-Pierre van Riel
+supervisor: Barry Irwin
+
+InetVis - Internet Visualisation for network traffic.
+Copyright (C) 2006-2017, Jean-Pierre van Riel, Barry Irwin, Yestin Johnson
+
+*******************************************************************/
 
 using namespace std; //for debugging purposes
-
 
 /* libpcap pcap_pkthdr definition for reference purposes
 
@@ -527,20 +547,18 @@ bool DataProcessor::DataExtractor::setDataLinkType()
 }
 
 
-bool DataProcessor::DataExtractor::lookupNetwork()
-{
+bool DataProcessor::DataExtractor::lookupNetwork() {
     int ret; //value to hold return code from pcap operations
 
-    if (dataProcessor->getMode() == MONITOR_LOCAL)
-    {  //live capture, get local net from interface
+    if (dataProcessor->getMode() == MONITOR_LOCAL) {
+        //live capture, get local net from interface
         //no need to pause since no file io required
 
         //assert valid interface present
         /*
-      if (device == NULL)
-*/
-        if (liveCaptureInstance == NULL)
-        {  netAddress = 0;
+        if (device == NULL)
+        */
+        if (liveCaptureInstance == NULL) {  netAddress = 0;
             netMask = 0;
             reportError("device was NULL and cannor lookup network addressing",
                         "DataProcessor::lookupNetwork");
@@ -549,15 +567,15 @@ bool DataProcessor::DataExtractor::lookupNetwork()
         /*
       ret = pcap_lookupnet(device->name, &netAddress , &netMask,
             pcapErrorBuffer);
-*/
+        */
         ret = pcap_lookupnet(strLocalInterface.toLatin1(), &netAddress , &netMask,
                              pcapErrorBuffer);
         //resolve byte order issue
         netAddress = (bpf_u_int32)ntohl(netAddress);
         netMask = (bpf_u_int32)ntohl(netMask);
 
-        if (ret == -1)
-        {  netAddress = 0;
+        if (ret == -1) {
+            netAddress = 0;
             netMask = 0;
             reportError("error looking up network address",
                         "libpcap::pcap_lookupnet");
@@ -575,8 +593,8 @@ bool DataProcessor::DataExtractor::lookupNetwork()
         dataProcessor->reportHomeNetwork();
         return true;
     }
-    else if (dataProcessor->getMode() == REPLAY_FILE)
-    {  //file replay, scan file for smallest and greatest destination address,
+    else if (dataProcessor->getMode() == REPLAY_FILE) {
+        //file replay, scan file for smallest and greatest destination address,
         //then determine home network address range
 
         //need to pause replay in order to wait for file io
@@ -589,18 +607,14 @@ bool DataProcessor::DataExtractor::lookupNetwork()
         tempCaptureInstance = pcap_open_offline(strReplayFileReference.toLatin1().data(),
                                                 pcapErrorBuffer);
 
-        if (tempCaptureInstance == NULL)
-        {
+        if (tempCaptureInstance == NULL) {
 #ifdef DEBUG_CAPTURE_INSTANCE
             cerr << "DEBUG: failed opening second temp file capture instance on file to scan address range: "
                  << tempCaptureInstance << '\n';
 #endif
-
             return false;
-
         }
-        else
-        {
+        else {
 #ifdef DEBUG_CAPTURE_INSTANCE
             cerr << "DEBUG: sucessfully opened second temp file capture instance to scan address range: "
                  << tempCaptureInstance << '\n';
@@ -623,8 +637,8 @@ bool DataProcessor::DataExtractor::lookupNetwork()
         ret = pcap_next_ex(tempCaptureInstance, &pt_pcapHeader, &pt_snapshot);
         //return value for pcap
         //check that at least one packet was read correctly
-        if (ret != 1)
-        {  //failed to read even the first packet
+        if (ret != 1) {
+            //failed to read even the first packet
             reportError("could not read any packets from file",
                         "libpcap::pcap_next_ex()");
             return false;
@@ -636,25 +650,27 @@ bool DataProcessor::DataExtractor::lookupNetwork()
         int pktCounter = 1;
 #endif
 
-        while (ret == 1 || ret == -1)
-        {  if (ret == 1)
-            {  //parse packet
+        while (ret == 1 || ret == -1) {
+            if (ret == 1) {
+                //parse packet
                 PacketHeaders::parsePacket(pkt, (unsigned char*)pt_snapshot,
                                            (int)pt_pcapHeader->caplen);
                 //get IP address values
                 struct IP_Header *ip;
                 ip = (IP_Header*)(pkt.pt_networkHeader);
-                if (pkt.dataLinkType == DL_ETHERNET && pkt.networkType == N_IPv4)
-                {  //check if IP larger
-                    if (ip->dstAddress > largestIP)
+                if (pkt.dataLinkType == DL_ETHERNET && pkt.networkType == N_IPv4) {
+                    //check if IP larger
+                    if (ip->dstAddress > largestIP) {
                         largestIP = ip->dstAddress;
+                    }
                     //check if IP lower
-                    if (ip->dstAddress < lowestIP)
+                    if (ip->dstAddress < lowestIP) {
                         lowestIP = ip->dstAddress;
+                    }
                 }
             }
-            else
-            {  //error reading packet
+            else {
+                //error reading packet
                 reportError("error whilst trying to read next packet from file",
                             "libpcap::pcap_next_ex()");
             }
@@ -741,21 +757,18 @@ bool DataProcessor::DataExtractor::lookupNetwork()
 
         dataProcessor->reportHomeNetwork();
         return true;
-
     }
-    else
-    {  //else failed to acomplish anything
+    else {
+        //else failed to acomplish anything
         reportError("Presumably the data processor mode is NOT_READY",
                     "DataExtractor::lookupNetwork()");
         return false;
     }
-
 }
 
 
 void DataProcessor::DataExtractor::setHomeNetwork(unsigned int netAdr,
-                                                  unsigned int mask)
-{
+                                                  unsigned int mask) {
     netAddress = (bpf_u_int32)netAdr;
     netMask = (bpf_u_int32)mask;
 
@@ -766,7 +779,6 @@ void DataProcessor::DataExtractor::setHomeNetwork(unsigned int netAdr,
 #endif
 
     dataProcessor->reportHomeNetwork();
-
 }
 
 
@@ -1127,25 +1139,25 @@ QString DataProcessor::DataExtractor::getReplayFileName()
 }
 
 
-bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
-{
+bool DataProcessor::DataExtractor::openInterface(const QString netInterface) {
 #ifdef DEBUG_DATA_EXTRACTOR
     cerr << "DEBUG: live interface open --------------------------------------------------------\n";
 #endif
 
     dataProcessor->setMode(NOT_READY);
-    if (dataProcessor->getState() == PLAYING)
+    if (dataProcessor->getState() == PLAYING) {
         dataProcessor->pause();
-
-    if (netInterface.isEmpty()) //use existing string value for local interface
-    {  return openDefaultInterface();
-    }
-    else //set to new value
-    {  strLocalInterface = netInterface;
     }
 
-    if (liveCaptureInstance != NULL)
-    {
+    //use existing string value for local interface
+    if (netInterface.isEmpty()) {
+        return openDefaultInterface();
+    } else {
+        //set to new value
+        strLocalInterface = netInterface;
+    }
+
+    if (liveCaptureInstance != NULL) {
 #ifdef DEBUG_CAPTURE_INSTANCE
         cerr << "DEBUG: opening live interface and previous live capture instance was still open\n";
         cerr << "DEBUG: closing previous live capture instance"
@@ -1160,8 +1172,7 @@ bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
         //dataProcessor->glVisWidget->update();
     }
 
-    if (fileCaptureInstance != NULL)
-    {
+    if (fileCaptureInstance != NULL) {
 #ifdef DEBUG_CAPTURE_INSTANCE
         cerr << "DEBUG: opening live interface and previous file capture instance was still open\n";
         cerr << "DEBUG: closing previous file capture instance: "
@@ -1178,15 +1189,15 @@ bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
 
     liveCaptureInstance = pcap_open_live(strLocalInterface.toLatin1().data(), packetCaptureLength,
                                          promiscuousMode, readTimeout, pcapErrorBuffer);
-    if (liveCaptureInstance == NULL)
-    {  reportError("error opening network device " + strLocalInterface +
+    if (liveCaptureInstance == NULL) {
+        reportError("error opening network device " + strLocalInterface +
                    " for capture (a lack of user privileges may be the cause)",
                    "libpcap::pcap_open_live");
         return false;
     }
     //else interface opened for capture - check for warning message
-    if (checkPcapErrorBuffer())
-    {  reportError("libpacp warning when opening network device",
+    if (checkPcapErrorBuffer()) {
+        reportError("libpacp warning when opening network device",
                    "libpcap::pcap_open_live()");
     }
 
@@ -1199,8 +1210,8 @@ bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
     //but has no effect on replay of capture files
 #define NON_BLOCK_MODE 1
     pcapRet = pcap_setnonblock(liveCaptureInstance, NON_BLOCK_MODE, pcapErrorBuffer);
-    if (pcapRet == -1)
-    {  reportError("failed to enable non-blocking live capture mode", "libpcap::pcap_setnonblock()");
+    if (pcapRet == -1) {
+        reportError("failed to enable non-blocking live capture mode", "libpcap::pcap_setnonblock()");
         dataProcessor->setMode(NOT_READY);
         return false;
     }
@@ -1226,35 +1237,27 @@ bool DataProcessor::DataExtractor::openInterface(const QString netInterface)
 }
 
 
-bool DataProcessor::DataExtractor::openDefaultInterface()
-{
+bool DataProcessor::DataExtractor::openDefaultInterface() {
 #define MAX_DEV_NAME_LENGTH 32
 
     strLocalInterface = QString((const char*)pcap_lookupdev(pcapErrorBuffer));
 
-    if (strLocalInterface.isNull() || strLocalInterface.isEmpty())
-    {  reportError("could not lookup default device", "libpcap::pcap_lookupdev");
+    if (strLocalInterface.isNull() || strLocalInterface.isEmpty()) {
+        reportError("could not lookup default device", "libpcap::pcap_lookupdev");
         dataProcessor->setMode(NOT_READY);
         return false;
-    }
-    else
-    {
+    } else {
 #ifdef DEBUG_DATA_EXTRACTOR
         cerr << "DEBUG: Default device set: " << strLocalInterface.toLatin1().data() << endl;
 #endif
         return openInterface(strLocalInterface);
     }
-
-
 }
 
 
-bool DataProcessor::DataExtractor::connectServer(const QString server)
-{
+bool DataProcessor::DataExtractor::connectServer(const QString server) {
     //TODO: The idea is to recieve processed information from a server
-
     return false;
-
 }
 
 
@@ -1359,8 +1362,8 @@ void DataProcessor::DataExtractor::recordToDumpFile(bool record) {
             QString dumpFileName;
             if (dataProcessor->getMode() == REPLAY_FILE) {
                 QString replayFileName = dataProcessor->getReplayFileName();
-                dumpFileName = QString(DEFAULT_PCAPS_DIR) + QString("/")
-                        + QString(DEFAULT_REPLAY_SUBDIR) + QString("/")
+                dumpFileName = getPcapsDir() + QString("/")
+                        + QString(getReplaySubdir()) + QString("/")
                         + replayFileName;
                 QDir dir;
                 //need to create sub dir
@@ -1376,8 +1379,8 @@ void DataProcessor::DataExtractor::recordToDumpFile(bool record) {
                         + dataProcessor->qdt_twEnd.toString("yyyyMMdd-hhmmss");
             }
             else if (dataProcessor->getMode() == MONITOR_LOCAL) {
-                dumpFileName = QString(DEFAULT_PCAPS_DIR) + QString("/")
-                        + QString(DEFAULT_LIVE_SUBDIR) + QString("/")
+                dumpFileName = QString(getPcapsDir()) + QString("/")
+                        + QString(getLiveSubdir()) + QString("/")
                         + dataProcessor->qdt_replayPosition.toString("yyyyMMdd-hhmmss");
                 //this must be changed to the time window end if the buffer
                 //is dumped to file (TODO)
@@ -1566,8 +1569,7 @@ bool DataProcessor::DataExtractor::setImplicitFilter(const QString impFilter)
 }
 
 
-bool DataProcessor::DataExtractor::applyFilter()
-{
+bool DataProcessor::DataExtractor::applyFilter() {
 #define MAX_EXPR_LENGTH 1024
 
 #ifdef DEBUG_FILTER
@@ -1598,18 +1600,20 @@ bool DataProcessor::DataExtractor::applyFilter()
         return false;
     }
 
-    if (bpfFilterExpr.isNull())
-    {  reportError("filter expression NULL, assumed empty expression",
+    if (bpfFilterExpr.isNull()) {
+        reportError("filter expression NULL, assumed empty expression",
                    "DataExtractor::setFilter");
         bpfFilterExpr = "";
         return applyFilter(); //now try again
     }
 
-    if (netMask == 0)
-    {  reportError("WARNING: home network not set. Use the plotter settings dialog to set the network address and mask.",
+    if (netMask == 0) {
+        if (getShowHomeNetworkNotSetError()) {
+            reportError("WARNING: home network not set. Use the plotter settings dialog to set the network address and mask.",
                    "DataExtractor::setFilter");
-        //this will not prevent the filter from working in most cases except
-        //braodcast packets - according to man pcap
+            //this will not prevent the filter from working in most cases except
+            //braodcast packets - according to man pcap
+        }
     }
 
     //pcap 0.8.3 and before has a bug with port range and optimized filter
@@ -1628,13 +1632,16 @@ bool DataProcessor::DataExtractor::applyFilter()
     ver = pcapVer.toInt();
 
     //check version for greater than 0.8.3
-    if (ver > 83) //we can optimise
-    {  if (dataProcessor->getMode() == REPLAY_FILE)
+    if (ver > 83)  {
+        //we can optimise
+        if (dataProcessor->getMode() == REPLAY_FILE) {
             pcapRet = pcap_compile(fileCaptureInstance, &bpfFilterProg, filterExpr,
                                    OPTIMISE_BPF_FILTER, netMask);
-        else if (dataProcessor->getMode() == MONITOR_LOCAL)
+        }
+        else if (dataProcessor->getMode() == MONITOR_LOCAL) {
             pcapRet = pcap_compile(liveCaptureInstance, &bpfFilterProg, filterExpr,
                                    OPTIMISE_BPF_FILTER, netMask);
+        }
 
 #ifdef DEBUG_FILTER
         cerr << "   libpcap version > 0.8.3, filter IS optimised\n";
@@ -1653,12 +1660,14 @@ bool DataProcessor::DataExtractor::applyFilter()
 #endif
     }
 
-    if (pcapRet == -1)
-    {  if (dataProcessor->getMode() == REPLAY_FILE)
+    if (pcapRet == -1) {
+        if (dataProcessor->getMode() == REPLAY_FILE) {
             strcpy(pcapErrorBuffer, pcap_geterr(fileCaptureInstance)); //copy error into
+        }
         //error buffer
-        else if (dataProcessor->getMode() == MONITOR_LOCAL)
+        else if (dataProcessor->getMode() == MONITOR_LOCAL) {
             strcpy(pcapErrorBuffer, pcap_geterr(liveCaptureInstance)); //copy error into
+        }
         //error buffer
         reportError("could not compile filter expression",
                     "libpacp::pcap_compile");
@@ -1670,39 +1679,35 @@ bool DataProcessor::DataExtractor::applyFilter()
 #endif
 
     //set filter
-    if (dataProcessor->getMode() == REPLAY_FILE)
-    {  pcap_setfilter(fileCaptureInstance, &bpfFilterProg);
-        if (pcapRet == -1)
-        {  strcpy(pcapErrorBuffer, pcap_geterr(fileCaptureInstance));
+    if (dataProcessor->getMode() == REPLAY_FILE) {
+        pcap_setfilter(fileCaptureInstance, &bpfFilterProg);
+        if (pcapRet == -1) {
+            strcpy(pcapErrorBuffer, pcap_geterr(fileCaptureInstance));
             //copy error into error buffer
             reportError("could not set filter for file '" + strReplayFileReference
                         + "'", "libpacp::pcap_setfilter");
             return false;
         }
-        else
-        {
+        else {
 #ifdef DEBUG_FILTER
             cerr << "   filter expression successfuly set for file replay\n";
 #endif
         }
-
     }
-    if (dataProcessor->getMode() == MONITOR_LOCAL)
-    {  pcap_setfilter(liveCaptureInstance, &bpfFilterProg);
-        if (pcapRet == -1)
-        {  strcpy(pcapErrorBuffer, pcap_geterr(liveCaptureInstance));
+    if (dataProcessor->getMode() == MONITOR_LOCAL) {
+        pcap_setfilter(liveCaptureInstance, &bpfFilterProg);
+        if (pcapRet == -1) {
+            strcpy(pcapErrorBuffer, pcap_geterr(liveCaptureInstance));
             //copy error into error buffer
             reportError("could not set filter for interface '" + strLocalInterface
                         + "'", "libpacp::pcap_setfilter");
             return false;
         }
-        else
-        {
+        else {
 #ifdef DEBUG_FILTER
             cerr << "   filter expression successfuly set for live monitoring\n";
 #endif
         }
-
     }
 
 #ifdef DEBUG_DATA_EXTRACTOR
@@ -1713,46 +1718,35 @@ bool DataProcessor::DataExtractor::applyFilter()
 #endif
 
     return true;
-
 }
 
 
-QString DataProcessor::DataExtractor::getImplicitFilter()
-{
+QString DataProcessor::DataExtractor::getImplicitFilter() {
     return implicit_bpf_FilterExpr;
-
 }
 
 
-bool DataProcessor::DataExtractor::checkPcapErrorBuffer()
-{
-    if (pcapErrorBuffer != NULL)
-    {  if (pcapErrorBuffer[0] == '\0')
-        {  return false; //there is no error message present
+bool DataProcessor::DataExtractor::checkPcapErrorBuffer() {
+    if (pcapErrorBuffer != NULL) {
+        if (pcapErrorBuffer[0] == '\0') {
+            return false; //there is no error message present
         }
-        else
-        {  return true; //there is an error message present
+        else {
+            return true; //there is an error message present
         }
     }
-    else
-    {  return false; //there is no error message present
+    else {
+        return false; //there is no error message present
     }
-
 }
 
-
-void DataProcessor::DataExtractor::resetPcapErrorBuffer()
-{
+void DataProcessor::DataExtractor::resetPcapErrorBuffer() {
     pcapErrorBuffer[0] = '\0'; //reset to empty string
-
 }
 
-
-QString DataProcessor::DataExtractor::copyPcapError()
-{
+QString DataProcessor::DataExtractor::copyPcapError() {
     return QString((const char*)pcapErrorBuffer); //forces a deep copy of the
     //string rather than a copy by reference
-
 }
 
 
@@ -1788,18 +1782,15 @@ void DataProcessor::DataExtractor::run()
 #endif
         }
     }
-
 }
 
 
 //DataProcessor ----------------------------------------------------------------
 
-
 //Constructor and Destructor ------------------------------
 
+DataProcessor::DataProcessor() {
 
-DataProcessor::DataProcessor()
-{
     //link objects
     dataExtractor.setDataProcLink(this);
 
@@ -1814,9 +1805,8 @@ DataProcessor::DataProcessor()
 
     //ensure default application dirs are present, or else create them
     strAppDir = QDir::currentPath();
-    if(!checkDefaultDirs())
-    {  reportError("Unable to create default application directory",
-                   "DataProcessor()");
+    if (!checkDefaultDirs()) {
+        reportError("Unable to create default application directory", "DataProcessor()");
     }
 
     //initialization to 'zero' states, representing 02:00 01 Jan 1970
@@ -2034,75 +2024,96 @@ bool DataProcessor::updateImplicitFilter()
 }
 
 
-bool DataProcessor::checkDefaultDirs()
-{
+bool DataProcessor::checkDefaultDirs() {
     QDir dir = QDir();
     QString strDir = QString("");
 
     //main record dir
-    if(!dir.exists(DEFAULT_RECORD_DIR))
-    {  if(!dir.mkdir(DEFAULT_RECORD_DIR))
+    if(!dir.exists(getRecordDir())) {
+        if (!dir.mkdir(getRecordDir())) {
             return false;
+        }
     }
 
     //sub dirs
-    if(!dir.exists(DEFAULT_PCAPS_DIR))
-    {  if(!dir.mkdir(DEFAULT_PCAPS_DIR))
+    if(!dir.exists(getPcapsDir())) {
+        if (!dir.mkdir(getPcapsDir())) {
             return false;
+        }
     }
-    strDir = QString(DEFAULT_PCAPS_DIR);
+
+    strDir = QString(getPcapsDir());
     strDir.append('/');
-    strDir.append(DEFAULT_LIVE_SUBDIR);
-    if(!dir.exists(strDir))
-    {  if(!dir.mkdir(strDir))
+    strDir.append(getLiveSubdir());
+
+    if (!dir.exists(strDir)) {
+        if (!dir.mkdir(strDir)) {
             return false;
+        }
     }
-    strDir = QString(DEFAULT_PCAPS_DIR);
+
+    strDir = QString(getPcapsDir());
     strDir.append('/');
-    strDir.append(DEFAULT_REPLAY_SUBDIR);
-    if(!dir.exists(strDir))
-    {  if(!dir.mkdir(strDir))
+    strDir.append(getReplaySubdir());
+    if (!dir.exists(strDir)) {
+        if (!dir.mkdir(strDir)) {
             return false;
+        }
     }
-    if(!dir.exists(DEFAULT_FRAMES_DIR))
-    {  if(!dir.mkdir(DEFAULT_FRAMES_DIR))
+
+    if (!dir.exists(getFramesDir())) {
+        if (!dir.mkdir(getFramesDir())) {
             return false;
+        }
     }
-    strDir = QString(DEFAULT_FRAMES_DIR);
+
+    strDir = QString(getFramesDir());
     strDir.append('/');
-    strDir.append(DEFAULT_LIVE_SUBDIR);
-    if(!dir.exists(strDir))
-    {  if(!dir.mkdir(strDir))
+    strDir.append(getLiveSubdir());
+
+    if (!dir.exists(strDir)) {
+        if (!dir.mkdir(strDir)) {
             return false;
+        }
     }
-    strDir = QString(DEFAULT_FRAMES_DIR);
+
+    strDir = QString(getFramesDir());
     strDir.append('/');
-    strDir.append(DEFAULT_REPLAY_SUBDIR);
-    if(!dir.exists(strDir))
-    {  if(!dir.mkdir(strDir))
+    strDir.append(getReplaySubdir());
+
+    if (!dir.exists(strDir)) {
+        if (!dir.mkdir(strDir)) {
             return false;
+        }
     }
-    if(!dir.exists(DEFAULT_SNAPSHOTS_DIR))
-    {  if(!dir.mkdir(DEFAULT_SNAPSHOTS_DIR))
+
+    if (!dir.exists(getSnapshotsDir())) {
+        if (!dir.mkdir(getSnapshotsDir())) {
             return false;
+        }
     }
-    strDir = QString(DEFAULT_SNAPSHOTS_DIR);
+
+    strDir = QString(getSnapshotsDir());
     strDir.append('/');
-    strDir.append(DEFAULT_LIVE_SUBDIR);
-    if(!dir.exists(strDir))
-    {  if(!dir.mkdir(strDir))
+    strDir.append(getLiveSubdir());
+
+    if (!dir.exists(strDir)) {
+        if (!dir.mkdir(strDir)) {
             return false;
+        }
     }
-    strDir = QString(DEFAULT_SNAPSHOTS_DIR);
+
+    strDir = QString(getSnapshotsDir());
     strDir.append('/');
-    strDir.append(DEFAULT_REPLAY_SUBDIR);
-    if(!dir.exists(strDir))
-    {  if(!dir.mkdir(strDir))
+    strDir.append(getReplaySubdir());
+
+    if (!dir.exists(strDir)) {
+        if (!dir.mkdir(strDir)) {
             return false;
+        }
     }
 
     return true;
-
 }
 
 
@@ -2253,11 +2264,10 @@ void DataProcessor::selectReplayFile(const QString file)
 }
 
 
-void DataProcessor::selectNetworkInterface(const QString netInterface)
-{
-    if (replayMode != MONITOR_LOCAL)
-    {  if(dataExtractor.openInterface(netInterface))
-        {  //try guess home network
+void DataProcessor::selectNetworkInterface(const QString netInterface) {
+    if (replayMode != MONITOR_LOCAL) {
+        if (dataExtractor.openInterface(netInterface)) {
+            //try guess home network
             guessHomeNetwork();
             unsigned int a, m; //address, mask
             dataExtractor.getHomeNetwork(a, m);
@@ -2266,7 +2276,6 @@ void DataProcessor::selectNetworkInterface(const QString netInterface)
         //openInterface() and guessHomeNetwork() will report errors
     }
     //else already monitoring local interface
-
 }
 
 
@@ -2761,16 +2770,11 @@ QString DataProcessor::getReplayFileName()
     return replayFileName;
 }
 
-
-void DataProcessor::getListLocalInterfaces(QStringList *interfaces)
-{
+void DataProcessor::getListLocalInterfaces(QStringList *interfaces) {
     interfaces = &strAllLocalInterfaces;
-
 }
 
-
-void DataProcessor::reportHomeNetwork()
-{
+void DataProcessor::reportHomeNetwork() {
     unsigned int netAdr = 0;
     unsigned int mask = 0;
     unsigned int shiftMask = 0;
@@ -2782,8 +2786,8 @@ void DataProcessor::reportHomeNetwork()
     int slashNum = 0;
     //keep shifting by 1 bit untill only 0s are left, in which case it evaluates
     //as false
-    while(shiftMask)
-    {  shiftMask = shiftMask << 1;
+    while (shiftMask) {
+        shiftMask = shiftMask << 1;
         slashNum++;
     }
 
@@ -2809,12 +2813,9 @@ void DataProcessor::reportHomeNetwork()
         emit updateHomeNetworkDisplay(0, 0, 0, 0, 0, strRange);
     //update text lables
     emit setXAxisLabels(start, end);
-
 }
 
-
-void DataProcessor::setHomeNetwork(int a, int b, int c, int d, int slashMask)
-{
+void DataProcessor::setHomeNetwork(int a, int b, int c, int d, int slashMask) {
     //this should be a fairly fast way to set the IP addresses using casting and
     //bit shifting
 
@@ -2822,13 +2823,14 @@ void DataProcessor::setHomeNetwork(int a, int b, int c, int d, int slashMask)
     unsigned int mask = 0xFFFFFFFF; //255.255.255.255
     QString start, end, strRange;
 
-    if (slashMask == 0) //full range 0.0.0.0 - 255.255.255.255
-    {  netAdr = 0;
+    if (slashMask == 0) {
+        //full range 0.0.0.0 - 255.255.255.255
+        netAdr = 0;
         mask = 0;
         dstNetFilter = "";
     }
-    else
-    {  netAdr = (unsigned int)a;
+    else {
+        netAdr = (unsigned int)a;
         netAdr = netAdr << 8;
         netAdr = netAdr | (unsigned int)b;
         netAdr = netAdr << 8;
@@ -2846,8 +2848,8 @@ void DataProcessor::setHomeNetwork(int a, int b, int c, int d, int slashMask)
     dataExtractor.getHomeNetwork(netAdr, mask);
 
     //attempt to update implicit filter
-    if (updateImplicitFilter())
-    {  //set x range and plot
+    if (updateImplicitFilter()) {
+        //set x range and plot
         Plotter::setXRange((unsigned int)(netAdr),(unsigned int)(netAdr + (~mask)));
         //startAdr + NOT mask, i.e. 255.255.255.0 becomes 0.0.0.255, adding the
         //appropriate integer amount to the range
@@ -2858,10 +2860,11 @@ void DataProcessor::setHomeNetwork(int a, int b, int c, int d, int slashMask)
         //netAdr|~mask = end address in range
         strRange = start + " - " + end + " ("
                 + PacketHeaders::ipAdrToDecDotStr(mask) + ')';
-        if (slashMask != 0)
+        if (slashMask != 0) {
             emit updateHomeNetworkDisplay(a, b, c, d, slashMask, strRange);
-        else
+        } else {
             emit updateHomeNetworkDisplay(0, 0, 0, 0, 0, strRange);
+        }
         //update text lables
         emit setXAxisLabels(start, end);
 
@@ -2873,27 +2876,22 @@ void DataProcessor::setHomeNetwork(int a, int b, int c, int d, int slashMask)
              << " added to implicit filter" << endl;
 
 #endif
-
     }
-    else
-    {  //error message
+    else {
+        //error message
         reportError("Unable to set source network range due to implicit filter error",
                     "DataProcessor::setSourceNetwork()");
     }
-
-
 }
 
-
-void DataProcessor::setHomeNetwork(unsigned int netAdr, unsigned int netMask)
-{
+void DataProcessor::setHomeNetwork(unsigned int netAdr, unsigned int netMask) {
     int mask = netMask;
     int slashNum = 0;
 
     //keep shifting by 1 bit untill only 0s are left, in which case it evaluates
     //as false
-    while(mask)
-    {  mask = mask << 1;
+    while(mask) {
+        mask = mask << 1;
         slashNum++;
     }
 
@@ -2908,17 +2906,15 @@ void DataProcessor::setHomeNetwork(unsigned int netAdr, unsigned int netMask)
     unsigned int d = netAdr & 0x000000FF;
 
     setHomeNetwork(a, b, c, d, slashNum);
-
 }
 
 
-void DataProcessor::guessHomeNetwork()
-{
+void DataProcessor::guessHomeNetwork() {
     //call DataExtractor to scan file or quary interface card
-    if(!dataExtractor.lookupNetwork())
+    if (!dataExtractor.lookupNetwork()) {
         reportError("Unable to guess home network",
                     "DataProcessor::guessHomeNetwork()");
-
+    }
 }
 
 
@@ -3521,21 +3517,20 @@ void DataProcessor::renderDataDynamic()
 }
 
 
-void DataProcessor::reportError(const QString &errMsg, const QString &function)
-{
+void DataProcessor::reportError(const QString &errMsg, const QString &function) {
     QString errorMessage;
     errorMessage.append("ERROR: ");
     errorMessage.append(errMsg);
-    if (function.isNull())
-    {  errorMessage.append("\n - in function: ");
+    if (function.isNull()) {
+        errorMessage.append("\n - in function: ");
         errorMessage.append(function);
     }
     errorMessage.append("\n");
 
 #ifdef OUTPUT_ERRORS_STD_OUT
-    cerr << errorMessage.toStdString();
+    Log::logError(errorMessage);
 #elif DEBUG_DATA_PROCESSOR
-    cerr << errorMessage.toStdString();
+    Log::logError(errorMessage);
 #endif
 
     //ensure timer is reset so that error is displayed for 1 seconds
@@ -3547,5 +3542,250 @@ void DataProcessor::reportError(const QString &errMsg, const QString &function)
 #ifdef OUTPUT_ERRORS_GUI
     emit sendErrMsg(errorMessage);
 #endif
+}
 
+QString DataProcessor::getRecordDir() {   
+    QSettings settings;
+    return settings.value(RECORD_DEFAULT_DIR_KEY).toString();
+}
+
+void DataProcessor::setRecordDir(QString recordDir) {
+    QSettings settings;
+    settings.setValue(RECORD_DEFAULT_DIR_KEY, recordDir);
+}
+
+bool DataProcessor::isRecordDirSet() {
+    QSettings settings;
+    return settings.contains(RECORD_DEFAULT_DIR_KEY);
+}
+
+QString DataProcessor::getPcapsDir() {    
+    QSettings settings;
+    return settings.value(RECORD_PCAPS_SUBDIR_KEY).toString();
+}
+
+void DataProcessor::setPcapsDir(QString pcapsDir) {
+    QSettings settings;
+    settings.setValue(RECORD_PCAPS_SUBDIR_KEY, pcapsDir);
+}
+
+bool DataProcessor::isPcapsDirSet() {
+    QSettings settings;
+    return settings.contains(RECORD_PCAPS_SUBDIR_KEY);
+}
+
+QString DataProcessor::getFramesDir() {
+    QSettings settings;
+    return settings.value(RECORD_FRAMES_SUBDIR_KEY).toString();
+}
+
+void DataProcessor::setFramesDir(QString framesDir) {
+    QSettings settings;
+    settings.setValue(RECORD_FRAMES_SUBDIR_KEY, framesDir);
+}
+
+bool DataProcessor::isFramesDirSet() {
+    QSettings settings;
+    return settings.contains(RECORD_FRAMES_SUBDIR_KEY);
+}
+
+QString DataProcessor::getSnapshotsDir() {
+    QSettings settings;
+    return settings.value(RECORD_SNAPSHOTS_SUBDIR_KEY).toString();
+}
+
+void DataProcessor::setSnapshotsDir(QString snapshotsDir) {    
+    QSettings settings;
+    settings.setValue(RECORD_SNAPSHOTS_SUBDIR_KEY, snapshotsDir);
+}
+
+bool DataProcessor::isSnapshotDirSet() {
+    QSettings settings;
+    return settings.contains(RECORD_SNAPSHOTS_SUBDIR_KEY);
+}
+
+QString DataProcessor::getLiveSubdir() {
+    QSettings settings;
+    return settings.value(RECORD_LIVE_SUBDIR_KEY).toString();
+}
+
+void DataProcessor::setLiveSubdir(QString liveSubdir) {
+    QSettings settings;
+    settings.setValue(RECORD_LIVE_SUBDIR_KEY, liveSubdir);
+}
+
+bool DataProcessor::isLiveSubdirSet() {
+    QSettings settings;
+    return settings.contains(RECORD_LIVE_SUBDIR_KEY);
+}
+
+QString DataProcessor::getReplaySubdir() {
+    QSettings settings;
+    return settings.value(RECORD_REPLAY_SUBDIR_KEY).toString();
+}
+
+void DataProcessor::setReplaySubdir(QString replaySubdir) {
+    QSettings settings;
+    settings.setValue(RECORD_REPLAY_SUBDIR_KEY, replaySubdir);
+}
+
+bool DataProcessor::isReplaySubdirSet() {
+    QSettings settings;
+    return settings.contains(RECORD_REPLAY_SUBDIR_KEY);
+}
+
+QString DataProcessor::getDefaultHomeNetwork() {
+    QSettings settings;
+    return settings.value(DEFAULT_HOME_NETWORK_KEY).toString();
+}
+
+bool DataProcessor::setDefaultHomeNetwork(QString ipAddress) {
+    QStringList ipAndMask = ipAddress.split('/');
+
+    // If the list length is less than 2, it's invalid, return false.
+    if (ipAndMask.length() < 2) {
+        return false;
+    }
+
+    QString ip = ipAndMask.at(0);
+    QStringList octets = ip.split(".");
+
+    // If the IP address is malformed, return false.
+    if (octets.length() != 4) {
+        return false;
+    }
+
+    int octA = octets.at(0).toInt();
+    int octB = octets.at(1).toInt();
+    int octC = octets.at(2).toInt();
+    int octD = octets.at(3).toInt();
+
+    // Ensure the octets are actual IP address octets.
+    // This isn't elegant, should be improved.
+    if (octA < 0 || octA > 255) {
+        return false;
+    }
+    if (octB < 0 || octB > 255) {
+        return false;
+    }
+    if (octC < 0 || octC > 255) {
+        return false;
+    }
+    if (octD < 0 || octD > 255) {
+        return false;
+    }
+
+    QString mask = ipAndMask.at(1);
+    int maskInt = mask.toInt();
+
+    if (maskInt < 0 || maskInt > 32) {
+        return false;
+    }
+
+    return DataProcessor::setDefaultHomeNetwork(octA, octB, octC, octD, maskInt);
+}
+
+bool DataProcessor::setDefaultHomeNetwork(int octA, int octB, int octC, int octD, int slashMask) {
+    QString ipAddress = QString::number(octA) + "."
+            + QString::number(octB) + "."
+            + QString::number(octC) + "."
+            + QString::number(octD) + "/"
+            + QString::number(slashMask);
+    QSettings settings;
+    settings.setValue(DEFAULT_HOME_NETWORK_KEY, ipAddress);
+    return true;
+}
+
+bool DataProcessor::isDefaultHomeNetworkSet() {
+    QSettings settings;
+    return settings.contains(DEFAULT_HOME_NETWORK_KEY);
+}
+
+bool DataProcessor::getShowHomeNetworkNotSetError() {
+    QSettings settings;
+    return settings.value(SHOW_HOME_NETWORK_NOT_SET_ERROR_KEY).toBool();
+}
+
+void DataProcessor::setShowHomeNetworkNotSetError(bool show) {
+    QSettings settings;
+    settings.setValue(SHOW_HOME_NETWORK_NOT_SET_ERROR_KEY, show);
+}
+
+bool DataProcessor::isShowHomeNetworkNotSetError() {
+    QSettings settings;
+    return settings.contains(SHOW_HOME_NETWORK_NOT_SET_ERROR_KEY);
+}
+
+QString DataProcessor::getDefaultMonitorInterface() {
+    QSettings settings;
+    return settings.value(DEFAULT_MONITOR_INTERFACE_KEY).toString();
+}
+
+void DataProcessor::setDefaultMonitorInterface(QString monitorInterface) {
+    QSettings settings;
+    settings.setValue(DEFAULT_MONITOR_INTERFACE_KEY, monitorInterface);
+}
+
+bool DataProcessor::isDefaultMonitorInterfaceSet() {
+    QSettings settings;
+    return settings.contains(DEFAULT_MONITOR_INTERFACE_KEY);
+}
+
+QString DataProcessor::getScreenshotFormat() {
+    QSettings settings;
+    return settings.value(SCREENSHOT_FORMAT_KEY).toString();
+}
+
+void DataProcessor::setScreenshotFormat(QString screenshotFormat) {
+    QSettings settings;
+    settings.setValue(SCREENSHOT_FORMAT_KEY, screenshotFormat);
+}
+
+bool DataProcessor::isScreenshotFormatSet() {
+    QSettings settings;
+    return settings.contains(SCREENSHOT_FORMAT_KEY);
+}
+
+QString DataProcessor::getScreenshotExtension() {
+    QSettings settings;
+    return settings.value(SCREENSHOT_EXTENSION_KEY).toString();
+}
+
+void DataProcessor::setScreenshotExtension(QString screenshotExtension) {
+    QSettings settings;
+    settings.setValue(SCREENSHOT_EXTENSION_KEY, screenshotExtension);
+}
+
+bool DataProcessor::isScreenshotExtensionSet() {
+    QSettings settings;
+    return settings.contains(SCREENSHOT_EXTENSION_KEY);
+}
+
+int DataProcessor::getScreenshotQuality() {
+    QSettings settings;
+    return settings.value(SCREENSHOT_QUALITY_KEY).toInt();
+}
+
+void DataProcessor::setScreenshotQuality(int screenshotQuality) {
+    QSettings settings;
+    settings.setValue(SCREENSHOT_QUALITY_KEY, screenshotQuality);
+}
+
+bool DataProcessor::isScreenshotQualitySet() {
+    QSettings settings;
+    return settings.contains(SCREENSHOT_QUALITY_KEY);
+}
+
+void DataProcessor::resetVisualisationPlane() {
+    //if currently playing, pause
+    if (getState() == PLAYING) {
+        pause();
+    }
+
+    packetEventBuffer.clear();
+    updateGLVisWidget();
+
+    if (getState() == PAUSED) {
+        play();
+    }
 }

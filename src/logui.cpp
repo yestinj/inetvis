@@ -1,6 +1,25 @@
 #include <logui.h>
 #include <iostream>
 
+/*******************************************************************
+InetVis - Internet Visualisation
+Version: 2.1.0
+release date: 2017/09/21
+
+Original Authors: Jean-Pierre van Riel, Barry Irwin
+Initvis 2.x Authors: Yestin Johnson, Barry Irwin
+Rhodes University
+Computer Science Honours Project - 2005
+Computer Science Masters Project - 2006/7
+Computer Science Masters Project - 2017
+author: Jean-Pierre van Riel
+supervisor: Barry Irwin
+
+InetVis - Internet Visualisation for network traffic.
+Copyright (C) 2006-2017, Jean-Pierre van Riel, Barry Irwin, Yestin Johnson
+
+*******************************************************************/
+
 using namespace std;
 
 bool LogUI::enabled = false; //by default
@@ -30,8 +49,8 @@ void LogUI::disable() {
 
 bool LogUI::openFile() {
     //check that logui dir exists and make the dir if necessary
-    if (!QDir::current().exists("logui")) {
-        if (!QDir::current().mkdir("logui")) {
+    if (!QDir::current().exists(Log::getLogRootDir() + "/logui")) {
+        if (!QDir::current().mkdir(Log::getLogRootDir() + "/logui")) {
             return false;
         }
     }
@@ -39,7 +58,7 @@ bool LogUI::openFile() {
     //set log file name according to the starting timestamp
     QString startTime = QDateTime::currentDateTime().toString("yyyyMMdd-hhmmss");
     logFileName = QString("ui-" + startTime + ".log");
-    logFile.setFileName("logui/" + logFileName);
+    logFile.setFileName(Log::getLogRootDir() + "/logui/" + logFileName);
 
     //open log file - note we do not need to append to pre-existing logs, since
     //we open one log file per user session and never append to it again

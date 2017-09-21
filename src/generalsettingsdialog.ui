@@ -1,0 +1,2374 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GeneralSettingsDialog</class>
+ <widget class="QDialog" name="GeneralSettingsDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>669</width>
+    <height>485</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>General Settings</string>
+  </property>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>651</width>
+     <height>431</height>
+    </rect>
+   </property>
+   <property name="currentIndex">
+    <number>0</number>
+   </property>
+   <widget class="QWidget" name="recordDirectoryTab">
+    <property name="accessibleName">
+     <string/>
+    </property>
+    <attribute name="title">
+     <string>Record Settings</string>
+    </attribute>
+    <widget class="QGroupBox" name="recordSettingsGroupBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>631</width>
+       <height>391</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Record Directory Settings</string>
+     </property>
+     <widget class="QGroupBox" name="rootDirGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>611</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>The root directory where all other recording subdirectories will be based</string>
+      </property>
+      <property name="title">
+       <string>Root Directory</string>
+      </property>
+      <widget class="QLineEdit" name="rootDirLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>481</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="maxLength">
+        <number>500</number>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="rootDirSave">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_calc-accept.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="rootDirLoad">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/undo.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="rootDirReset">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_media-rec.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="pcapsSubdirGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>611</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>The subdirectory where all packet captures will be saved to</string>
+      </property>
+      <property name="title">
+       <string>Packet Captures Subdirectory</string>
+      </property>
+      <widget class="QLineEdit" name="pcapsSubdirLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>481</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="maxLength">
+        <number>500</number>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="pcapsSubdirSave">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_calc-accept.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="pcapsSubdirLoad">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/undo.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="pcapsSubDirReset">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_media-rec.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="framesSubdirGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>611</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>The subdirectory where video frames will be saved to</string>
+      </property>
+      <property name="title">
+       <string>Frames Subdirectory</string>
+      </property>
+      <widget class="QLineEdit" name="framesSubdirLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>481</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="maxLength">
+        <number>500</number>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="framesSubdirSave">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_calc-accept.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="framesSubdirLoad">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/undo.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="framesSubDirReset">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_media-rec.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="snapshotsSubdirGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>200</y>
+        <width>611</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>The subdirectory where snapshots/screenshots will be saved to.</string>
+      </property>
+      <property name="title">
+       <string>Snapshots Subdirectory</string>
+      </property>
+      <widget class="QLineEdit" name="snapshotsSubdirLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>481</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="maxLength">
+        <number>500</number>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="snapshotsSubdirSave">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_calc-accept.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="snapshotsSubdirLoad">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/undo.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="snapshotsSubDirReset">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_media-rec.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="liveSubdirGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>260</y>
+        <width>611</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>The subdirectory where packet captures, frames, and snapshots will be saved when using 'live' mode.</string>
+      </property>
+      <property name="title">
+       <string>Monitor Local Host (Live) Subdirectory</string>
+      </property>
+      <widget class="QLineEdit" name="liveSubdirLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>481</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="maxLength">
+        <number>500</number>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="liveSubdirSave">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_calc-accept.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="liveSubdirLoad">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/undo.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="liveSubDirReset">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_media-rec.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="replaySubdirGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>320</y>
+        <width>611</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>The subdirectory where packet captures, frames, and snapshots will be saved to when operating in replay mode.</string>
+      </property>
+      <property name="title">
+       <string>Replay Packet Capture Subdirectory</string>
+      </property>
+      <widget class="QLineEdit" name="replaySubdirLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>481</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="maxLength">
+        <number>500</number>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="replaySubdirSave">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_calc-accept.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="replaySubdirLoad">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/undo.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="replaySubDirReset">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_media-rec.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="homeNetworkTab">
+    <attribute name="title">
+     <string>Home Network Settings</string>
+    </attribute>
+    <widget class="QGroupBox" name="homeNetworkGroupBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>631</width>
+       <height>211</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Home Network Settings</string>
+     </property>
+     <widget class="QGroupBox" name="defaultHomeNetworkGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>611</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>The IP address and subnet bitlength of the default home network address to apply to plotter settings.</string>
+      </property>
+      <property name="title">
+       <string>Default Home Network IP Address and Subnet Bit Length</string>
+      </property>
+      <widget class="QLineEdit" name="defaultHomeNetworkLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>481</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="inputMask">
+        <string>999.999.999.999/90</string>
+       </property>
+       <property name="maxLength">
+        <number>18</number>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="defaultHomeNetworkSave">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_calc-accept.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="defaultHomeNetworkLoad">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/undo.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="defaultHomeNetworkReset">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_media-rec.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="homeNetNotSetWarnGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>611</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>Whether or not the warning should be shown when a packet capture is loaded but no home network is set under plotter settings.</string>
+      </property>
+      <property name="title">
+       <string>Show Home Network Not Set Warning</string>
+      </property>
+      <widget class="QLineEdit" name="homeNetNotSetWarnLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>481</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="inputMask">
+        <string>B</string>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="homeNetNotSetWarnSave">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_calc-accept.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="homeNetNotSetWarnLoad">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/undo.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="homeNetNotSetWarnReset">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_media-rec.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="defaultMonitorInterfaceGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>611</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>The default network inteface to use when in monitor local host mode.</string>
+      </property>
+      <property name="title">
+       <string>Default Live Monitoring Interface</string>
+      </property>
+      <widget class="QLineEdit" name="defaultMonitorInterfaceLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>481</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>32</number>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="defaultMonitorInterfaceSave">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_calc-accept.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="defaultMonitorInterfaceLoad">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/undo.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="defaultMonitorInterfaceReset">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_media-rec.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="logfileTab">
+    <attribute name="title">
+     <string>Log File Settings</string>
+    </attribute>
+    <widget class="QGroupBox" name="logFileGroupBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>631</width>
+       <height>211</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Log File Settings</string>
+     </property>
+     <widget class="QGroupBox" name="rootLogDirGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>611</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>The root directory where log files will be stored.</string>
+      </property>
+      <property name="title">
+       <string>Root Directory</string>
+      </property>
+      <widget class="QLineEdit" name="rootLogDirLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>481</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>200</number>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="rootLogDirSave">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_calc-accept.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="rootLogDirLoad">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/undo.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="rootLogDirReset">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_media-rec.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="stdoutFilenameGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>611</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>The filename to use to log output to standard out to.</string>
+      </property>
+      <property name="title">
+       <string>Standard Output (stdout) Filename</string>
+      </property>
+      <widget class="QLineEdit" name="stdoutFilenameLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>481</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>50</number>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="stdoutFilenameSave">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_calc-accept.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="stdoutFilenameLoad">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/undo.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="stdoutFilenameReset">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_media-rec.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="stderrFilenameGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>611</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>The filename to use to log standard error to.</string>
+      </property>
+      <property name="title">
+       <string>Standard Error (stderr) Filename</string>
+      </property>
+      <widget class="QLineEdit" name="stderrFilenameLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>481</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="maxLength">
+        <number>50</number>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="stderrFilenameSave">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_calc-accept.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="stderrFilenameLoad">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/undo.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="stderrFilenameReset">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_media-rec.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="snapshotTab">
+    <attribute name="title">
+     <string>Snapshot Settings</string>
+    </attribute>
+    <widget class="QGroupBox" name="snapshotSettingsGroupBox">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>631</width>
+       <height>211</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>Snapshot and Frame Grab Settings</string>
+     </property>
+     <widget class="QGroupBox" name="snapshotFormatGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>611</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>The snapshot and frame image format that should be used.</string>
+      </property>
+      <property name="title">
+       <string>Snapshot/Frame Format</string>
+      </property>
+      <widget class="QLineEdit" name="snapshotFormatLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>481</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="maxLength">
+        <number>5</number>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="snapshotFormatFilenameSave">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_calc-accept.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="snapshotFormatLoad">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/undo.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="snapshotFormatReset">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_media-rec.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="snapshotQualityGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>80</y>
+        <width>611</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>The quality of snapshots and frames.</string>
+      </property>
+      <property name="title">
+       <string>Snapshot Quality (-1 default, 0 = max compression, 100 = max quality)</string>
+      </property>
+      <widget class="QLineEdit" name="snapshotQualityLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>481</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="inputMask">
+        <string>#D00</string>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="snapshotQualitySave">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_calc-accept.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="snapshotQualityLoad">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/undo.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="snapshotQualityReset">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_media-rec.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="snapshotExtensionGroupBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>140</y>
+        <width>611</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="toolTip">
+       <string>The file extension to use when saving snapshots and frames.</string>
+      </property>
+      <property name="title">
+       <string>Snapshot File Extension</string>
+      </property>
+      <widget class="QLineEdit" name="snapshotExtensionLineEdit">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>30</y>
+         <width>481</width>
+         <height>21</height>
+        </rect>
+       </property>
+       <property name="maxLength">
+        <number>5</number>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="snapshotExtensionSave">
+       <property name="geometry">
+        <rect>
+         <x>510</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Save the current setting to disk</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_calc-accept.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="snapshotExtensionLoad">
+       <property name="geometry">
+        <rect>
+         <x>540</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Read the value of this setting from disk.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/undo.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="snapshotExtensionReset">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>30</y>
+         <width>26</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>Reset this setting to its default.</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normalon>:/icons/images/stock_media-rec.png</normalon>
+        </iconset>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="resetAllPushButton">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>450</y>
+     <width>141</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Reset all of the general settings to their defaults</string>
+   </property>
+   <property name="text">
+    <string>Reset All Settings</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="loadSettingsPushButton">
+   <property name="geometry">
+    <rect>
+     <x>280</x>
+     <y>450</y>
+     <width>141</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Load the settings from the config file on disk</string>
+   </property>
+   <property name="text">
+    <string>Load From Disk</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="closeGeneralSettingsPushButton">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>450</y>
+     <width>141</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>Close the general settings window</string>
+   </property>
+   <property name="text">
+    <string>Close</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>rootDirLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>rootDirLoadAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>598</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>351</x>
+     <y>449</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rootDirSave</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>rootDirSaveAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>568</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>373</x>
+     <y>449</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pcapsSubdirSave</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>pcapSubdirSaveAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>558</x>
+     <y>177</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>382</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pcapsSubdirLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>pcapSubdirLoadAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>590</x>
+     <y>177</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>404</x>
+     <y>459</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>framesSubdirSave</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>framesSubdirSaveAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>551</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>425</x>
+     <y>464</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>framesSubdirLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>framesSubdirLoadAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>582</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>442</x>
+     <y>469</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotsSubdirSave</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotsSubdirSaveAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>563</x>
+     <y>297</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>455</x>
+     <y>474</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotsSubdirLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotsSubdirLoadAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>589</x>
+     <y>297</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>495</x>
+     <y>479</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>liveSubdirSave</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>liveSubdirSaveAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>564</x>
+     <y>357</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>658</x>
+     <y>457</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>liveSubdirLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>liveSubdirLoadAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>594</x>
+     <y>357</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>639</x>
+     <y>465</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaySubdirSave</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>replaySubdirSaveAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>555</x>
+     <y>417</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>221</x>
+     <y>461</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaySubdirLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>replaySubdirLoadAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>585</x>
+     <y>417</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>20</x>
+     <y>455</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>defaultHomeNetworkSave</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>defaultHomeNetworkSaveAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>559</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>514</x>
+     <y>542</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>defaultHomeNetworkLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>defaultHomeNetworkLoadAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>584</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>514</x>
+     <y>527</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>homeNetNotSetWarnSave</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>showHomeNetNotSetWarningSaveAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>564</x>
+     <y>177</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>490</x>
+     <y>517</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>homeNetNotSetWarnLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>showHomeNetNotSetWarningLoadAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>592</x>
+     <y>177</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>647</x>
+     <y>508</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rootLogDirSave</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>logRootDirSaveAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>559</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>543</x>
+     <y>561</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rootLogDirLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>logRootDirLoadAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>591</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>606</x>
+     <y>531</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stdoutFilenameSave</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>stdoutFilenameSaveAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>551</x>
+     <y>177</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>577</x>
+     <y>556</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stdoutFilenameLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>stdoutFilenameLoadAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>585</x>
+     <y>177</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>626</x>
+     <y>568</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stderrFilenameSave</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>stderrFilenameSaveAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>564</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>606</x>
+     <y>592</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stderrFilenameLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>stderrFilenameLoadAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>593</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>666</x>
+     <y>614</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotFormatFilenameSave</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotFormatSaveAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>562</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>578</x>
+     <y>617</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotFormatLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotFormatLoadAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>592</x>
+     <y>117</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>657</x>
+     <y>556</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotQualitySave</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotQualitySaveAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>555</x>
+     <y>177</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>580</x>
+     <y>597</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotQualityLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotQualityLoadAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>583</x>
+     <y>177</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>650</x>
+     <y>635</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotExtensionSave</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotExtensionSaveAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>563</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>586</x>
+     <y>586</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotExtensionLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotExtensionLoadAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>598</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>614</x>
+     <y>678</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rootDirReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>rootDirResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>619</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>624</x>
+     <y>650</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pcapsSubDirReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>pcapSubdirResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>612</x>
+     <y>171</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>563</x>
+     <y>688</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>framesSubDirReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>framesSubdirResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>620</x>
+     <y>236</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>589</x>
+     <y>726</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotsSubDirReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotsSubdirResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>616</x>
+     <y>292</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>569</x>
+     <y>673</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>liveSubDirReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>liveSubdirResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>623</x>
+     <y>352</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>611</x>
+     <y>734</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>replaySubDirReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>replaySubdirResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>615</x>
+     <y>402</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>630</x>
+     <y>715</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>defaultHomeNetworkReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>defaultHomeNetworkResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>618</x>
+     <y>114</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>588</x>
+     <y>656</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>homeNetNotSetWarnReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>showHomeNetNotSetWarningResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>624</x>
+     <y>171</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>669</x>
+     <y>726</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stderrFilenameReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>stderrFilenameResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>618</x>
+     <y>232</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>526</x>
+     <y>620</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>stdoutFilenameReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>stdoutFilenameResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>618</x>
+     <y>167</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>422</x>
+     <y>644</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>rootLogDirReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>logRootDirResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>611</x>
+     <y>105</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>345</x>
+     <y>625</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotExtensionReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotExtensionResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>618</x>
+     <y>232</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>441</x>
+     <y>610</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotQualityReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotQualityResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>618</x>
+     <y>174</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>491</x>
+     <y>573</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotFormatReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotFormatResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>619</x>
+     <y>108</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>655</x>
+     <y>4</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>resetAllPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>resetAllSettingsAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>115</x>
+     <y>465</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>163</x>
+     <y>564</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>loadSettingsPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>loadAllSettingsAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>346</x>
+     <y>461</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>341</x>
+     <y>585</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>closeGeneralSettingsPushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>547</x>
+     <y>467</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>544</x>
+     <y>548</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>defaultMonitorInterfaceSave</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>defaultMonitoringInterfaceSaveAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>554</x>
+     <y>224</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>488</x>
+     <y>-38</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>defaultMonitorInterfaceLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>defaultMonitoringInterfaceLoadAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>581</x>
+     <y>224</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>576</x>
+     <y>-34</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>defaultMonitorInterfaceReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>defaultMonitoringInterfaceResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>611</x>
+     <y>223</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>601</x>
+     <y>-47</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>rootDirLoadAction()</slot>
+  <slot>rootDirSaveAction()</slot>
+  <slot>pcapSubdirSaveAction()</slot>
+  <slot>pcapSubdirLoadAction()</slot>
+  <slot>framesSubdirSaveAction()</slot>
+  <slot>framesSubdirLoadAction()</slot>
+  <slot>snapshotsSubdirSaveAction()</slot>
+  <slot>snapshotsSubdirLoadAction()</slot>
+  <slot>liveSubdirSaveAction()</slot>
+  <slot>liveSubdirLoadAction()</slot>
+  <slot>replaySubdirSaveAction()</slot>
+  <slot>replaySubdirLoadAction()</slot>
+  <slot>defaultHomeNetworkSaveAction()</slot>
+  <slot>defaultHomeNetworkLoadAction()</slot>
+  <slot>showHomeNetNotSetWarningSaveAction()</slot>
+  <slot>showHomeNetNotSetWarningLoadAction()</slot>
+  <slot>logRootDirSaveAction()</slot>
+  <slot>logRootDirLoadAction()</slot>
+  <slot>stdoutFilenameSaveAction()</slot>
+  <slot>stdoutFilenameLoadAction()</slot>
+  <slot>stderrFilenameSaveAction()</slot>
+  <slot>stderrFilenameLoadAction()</slot>
+  <slot>snapshotFormatSaveAction()</slot>
+  <slot>snapshotFormatLoadAction()</slot>
+  <slot>snapshotQualitySaveAction()</slot>
+  <slot>snapshotQualityLoadAction()</slot>
+  <slot>snapshotExtensionSaveAction()</slot>
+  <slot>snapshotExtensionLoadAction()</slot>
+  <slot>rootDirResetAction()</slot>
+  <slot>pcapSubdirResetAction()</slot>
+  <slot>framesSubdirResetAction()</slot>
+  <slot>snapshotsSubdirResetAction()</slot>
+  <slot>liveSubdirResetAction()</slot>
+  <slot>replaySubdirResetAction()</slot>
+  <slot>defaultHomeNetworkResetAction()</slot>
+  <slot>showHomeNetNotSetWarningResetAction()</slot>
+  <slot>logRootDirResetAction()</slot>
+  <slot>stdoutFilenameResetAction()</slot>
+  <slot>stderrFilenameResetAction()</slot>
+  <slot>snapshotFormatResetAction()</slot>
+  <slot>snapshotQualityResetAction()</slot>
+  <slot>snapshotExtensionResetAction()</slot>
+  <slot>resetAllSettingsAction()</slot>
+  <slot>loadAllSettingsAction()</slot>
+  <slot>defaultMonitoringInterfaceSaveAction()</slot>
+  <slot>defaultMonitoringInterfaceResetAction()</slot>
+  <slot>defaultMonitoringInterfaceLoadAction()</slot>
+ </slots>
+</ui>
