@@ -259,12 +259,12 @@ int main(int argc, char **argv) {
     QObject::connect(vdw, SIGNAL(closeAllWindows()), &ps, SLOT(reject()));
     QObject::connect(vdw, SIGNAL(closeAllWindows()), &rfs, SLOT(reject()));
     QObject::connect(vdw, SIGNAL(closeAllWindows()), &gsd, SLOT(reject()));
+    QObject::connect(vdw, SIGNAL(closeAllWindows()), &cp, SLOT(close()));
 
     //connect slot for reciving quit signal
     QObject::connect(&app, SIGNAL(lastWindowClosed()), &luiq, SLOT(close()));
     QObject::connect(&app, SIGNAL(lastWindowClosed()), &lq, SLOT(close()));
     QObject::connect(&app, SIGNAL(lastWindowClosed()), &app, SLOT(quit()));
-    // TODO: Add a connection to close everything after the main control window is closed.
 
     dp.init();
 
