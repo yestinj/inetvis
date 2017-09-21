@@ -41,6 +41,7 @@ Known Issues
 At present running the standalone app does not work on Mac OS, however opening with Qt Creator,
 building, and then running does work.
 
+Monitoring local network interfaces does not work under Mac OS at this time.
 
 2.0.4
 ======================
