@@ -11,3 +11,5 @@ src/recorded/*
 src/inetvis-recorded/*
 .idea/
 logs/
+docs/*~
+docs/*#
