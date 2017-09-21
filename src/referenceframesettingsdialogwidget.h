@@ -46,7 +46,8 @@ public slots:
     void axisLabelsStateChange(bool);
     void dateTimeLabelStateChange(bool);
     void framerateLabelStateChange(bool);
-    void projectionModeChanged();    
+    void projectionModeChanged();
+
 private:
 
 };

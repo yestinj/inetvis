@@ -74,14 +74,18 @@ bool Log::openFiles() {
     openStderrFile();
 }
 
-void Log::closeStdoutFile() {
-    logOutput("log file closed");
-    stdoutFile.close();
+void Log::closeStdoutFile() {   
+    if (stdoutFile.isOpen()) {
+        logOutput("log file closed");
+        stdoutFile.close();
+    }
 }
 
 void Log::closeStderrFile() {
-    logError("Log file closed");
-    stderrFile.close();
+    if (stderrFile.isOpen()) {
+        logError("Log file closed");
+        stderrFile.close();
+    }
 }
 
 void Log::closeFiles() {
