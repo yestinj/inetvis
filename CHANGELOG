@@ -46,14 +46,14 @@ Known Issues
 
 2.0.4
 ======================
-
+Additional bugfixes
 
 
 2.0.3
 ======================
-
+Bugfixes
 
 2.0.1
 ======================
-First public releae of Inetvis Lasaruz Edition.
-Complete port to Qt5
+First public releae of Inetvis 'Lasarus' Edition.
+Complete port of the old 0.9.5 codebase using Qt3 to Qt5
