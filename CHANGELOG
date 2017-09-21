@@ -1,33 +1,57 @@
 # Changelog for Inetvis
 
 
-2.1.0 RELEASE  2017/09/??
+2.1.0 RELEASE  2017/09/21
 ================================
 General
 -------
 
+Version 2.1.0 of InetVis is the first feature release since the port from Qt 3 was completed.
+Noteworthy features include support for building and running the application on Mac OS X,
+screenshots in PNG format, a settings file with UI dialog have been introduced,
+two new automatic movement modes have been added for visualisation, and new and useful keyboard
+shortcuts have been added.
+
+Various other small improvements have also been implemented.
 
 New Features
 -------------
-* added HaRlEMsHaKe - causes jittering when view to help with depth perception , triggered with ~
-* added autorotation in View to roate around x axis. 1 to trigger, 2 to increment , 3 to decrement
 
-Bugs Fixed
+* Added a General Settings dialog and persistence for various application settings.
+* Control panel and view location and size are now persisted across restarts.
+* New hotkey 'Z' in view to quickly capture a screenshot.
+* Added play/pause function linked to spacebar being pressed in visualisation pane.
+* Added new hotkey '0' to reset the visualisation pane, clearning all events.
+* Added HaRlEMsHaKe mode - causes jittering when view to help with depth perception, triggered with ~
+* Added autorotation in View to rotate around x axis. 1 to trigger, 2 to increment, 3 to decrement
+* Introduced application log file for stdout and stderr.
+
+Bugs Fixed / Improvements
 ----------
+* Support for building on Mac OS!
+* Improved screenshot implementation to save to PNG with configuration quality (in General Settings).
+* Added recording directory viewing and updating under General Settings.
+* The network interface to listen on can now be specified in general settings.
+* Added default home network options to settings and a load button in Plotter settings dialog.
+* Introduced modularity to the About dialog.
 
 Known Issues
 ------------
 
-2.0.4
+At present running the standalone app does not work on Mac OS, however opening with Qt Creator,
+building, and then running does work.
 
+
+2.0.4
+======================
 
 
 
 2.0.3
+======================
 
 
 2.0.1
 ======================
 First public releae of Inetvis Lasaruz Edition.
 Complete port to Qt5
-
