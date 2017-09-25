@@ -5,7 +5,7 @@ lyx --export latex file.lyx
 pandoc --no-wrap -f latex -t markdown file.tex > file.md
 
 Command line (Markdown > Lyx)
-pandoc --no-wrap -f markdown -t latex file.md > file.tex && tex2lyx
+pandoc --wrap=none  -f markdown -t latex file.md > file.tex && tex2lyx
 file.tex && lyx file.lyx
 
 About Files
