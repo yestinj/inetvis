@@ -1643,8 +1643,7 @@ Record Settings
 
 \end_layout
 
-\begin_layout Labeling
-\labelwidthstring 00.00.0000
+\begin_layout Standard
 These directories are all relative to the directory in which inetvis is
  run.
 \end_layout
@@ -1768,16 +1767,43 @@ Setting the address ranges entails using 'dots-slash' (CIDR) notation to
  Thus the octet classed network masks are:
 \end_layout
 
-\begin_layout Standard
-Legacy Class A = 255.0.0.0 = /8 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Legacy
+\begin_inset space ~
+\end_inset
+
+Class
+\begin_inset space ~
+\end_inset
+
+A 255.0.0.0 = /8 
 \end_layout
 
-\begin_layout Standard
-Legacy Class B = 255.255.0.0 = /16 
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Legacy
+\begin_inset space ~
+\end_inset
+
+Class
+\begin_inset space ~
+\end_inset
+
+B 255.255.0.0 = /16 
 \end_layout
 
-\begin_layout Standard
-Legacy Class C = 255.255.255.0 = /24
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Legacy
+\begin_inset space ~
+\end_inset
+
+Class
+\begin_inset space ~
+\end_inset
+
+C 255.255.255.0 = /24
 \end_layout
 
 \begin_layout Standard
@@ -1791,11 +1817,151 @@ Values other than /8, /16 and /24 are trickier as they involve bits in between
 \end_layout
 
 \begin_layout Standard
-| /+1 | /+2 | /+3 | /+4 | /+5 | /+6 | /+7 | 
+\begin_inset Tabular
+<lyxtabular version="3" rows="2" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+/+1
 \end_layout
 
-\begin_layout Standard
-| .128 | .192 | .224 | .240 | .248 | .252 | .254 |
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+/+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+/+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+/+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+/+5
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+/+6
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+/+7
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.128
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ .192
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ .224
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.240
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ .248
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.252
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+.254
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -2361,11 +2527,35 @@ In order to build InetVis onn your own system or VM please consider the
 \end_layout
 
 \begin_layout Enumerate
-Update your system: sudo apt-get update and sudo apt-get upgrade, finally
- sudo apt-get dist-upgrade Install the following dependencies: sudo apt-get
- install libpcap-dev qt5-default
+Update your system: 
 \end_layout
 
+\begin_deeper
+\begin_layout Enumerate
+
+\family typewriter
+sudo apt-get update
+\family default
+ and
+\family typewriter
+ sudo apt-get upgrade
+\family default
+,
+\end_layout
+
+\begin_layout Enumerate
+finally 
+\family typewriter
+sudo apt-get dist-upgrade 
+\end_layout
+
+\begin_layout Enumerate
+Install the following dependencies: 
+\family typewriter
+sudo apt-get install libpcap-dev qt5-default
+\end_layout
+
+\end_deeper
 \begin_layout Enumerate
 It has been noted that the following dependencies were also required on
  
@@ -2377,6 +2567,8 @@ Linux Mint
 
 \begin_deeper
 \begin_layout Enumerate
+
+\family typewriter
 sudo apt-get install libqglviewer-dev libqglviewer2
 \end_layout
 
