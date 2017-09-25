@@ -101,7 +101,7 @@ InetVis 2.1.0 Manual
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename images/icon.gif
+	filename images/icon.png
 
 \end_inset
 
@@ -378,10 +378,11 @@ ICMP traffic plotted below TCP/UDP cube grey/white ICMP plane.
 \end_layout
 
 \begin_layout Standard
+\align center
 \begin_inset Graphics
 	filename images/inetvis_plotting_scheme.png
 	lyxscale 50
-	scale 50
+	scale 30
 
 \end_inset
 
@@ -497,8 +498,9 @@ The display pane and control panel are in separate windows, with a plotter
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename images/inetvis_screenshot_labeled.jpg
-	scale 50
+	filename images/InetvisDisplay.png
+	lyxscale 50
+	scale 30
 
 \end_inset
 
@@ -511,7 +513,8 @@ Control Panel
 
 \begin_layout Standard
 \begin_inset Graphics
-	filename images/inetvis_control_panel.jpg
+	filename images/InetVisControlPanel.png
+	lyxscale 50
 	scale 50
 
 \end_inset
@@ -1352,7 +1355,8 @@ keystroke{C}
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename images/inetvis_plotter_settings.jpg
+	filename images/PlotterSettings.png
+	lyxscale 50
 	scale 50
 
 \end_inset
@@ -1396,7 +1400,8 @@ Reference Frame Settings Dialogue
 \begin_layout Standard
 \align center
 \begin_inset Graphics
-	filename images/inetvis_reference_frame_settings.jpg
+	filename images/ReferenceFrameSettings.png
+	lyxscale 40
 	scale 50
 
 \end_inset
@@ -1442,6 +1447,269 @@ Toggle text labels (time, axes ranges, frame rate).
 
 \begin_layout Subsection
 General Settings Dialogue
+\end_layout
+
+\begin_layout Standard
+New functionalituy addedin in version 2.1.0 is the ability to have inetvis
+ save a config file.
+ The location of this file depends on the way QT handles it in a patfrom
+ specific manner
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Ubuntu ~/.config/Rhodes
+\backslash
+ University/InetVis.conf
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+MacOSX <todo>
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Windows <todo>
+\end_layout
+
+\begin_layout Standard
+An example of a default config file is shown below.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "basicstyle={\footnotesize\ttfamily},breaklines=true,showspaces=true"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+[dataproc]
+\end_layout
+
+\begin_layout Plain Layout
+
+home_network
+\backslash
+default_home_network=0.0.0.0/0
+\end_layout
+
+\begin_layout Plain Layout
+
+home_network
+\backslash
+monitor_interface=
+\end_layout
+
+\begin_layout Plain Layout
+
+home_network
+\backslash
+show_not_set_error=false
+\end_layout
+
+\begin_layout Plain Layout
+
+recording
+\backslash
+default_dir=inetvis-recorded
+\end_layout
+
+\begin_layout Plain Layout
+
+recording
+\backslash
+frames_subdir=inetvis-recorded/frames
+\end_layout
+
+\begin_layout Plain Layout
+
+recording
+\backslash
+live_subdir=live
+\end_layout
+
+\begin_layout Plain Layout
+
+recording
+\backslash
+pcaps_subdir=inetvis-recorded/pcaps
+\end_layout
+
+\begin_layout Plain Layout
+
+recording
+\backslash
+replay_subdir=replayed 
+\end_layout
+
+\begin_layout Plain Layout
+
+recording
+\backslash
+snapshots_subdir=inetvis-recorded/snapshots 
+\end_layout
+
+\begin_layout Plain Layout
+
+screenshot
+\backslash
+screenshot_extension=png
+\end_layout
+
+\begin_layout Plain Layout
+
+screenshot
+\backslash
+screenshot_format=png
+\end_layout
+
+\begin_layout Plain Layout
+
+screenshot
+\backslash
+screenshot_quality=-1
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+[glviswidget]
+\end_layout
+
+\begin_layout Plain Layout
+
+pos=@Point(186 127)
+\end_layout
+
+\begin_layout Plain Layout
+
+size=@Size(704 605)
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+[logging]
+\end_layout
+
+\begin_layout Plain Layout
+
+root_dir=logs
+\end_layout
+
+\begin_layout Plain Layout
+
+stderr_filename=stderr
+\end_layout
+
+\begin_layout Plain Layout
+
+stdout_filename=stdout 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Record Settings
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/RecordSettings.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+These directories are all relative to the directory in which inetvis is
+ run.
+\end_layout
+
+\begin_layout Subsubsection
+Home Network settings
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/HomeNetworkSettings.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Dialogs for setting the home network ( useful if the same network is being
+ monitored )
+\end_layout
+
+\begin_layout Subsubsection
+Log File Settings
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/LogFileSettings.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Logging data relative to startup directory
+\end_layout
+
+\begin_layout Subsubsection
+Snapshot Settings
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/ScreenShotSettings.png
+	lyxscale 50
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Format and configuration to support screenshots.
+ PNG is now supported.
+ PPM support depricated.
 \end_layout
 
 \begin_layout Section
@@ -2165,6 +2433,17 @@ Contact
 \begin_layout Standard
 Any questions/queries can be directed to Yestin Johnson (2017) <yestinj@gmail.com
 >, or via GitHub.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename images/About.png
+	scale 50
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
