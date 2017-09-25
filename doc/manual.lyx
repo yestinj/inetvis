@@ -11,7 +11,6 @@
 %used by keystroke
 \usepackage{array}
 \usepackage{keystroke}
-\usepackage{keystroke}
 %\usepackage[os=win]{menukeys}
 \end_preamble
 \use_default_options true
@@ -43,10 +42,11 @@
 \pdf_bookmarksopen true
 \pdf_bookmarksopenlevel 1
 \pdf_breaklinks false
-\pdf_pdfborder false
-\pdf_colorlinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
 \pdf_backref false
 \pdf_pdfusetitle true
+\pdf_quoted_options "urlcolor=marineblue  linkcolor=blue"
 \papersize a4paper
 \use_geometry true
 \use_package amsmath 1
@@ -68,6 +68,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 1
+\boxbgcolor #dee2dc
 \index Index
 \shortcut idx
 \color #008000
@@ -158,6 +159,88 @@ InetVis is a 3-D scatter-plot visualization for network traffic.
 \end_layout
 
 \begin_layout Subsection
+About
+\end_layout
+
+\begin_layout Standard
+Inetvis was originally developed in 2005-2007, as part of a research project
+ by JP van Riel in the Department of Comuter Science at Rhodes Uinversity.
+ 10 years later the project has been resurected by Yestin Johnson as part
+ of his Masters Degree research.
+ both Projects have been supervised by Barry Irwin.
+ 
+\end_layout
+
+\begin_layout Standard
+The Current version of Inetvis (2.x branch) has been ported across to run
+ on Qt5.x (including Qt5.5) and on modern operating systems, and is now hosted
+ on GitHub.
+\end_layout
+
+\begin_layout Standard
+Current Author: Yestin Johnson (2017) <yestinj@gmail.com>
+\end_layout
+
+\begin_layout Standard
+Reseach Supervisor: Barry Irwin
+\end_layout
+
+\begin_layout Standard
+Institute: Department of Computer Science,
+\end_layout
+
+\begin_layout Standard
+Rhodes University,
+\end_layout
+
+\begin_layout Standard
+Github: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/yestinj/inetvis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Original Inetvis Concept Paper: 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://doi.org/10.1145/1108590.1108604
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Inetvis 0.9.x and 1.x (unreleased)
+\end_layout
+
+\begin_layout Standard
+Original Author (InetVis 1.x): Jean-Pierre van Riel (2005 - 2007) <jp.vanriel@gmai
+l.com>
+\end_layout
+
+\begin_layout Standard
+Website: http://research.ict.ru.ac.za/G02V2468/
+\end_layout
+
+\begin_layout Standard
+Grahamstown, 6140, Eastern Cape, South Africa
+\end_layout
+
+\begin_layout Subsection
 Concept
 \end_layout
 
@@ -172,28 +255,34 @@ The Spinning Cube of Potential Doom
  volumes of data.
  The visualization makes network scanning and port scanning readily evident
  as horizontal and vertical lines respectively.
- InetVis offers numerous extensions that enhance the original basic concept
- (see [1.4
-\backslash
-.
- Features](#1.4.)).
- For a description of "The Spinning Cube of Potential Doom" see:(
+ InetVis offers numerous extensions that enhance the original basic concept.
+ 
+\end_layout
+
+\begin_layout Standard
+Lau's Original Paper: 
 \begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
 
-http://www.nersc.gov/security/TheSpinningCube.html
+ https://doi.org/10.1145/990680.990699
 \end_layout
 
 \end_inset
 
-)
-\begin_inset Note Note
+
+\end_layout
+
+\begin_layout Standard
+Original Article:
+\begin_inset Flex URL
 status open
 
 \begin_layout Plain Layout
-fix urls
+
+ http://www.nersc.gov/news-publications/nersc-news/nersc-center-news/1998/cube-of-
+doom/
 \end_layout
 
 \end_inset
@@ -260,7 +349,7 @@ Supported Protocols
 \end_layout
 
 \begin_layout Standard
-Currently only Ethernet based IPv4 pakets are supported.
+Currently only Ethernet based IPv4 packets are supported.
  Within the TCP/IP suite explicit support is provided for TCP, UDP and ICMP
  protocols.
  Other protocols may be silently dropped by the builtin base BPF filter.
@@ -371,7 +460,11 @@ Record single snapshot image, or dump all image frames (useful for manually
 \begin_layout Itemize
 Record output back to pcap binary file format, for further detailed analysis
  with other applications (e.g.
- Tcpdump, Ethereal and Snort).
+ Tcpdump, Wiresahark and Snort).
+\end_layout
+
+\begin_layout Standard
+See the CHANGELOG file in the source distribution for updated feature additions.
 \end_layout
 
 \begin_layout Section
@@ -1327,7 +1420,19 @@ Toggle visibility and transparency of grid lines.
 \end_layout
 
 \begin_layout Itemize
-Set number of divisions along x, y, and z for markers and grid lines.
+Set number of divisions along 
+\emph on
+x
+\emph default
+, 
+\emph on
+y
+\emph default
+, and
+\emph on
+ z
+\emph default
+ for markers and grid lines.
  
 \end_layout
 
@@ -1343,8 +1448,8 @@ General Settings Dialogue
 Usage Notes
 \end_layout
 
-\begin_layout Standard
-Tool tips as Helpful Hints</a>
+\begin_layout Subsection
+Tool tips as Helpful Hints
 \end_layout
 
 \begin_layout Standard
@@ -1354,8 +1459,8 @@ Majority of the controls, buttons and fields in the GUI provide tool tips
  in question.
 \end_layout
 
-\begin_layout Standard
-Applying Settings</a>
+\begin_layout Subsection
+Applying Settings
 \end_layout
 
 \begin_layout Standard
@@ -1364,11 +1469,8 @@ Many of the settings are grouped together and require the user to click
  the new settings.
 \end_layout
 
-\begin_layout Standard
-#### <a id="2.3.3." name="2.3.3.">2.3.3
-\backslash
-.
- Setting the Home Network Range Before Playback</a>
+\begin_layout Subsubsection
+Setting the Home Network Range Before Playback
 \end_layout
 
 \begin_layout Standard
@@ -1382,11 +1484,8 @@ After opening a file, set the home network address (in Plotter Settings
  Libpcap.
 \end_layout
 
-\begin_layout Standard
-#### <a id="2.3.4." name="2.3.4.">2.3.4
-\backslash
-.
- Setting Address Ranges with CIDR Notation</a>
+\begin_layout Subsubsection
+Setting Address Ranges with CIDR Notation
 \end_layout
 
 \begin_layout Standard
@@ -1402,8 +1501,15 @@ Setting the address ranges entails using 'dots-slash' (CIDR) notation to
 \end_layout
 
 \begin_layout Standard
-* Class A = 255.0.0.0 = /8 * Class B = 255.255.0.0 = /16 * Class C = 255.255.255.0
- = /24
+Legacy Class A = 255.0.0.0 = /8 
+\end_layout
+
+\begin_layout Standard
+Legacy Class B = 255.255.0.0 = /16 
+\end_layout
+
+\begin_layout Standard
+Legacy Class C = 255.255.255.0 = /24
 \end_layout
 
 \begin_layout Standard
@@ -1417,20 +1523,20 @@ Values other than /8, /16 and /24 are trickier as they involve bits in between
 \end_layout
 
 \begin_layout Standard
-| /+1 | /+2 | /+3 | /+4 | /+5 | /+6 | /+7 | | .128 | .192 | .224 | .240 | .248
- | .252 | .254 |
+| /+1 | /+2 | /+3 | /+4 | /+5 | /+6 | /+7 | 
 \end_layout
 
 \begin_layout Standard
-For example, 146.231.120/20 has subnet mask 255.255.248.0 and represents 8 class
- C networks in the range 146.231.120.0 to 146.231.127.255.
+| .128 | .192 | .224 | .240 | .248 | .252 | .254 |
 \end_layout
 
 \begin_layout Standard
-#### <a id="2.3.5." name="2.3.5.">2.3.5
-\backslash
-.
- Recording</a>
+For example, 192.168.120/20 has subnet mask 255.255.248.0 and represents 8 /24
+ (Legacy Class C) networks in the range 192.168.120.0 to 192.168.127.255.
+\end_layout
+
+\begin_layout Subsection
+Recording
 \end_layout
 
 \begin_layout Standard
@@ -1440,16 +1546,42 @@ All three record methods, recording to capture file, taking a single image
 \end_layout
 
 \begin_layout Standard
-#### <a id="2.3.5.1." name="2.3.5.1.">2.3.5.1
-\backslash
-.
- Record to Capture File</a>
+Recording back to capture file, taking a snapshot image, or dumping frames,
+ creates a directory hierarchy relative to the InetVis running directory.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+recorded/frames Sequences of framed which can be stiched together to create
+ video
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+recorded/pcaps files in pcap format
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+recorded/snapshots individual image snapshots
+\end_layout
+
+\begin_layout Standard
+Within these directories, sub-directory structures follow and should be
+ self explanatory.
+ Some file and directory names include numeric timestamps of the form yyyymmdd-h
+hMMsszzz (where MM is minutes and zzz milliseconds) - the timestamps refer
+ to timestamps in the capture file (or live capture).
+\end_layout
+
+\begin_layout Subsubsection
+Record to Capture File
 \end_layout
 
 \begin_layout Standard
 InetVis can record back out to a Libpcap packet capture file which can later
  be reviewed with any other tool capable of reading the file format (e.g.
- Ethereal).
+ Wireshark or tcpdump).
  A record session begins when the record button (with the round red record
  symbol) is toggled on, and stops once the button its toggled off.
  Everything seen in the current display (and time window), as well as any
@@ -1457,24 +1589,32 @@ InetVis can record back out to a Libpcap packet capture file which can later
  on.
 \end_layout
 
-\begin_layout Standard
-#### <a id="2.3.5.2." name="2.3.5.2.">2.3.5.2
-\backslash
-.
- Taking an Image Snapshot</a>
+\begin_layout Subsubsection
+Taking an Image Snapshot
 \end_layout
 
 \begin_layout Standard
 Pressing the record button with a picture symbol allows the user to take
  a snapshot of the current image in the visualization pane of the InetVis
  Display window.
+ To save a single frame to disk the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+keystroke{Z}
 \end_layout
 
-\begin_layout Standard
-#### <a id="2.3.5.3." name="2.3.5.3.">2.3.5.3
-\backslash
-.
- Dumping Rendered Frames to Image Files</a>
+\end_inset
+
+ key can be used when uin the plotter window.
+\end_layout
+
+\begin_layout Subsubsection
+Dumping Rendered Frames to Image Files
 \end_layout
 
 \begin_layout Standard
@@ -1487,11 +1627,8 @@ InetVis can record rendered frames to image files.
  Consequently, recording image frames uses up a large amount of disk space
  at a rapid rate and can degrade the applications performance - setting
  the window to a smaller resolution will help reduce the performance hit.
-\end_layout
-
-\begin_layout Standard
-During frame recording, the timing is fixed to produce frames suitable for
- encoding video clips at 25 frames per second (fps).
+ During frame recording, the timing is fixed to produce frames suitable
+ for encoding video clips at 25 frames per second (fps).
  Even if, whilst recording, it appears that playback is degraded to less
  than 25 fps, the timing between each frames is calculated with respect
  to the data in the file and according to the replay speed.
@@ -1502,113 +1639,97 @@ During frame recording, the timing is fixed to produce frames suitable for
  original recording.
 \end_layout
 
-\begin_layout Standard
-#### <a id="2.3.5.4." name="2.3.5.4.">2.3.5.4
-\backslash
-.
- Location of Recorded Files</a>
-\end_layout
-
-\begin_layout Standard
-Recording back to capture file, taking a snapshot image, or dumping frames,
- creates a directory hierarchy relative to the InetVis running directory.
-\end_layout
-
-\begin_layout Standard
-* recorded/frames * recorded/pcaps * recorded/snapshots
-\end_layout
-
-\begin_layout Standard
-Within these directories, sub-directory structures follow and should be
- self explanatory.
- Some file and directory names include numeric timestamps of the form yyyymmdd-h
-hMMsszzz (where MM is minutes and zzz milliseconds) - the timestamps refer
- to timestamps in the capture file (or live capture).
-\end_layout
-
-\begin_layout Standard
-#### <a id="2.3.6." name="2.3.6.">2.3.6
-\backslash
-.
- Administrator Privileges</a>
-\end_layout
-
-\begin_layout Standard
-Administer privileges are required to open a live capture interface of the
- systems network interface.
-\end_layout
-
-\begin_layout Standard
-* * *
-\end_layout
-
-\begin_layout Standard
-## <a id="3." name="3.">3
-\backslash
-.
- Requirements and Performance</a>
-\end_layout
-
-\begin_layout Standard
-### <a id="3.1." name="3.1.">3.1
-\backslash
-.
- Operating Platform</a>
-\end_layout
-
-\begin_layout Standard
-* Currently actively developed and supported on Linux.
- Known to run and compile on Ubuntu, Debian and Fedora Core.
- * Ported to Windows, but the windows port remains largely untested.
- The OpenGL performance in the windows port appears inferior to Linux.
- * It is possible to port to Mac OS X, but a port has not been attempted.
-\end_layout
-
-\begin_layout Standard
-### <a id="3.2." name="3.2.">3.2
-\backslash
-.
- Requirements to Run Linux Binary</a>
-\end_layout
-
-\begin_layout Standard
-The binary is compiled for Linux based systems and optimised for the Intel
- i686 processor.
- It requires OpenGL, the Libpcap packet capture library and Trolltech Qt
- GUI API (as well as other system libraries that should be present by default,
- such as libc6).
-\end_layout
-
-\begin_layout Standard
-* libqt4 * libqt4-qt3support * lipcap * libc6 * libstdc++6
-\end_layout
-
-\begin_layout Standard
-### <a id="3.3." name="3.3.">3.3
-\backslash
-.
- Requirements to Run Windows Binary</a>
-\end_layout
-
-\begin_layout Standard
-The binary is compiled for the Intel 686 processor.
- It relies on WinPCap and Trolltech Qt 4.
- The DLLs of these are included with the distribution.
- The DLLs for WinPCap are the Windows NT/2000/XP/2003 compatible version.
- Standard system C libraries as well as winsock2 are required and should
- be present on the system by default.
-\end_layout
-
-\begin_layout Subsubsection
+\begin_layout Subsection
 Minimum System Specification
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Greyedout
+The Original system was devloped with very modidst hardware requirements
+ by modern standards (see below).
+ Performance on more modern multicore systems is very good, and able to
+ achieve frame rates of 25 FPS even using software rendering in a virutal
+ machine.
+ Siginificant performance hits still occur when dumping successive fames
+ to disk (this is especially evident when using the PNG file format).
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Boxed
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "lightgray"
 status open
 
 \begin_layout Plain Layout
-Neeeds updating
+
+\series bold
+InetVis 0.9.x Requirements:
+\end_layout
+
+\begin_layout Plain Layout
+At least a Pentium III class processor with 256MB RAM and a 3-D graphics
+ accelerator supporting OpenGL is recommended.
+ 
+\end_layout
+
+\begin_layout Plain Layout
+While InetVis may work with on-board video cards, poor performance and limited
+ OpenGL support is a typical drawback.
+\end_layout
+
+\begin_layout Plain Layout
+Typical Performance:
+\end_layout
+
+\begin_layout Itemize
+Tested on Ubuntu 7.04 with Intel Core2 (6300) 1.86 GHz CPU, 2GB RAM, GeForce
+ 7600GS (256MB) graphics card.
+\end_layout
+
+\begin_layout Itemize
+The application takes a best effort approach to rendering 25 frames a second.
+ Once rendering at less than 25 frames per second, playback becomes slower
+ than the chosen replay rate.
+ 
+\end_layout
+
+\begin_layout Itemize
+During playback, handles 100MB capture file with about 500,000 packets at
+ 25 frames per second.
+ 
+\end_layout
+
+\begin_layout Itemize
+During playback, handles 200MB capture file with about 2,000,000 packets
+ at about 5 FPS.
+ 
+\end_layout
+
+\begin_layout Itemize
+When paused, handles 600MB capture file with about 6,000,000 packets at
+ 8 FPS using an OpenGL display list optimisation.
+ 
+\end_layout
+
+\begin_layout Itemize
+When recording frames, expect a significant performance hit due to heavy
+ file I/O.
 \end_layout
 
 \end_inset
@@ -1616,148 +1737,350 @@ Neeeds updating
 
 \end_layout
 
-\begin_layout Standard
-At least a Pentium III class processor with 256MB RAM and a 3-D graphics
- accelerator supporting OpenGL is recommended.
- While InetVis may work with on-board video cards, poor performance and
- limited OpenGL support is a typical drawback.
-\end_layout
-
-\begin_layout Standard
-Typical Performance
-\end_layout
-
-\begin_layout Standard
-Tested on Ubuntu 7.04 with Intel Core2 (6300) 1.86 GHz CPU, 2GB RAM, GeForce
- 7600GS (256MB) graphics card.
-\end_layout
-
-\begin_layout Standard
-* The application takes a best effort approach to rendering 25 frames a
- second.
- Once rendering at less than 25 frames per second, playback becomes slower
- than the chosen replay rate.
- * During playback, handles 100MB capture file with about 500,000 packets
- at 25 frames per second.
- * During playback, handles 200MB capture file with about 2,000,000 packets
- at about 5 FPS.
- * When paused, handles 600MB capture file with about 6,000,000 packets
- at 8 FPS using an OpenGL display list optimisation.
- * When recording frames, expect a significant performance hit due to heavy
- file I/O.
-\end_layout
-
-\begin_layout Standard
-*
-\end_layout
-
 \begin_layout Section
 Known Issues
 \end_layout
 
 \begin_layout Standard
-Stability and Performance</a>
+As of Version 2.1.0 the following known issues are still present:
 \end_layout
 
-\begin_layout Standard
-1.
- Target frame rate is intentionally caped at 25 frames per second.
+\begin_layout Itemize
+At present running the standalone app does not work on Mac OS, however opening
+ with Qt Creator, building, and then running does work.
+ 
+\end_layout
+
+\begin_layout Itemize
+Monitoring local network interfaces does not work under Mac OS at this time.
+ 
+\end_layout
+
+\begin_layout Itemize
+Windows support is failing to compile.
+\end_layout
+
+\begin_layout Subsection
+Stability and Performance
+\end_layout
+
+\begin_layout Enumerate
+Target frame rate is intentionally caped at 25 frames per second.
  The achieved frame rate is usualy a little slower and when the system reaches
  full processor usage, the replay rate is reduced to a best effort (plays
  slower than the chosen replay rate).
- 2.
- Large capture files take a while to load while the GUI remains unresponsive.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Large capture files can take a while to load while the GUI remains unresponsive.
  Similarly, some interactions require reloading the capture file, which,
  if not cached in RAM, will be applied with noticeable delay.
- 3.
- Attempting to view too many packets may exhaust system memory.
+ This is minimised on modern systems with sufficient RAM
+\end_layout
+
+\begin_layout Enumerate
+Attempting to view too many packets may exhaust system memory.
  The system will just about halt if the application starts running from
  swap space.
- To improve InetVis should (yet to be implemented) have a memory cap set
+ (unlikley with >4GB ram)
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+To improve InetVis should (yet to be implemented) have a memory cap set
  and warn the user while automatically decreasing the time window to limit
  memory usage.
- 4.
- Unspecified GUI problems may exist due to a port from Qt3 to Qt4 5.
- The windows port is quick and dirty, not tested extensively and expected
- to be buggy.
- The pre-packaged version is very basic with no proper installer and the
- required DLLs are lumped with the exe file.
- The WinPcap DLLs are for Windows NT/XP/2K/2003 (windows 9x requires a different
- version of packet.dll).
- 6.
- Live monitoring is not tested extensively and expected to be buggy.
- Switching numerous times between replay file mode and monitor local may
- cause the application to crash with a memory segmentation bug.
- 7.
- Pre-compiled binaries are only for Intel Processors.
- No tests have been performed with AMD.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+The Microsoft Windows (currently broken) and MacOS port is, not tested extensive
+ly and expected to be buggy.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Live monitoring is still has a few heisenbugs See 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/yestinj/inetvis/issues/46
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
-### <a id="4.2" name="4.2">Limitations and Feature Wish List</a>
+A Full list of current issues can be found on 
+\begin_inset CommandInset href
+LatexCommand href
+name "GitHub"
+target "https://github.com/yestinj/inetvis/issues"
+
+\end_inset
+
+ 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/yestinj/inetvis/issues
 \end_layout
 
-\begin_layout Standard
-1.
- The option to aggregate packet traffic into flows would be a major improvement
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Limitations and Feature Wish List
+\end_layout
+
+\begin_layout Enumerate
+The option to aggregate packet traffic into flows would be a major improvement
  for dealing with production class network traffic.
- 2.
- Additional colour schemes would be nice.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Additional colour schemes would be nice.
  Furthermore, colour legends would help assist the users interpreting colours.
- 3.
- Axes labels overlap in certain orientations.
- 4.
- The reference frame and grid lines could be made more intelligent by dynamicall
-y scaling according to the data ranges chosen and only applying grids on
+ 
+\end_layout
+
+\begin_layout Enumerate
+Axes labels overlap in certain orientations.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The reference frame and grid lines could be made more intelligent by dynamically
+ scaling according to the data ranges chosen and only applying grids on
  the panes of the cube in the background.
- 5.
- Error reporting needs refinement (multiple reports and obscure references
+ 
+\end_layout
+
+\begin_layout Enumerate
+Error reporting needs refinement (multiple reports and obscure references
  to code functions might be experienced).
- 6.
- InetVis lacks a mechanism to select a point an call up detailed textual
+ 
+\end_layout
+
+\begin_layout Enumerate
+InetVis lacks a mechanism to select a point an call up detailed textual
  information, such as the IP addresses, ports, and other such details.
- 7.
- The multi-window GUI is a little awkward and could do with re-factoring
+ 
+\end_layout
+
+\begin_layout Enumerate
+The multi-window GUI is a little awkward and could do with re-factoring
  into a single integrated window with semi-transparent control overlays.
  This would allow the user to toggle controls and while making changes see
  the effect on the visualisation in the background.
- 8.
- Would be nice to have a 'play list' of capture files that can be queued
+ 
+\end_layout
+
+\begin_layout Enumerate
+Would be nice to have a 'play list' of capture files that can be queued
  for replay.
- 9.
- Proper file indexing, instead of re-reading the file from the start would
+ 
+\end_layout
+
+\begin_layout Enumerate
+Proper file indexing, instead of re-reading the file from the start would
  improve manipulations (such as setting the filter, setting the domain/port
  ranges, changing the colour scheme, and so forth).
- 10.
- Needs GUI controls to choose network interface for live monitoring, rather
- than always selecting the systems default interface.
- 11.
- Currently, the application only caters for traffic captured from an Ethernet
+ 
+\end_layout
+
+\begin_layout Enumerate
+Currently, the application only caters for traffic captured from an Ethernet
  data link.
- 12.
- IP packets with options are processed, but the options are ignored.
+ 
+\end_layout
+
+\begin_layout Enumerate
+IP packets with options are processed, but the options are ignored.
  Fragmented IP packets are not yet handled and simply drooped by an implicit
  BPF filter "ip[6:2] & 0x3fff".
  Refer to RFC 791 for details about the fragment flags and offset field.
- 13.
- The ability to integrate IDS alerts, or at least scan detection alerts
- from an IDS, would be awesome.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The ability to integrate IDS alerts, or at least scan detection alerts from
+ an IDS, would be awesome.
 \end_layout
 
 \begin_layout Standard
-InetVis is still regarded as a pre-production.
+Additional features in 'todo' status can be found on 
+\begin_inset CommandInset href
+LatexCommand href
+name "GitHub"
+target "https://github.com/yestinj/inetvis/issues"
+
+\end_inset
+
+ 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/yestinj/inetvis/issues?q=is%3Aissue+is%3Aopen+label%3Aenhancem
+ent
+\end_layout
+
+\end_inset
+
+..
+\end_layout
+
+\begin_layout Section
+Running Inetvis
 \end_layout
 
 \begin_layout Standard
-NB! Help improve InetVis - please report bugs (including tYpos and spelin
- errors in this doc), user experience, and feature wishes (see [8
-\backslash
+The instructions below have all been tested on the current version of Ubuntu,
+ 17.04 64-bit.
+ Installing and Running InetVis
+\end_layout
+
+\begin_layout Standard
+A compiled version of InetVis is available under the releases section of
+ 
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/yestinj/inetvis
+\end_layout
+
+\end_inset
+
 .
- Contact](#8.)).
+\end_layout
+
+\begin_layout Subsection
+Installation
 \end_layout
 
 \begin_layout Standard
-* * *
+In order to install and run the software please do the following:
+\end_layout
+
+\begin_layout Enumerate
+Download the latest release archive from the releases page.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Extract the archive which will be called something like inetvis-2.1.0.tgz 
+\end_layout
+
+\begin_layout Enumerate
+Change into the extracted directory, something like inetvis-2.1.0 
+\end_layout
+
+\begin_layout Enumerate
+Run the install_inetvis.sh shell script to install the software.
+ 
+\end_layout
+
+\begin_layout Enumerate
+This script will: 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+install the software to /opt/inetvis-<version>
+\end_layout
+
+\begin_layout Itemize
+Create a symlink directory /opt/inetvis for convenience
+\end_layout
+
+\begin_layout Itemize
+Copy across the relevant files to the new directory under /opt.
+ 
+\end_layout
+
+\begin_layout Itemize
+Place an icon file in /usr/share/icons/hicolor/48x48/apps/
+\end_layout
+
+\begin_layout Itemize
+Place a desktop file in /usr/share/applications, allowing inetvis to be
+ found in the menu on Ubuntu systems.
+ 
+\end_layout
+
+\begin_layout Itemize
+Create a symlink at /usr/local/bin/inetvis pointing to the main binary.
+ 
+\end_layout
+
+\begin_layout Itemize
+Set the cap_net_raw, and cap_net_admin=eip capabilities on the inetvis binary
+ allowing for monitoring packets on local host without running as root.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\family typewriter
+$sudo setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' 
+\end_layout
+
+\begin_layout Itemize
+This needs to generally not be /home which on Debian/ubuntu systems is mounted
+ nosuid 
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+If the script completes successfully inetvis should now be in your path,
+ and also be in the menu system of your distribution.
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+You should now be able to run the inetvis binary from the command line,
+ as it will be in your path, or you can run it from the Ubuntu menu system,
+ where it will show up as an item.
+ Running from the command line allows you to view console messages produced
+ while the application is running.
+ 
+\end_layout
+
+\begin_layout Subsection
+Uninstalling InetVis
+\end_layout
+
+\begin_layout Standard
+A convenience script is included in the release archive, namely uninstall_inetvi
+s.sh, which can be used to completely remove inetvis from your system at
+ any time.
+\end_layout
+
+\begin_layout Subsection
+Disclaimer
+\end_layout
+
+\begin_layout Standard
+This code may eat your homework — 
+\emph on
+Caveat emptor
+\emph default
+ .
 \end_layout
 
 \begin_layout Section
@@ -1765,112 +2088,74 @@ Building and Developing InetVis
 \end_layout
 
 \begin_layout Standard
-Written with c++, OpenGL, the Qt API, and Libpcap.
+In order to build InetVis onn your own system or VM please consider the
+ following guidelines:
 \end_layout
 
-\begin_layout Standard
-### <a id="5.1." name="5.1.">5.1
-\backslash
-.
- Build Requirements for Linux (Ubuntu/Debian)</a>
+\begin_layout Enumerate
+Update your system: sudo apt-get update and sudo apt-get upgrade, finally
+ sudo apt-get dist-upgrade Install the following dependencies: sudo apt-get
+ install libpcap-dev qt5-default
 \end_layout
 
-\begin_layout Standard
-* essential build utilities like: * g++ * libc-dev * libstdc++-dev * make
- * libpcap-dev (old versions may cause compile errors) * libgl1-mesa-dev
- * libqt4-dev * qt4-dev-tools
+\begin_layout Enumerate
+It has been noted that the following dependencies were also required on
+ 
+\emph on
+Linux Mint
+\emph default
+ based systems:
 \end_layout
 
-\begin_layout Standard
-### <a id="5.2." name="5.2.">5.2
-\backslash
-.
- Build Requirements for Windows</a>
+\begin_deeper
+\begin_layout Enumerate
+sudo apt-get install libqglviewer-dev libqglviewer2
 \end_layout
 
-\begin_layout Standard
-* Qt4 Windows Open Source Edition and MinGW (the open source / free way).
- * OR Qt4 Windows and Visual Studio.
- * WinPCap
+\end_deeper
+\begin_layout Enumerate
+Once the dependencies are installed, clone this repository if you haven't
+ already.
 \end_layout
 
-\begin_layout Standard
-### <a id="5.3." name="5.3.">5.3
-\backslash
-.
- Recommend Development Tools</a>
+\begin_deeper
+\begin_layout Enumerate
+Clone the github repo into the inetvis directory: git clone git@github.com:yestin
+j/inetvis.git 
 \end_layout
 
-\begin_layout Standard
-The way I did it.
+\end_deeper
+\begin_layout Enumerate
+Change into the inetvis directory, and then change to src.
+ 
 \end_layout
 
-\begin_layout Standard
-* qtdesigner-qt3.
- * qtassistant.
- * kate with make plugin.
+\begin_layout Enumerate
+Checkout whichever branch you want to build, i.e.
+ master or develop.
+ git checkout master
 \end_layout
 
-\begin_layout Standard
-Perhaps a better way:
+\begin_layout Enumerate
+Finally, build the inetvis binary:
 \end_layout
 
-\begin_layout Standard
-* qtdesigner-qt4.
- * qtassistant.
- * Eclipse C++ with Qt4 integration.
+\begin_deeper
+\begin_layout Enumerate
+qmake ; make
 \end_layout
 
-\begin_layout Standard
-* * *
+\begin_layout Enumerate
+This will result in a new inetvis binary being generated within the source
+ directory.
 \end_layout
 
-\begin_layout Standard
-## <a id="6." name="6.">6
-\backslash
-.
- Acknowledgement</a>
-\end_layout
-
-\begin_layout Standard
-Based on the "The Spinning Cube of Potential Doom", by Stephen Lau
-\end_layout
-
-\begin_layout Standard
-* [www.nersc.gov/security/TheSpinningCube.html](http://www.nersc.gov/security/TheSpin
-ningCube.html).
-\end_layout
-
-\begin_layout Standard
-Special thanks to Barry Irwin (project supervisor), and Shaun Bangay (Graphics
- honours course lecture of 2005).
- Their instruction and input has made this project possible.
-\end_layout
-
-\begin_layout Standard
-* * *
-\end_layout
-
-\begin_layout Standard
-## <a id="7." name="7.">7
-\backslash
-.
- Disclaimer</a>
-\end_layout
-
-\begin_layout Standard
-**USE AT YOUR OWN RISK!** InetVis is an academic project and not fit for
- commercial use.
- Whilst every effort has been made to confirm that the software accurately
- represents network traffic as intended, the developer(s) make no guarantee
- that it is error free.
- The source code is fairly contrived and convoluted as features where hastily
- hacked in as needed.
- Review of the code will be non-(non-non-trivial).
-\end_layout
-
-\begin_layout Standard
-* * *
+\end_deeper
+\begin_layout Enumerate
+You may now run inetvis by simply running the generated binary.
+ You will need to either run using sudo, or set packet capture capabilities
+ (see instructions above) on the file in the event that you would like to
+ monitor your local host for packets.
 \end_layout
 
 \begin_layout Section
@@ -1878,12 +2163,25 @@ Contact
 \end_layout
 
 \begin_layout Standard
-Jean-Pierre van Riel email: jp _dot_ vanriel _at_ gmail _dot_ com website:
- [http://research.ict.ru.ac.za/G02V2468/](http://research.ict.ru.ac.za/G02V2468/)
+Any questions/queries can be directed to Yestin Johnson (2017) <yestinj@gmail.com
+>, or via GitHub.
+\end_layout
+
+\begin_layout Section
+Credits
 \end_layout
 
 \begin_layout Standard
-* * *
+Significant Contributions to this software beyond the base code have been
+ made by:
+\end_layout
+
+\begin_layout Standard
+Barry Irwin
+\end_layout
+
+\begin_layout Standard
+Alan Herbert
 \end_layout
 
 \begin_layout Section
@@ -1906,7 +2204,7 @@ Copyright (C) 2005 - 2007, Jean-Pierre van Riel
 \begin_layout Paragraph
 
 \emph on
-Copyright (C) 2017, Yestin Johnson, Barry Irwin Jean-Pierre van Riel
+Copyright (C) 2017, Yestin Johnson, Barry Irwin, Jean-Pierre van Riel
 \end_layout
 
 \begin_layout Standard
@@ -1972,26 +2270,26 @@ Libpcap License
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 License: BSD
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Redistribution and use in source and binary forms, with or without modification,
  are permitted provided that the following conditions are met:
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 1.
  Redistributions of source code must retain the above copyright notice,
  this list of conditions and the following disclaimer.
@@ -2006,9 +2304,9 @@ Redistribution and use in source and binary forms, with or without modification,
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR IMPLIED WARRANTIE
 S, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF MERCHANTABILITY
  AND FITNESS FOR A PARTICULAR PURPOSE.
@@ -2016,17 +2314,17 @@ S, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 
 \begin_layout Subsection*
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 WinPcap License
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Copyright (c) 1999 - 2005 NetGroup, Politecnico di Torino (Italy).
  Copyright (c) 2005 - 2007 CACE Technologies, Davis (California).
  All rights reserved.
@@ -2036,9 +2334,9 @@ Copyright (c) 1999 - 2005 NetGroup, Politecnico di Torino (Italy).
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 1.
  Redistributions of source code must retain the above copyright notice,
  this list of conditions and the following disclaimer.
@@ -2054,9 +2352,9 @@ Copyright (c) 1999 - 2005 NetGroup, Politecnico di Torino (Italy).
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
  IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
  THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
@@ -2072,9 +2370,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 _This product includes software developed by the University of California,
  Lawrence Berkeley Laboratory and its contributors.
  This product includes software developed by the Kungliga Tekniska Hogskolan
@@ -2085,17 +2383,17 @@ _This product includes software developed by the University of California,
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 * * *
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Portions Copyright (c) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997 The
  Regents of the University of California.
  All rights reserved.
@@ -2103,18 +2401,18 @@ Portions Copyright (c) 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997 The
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Redistribution and use in source and binary forms, with or without modification,
  are permitted provided that the following conditions are met:
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 1.
  Redistributions of source code must retain the above copyright notice,
  this list of conditions and the following disclaimer.
@@ -2134,9 +2432,9 @@ Redistribution and use in source and binary forms, with or without modification,
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 THIS SOFTWARE IS PROVIDED BY THE INSTITUTE AND CONTRIBUTORS ``AS IS'' AND
  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -2152,26 +2450,26 @@ THIS SOFTWARE IS PROVIDED BY THE INSTITUTE AND CONTRIBUTORS ``AS IS'' AND
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 * * *
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Portions Copyright (c) 1983 Regents of the University of California.
  All rights reserved.
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Redistribution and use in source and binary forms are permitted provided
  that the above copyright notice and this paragraph are duplicated in all
  such forms and that any documentation, advertising materials, and other
@@ -2186,17 +2484,17 @@ ILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 * * *
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Portions Copyright (c) 1995, 1996, 1997 Kungliga Tekniska Hogskolan (Royal
  Institute of Technology, Stockholm, Sweden).
  All rights reserved.
@@ -2204,18 +2502,18 @@ Portions Copyright (c) 1995, 1996, 1997 Kungliga Tekniska Hogskolan (Royal
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Redistribution and use in source and binary forms, with or without modification,
  are permitted provided that the following conditions are met:
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 1.
  Redistributions of source code must retain the above copyright notice,
  this list of conditions and the following disclaimer.
@@ -2234,9 +2532,9 @@ Redistribution and use in source and binary forms, with or without modification,
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 THIS SOFTWARE IS PROVIDED BY THE INSTITUTE AND CONTRIBUTORS ``AS IS'' AND
  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -2252,35 +2550,35 @@ THIS SOFTWARE IS PROVIDED BY THE INSTITUTE AND CONTRIBUTORS ``AS IS'' AND
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 * * *
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Portions Copyright (c) 1997 Yen Yen Lim and North Dakota State University.
  All rights reserved.
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Redistribution and use in source and binary forms, with or without modification,
  are permitted provided that the following conditions are met:
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 1.
  Redistributions of source code must retain the above copyright notice,
  this list of conditions and the following disclaimer.
@@ -2298,9 +2596,9 @@ Redistribution and use in source and binary forms, with or without modification,
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED
  WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTAB
 ILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
@@ -2315,25 +2613,25 @@ ILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 * * *
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Portions Copyright (c) 1993 by Digital Equipment Corporation.
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Permission to use, copy, modify, and distribute this software for any purpose
  with or without fee is hereby granted, provided that the above copyright
  notice and this permission notice appear in all copies, and that the name
@@ -2344,9 +2642,9 @@ Permission to use, copy, modify, and distribute this software for any purpose
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 THE SOFTWARE IS PROVIDED "AS IS" AND DIGITAL EQUIPMENT CORP.
  DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL IMPLIED
  WARRANTIES OF MERCHANTABILITY AND FITNESS.
@@ -2359,35 +2657,35 @@ THE SOFTWARE IS PROVIDED "AS IS" AND DIGITAL EQUIPMENT CORP.
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 * * *
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Portions Copyright (C) 1995, 1996, 1997, 1998, and 1999 WIDE Project.
  All rights reserved.
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Redistribution and use in source and binary forms, with or without modification,
  are permitted provided that the following conditions are met:
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 1.
  Redistributions of source code must retain the above copyright notice,
  this list of conditions and the following disclaimer.
@@ -2403,9 +2701,9 @@ Redistribution and use in source and binary forms, with or without modification,
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 THIS SOFTWARE IS PROVIDED BY THE PROJECT AND CONTRIBUTORS ``AS IS'' AND
  ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
  WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -2421,26 +2719,26 @@ THIS SOFTWARE IS PROVIDED BY THE PROJECT AND CONTRIBUTORS ``AS IS'' AND
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 * * *
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Portions Copyright (c) 1996 Juniper Networks, Inc.
  All rights reserved.
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Redistribution and use in source and binary forms, with or without modification,
  are permitted provided that: (1) source code distributions retain the above
  copyright notice and this paragraph in its entirety, (2) distributions
@@ -2453,9 +2751,9 @@ Redistribution and use in source and binary forms, with or without modification,
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 THIS SOFTWARE IS PROVIDED ``AS IS'' AND WITHOUT ANY EXPRESS OR IMPLIED WARRANTIE
 S, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF MERCHANTABILITY
  AND FITNESS FOR A PARTICULAR PURPOSE.
@@ -2463,26 +2761,26 @@ S, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Portions Copyright (c) 2001 Daniel Hartmeier All rights reserved.
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Redistribution and use in source and binary forms, with or without modification,
  are permitted provided that the following conditions are met:
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 1.
  Redistributions of source code must retain the above copyright notice,
  this list of conditions and the following disclaimer.
@@ -2494,9 +2792,9 @@ Redistribution and use in source and binary forms, with or without modification,
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTOR "AS IS"
  AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
@@ -2512,17 +2810,17 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTOR "AS IS"
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Portions Copyright 1989 by Carnegie Mellon.
 \end_layout
 
 \begin_layout Standard
 
-\family sans
+\family typewriter
 \shape slanted
-\size footnotesize
+\size scriptsize
 Permission to use, copy, modify, and distribute this program for any purpose
  and without fee is hereby granted, provided that this copyright and permission
  notice appear on all copies and supporting documentation, the name of Carnegie
