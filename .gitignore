@@ -10,4 +10,9 @@ recorded/*
 src/recorded/*
 src/inetvis-recorded/*
 .idea/
+*.swp
+*.*~
+
 logs/
+docs/*.*~
+docs/\#*.*\#
