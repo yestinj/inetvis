@@ -428,6 +428,37 @@ void GLVisWidget::paintGL() {
             if (!success) {
                 Log::logError(QString("ERROR: Failed to output frame capture ").append(frameFileName));
             }
+        } else if (screenshotFormat.toStdString() == "ppm") {
+            // Read the GL screen pixels into the captureBuffer
+            glReadPixels (0, 0, width, height, GL_BGRA_EXT, GL_UNSIGNED_BYTE, captureBuffer);
+
+            // Create and write out a screenshot.
+            QImage image((const unsigned char*)captureBuffer, width, height, QImage::Format_ARGB32);
+            // For some reason it's flipped, need to fix that here before outputting.
+            image = image.mirrored();
+            int screenshotQuality = DataProcessor::getScreenshotQuality();
+            bool success = image.save(frameFileName, "PPM", screenshotQuality);
+
+            if (!success) {
+                Log::logError(QString("ERROR: Failed to output frame capture ").append(frameFileName));
+            }
+        }  else if (screenshotFormat.toStdString() == "bmp") {
+            // Read the GL screen pixels into the captureBuffer
+            glReadPixels (0, 0, width, height, GL_BGRA_EXT, GL_UNSIGNED_BYTE, captureBuffer);
+
+            // Create and write out a screenshot.
+            QImage image((const unsigned char*)captureBuffer, width, height, QImage::Format_ARGB32);
+            // For some reason it's flipped, need to fix that here before outputting.
+            image = image.mirrored();
+            int screenshotQuality = DataProcessor::getScreenshotQuality();
+            bool success = image.save(frameFileName, "BMP", screenshotQuality);
+
+            if (!success) {
+                Log::logError(QString("ERROR: Failed to output frame capture ").append(frameFileName));
+            }
+        }
+        else {
+            Log::logError(QString("ERROR: Screenshot format not supported! ").append(screenshotFormat));
         }
     }
 }
