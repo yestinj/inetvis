@@ -1230,7 +1230,7 @@
        </rect>
       </property>
       <property name="toolTip">
-       <string>The snapshot and frame image format that should be used.</string>
+       <string>The snapshot and frame image format that should be used. Supported formats are png, ppm and bmp.</string>
       </property>
       <property name="title">
        <string>Snapshot/Frame Format</string>
@@ -1244,11 +1244,14 @@
          <height>21</height>
         </rect>
        </property>
+       <property name="inputMask">
+        <string>AAA</string>
+       </property>
        <property name="text">
         <string/>
        </property>
        <property name="maxLength">
-        <number>5</number>
+        <number>3</number>
        </property>
       </widget>
       <widget class="QToolButton" name="snapshotFormatFilenameSave">
@@ -1970,38 +1973,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>snapshotExtensionSave</sender>
-   <signal>clicked()</signal>
-   <receiver>GeneralSettingsDialog</receiver>
-   <slot>snapshotExtensionSaveAction()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>563</x>
-     <y>237</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>586</x>
-     <y>586</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>snapshotExtensionLoad</sender>
-   <signal>clicked()</signal>
-   <receiver>GeneralSettingsDialog</receiver>
-   <slot>snapshotExtensionLoadAction()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>598</x>
-     <y>237</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>614</x>
-     <y>678</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>rootDirReset</sender>
    <signal>clicked()</signal>
    <receiver>GeneralSettingsDialog</receiver>
@@ -2178,22 +2149,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>snapshotExtensionReset</sender>
-   <signal>clicked()</signal>
-   <receiver>GeneralSettingsDialog</receiver>
-   <slot>snapshotExtensionResetAction()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>618</x>
-     <y>232</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>441</x>
-     <y>610</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>snapshotQualityReset</sender>
    <signal>clicked()</signal>
    <receiver>GeneralSettingsDialog</receiver>
@@ -2318,6 +2273,54 @@
     <hint type="destinationlabel">
      <x>601</x>
      <y>-47</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotExtensionReset</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotExtensionResetAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>618</x>
+     <y>232</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>441</x>
+     <y>610</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotExtensionLoad</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotExtensionLoadAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>598</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>614</x>
+     <y>678</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>snapshotExtensionSave</sender>
+   <signal>clicked()</signal>
+   <receiver>GeneralSettingsDialog</receiver>
+   <slot>snapshotExtensionSaveAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>563</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>586</x>
+     <y>586</y>
     </hint>
    </hints>
   </connection>
