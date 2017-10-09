@@ -146,7 +146,7 @@ Rrelease
 \begin_inset space ~
 \end_inset
 
-Date: 2017/09/21
+Date: 2017/10/09
 \end_layout
 
 \begin_layout Standard
@@ -1715,8 +1715,7 @@ Snapshot Settings
 
 \begin_layout Standard
 Format and configuration to support screenshots.
- PNG is now supported.
- PPM support depricated.
+ PNG, BMP, and PPM formats are now supported.
 \end_layout
 
 \begin_layout Section
@@ -2424,11 +2423,11 @@ Download the latest release archive from the releases page.
 \end_layout
 
 \begin_layout Enumerate
-Extract the archive which will be called something like inetvis-2.1.0.tgz 
+Extract the archive which will be called something like inetvis-2.1.1.tgz 
 \end_layout
 
 \begin_layout Enumerate
-Change into the extracted directory, something like inetvis-2.1.0 
+Change into the extracted directory, something like inetvis-2.1.1
 \end_layout
 
 \begin_layout Enumerate
