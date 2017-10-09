@@ -1,5 +1,24 @@
 # Changelog for Inetvis
 
+2.1.1
+================================
+General
+--------
+
+This is a minor update to the 2.1 family, it includes a few small feature additions as well 
+as bug fixes to improve the macOS UX, and the relevant documentation updates.
+
+
+New Features
+------------
+
+* Added support for ppm and bmp screenshots, set through the General Settings UI.
+* Added new keyboard shortcut, '9', to toggle the framerate on the visualisation pane.
+
+Bug Fixes
+----------
+* Fixed bug where the timestamp and framerate, in the lower left and right of the visualisation pane was not displayed at all on Mac OSX Retina Displays. It now displays correctly on all displays by using the device pixel ratio to properly calculate the position to draw these HUD elements. 
+
 
 2.1.0 RELEASE  2017/09/21
 ================================
