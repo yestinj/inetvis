@@ -357,15 +357,16 @@ void GLVisWidget::paintGL() {
     //draw other labels
     glColor3fv(otherLabelCol);
 
+    int localDevicePixelRatio = devicePixelRatio();
+
     //draw time label
     if (dateTimeDisplayOn) {  //glColor3f(1.0, 1.0, 1.0);
-
-        renderText(2, height - 2, currentTime->toString("yyyy/MM/dd - hh:mm:ss:zzz"), fontLabels);
+        renderText(2, height/localDevicePixelRatio - 2, currentTime->toString("yyyy/MM/dd - hh:mm:ss:zzz"), fontLabels);
     }
 
     //draw fps
     if (fpsTextOn) {  //glColor3f(1.0, 1.0, 1.0);
-        renderText(width - 50, height - 2, fpsText, fontLabels);
+        renderText(width/localDevicePixelRatio - 50, height/localDevicePixelRatio - 2, fpsText, fontLabels);
         fpsFrameCount++;
     }
 
