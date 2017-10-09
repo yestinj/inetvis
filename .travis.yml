@@ -1,0 +1,12 @@
+language: cpp
+
+compiler: g++
+
+before_install:
+ - sudo apt-get install -qq qt5-dev-tools
+
+before_script:
+  - cd src
+  - qmake
+
+script: make
