@@ -953,6 +953,11 @@ void GLVisWidget::keyPressEvent(QKeyEvent *ev) {
         case Qt::Key_3: //Increase Rotation
             rotateAmount += 0.01;
             break;
+
+        case Qt::Key_9: //Turn on the FPS display
+            toggleDisplayFramerate();
+            break;
+
         case Qt::Key_Z: // take single frame snapshot
             //captureSingleFrame();
             captureCurrentFrame();
@@ -1212,9 +1217,20 @@ void GLVisWidget::setDateTimeReference(QDateTime *dt) {
 }
 
 
+void GLVisWidget::toggleDisplayFramerate() {
+    // If the text is already on, switch it off,
+    // otherwise, if its off, switch it on.
+    if (fpsTextOn) {
+        displayFramerate(false);
+    } else {
+        displayFramerate(true);
+    }
+}
+
 void GLVisWidget::displayFramerate(bool fpsOn) {
-    if (fpsTextOn == fpsOn)
+    if (fpsTextOn == fpsOn) {
         return; //state already set
+    }
 
     if (fpsOn) {  //setup framerate calculation values
         fps = 0;

@@ -265,6 +265,7 @@ public slots:
     void displayDateTime(bool timeOn);
     void setDateTimeReference(QDateTime* dt);
     void displayFramerate(bool fpsOn);
+    void toggleDisplayFramerate();
     void setXAxisLabels(const QString x0, const QString x1);
     void setYAxisLabels(const QString y0, const QString y1);
     void setZAxisLabels(const QString z0, const QString z1);
