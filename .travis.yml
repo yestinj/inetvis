@@ -7,7 +7,7 @@ compiler: g++
 
 before_install:
  - sudo apt-get update -qq 
- - sudo apt-get install -qq qttools5-dev-tools 
+ - sudo apt-get install -qq qttools5-dev-tools libpcap-dev 
 
 
 before_script:
