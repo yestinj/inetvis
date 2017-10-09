@@ -352,7 +352,15 @@ Supported Protocols
 Currently only Ethernet based IPv4 packets are supported.
  Within the TCP/IP suite explicit support is provided for TCP, UDP and ICMP
  protocols.
- Other protocols may be silently dropped by the builtin base BPF filter.
+ Other protocols may be silently dropped by the builtin base BPF filter
+ ("
+\family typewriter
+\shape slanted
+ip[6:2] & 0x3fff"
+\family default
+\shape default
+).
+ See Section 4.2 for details.
 \end_layout
 
 \begin_layout Subsection

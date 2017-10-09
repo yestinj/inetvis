@@ -4,6 +4,7 @@
 \usepackage{newcent}
 \renewcommand{\familydefault}{\rmdefault}
 \usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
 \usepackage[a4paper]{geometry}
 \geometry{verbose,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
 \usepackage{xcolor}
@@ -22,6 +23,8 @@
 \makeatletter
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
 %% The greyedout annotation environment
 \newenvironment{lyxgreyedout}
   {\textcolor{note_fontcolor}\bgroup\ignorespaces}
@@ -45,6 +48,9 @@
 %\usepackage[os=win]{menukeys}
 
 \makeatother
+
+\usepackage{listings}
+\renewcommand{\lstlistingname}{Listing}
 
 \begin{document}
 
@@ -133,7 +139,9 @@ can use and produce network packet captures in the Libpcap file format.
 
 Currently only Ethernet based IPv4 packets are supported. Within the
 TCP/IP suite explicit support is provided for TCP, UDP and ICMP protocols.
-Other protocols may be silently dropped by the builtin base BPF filter.
+Other protocols may be silently dropped by the builtin base BPF filter
+(\textquotedbl{}\texttt{\textsl{ip{[}6:2{]} \& 0x3fff\textquotedbl{}}}).
+See Section 4.2 for details.
 
 \subsection{Plotting scheme}
 \begin{enumerate}
@@ -143,7 +151,9 @@ Other protocols may be silently dropped by the builtin base BPF filter.
 \item Ports (TCP and UDP) plotted along green y-axis (vertical). 
 \item ICMP traffic plotted below TCP/UDP cube grey/white ICMP plane.
 \end{enumerate}
-\includegraphics[scale=0.5]{images/inetvis_plotting_scheme}
+\begin{center}
+\includegraphics[scale=0.3]{images/inetvis_plotting_scheme}
+\par\end{center}
 
 \subsection{Features}
 \begin{itemize}
@@ -191,11 +201,11 @@ The display pane and control panel are in separate windows, with a
 plotter settings dialogue and reference frame settings dialogue accessed
 via the 'view' menu of the control panel
 
-\includegraphics[scale=0.5]{images/inetvis_screenshot_labeled}
+\includegraphics[scale=0.3]{images/InetvisDisplay}
 
 \subsubsection{Control Panel}
 
-\includegraphics[scale=0.5]{images/inetvis_control_panel}
+\includegraphics[scale=0.5]{images/InetVisControlPanel}
 \begin{itemize}
 \item main menu to open files, set mode (monitor local host or replay file),
 or to access other dialogues (view).
@@ -256,7 +266,7 @@ with \emph{the.drk.net})
 
 \subsection{ Plotter Settings Dialogue}
 \begin{center}
-\includegraphics[scale=0.5]{images/inetvis_plotter_settings}
+\includegraphics[scale=0.5]{images/PlotterSettings}
 \par\end{center}
 \begin{itemize}
 \item Set the destination home network range (or drill down into it).
@@ -271,7 +281,7 @@ smoothing (rounded points).
 
 \subsection{Reference Frame Settings Dialogue}
 \begin{center}
-\includegraphics[scale=0.5]{images/inetvis_reference_frame_settings}
+\includegraphics[scale=0.5]{images/ReferenceFrameSettings}
 \par\end{center}
 \begin{itemize}
 \item Set projection mode (Orthographic or perspective). 
@@ -283,6 +293,73 @@ markers and grid lines.
 \end{itemize}
 
 \subsection{General Settings Dialogue}
+
+New functionalituy addedin in version 2.1.0 is the ability to have
+inetvis save a config file. The location of this file depends on the
+way QT handles it in a patfrom specific manner
+\begin{lyxlist}{00.00.0000}
+\item [{Ubuntu}] \textasciitilde{}/.config/Rhodes\textbackslash{} University/InetVis.conf
+\item [{MacOSX}] <todo>
+\item [{Windows}] <todo>
+\end{lyxlist}
+An example of a default config file is shown below.
+
+\begin{lstlisting}[basicstyle={\footnotesize\ttfamily},breaklines=true,showspaces=true]
+[dataproc]
+home_network\default_home_network=0.0.0.0/0
+home_network\monitor_interface=
+home_network\show_not_set_error=false
+recording\default_dir=inetvis-recorded
+recording\frames_subdir=inetvis-recorded/frames
+recording\live_subdir=live
+recording\pcaps_subdir=inetvis-recorded/pcaps
+recording\replay_subdir=replayed 
+recording\snapshots_subdir=inetvis-recorded/snapshots 
+screenshot\screenshot_extension=png
+screenshot\screenshot_format=png
+screenshot\screenshot_quality=-1
+
+[glviswidget]
+pos=@Point(186 127)
+size=@Size(704 605)
+
+[logging]
+root_dir=logs
+stderr_filename=stderr
+stdout_filename=stdout 
+\end{lstlisting}
+
+
+\subsubsection{Record Settings}
+\begin{center}
+\includegraphics[scale=0.5]{images/RecordSettings}
+\par\end{center}
+
+These directories are all relative to the directory in which inetvis
+is run.
+
+\subsubsection{Home Network settings}
+\begin{center}
+\includegraphics[scale=0.5]{images/HomeNetworkSettings}
+\par\end{center}
+
+Dialogs for setting the home network ( useful if the same network
+is being monitored )
+
+\subsubsection{Log File Settings}
+\begin{center}
+\includegraphics[scale=0.5]{images/LogFileSettings}
+\par\end{center}
+
+Logging data relative to startup directory
+
+\subsubsection{Snapshot Settings}
+\begin{center}
+\includegraphics[scale=0.5]{images/ScreenShotSettings}
+\par\end{center}
+
+Format and configuration to support screenshots. PNG is now supported.
+PPM support depricated.
 
 \section{Usage Notes}
 
@@ -317,13 +394,11 @@ network with address 192.168.0.0, subnet mask 255.255.255.0, giving
 the network range 192.168.0.0 to 192.168.0.255\textbackslash{}. The
 number after the slash represents the number of bits in the subnet
 mask. Thus the octet classed network masks are:
-
-Legacy Class A = 255.0.0.0 = /8 
-
-Legacy Class B = 255.255.0.0 = /16 
-
-Legacy Class C = 255.255.255.0 = /24
-
+\begin{lyxlist}{00.00.0000}
+\item [{Legacy~Class~A}] 255.0.0.0 = /8 
+\item [{Legacy~Class~B}] 255.255.0.0 = /16 
+\item [{Legacy~Class~C}] 255.255.255.0 = /24
+\end{lyxlist}
 Values other than /8, /16 and /24 are trickier as they involve bits
 in between the four octets of a 32 bit IP address. The Plotter Settings
 dialogue has a field below the dots-slash edit boxes that show the
@@ -331,9 +406,14 @@ range and subnet mask to help as guide. For bits added on to a full
 octet (i.e. /8+x or /16+x or /24+x), the following octet in the mask
 will have the value:
 
-| /+1 | /+2 | /+3 | /+4 | /+5 | /+6 | /+7 | 
-
-| .128 | .192 | .224 | .240 | .248 | .252 | .254 |
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline 
+/+1 & /+2 & /+3 & /+4 & /+5 & /+6 & /+7\tabularnewline
+\hline 
+\hline 
+.128 &  .192 &  .224 & .240 &  .248 & .252 & .254\tabularnewline
+\hline 
+\end{tabular}
 
 For example, 192.168.120/20 has subnet mask 255.255.248.0 and represents
 8 /24 (Legacy Class C) networks in the range 192.168.120.0 to 192.168.127.255.
@@ -564,13 +644,17 @@ This code may eat your homework \textemdash{} \emph{Caveat emptor}
 In order to build InetVis onn your own system or VM please consider
 the following guidelines:
 \begin{enumerate}
-\item Update your system: sudo apt-get update and sudo apt-get upgrade,
-finally sudo apt-get dist-upgrade Install the following dependencies:
-sudo apt-get install libpcap-dev qt5-default
+\item Update your system: 
+\begin{enumerate}
+\item \texttt{sudo apt-get update} and\texttt{ sudo apt-get upgrade},
+\item finally \texttt{sudo apt-get dist-upgrade }
+\item Install the following dependencies: \texttt{sudo apt-get install libpcap-dev
+qt5-default}
+\end{enumerate}
 \item It has been noted that the following dependencies were also required
 on \emph{Linux Mint} based systems:
 \begin{enumerate}
-\item sudo apt-get install libqglviewer-dev libqglviewer2
+\item \texttt{sudo apt-get install libqglviewer-dev libqglviewer2}
 \end{enumerate}
 \item Once the dependencies are installed, clone this repository if you
 haven't already.
@@ -596,6 +680,9 @@ to monitor your local host for packets.
 
 Any questions/queries can be directed to Yestin Johnson (2017) <yestinj@gmail.com>,
 or via GitHub.
+\begin{center}
+\includegraphics[scale=0.5]{images/About}
+\par\end{center}
 
 \section{Credits}
 
