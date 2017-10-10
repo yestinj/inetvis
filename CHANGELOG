@@ -1,6 +1,6 @@
 # Changelog for Inetvis
 
-2.1.1
+2.1.1  RELEASE  2017/10/09
 ================================
 General
 --------
@@ -13,6 +13,8 @@ New Features
 ------------
 
 * Added support for ppm and bmp screenshots, set through the General Settings UI.
+	These provide significantly improved performance at the expense of
+	drive space when capturing multi frames.
 * Added new keyboard shortcut, '9', to toggle the framerate on the visualisation pane.
 
 Bug Fixes
