@@ -11,11 +11,11 @@ Description
 
 :   2.1.1
 
-<span>Release Date:</span>
+<span>Release�Date:</span>
 
 :   2017/10/09
 
-InetVis is a 3-D scatter-plot visualization for network traffic. It’s more or less like a media player, but for network traffic. At the moment its just an academic toy for reviewing packet capture files, but may be useful in other endeavours. For example, InetVis has been used to verify and critique the accuracy of scan detection algorithms in the Snort IDS and Bro IDS.
+InetVis is a 3-D scatter-plot visualization for network traffic. Inetvis is more or less like a media player, but for network traffic. At the moment its just an academic toy for reviewing packet capture files, but may be useful in other endeavours. For example, InetVis has been used to verify and critique the accuracy of scan detection algorithms in the Snort IDS and Bro IDS.
 
 About
 -----
