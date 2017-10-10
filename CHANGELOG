@@ -16,6 +16,7 @@ New Features
 	These provide significantly improved performance at the expense of
 	drive space when capturing multi frames.
 * Added new keyboard shortcut, '9', to toggle the framerate on the visualisation pane.
+* Additional Documentation, with updated screenshots
 
 Bug Fixes
 ----------
