@@ -95,7 +95,7 @@
 \begin_body
 
 \begin_layout Title
-InetVis 2.1.0 Manual
+InetVis 2.1.1 Manual
 \end_layout
 
 \begin_layout Standard
@@ -146,12 +146,12 @@ Rrelease
 \begin_inset space ~
 \end_inset
 
-Date: 2017/09/21
+Date: 2017/10/09
 \end_layout
 
 \begin_layout Standard
 InetVis is a 3-D scatter-plot visualization for network traffic.
- It's more or less like a media player, but for network traffic.
+ Inetvis is more or less like a media player, but for network traffic.
  At the moment its just an academic toy for reviewing packet capture files,
  but may be useful in other endeavours.
  For example, InetVis has been used to verify and critique the accuracy
@@ -1168,6 +1168,32 @@ keystroke{3}
 status open
 
 \begin_layout Plain Layout
+9
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+keystroke{9}
+\end_layout
+
+\end_inset
+
+ Toggle FPS display
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
 Ctrl-H
 \end_layout
 
@@ -1715,8 +1741,7 @@ Snapshot Settings
 
 \begin_layout Standard
 Format and configuration to support screenshots.
- PNG is now supported.
- PPM support depricated.
+ PNG, BMP, and PPM formats are now supported.
 \end_layout
 
 \begin_layout Section
@@ -2424,11 +2449,11 @@ Download the latest release archive from the releases page.
 \end_layout
 
 \begin_layout Enumerate
-Extract the archive which will be called something like inetvis-2.1.0.tgz 
+Extract the archive which will be called something like inetvis-2.1.1.tgz 
 \end_layout
 
 \begin_layout Enumerate
-Change into the extracted directory, something like inetvis-2.1.0 
+Change into the extracted directory, something like inetvis-2.1.1
 \end_layout
 
 \begin_layout Enumerate

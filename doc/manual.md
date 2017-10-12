@@ -11,11 +11,11 @@ Description
 
 :   2.1.1
 
-<span>Rrelease Date:</span>
+<span>Release�Date:</span>
 
-:   2017/09/21
+:   2017/10/09
 
-InetVis is a 3-D scatter-plot visualization for network traffic. It’s more or less like a media player, but for network traffic. At the moment its just an academic toy for reviewing packet capture files, but may be useful in other endeavours. For example, InetVis has been used to verify and critique the accuracy of scan detection algorithms in the Snort IDS and Bro IDS.
+InetVis is a 3-D scatter-plot visualization for network traffic. Inetvis is more or less like a media player, but for network traffic. At the moment its just an academic toy for reviewing packet capture files, but may be useful in other endeavours. For example, InetVis has been used to verify and critique the accuracy of scan detection algorithms in the Snort IDS and Bro IDS.
 
 About
 -----
@@ -394,9 +394,9 @@ In order to install and run the software please do the following:
 
 1.  Download the latest release archive from the releases page.
 
-2.  Extract the archive which will be called something like inetvis-2.1.0.tgz
+2.  Extract the archive which will be called something like inetvis-2.1.1.tgz
 
-3.  Change into the extracted directory, something like inetvis-2.1.0
+3.  Change into the extracted directory, something like inetvis-2.1.1
 
 4.  Run the install\_inetvis.sh shell script to install the software.
 
