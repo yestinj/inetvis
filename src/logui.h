@@ -33,7 +33,7 @@ Copyright (C) 2006-2017, Jean-Pierre van Riel, Barry Irwin, Yestin Johnson
 #include <QDir>
 #include <QFile>
 #include <QTextStream>
-#include "log.h";
+#include "log.h"
 
 class LogUI {
 
