@@ -3778,14 +3778,17 @@ bool DataProcessor::isScreenshotQualitySet() {
 
 void DataProcessor::resetVisualisationPlane() {
     //if currently playing, pause
+    bool was_playing = false;
     if (getState() == PLAYING) {
         pause();
+        was_playing = true;
     }
 
     packetEventBuffer.clear();
     updateGLVisWidget();
 
-    if (getState() == PAUSED) {
+    // Only start playing again if current state is paused, it was playing
+    if (getState() == PAUSED && was_playing) {
         play();
     }
 }
