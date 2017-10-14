@@ -113,7 +113,7 @@ GLVisWidget::GLVisWidget(QWidget *parent) : QGLWidget(parent) {
     //for fps
     fpsText = "fps: off";
     //font
-    fontLabels.setPointSize(8);
+    fontLabels.setPointSize(16);
     //time label
     nullTime = QDateTime(QDate(1970, 1, 1));
     nullTime.time().setHMS(2, 0, 0);
@@ -361,12 +361,12 @@ void GLVisWidget::paintGL() {
 
     //draw time label
     if (dateTimeDisplayOn) {  //glColor3f(1.0, 1.0, 1.0);
-        renderText(2, height/localDevicePixelRatio - 2, currentTime->toString("yyyy/MM/dd - hh:mm:ss:zzz"), fontLabels);
+        renderText(10, height/localDevicePixelRatio - 10, currentTime->toString("yyyy/MM/dd - hh:mm:ss:zzz"), fontLabels);
     }
 
     //draw fps
     if (fpsTextOn) {  //glColor3f(1.0, 1.0, 1.0);
-        renderText(width/localDevicePixelRatio - 50, height/localDevicePixelRatio - 2, fpsText, fontLabels);
+        renderText(width/localDevicePixelRatio - 60, height/localDevicePixelRatio - 10, fpsText, fontLabels);
         fpsFrameCount++;
     }
 
