@@ -107,12 +107,13 @@ int main(int argc, char **argv) {
         return -1;
     }
 
-    //uncomment the two lines below to diable user interface logging
-    // facilitates logging user interaction
-    if(!LogUI::enable())   {
-       qWarning("Unable to open file for user interface logging - feature left disabled.");
-    }
     Log::enable();
+
+    //uncomment the two lines below to enable user interface logging
+    // facilitates logging user interaction
+    //if(!LogUI::enable())   {
+       //qWarning("Unable to open file for user interface logging - feature left disabled.");
+    //}
 
     //declare support objects
     DataProcessor dp;  //provides backend for reading and parsing capture files
