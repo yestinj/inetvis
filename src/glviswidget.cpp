@@ -113,7 +113,7 @@ GLVisWidget::GLVisWidget(QWidget *parent) : QGLWidget(parent) {
     //for fps
     fpsText = "fps: off";
     //font
-    fontLabels.setPointSize(16);
+    fontLabels.setPointSize(12);
     //time label
     nullTime = QDateTime(QDate(1970, 1, 1));
     nullTime.time().setHMS(2, 0, 0);
@@ -1550,8 +1550,8 @@ void GLVisWidget::setBackgroundCol(int colCode) {
         otherLabelCol[2] = 1.0;
         //set the clearing colour
         glClearColor(0.0, 0.0, 0.0, 0.0); //black
-    } else //white backgoround
-    {
+    } else  {
+        //white background
         backgroundCol = WHITE_BACKGROUND;
         //set x label colour - blue with 66/100 val, and 90/100 sat -> rgb
         xLabelCol[0] = 0.066;
