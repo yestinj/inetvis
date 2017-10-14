@@ -3787,8 +3787,7 @@ void DataProcessor::resetVisualisationPlane() {
     packetEventBuffer.clear();
     updateGLVisWidget();
 
-    // Only start playing again if current state is paused, it was playing,
-    // and it's not in the monitor_local mode.
+    // Only start playing again if current state is paused, it was playing
     if (getState() == PAUSED && was_playing) {
         play();
     }
