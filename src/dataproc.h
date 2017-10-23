@@ -563,4 +563,4 @@ signals:
     void sendErrMsg(QString errMsg);
 
 };
-#endif DATAPROC_H
+#endif // DATAPROC_H
