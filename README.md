@@ -4,7 +4,7 @@ Source repository for the Internet Visualizer tool.
 
 This project is based on the work by JP van Riel and Barry Irwin of Rhodes University. Their original work can be found here: www.cs.ru.ac.za/research/g02v2468/inetvis.html
 
-The task of modernising and updating InetVis was the focus of my MSc research which is now complete. A preprint copy of my thesis on the subject can be found at https://yestin.co.uk/static/MSc_Thesis_InetVis_Preprint.pdf
+The task of modernising and updating InetVis was the focus of my MSc research which is now complete. The official copy of my thesis on the subject can be found at http://hdl.handle.net/10962/69223
 
 # Notes
 
